@@ -1,0 +1,21 @@
+[package]
+name = "hb-cli"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+description = "ZOROWARRIOR HORIZON BRIDGE: port Minecraft Java mods to Horizon and to Java Edition packs"
+
+[[bin]]
+name = "zorowarrior-horizon-bridge"
+path = "src/main.rs"
+
+[dependencies]
+hb-core = { path = "../hb-core" }
+hb-json = { path = "../hb-json" }
+hb-zip = { path = "../hb-zip" }
+hb-versions = { path = "../hb-versions" }
+hb-classfile = { path = "../hb-classfile" }
+hb-mcmeta = { path = "../hb-mcmeta" }

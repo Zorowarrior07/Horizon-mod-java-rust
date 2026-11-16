@@ -19,6 +19,7 @@
 /// The tool's version, recorded in every package it writes.
 pub const VERSION: &str = env!("CARGO_PKG_VERSION");
 
+pub mod bridge;
 pub mod convert;
 pub mod detect;
 pub mod horizon;

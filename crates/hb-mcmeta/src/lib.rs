@@ -521,13 +521,30 @@ where
     // `mcmod.info` in 1.8.9 has no dependency block; the 1.8.9 target reads
     // requirements from `mcmod.info`'s `acceptedMinecraftVersions` when some
     // forks add it, and otherwise from the jar's own code.
+    // A 1.8.9 `mcmod.info` names one version in `mcversion` and, in later
+    // forks, a range in `acceptedMinecraftVersions`. `mcversion` is the
+    // stronger statement, so it goes first.
+    if let Some(mcversion) = first.get_str("mcversion") {
+        let mcversion = mcversion.trim();
+        if !mcversion.is_empty() {
+            info.minecraft.push(Dependency {
+                id: "minecraft".into(),
+                requirement: mcversion.to_owned(),
+                required: true,
+                side: None,
+            });
+        }
+    }
     if let Some(accepted) = first.get_str("acceptedMinecraftVersions") {
-        info.minecraft.push(Dependency {
-            id: "minecraft".into(),
-            requirement: accepted.to_owned(),
-            required: true,
-            side: None,
-        });
+        let accepted = accepted.trim();
+        if !accepted.is_empty() && accepted != "*" {
+            info.minecraft.push(Dependency {
+                id: "minecraft".into(),
+                requirement: accepted.to_owned(),
+                required: true,
+                side: None,
+            });
+        }
     }
     if let Some(update) = first.get_str("updateJSON") {
         info.extras.insert("updateJSON".into(), update.to_owned());
@@ -847,6 +864,12 @@ mod tests {
         assert_eq!(info.id, "old");
         assert!(info.description.contains("line two"), "{:?}", info.description);
         assert_eq!(info.authors, vec!["X"]);
+        // `mcversion` is how a 1.8.9 jar states its game version; without it
+        // the version has to be guessed from the class files.
+        assert_eq!(
+            info.minecraft.first().map(|d| d.requirement.as_str()),
+            Some("1.8.9")
+        );
     }
 
     #[test]

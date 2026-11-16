@@ -433,7 +433,10 @@ pub fn content_verdict(jar: &Jar, _detection: &Detection) -> (Verdict, String) {
     } else {
         parts.join(", ")
     };
-    let classes = jar.classes.len();
+    // Counted from the file names, not from what parsed: a class file this
+    // parser choked on is still Java that Horizon cannot run, and calling such
+    // a jar "nothing to port" would hide it.
+    let classes = jar.class_entry_count();
 
     if parts.is_empty() && classes == 0 {
         return (

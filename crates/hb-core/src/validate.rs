@@ -246,6 +246,19 @@ pub fn check(package: &Package, manifest: Option<&Manifest>, target: &Release) -
         }
     }
 
+    // An empty package installs and does nothing: refuse it rather than ship
+    // a file that looks like a mod.
+    if !package.files.keys().any(|p| {
+        (p.starts_with("assets/") || p.starts_with("data/")) && !p.ends_with('/')
+    }) {
+        add(
+            Severity::Error,
+            "package.content.empty",
+            None,
+            "the package has no assets or data: it would install and do nothing".into(),
+        );
+    }
+
     // Content rules.
     content_rules(package, target, &mut problems);
     problems.sort_by(|a, b| (a.severity, a.code, &a.path).cmp(&(b.severity, b.code, &b.path)));

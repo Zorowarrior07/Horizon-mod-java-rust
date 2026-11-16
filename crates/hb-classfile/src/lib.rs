@@ -734,18 +734,27 @@ pub fn census<'a>(classes: impl Iterator<Item = &'a ClassFile>) -> Census {
             }
         }
 
-        // Registries and libraries.
+        // Registries and libraries. A class in the same package as one of the
+        // mod's own classes is the mod's own too, even when it is not in the
+        // jar: reporting `com/oldgems` as a third-party library would be a
+        // false alarm.
         for reference in &class.class_refs {
             if is_registry(reference) {
                 census.registries.insert(reference.clone());
-            } else if is_library(reference) && !own.contains(reference.as_str()) {
+            } else if is_library(reference)
+                && !own.contains(reference.as_str())
+                && !same_package_as_own(reference, &own)
+            {
                 census.libraries.insert(library_root(reference));
             }
         }
         for reference in class.method_refs.iter().map(|r| &r.owner) {
             if is_registry(reference) {
                 census.registries.insert(reference.clone());
-            } else if is_library(reference) && !own.contains(reference.as_str()) {
+            } else if is_library(reference)
+                && !own.contains(reference.as_str())
+                && !same_package_as_own(reference, &own)
+            {
                 census.libraries.insert(library_root(reference));
             }
         }
@@ -812,6 +821,79 @@ fn is_registry(name: &str) -> bool {
         || name.starts_with("net/minecraftforge/registries/")
         || name.ends_with("DeferredRegister")
         || name.ends_with("RegistryObject")
+}
+
+/// True when `reference` sits under the same root package as one of the jar's
+/// own classes: `com/example/helper/Util` beside `com/example/Mod`.
+///
+/// A mod's helper classes are often in a sub-package and sometimes missing from
+/// the jar; calling `com/example` a third-party library would be a false alarm,
+/// and it is the kind of false alarm that makes a report untrustworthy.
+fn same_package_as_own(reference: &str, own: &BTreeSet<&str>) -> bool {
+    let Some(root) = root_package(reference) else {
+        return false;
+    };
+    own.iter()
+        .filter_map(|name| root_package(name))
+        .any(|own_root| own_root == root)
+}
+
+/// The first two segments of a package, or `None` for a default-package class
+/// (`Mod`) or a one-segment package (`example/Mod`).
+fn root_package(class_name: &str) -> Option<&str> {
+    let mut slashes = class_name.match_indices('/');
+    let first = slashes.next()?.0;
+    let second = slashes.next()?.0;
+    Some(&class_name[..second.max(first + 1)])
+}
+
+#[cfg(test)]
+mod ownership_tests {
+    use super::*;
+
+    fn roots(pairs: &[(&str, &str)]) {
+        for (reference, own) in pairs {
+            let own: BTreeSet<&str> = [*own].into_iter().collect();
+            assert!(
+                same_package_as_own(reference, &own),
+                "{reference} should belong to the same mod as {own:?}"
+            );
+        }
+    }
+
+    #[test]
+    fn a_mods_own_subpackage_is_not_a_library() {
+        roots(&[
+            ("com/oldgems/proxy/CommonProxy", "com/oldgems/GemBlock"),
+            ("com/example/helper/Util", "com/example/Mod"),
+            ("net/example/deep/pkg/Thing", "net/example/Mod"),
+        ]);
+    }
+
+    #[test]
+    fn another_organisation_is_a_library() {
+        let own: BTreeSet<&str> = ["com/example/Mod"].into_iter().collect();
+        for reference in [
+            "com/simibubi/create/Foo",
+            "software/bernie/geckolib/Bar",
+            "net/neoforged/api/Thing",
+        ] {
+            assert!(
+                !same_package_as_own(reference, &own),
+                "{reference} is third-party"
+            );
+        }
+        // Different capitalisation is a different organisation.
+        assert!(!same_package_as_own("com/Example/Mod", &own));
+    }
+
+    #[test]
+    fn root_packages_are_two_segments() {
+        assert_eq!(root_package("com/example/pkg/Mod"), Some("com/example"));
+        assert_eq!(root_package("com/example/Mod"), Some("com/example"));
+        assert_eq!(root_package("example/Mod"), None);
+        assert_eq!(root_package("Mod"), None);
+    }
 }
 
 fn is_library(name: &str) -> bool {

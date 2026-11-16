@@ -61,6 +61,9 @@ pub enum ResourceKind {
     Function,
     StructureNbt,
     Worldgen,
+    /// A data-driven registry entry (`enchantment/`, `damage_type/`,
+    /// `jukebox_song/`, ...): no code, and the game registers it from the file.
+    Registry,
     /// `data/<ns>/horizon/{block,item,recipe,loot_table,tags}/`, a Horizon
     /// content declaration.
     HorizonContent,
@@ -89,6 +92,7 @@ impl ResourceKind {
             ResourceKind::Function => "function",
             ResourceKind::StructureNbt => "structure",
             ResourceKind::Worldgen => "worldgen",
+            ResourceKind::Registry => "registry entry",
             ResourceKind::HorizonContent => "horizon content declaration",
             ResourceKind::DataOther => "data file",
             ResourceKind::AssetOther => "asset",
@@ -112,6 +116,8 @@ impl ResourceKind {
                 | ResourceKind::Advancement
                 | ResourceKind::Function
                 | ResourceKind::Worldgen
+                | ResourceKind::Registry
+                | ResourceKind::HorizonContent
                 | ResourceKind::DataOther
         )
     }
@@ -136,6 +142,11 @@ pub struct Jar {
     pub metadata: Metadata,
     pub pack_meta: Option<PackMeta>,
     pub classes: Vec<ClassFile>,
+    /// How many `.class` entries the archive holds, whether or not each one
+    /// parsed and whether or not it fitted under the parse limit. This is what
+    /// says "the mod is Java", which is why a jar over the limit is still
+    /// reported as Java rather than as empty.
+    pub class_entries: usize,
     pub mixin_configs: Vec<MixinConfig>,
     pub mixin_documents: Vec<hb_mcmeta::MixinDocument>,
     pub entries: Vec<JarEntry>,
@@ -185,8 +196,18 @@ impl Jar {
                 *counts.entry(kind.label()).or_insert(0) += 1;
             }
         }
-        *counts.entry("class file").or_insert(0) += self.classes.len();
+        // `.class` is not a `ResourceKind` (it is not passive content), so it
+        // is counted here from the names.
+        let classes = self.class_entry_count();
+        if classes > 0 {
+            *counts.entry("class file").or_insert(0) += classes;
+        }
         counts
+    }
+
+    /// How many `.class` entries the jar holds, parsed or not.
+    pub fn class_entry_count(&self) -> usize {
+        self.class_entries
     }
 
     pub fn find(&self, name: &str) -> Option<&JarEntry> {
@@ -224,6 +245,7 @@ pub fn read_bytes(bytes: &[u8], label: &str, limits: Limits) -> Result<Jar, Stri
         },
         pack_meta: None,
         classes: Vec::new(),
+        class_entries: 0,
         mixin_configs: Vec::new(),
         mixin_documents: Vec::new(),
         entries: Vec::new(),
@@ -259,6 +281,7 @@ pub fn read_bytes(bytes: &[u8], label: &str, limits: Limits) -> Result<Jar, Stri
             continue;
         }
         if name.ends_with(".class") {
+            jar.class_entries += 1;
             classes_seen += 1;
             if classes_seen > limits.max_classes {
                 jar.notes.push(format!(
@@ -401,10 +424,12 @@ pub fn classify(name: &str) -> (Option<ResourceKind>, Option<String>) {
             "structure" | "structures" => ResourceKind::StructureNbt,
             "worldgen" | "dimension" | "dimension_type" | "biome" | "configured_feature"
             | "placed_feature" | "template_pool" | "processor_list" | "noise_settings"
-            | "density_function" | "carver" | "damage_type" | "enchantment" | "trim_material"
-            | "trim_pattern" | "painting_variant" | "jukebox_song" | "banner_pattern"
-            | "instrument" | "wolf_variant" | "cat_variant" | "frog_variant" | "chat_type"
-            | "recipe_serializer" => ResourceKind::Worldgen,
+            | "density_function" | "carver" => ResourceKind::Worldgen,
+            "damage_type" | "enchantment" | "trim_material" | "trim_pattern"
+            | "painting_variant" | "jukebox_song" | "banner_pattern" | "instrument"
+            | "wolf_variant" | "cat_variant" | "frog_variant" | "chicken_variant"
+            | "cow_variant" | "pig_variant" | "chat_type" | "recipe_serializer"
+            | "decorated_pot_pattern" | "armor_trim" => ResourceKind::Registry,
             // A declaration in this tool's own content format: already what
             // the target reads, so it is carried, not converted.
             "horizon" => ResourceKind::HorizonContent,

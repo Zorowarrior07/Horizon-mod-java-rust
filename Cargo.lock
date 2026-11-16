@@ -7,6 +7,18 @@ name = "hb-classfile"
 version = "0.1.0"
 
 [[package]]
+name = "hb-cli"
+version = "0.1.0"
+dependencies = [
+ "hb-classfile",
+ "hb-core",
+ "hb-json",
+ "hb-mcmeta",
+ "hb-versions",
+ "hb-zip",
+]
+
+[[package]]
 name = "hb-core"
 version = "0.1.0"
 dependencies = [
