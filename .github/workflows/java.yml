@@ -34,7 +34,7 @@ jobs:
 
       - name: Build every Fabric target
         run: |
-          mkdir -p ci/logs dist/java-1.21.x
+          mkdir -p ci/logs artifacts/java-1.21.x
           status=0
           # mc | yarn | java
           while read -r mc yarn java; do
@@ -47,7 +47,7 @@ jobs:
             grep -nE "FAILURE|What went wrong|^> |error:|Caused by:" "ci/logs/fabric-$mc.log" | head -25 || true
             for jar in java/fabric/build/libs/*.jar; do
               [ -e "$jar" ] || continue
-              cp "$jar" dist/java-1.21.x/
+              cp "$jar" artifacts/java-1.21.x/
             done
             cp java/fabric/build/bridge-build-facts.json "ci/logs/fabric-$mc.facts.json" 2>/dev/null || true
             echo "::endgroup::"
@@ -56,29 +56,28 @@ jobs:
           1.21.4  1.21.4+build.8   21
           1.21.11 1.21.11+build.6  21
           TARGETS
-          ls -la dist/java-1.21.x
+          ls -la artifacts/java-1.21.x
           exit $status
 
       - name: Verify the jars
         if: always()
         run: |
           shopt -s nullglob
-          jars=(dist/java-1.21.x/*.jar)
+          jars=(artifacts/java-1.21.x/*.jar)
           if [ ${#jars[@]} -eq 0 ]; then
-            echo "no jars were produced" | tee dist/java-1.21.x/VERIFY.txt
+            echo "no jars were produced" | tee artifacts/java-1.21.x/VERIFY.txt
             exit 0
           fi
-          python3 tools/verify_jar.py "${jars[@]}" --json dist/java-1.21.x/verify.json \
-            | tee dist/java-1.21.x/VERIFY.txt
+          python3 tools/verify_jar.py "${jars[@]}" --json artifacts/java-1.21.x/verify.json \
+            | tee artifacts/java-1.21.x/VERIFY.txt
 
       - name: Commit logs and jars
         if: always()
         run: |
+          set -x
           git config user.name "ci"
           git config user.email "ci@example.invalid"
-          git add -A ci dist
-          git commit -m "ci: java build $(date -u +%Y-%m-%dT%H:%M:%SZ)" || echo "nothing to commit"
-          for attempt in 1 2 3 4 5; do
-            git pull --rebase --autostash origin "${GITHUB_REF_NAME}" && git push && break
-            sleep 3
-          done
+          git add -A ci artifacts
+          git status --short | head -20
+          git commit -m "ci: java build $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git push

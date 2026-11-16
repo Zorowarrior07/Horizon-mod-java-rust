@@ -12,4 +12,5 @@ Thumbs.db
 desktop.ini
 # Generated artifacts; `tools/build-all.ps1` recreates them
 /dist/
+# CI writes built jars here; they are deliverables, not build noise
 /out/
