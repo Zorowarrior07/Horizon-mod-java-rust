@@ -1,1 +1,91 @@
-hello from ci
+== tiny-remapper versions
+      <version>0.10.1</version>
+      <version>0.10.2</version>
+      <version>0.10.3</version>
+      <version>0.10.4</version>
+      <version>0.11.0</version>
+      <version>0.11.1</version>
+      <version>0.11.2</version>
+      <version>0.12.0</version>
+      <version>0.12.1</version>
+      <version>0.12.2</version>
+      <version>0.12.3</version>
+      <version>0.13.0</version>
+      <version>0.13.1</version>
+      <version>0.14.0</version>
+      <version>0.14.1</version>
+      <version>0.15.0</version>
+    </versions>
+    <lastUpdated>20261010154202</lastUpdated>
+  </versioning>
+</metadata>
+== tiny-remapper fat artifacts (latest)
+release=0.15.0
+href="../"
+href="tiny-remapper-0.15.0-fat.jar"
+href="tiny-remapper-0.15.0-fat.jar.md5"
+href="tiny-remapper-0.15.0-fat.jar.sha1"
+href="tiny-remapper-0.15.0-fat.jar.sha256"
+href="tiny-remapper-0.15.0-fat.jar.sha512"
+href="tiny-remapper-0.15.0-sources.jar"
+href="tiny-remapper-0.15.0-sources.jar.md5"
+href="tiny-remapper-0.15.0-sources.jar.sha1"
+href="tiny-remapper-0.15.0-sources.jar.sha256"
+href="tiny-remapper-0.15.0-sources.jar.sha512"
+href="tiny-remapper-0.15.0.jar"
+href="tiny-remapper-0.15.0.jar.md5"
+href="tiny-remapper-0.15.0.jar.sha1"
+href="tiny-remapper-0.15.0.jar.sha256"
+href="tiny-remapper-0.15.0.jar.sha512"
+href="tiny-remapper-0.15.0.module"
+href="tiny-remapper-0.15.0.module.md5"
+href="tiny-remapper-0.15.0.module.sha1"
+href="tiny-remapper-0.15.0.module.sha256"
+== intermediary jar contents for 1.21.1
+Archive:  /tmp/inter.jar
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+        0  2024-08-08 14:40   META-INF/
+       25  2024-08-08 14:40   META-INF/MANIFEST.MF
+        0  2024-08-08 14:40   mappings/
+  3614213  2024-08-08 14:40   mappings/mappings.tiny
+---------                     -------
+  3614238                     4 files
+== yarn 1.21.1 build list
+[
+  {
+    "gameVersion": "1.21.1",
+    "separator": "+build.",
+    "build": 3,
+    "maven": "net.fabricmc:yarn:1.21.1+build.3",
+    "version": "1.21.1+build.3",
+    "stable": false
+  },
+  {
+    "gameVersion": "1.21.1",
+    "separator": "+build.",
+    "build": 2,
+    "maven": "net.fabricmc:yarn:1.21.1+build.2",
+    "version": "1.21.1+build.2",
+    "stable": false
+  },
+  {
+    "gameVersion": "1.21.1",
+    "separator": "+build.",
+    "build": 1,
+    "maven": "net.fabricmc:yarn:1.21.1+build.1",
+    "version": "1.21.1+build.1",
+    "stable": false
+  }
+]
+== neoforge 1.21.1 universal listing
+<version>21.1.262</version>
+<version>21.1.263</version>
+<version>21.1.264</version>
+<version>21.1.265</version>
+<version>21.1.266</version>
+== neoforge artifact classifier probe
+21.1.209 universal -> 200
+21.1.209 joined -> 404
+21.1.209 installer -> 200
+21.1.209 userdev -> 200
