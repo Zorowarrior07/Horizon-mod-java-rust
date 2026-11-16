@@ -1,0 +1,10 @@
+[package]
+name = "hb-classfile"
+description = "Reads Java class files: constant pool, hierarchy, annotations and method references, without a JVM."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]

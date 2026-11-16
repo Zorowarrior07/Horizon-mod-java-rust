@@ -1,0 +1,9 @@
+openjdk version "25.0.5" 2026-10-20 LTS
+OpenJDK Runtime Environment Temurin-25.0.5+8 (build 25.0.5+8-LTS)
+OpenJDK 64-Bit Server VM Temurin-25.0.5+8 (build 25.0.5+8-LTS, mixed mode, sharing)
+javac 25.0.5
+temurin-11-jdk-amd64
+temurin-17-jdk-amd64
+temurin-21-jdk-amd64
+temurin-25-jdk-amd64
+cargo 1.99.1 (5f94df478 2026-08-27)

@@ -1,0 +1,15 @@
+# Rust build output (never commit: the ZIP deliverable is built from source)
+/target/
+**/target/
+# Local toolchain and scratch space
+/.rust-tc/
+/tmp/
+# Editor and OS noise
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+desktop.ini
+# Generated artifacts; `tools/build-all.ps1` recreates them
+/dist/
+/out/

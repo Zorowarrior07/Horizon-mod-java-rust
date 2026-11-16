@@ -1,0 +1,10 @@
+[package]
+name = "hb-zip"
+description = "Zip reader and deterministic writer for .jar/.hmod/.zip, including a from-scratch DEFLATE codec."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]

@@ -1,0 +1,10 @@
+[package]
+name = "hb-json"
+description = "Strict RFC 8259 JSON with insertion-ordered objects, a Java-compatible number model and a deterministic patch engine."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
