@@ -1,0 +1,12 @@
+== zoro_bridge-1.0.0-fabric-1.21.1-1.0.0.jar (908 bytes)
+   ok   3 entries, no duplicates
+   FAIL no class files: this is not a mod, whatever its name
+   -> FAIL
+== zoro_bridge-1.0.0-fabric-1.21.11-1.0.0.jar (910 bytes)
+   ok   3 entries, no duplicates
+   FAIL no class files: this is not a mod, whatever its name
+   -> FAIL
+== zoro_bridge-1.0.0-fabric-1.21.4-1.0.0.jar (909 bytes)
+   ok   3 entries, no duplicates
+   FAIL no class files: this is not a mod, whatever its name
+   -> FAIL

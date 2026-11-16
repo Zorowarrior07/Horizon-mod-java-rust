@@ -1,0 +1,47 @@
+[
+  {
+    "jar": "zoro_bridge-1.0.0-fabric-1.21.1-1.0.0.jar",
+    "bytes": 908,
+    "checks": [
+      {
+        "ok": true,
+        "what": "3 entries, no duplicates"
+      }
+    ],
+    "errors": [
+      "no class files: this is not a mod, whatever its name"
+    ],
+    "warnings": [],
+    "entries": 3
+  },
+  {
+    "jar": "zoro_bridge-1.0.0-fabric-1.21.11-1.0.0.jar",
+    "bytes": 910,
+    "checks": [
+      {
+        "ok": true,
+        "what": "3 entries, no duplicates"
+      }
+    ],
+    "errors": [
+      "no class files: this is not a mod, whatever its name"
+    ],
+    "warnings": [],
+    "entries": 3
+  },
+  {
+    "jar": "zoro_bridge-1.0.0-fabric-1.21.4-1.0.0.jar",
+    "bytes": 909,
+    "checks": [
+      {
+        "ok": true,
+        "what": "3 entries, no duplicates"
+      }
+    ],
+    "errors": [
+      "no class files: this is not a mod, whatever its name"
+    ],
+    "warnings": [],
+    "entries": 3
+  }
+]
