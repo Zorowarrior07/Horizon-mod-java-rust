@@ -7,16 +7,34 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Toolchains
+      - name: Probe maven contents
         run: |
-          java -version 2>&1 | tee ci/java.txt
-          javac -version 2>&1 | tee -a ci/java.txt
-          ls /usr/lib/jvm >> ci/java.txt 2>&1 || true
-          cargo --version >> ci/java.txt
-      - name: Commit the report back
+          set +e
+          exec > ci/probe.txt 2>&1
+          echo "== tiny-remapper versions"
+          curl -sS https://maven.fabricmc.net/net/fabricmc/tiny-remapper/maven-metadata.xml | tail -20
+          echo "== tiny-remapper fat artifacts (latest)"
+          V=$(curl -sS https://maven.fabricmc.net/net/fabricmc/tiny-remapper/maven-metadata.xml | grep -o '<release>[^<]*' | sed 's/<release>//')
+          echo "release=$V"
+          curl -sS "https://maven.fabricmc.net/net/fabricmc/tiny-remapper/$V/" | grep -oE 'href="[^"]*"' | head -20
+          echo "== intermediary jar contents for 1.21.1"
+          curl -sS -o /tmp/inter.jar https://maven.fabricmc.net/net/fabricmc/intermediary/1.21.1/intermediary-1.21.1.jar
+          unzip -l /tmp/inter.jar | head -20
+          echo "== yarn 1.21.1 build list"
+          curl -sS https://meta.fabricmc.net/v2/versions/yarn/1.21.1 | head -c 600
+          echo
+          echo "== neoforge 1.21.1 universal listing"
+          curl -sS https://maven.neoforged.net/releases/net/neoforged/neoforge/maven-metadata.xml | grep -o '<version>21\.1\.[0-9]*</version>' | tail -5
+          echo "== neoforge artifact classifier probe"
+          for a in universal joined installer userdev; do
+            code=$(curl -sS -o /dev/null -w '%{http_code}' "https://maven.neoforged.net/releases/net/neoforged/neoforge/21.1.209/neoforge-21.1.209-$a.jar")
+            echo "21.1.209 $a -> $code"
+          done
+      - name: Commit the probe output
+        if: always()
         run: |
-          git config user.name "ci"
-          git config user.email "ci@example.invalid"
-          git add ci/java.txt
-          git commit -m "ci: toolchain report" || true
+          git config user.name ci
+          git config user.email ci@example.invalid
+          git add ci/probe.txt
+          git commit -m "ci: probe output" || true
           git push

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " A ",
+    "ABA",
+    " A "
+  ],
+  "key": {
+    "A": "minecraft:iron_ingot",
+    "B": "minecraft:redstone"
+  },
+  "result": {
+    "id": "zoro_bridge:bridge_chip",
+    "count": 2
+  }
+}

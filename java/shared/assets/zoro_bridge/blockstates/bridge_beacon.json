@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "zoro_bridge:block/bridge_beacon" }
+  }
+}

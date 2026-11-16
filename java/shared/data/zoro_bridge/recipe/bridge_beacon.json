@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "CCC",
+    "CBC",
+    "CCC"
+  ],
+  "key": {
+    "C": "zoro_bridge:bridge_chip",
+    "B": "minecraft:glowstone"
+  },
+  "result": {
+    "id": "zoro_bridge:bridge_beacon",
+    "count": 1
+  }
+}
