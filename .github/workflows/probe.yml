@@ -5,11 +5,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Show toolchains
+      - name: Toolchains
         run: |
-          java -version
-          javac -version
-          echo "---"
-          ls /usr/lib/jvm || true
-      - name: Rust
-        run: cargo --version
+          java -version 2>&1 | tee ci/java.txt
+          javac -version 2>&1 | tee -a ci/java.txt
+          ls /usr/lib/jvm >> ci/java.txt 2>&1 || true
+          cargo --version >> ci/java.txt
+      - name: Commit the report back
+        run: |
+          git config user.name "ci"
+          git config user.email "ci@example.invalid"
+          git add ci/java.txt
+          git commit -m "ci: toolchain report" || true
+          git push
