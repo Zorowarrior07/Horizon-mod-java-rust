@@ -51,7 +51,7 @@
       "stable": true
     },
     "intermediary": {
-      "curl: (23) Failure writing output to destination, passed 1369 returned 449
+      "curl: (23) Failure writing output to destination, passed 1369 returned 487
 
 1.21.11 yarn: [
   {
@@ -74,7 +74,7 @@
       "stable": true
     },
     "intermediary": {
-      "curl: (23) Failure writing output to destination, passed 1369 returned 434
+      "curl: (23) Failure writing output to destination, passed 17 returned 0
 
 26.1 yarn: []
 26.2 loader: [
@@ -87,7 +87,7 @@
       "stable": true
     },
     "intermediary": {
-      "curl: (23) Failure writing output to destination, passed 1369 returned 449
+      "curl: (23) Failure writing output to destination, passed 1369 returned 1341
 
 26.2 yarn: []
 26.3 loader: [
@@ -100,7 +100,7 @@
       "stable": true
     },
     "intermediary": {
-      "curl: (23) Failure writing output to destination, passed 1369 returned 1328
+      "curl: (23) Failure writing output to destination, passed 30 returned 0
 
 26.3 yarn: []
 == fabric-api versions (1.21.4, 1.21.11, 26.x)
