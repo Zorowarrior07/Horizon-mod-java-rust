@@ -32,6 +32,24 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with: { gradle-version: '9.9.1' }
 
+      - name: Where do the sources resolve to?
+        if: always()
+        run: |
+          cd java/scratch && gradle --no-daemon -q properties 2>/dev/null | head -5 || true
+          cd /home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/scratch
+          cat > build.gradle <<'EOF2'
+          tasks.register('where') {
+              doLast {
+                  println "projectDir=" + projectDir
+                  println "rootDir=" + rootProject.projectDir
+                  println "sharedJava=" + new File(projectDir, '../../shared/fabric/java').canonicalPath
+                  println "exists=" + new File(projectDir, '../../shared/fabric/java').exists()
+                  println "listing=" + new File(projectDir, '../../shared/fabric').listFiles()?.join(',')
+                  println "java=" + new File(projectDir, '../../shared/fabric/java/dev/zorowarrior/bridge').listFiles()?.join(',')
+              }
+          }
+          EOF2
+          gradle --no-daemon where 2>&1 | tail -12
       - name: Build every Fabric target
         run: |
           mkdir -p ci/logs artifacts/java-1.21.x
