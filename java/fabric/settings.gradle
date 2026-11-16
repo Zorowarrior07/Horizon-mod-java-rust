@@ -1,4 +1,4 @@
-// The version is supplied by the build script: -Pmc_version=1.21.1
+// The version is supplied per build: -Pmc_version=1.21.1
 pluginManagement {
     repositories {
         maven { name = 'Fabric'; url = 'https://maven.fabricmc.net/' }

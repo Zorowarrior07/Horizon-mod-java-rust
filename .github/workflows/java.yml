@@ -1,9 +1,7 @@
 name: java-mod-jars
 on:
   push:
-    paths:
-      - 'java/**'
-      - '.github/workflows/java.yml'
+    paths: ['java/**', '.github/workflows/java.yml']
   workflow_dispatch:
 permissions:
   contents: write
@@ -14,34 +12,37 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { mc: '1.21.1', java: 21, yarn: '1.21.1+build.3', loader: '0.16.9', api: '0.107.0+1.21.1' }
+          - { mc: '1.21.1',  java: 21, yarn: '1.21.1+build.3' }
+          - { mc: '1.21.4',  java: 21, yarn: '1.21.4+build.8' }
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: ${{ matrix.java }}
+        with: { distribution: temurin, java-version: 21 }
       - uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-version: '8.10.2'
-      - name: Build
+        with: { gradle-version: '9.9.1' }
+      - name: Build ${{ matrix.mc }}
         run: |
           mkdir -p ci
           set +e
           cd java/fabric
-          gradle --no-daemon --stacktrace build \
+          gradle --no-daemon build \
             -Pmc_version=${{ matrix.mc }} -Pyarn_mappings="${{ matrix.yarn }}" \
-            -Ploader_version=${{ matrix.loader }} -Pfabric_version=${{ matrix.api }} \
-            -Pjava_target=${{ matrix.java }} > ../../ci/fabric-${{ matrix.mc }}.log 2>&1
+            -Ploader_version=0.20.1 -Pjava_target=${{ matrix.java }} \
+            > ../../ci/fabric-${{ matrix.mc }}.log 2>&1
           echo "exit=$?" >> ../../ci/fabric-${{ matrix.mc }}.log
           ls -la build/libs >> ../../ci/fabric-${{ matrix.mc }}.log 2>&1
-          echo "--- tail ---"
-          tail -40 ../../ci/fabric-${{ matrix.mc }}.log
-      - name: Commit the log
+          grep -nE "FAILURE|What went wrong|^> |error:|Caused by" ../../ci/fabric-${{ matrix.mc }}.log | head -30 || true
+      - name: Keep the jars
+        if: always()
+        run: |
+          mkdir -p ci/jars
+          cp java/fabric/build/libs/*.jar ci/jars/ 2>/dev/null || true
+          cp java/fabric/build/bridge-build-facts.json ci/jars/ 2>/dev/null || true
+          ls -la ci/jars || true
+      - name: Commit results
         if: always()
         run: |
           git config user.name ci
           git config user.email ci@example.invalid
-          git add -A ci
-          git commit -m "ci: fabric ${{ matrix.mc }} build log" || true
+          git add -A ci && git commit -m "ci: fabric ${{ matrix.mc }}" || true
           git push || true
