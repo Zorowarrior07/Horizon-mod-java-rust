@@ -7,34 +7,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Probe maven contents
+      - name: Probe
         run: |
-          set +e
-          exec > ci/probe.txt 2>&1
-          echo "== tiny-remapper versions"
-          curl -sS https://maven.fabricmc.net/net/fabricmc/tiny-remapper/maven-metadata.xml | tail -20
-          echo "== tiny-remapper fat artifacts (latest)"
-          V=$(curl -sS https://maven.fabricmc.net/net/fabricmc/tiny-remapper/maven-metadata.xml | grep -o '<release>[^<]*' | sed 's/<release>//')
-          echo "release=$V"
-          curl -sS "https://maven.fabricmc.net/net/fabricmc/tiny-remapper/$V/" | grep -oE 'href="[^"]*"' | head -20
-          echo "== intermediary jar contents for 1.21.1"
-          curl -sS -o /tmp/inter.jar https://maven.fabricmc.net/net/fabricmc/intermediary/1.21.1/intermediary-1.21.1.jar
-          unzip -l /tmp/inter.jar | head -20
-          echo "== yarn 1.21.1 build list"
-          curl -sS https://meta.fabricmc.net/v2/versions/yarn/1.21.1 | head -c 600
-          echo
-          echo "== neoforge 1.21.1 universal listing"
-          curl -sS https://maven.neoforged.net/releases/net/neoforged/neoforge/maven-metadata.xml | grep -o '<version>21\.1\.[0-9]*</version>' | tail -5
-          echo "== neoforge artifact classifier probe"
-          for a in universal joined installer userdev; do
-            code=$(curl -sS -o /dev/null -w '%{http_code}' "https://maven.neoforged.net/releases/net/neoforged/neoforge/21.1.209/neoforge-21.1.209-$a.jar")
-            echo "21.1.209 $a -> $code"
+          exec > ci/probe2.txt 2>&1
+          echo "== fabric-loom versions"
+          curl -sS https://maven.fabricmc.net/net/fabricmc/fabric-loom/maven-metadata.xml | grep -o '<version>[^<]*' | tail -12
+          echo "== gradle current"
+          curl -sS https://services.gradle.org/versions/current | head -5
+          echo "== fabric loader for 1.21.4/1.21.11/26.3"
+          for v in 1.21.4 1.21.11 26.1 26.2 26.3; do
+            echo -n "$v loader: "; curl -sS https://meta.fabricmc.net/v2/versions/loader/$v | head -c 200; echo
+            echo -n "$v yarn: "; curl -sS https://meta.fabricmc.net/v2/versions/yarn/$v | head -c 200; echo
           done
-      - name: Commit the probe output
+          echo "== fabric-api versions (1.21.4, 1.21.11, 26.x)"
+          curl -sS "https://api.modrinth.com/v2/project/fabric-api/version?game_versions=%5B%221.21.4%22%5D" | head -c 400; echo
+          echo "== neoform/neoforge for 26.x"
+          curl -sS https://maven.neoforged.net/releases/net/neoforged/neoforge/maven-metadata.xml | grep -o '<version>26[^<]*' | tail -6
+          echo "== forge 1.8.9 versions"
+          curl -sS https://maven.minecraftforge.net/net/minecraftforge/forge/maven-metadata.xml | grep -o '<version>1.8.9[^<]*' | tail -4
+      - name: Commit
         if: always()
         run: |
           git config user.name ci
           git config user.email ci@example.invalid
-          git add ci/probe.txt
-          git commit -m "ci: probe output" || true
-          git push
+          git add -A ci && git commit -m "ci: probe2" || true
+          git push || true
