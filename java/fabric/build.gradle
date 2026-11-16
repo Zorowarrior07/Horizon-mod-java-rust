@@ -1,0 +1,86 @@
+// ZOROWARRIOR HORIZON BRIDGE - Fabric build.
+//
+// One project, one Minecraft version per invocation. Loom does the real work:
+// it downloads Minecraft, applies Yarn names, and remaps the compiled classes
+// to the intermediary names Fabric needs at runtime. That is why the jar this
+// produces is a genuine mod and not a renamed zip.
+plugins {
+    id 'fabric-loom' version '1.9.2'
+    id 'java'
+}
+
+group = 'dev.zorowarrior'
+version = project.mod_version
+
+base {
+    archivesName = "zoro_bridge-${project.mod_version}-fabric-${project.mc_version}"
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(project.java_target as int)
+    }
+    withSourcesJar()
+}
+
+repositories {
+    mavenCentral()
+    maven { name = 'Fabric'; url = 'https://maven.fabricmc.net/' }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.mc_version}"
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+}
+
+sourceSets {
+    main {
+        // The mod's Java is shared with every other Fabric build, so one fix
+        // applies everywhere; the resources are the same files the Horizon
+        // package is made from, which keeps the two outputs in step.
+        java.srcDirs = ['src/main/java', '../../shared/fabric/java']
+        resources.srcDirs = ['src/main/resources', '../../shared/assets', '../../shared/data']
+    }
+}
+
+processResources {
+    inputs.property 'version', project.mod_version
+    inputs.property 'minecraft', project.mc_version
+    inputs.property 'loader', project.loader_version
+    filesMatching('fabric.mod.json') {
+        expand version: project.mod_version,
+               minecraft: project.mc_version,
+               loader: project.loader_version,
+               java: project.java_target
+    }
+}
+
+jar {
+    from('LICENSE') { rename { 'LICENSE-zoro-horizon-bridge' } }
+}
+
+// A small, machine-readable record of exactly what was built, written next to
+// the jar so a report can quote it without re-deriving anything.
+tasks.register('buildFacts') {
+    def out = layout.buildDirectory.file('bridge-build-facts.json')
+    outputs.file(out)
+    doLast {
+        def file = out.get().asFile
+        file.parentFile.mkdirs()
+        file.text = groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson([
+            schema     : 'zoro-horizon-bridge/java-build@1',
+            loader     : 'fabric',
+            minecraft  : project.mc_version,
+            yarn       : project.yarn_mappings,
+            loader_ver : project.loader_version,
+            fabric_api : project.fabric_version,
+            java_target: project.java_target as int,
+            jar        : "zoro_bridge-${project.mod_version}-fabric-${project.mc_version}.jar",
+            gradle     : gradle.gradleVersion
+        ]))
+    }
+}
+
+build.dependsOn buildFacts

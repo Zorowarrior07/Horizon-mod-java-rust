@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "zoro_bridge",
+  "version": "${version}",
+  "name": "ZOROWARRIOR HORIZON BRIDGE",
+  "description": "A real Fabric mod for one exact Minecraft version, and the reference input the Horizon bridge is tested against.",
+  "authors": ["Zorowarrior"],
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["dev.zorowarrior.bridge.BridgeBeaconMod"]
+  },
+  "depends": {
+    "fabricloader": ">=${loader}",
+    "minecraft": "${minecraft}",
+    "java": ">=${java}",
+    "fabric-api": "*"
+  }
+}

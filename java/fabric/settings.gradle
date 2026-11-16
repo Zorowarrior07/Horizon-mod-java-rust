@@ -1,0 +1,10 @@
+// The version is supplied by the build script: -Pmc_version=1.21.1
+pluginManagement {
+    repositories {
+        maven { name = 'Fabric'; url = 'https://maven.fabricmc.net/' }
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+rootProject.name = 'zoro-horizon-bridge-fabric'
