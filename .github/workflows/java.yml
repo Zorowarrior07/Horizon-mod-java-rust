@@ -1,48 +1,64 @@
 name: java-mod-jars
+
+# Builds a real, installable Java Edition mod jar for every supported target.
+# Each target is a separate job with its own loader, API and class-file version,
+# because one jar cannot serve two Minecraft versions.
+
 on:
   push:
     paths: ['java/**', '.github/workflows/java.yml']
   workflow_dispatch:
+    inputs:
+      targets:
+        description: 'Which targets to build'
+        default: 'all'
+
 permissions:
-  contents: write
+  contents: read
+
 jobs:
   fabric:
+    name: fabric ${{ matrix.mc }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
+      max-parallel: 1
       matrix:
         include:
-          - { mc: '1.21.1',  java: 21, yarn: '1.21.1+build.3' }
-          - { mc: '1.21.4',  java: 21, yarn: '1.21.4+build.8' }
+          - { mc: '1.21.1',  yarn: '1.21.1+build.3' }
+          - { mc: '1.21.4',  yarn: '1.21.4+build.8' }
+          - { mc: '1.21.11', yarn: '1.21.11+build.6' }
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
         with: { distribution: temurin, java-version: 21 }
       - uses: gradle/actions/setup-gradle@v4
         with: { gradle-version: '9.9.1' }
-      - name: Build ${{ matrix.mc }}
+      - name: Build
         run: |
-          mkdir -p ci
           set +e
           cd java/fabric
           gradle --no-daemon build \
             -Pmc_version=${{ matrix.mc }} -Pyarn_mappings="${{ matrix.yarn }}" \
-            -Ploader_version=0.20.1 -Pjava_target=${{ matrix.java }} \
-            > ../../ci/fabric-${{ matrix.mc }}.log 2>&1
-          echo "exit=$?" >> ../../ci/fabric-${{ matrix.mc }}.log
-          ls -la build/libs >> ../../ci/fabric-${{ matrix.mc }}.log 2>&1
-          grep -nE "FAILURE|What went wrong|^> |error:|Caused by" ../../ci/fabric-${{ matrix.mc }}.log | head -30 || true
-      - name: Keep the jars
-        if: always()
+            -Ploader_version=0.20.1 -Pjava_target=21 > /tmp/build.log 2>&1
+          status=$?
+          grep -nE "FAILURE|What went wrong|^> |error:|Caused by" /tmp/build.log | head -40
+          tail -5 /tmp/build.log
+          echo "status=$status"
+          exit $status
+      - name: Verify and collect
+        if: success()
         run: |
-          mkdir -p ci/jars
-          cp java/fabric/build/libs/*.jar ci/jars/ 2>/dev/null || true
-          cp java/fabric/build/bridge-build-facts.json ci/jars/ 2>/dev/null || true
-          ls -la ci/jars || true
-      - name: Commit results
+          mkdir -p out
+          cp java/fabric/build/libs/*-${{ matrix.mc }}.jar out/ 2>/dev/null \
+            || cp java/fabric/build/libs/*.jar out/
+          cp java/fabric/build/bridge-build-facts.json out/ 2>/dev/null || true
+          python3 tools/verify_jar.py out/*.jar --json out/verify-${{ matrix.mc }}.json | tee out/verify-${{ matrix.mc }}.txt
+      - uses: actions/upload-artifact@v4
         if: always()
-        run: |
-          git config user.name ci
-          git config user.email ci@example.invalid
-          git add -A ci && git commit -m "ci: fabric ${{ matrix.mc }}" || true
-          git push || true
+        with:
+          name: fabric-${{ matrix.mc }}
+          path: |
+            out/**
+            /tmp/build.log
+          if-no-files-found: warn
