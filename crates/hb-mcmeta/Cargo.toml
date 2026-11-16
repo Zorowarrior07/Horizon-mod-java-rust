@@ -1,0 +1,12 @@
+[package]
+name = "hb-mcmeta"
+description = "Reads Fabric, Quilt, Forge and NeoForge mod metadata, tolerantly but without guessing."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+hb-json = { path = "../hb-json" }
+hb-versions = { path = "../hb-versions" }

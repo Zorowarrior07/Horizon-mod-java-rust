@@ -1,0 +1,27 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/hb-json",
+    "crates/hb-zip",
+    "crates/hb-versions",
+    "crates/hb-classfile",
+    "crates/hb-mcmeta",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.80"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/Zorowarrior07/Horizon-mod-java-rust"
+authors = ["Zorowarrior"]
+
+# Deliberately no third-party dependencies anywhere in this workspace: the
+# toolchain builds offline on a stock Windows 11 machine with only rustup
+# (see docs/BUILDING.md). Everything from JSON parsing to DEFLATE lives here.
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+panic = "abort"

@@ -1,0 +1,11 @@
+[package]
+name = "hb-versions"
+description = "The version compatibility database: Minecraft Java releases, pack formats, and per-target conversion profiles."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+hb-json = { path = "../hb-json" }
