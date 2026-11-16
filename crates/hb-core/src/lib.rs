@@ -16,6 +16,9 @@
 //! * [`package`] assembles and writes the `.hmod`.
 //! * [`report`] renders the human and machine-readable reports.
 
+/// The tool's version, recorded in every package it writes.
+pub const VERSION: &str = env!("CARGO_PKG_VERSION");
+
 pub mod convert;
 pub mod detect;
 pub mod horizon;

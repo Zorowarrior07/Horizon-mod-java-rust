@@ -146,6 +146,13 @@ pub struct Outcome {
     pub copied: usize,
     /// Files rewritten.
     pub converted: usize,
+    /// Where the content came from: the jar's mod id, its detected game
+    /// version and loader, and the jar's own hash. Carried into the package's
+    /// `bridge.json` so a player can tell what a package was made from.
+    pub source_id: String,
+    pub source_version: Option<&'static str>,
+    pub source_loader: String,
+    pub source_sha256: String,
 }
 
 impl Outcome {
@@ -181,7 +188,18 @@ impl Outcome {
 /// Converts a jar's passive content. Coding errors surface as notes, never as
 /// a panic; an unreadable file is skipped with its reason.
 pub fn convert(jar: &Jar, options: &Options) -> Outcome {
-    let mut outcome = Outcome::default();
+    let mut outcome = Outcome {
+        // Provenance, filled as far as it is known: a package that says what
+        // it was made from is one a player can trust.
+        source_id: jar.info().map(|i| i.id.clone()).unwrap_or_default(),
+        source_version: options.source.map(|s| s.id),
+        source_loader: jar
+            .info()
+            .map(|i| i.loader.id().to_owned())
+            .unwrap_or_default(),
+        source_sha256: jar.sha256.clone(),
+        ..Outcome::default()
+    };
     let Some(info) = jar.info() else {
         outcome.note(Note::error(
             "jar.metadata.missing",
@@ -269,6 +287,37 @@ pub fn convert(jar: &Jar, options: &Options) -> Outcome {
                             outcome.note(
                                 Note::warn("asset.texture.odd_size", warning)
                                     .at(entry.name.clone()),
+                            );
+                        }
+                        // Not square, or a multiple of 16 that no vanilla
+                        // texture uses: legal, but the usual cause of a
+                        // texture that renders at the wrong scale.
+                        if !info_png.is_square() {
+                            outcome.note(
+                                Note::info(
+                                    "asset.texture.not_square",
+                                    format!(
+                                        "{}x{}: vanilla textures are square, and a sprite whose \
+                                         proportions differ is drawn stretched",
+                                        info_png.width, info_png.height
+                                    ),
+                                )
+                                .at(entry.name.clone()),
+                            );
+                        }
+                        if info_png.resolution() > 16 {
+                            outcome.note(
+                                Note::info(
+                                    "asset.texture.high_resolution",
+                                    format!(
+                                        "{}x{} is {}x resolution, which needs the pack to declare \
+                                         it or the game draws it at 1x",
+                                        info_png.width,
+                                        info_png.height,
+                                        info_png.resolution()
+                                    ),
+                                )
+                                .at(entry.name.clone()),
                             );
                         }
                     }

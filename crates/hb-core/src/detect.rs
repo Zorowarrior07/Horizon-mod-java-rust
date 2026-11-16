@@ -500,7 +500,7 @@ mod tests {
 
     fn class_file(major: u16) -> Vec<u8> {
         let mut pool: Vec<Vec<u8>> = Vec::new();
-        let mut utf8 = |pool: &mut Vec<Vec<u8>>, text: &str| -> u16 {
+        let utf8 = |pool: &mut Vec<Vec<u8>>, text: &str| -> u16 {
             let mut entry = vec![1u8];
             entry.extend_from_slice(&(text.len() as u16).to_be_bytes());
             entry.extend_from_slice(text.as_bytes());

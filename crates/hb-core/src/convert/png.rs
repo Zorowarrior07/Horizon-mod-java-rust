@@ -38,6 +38,7 @@ impl PngInfo {
         None
     }
 
+    /// Textures are drawn at powers of two; a 32x32 is "2x".
     pub fn is_square(&self) -> bool {
         self.width == self.height
     }

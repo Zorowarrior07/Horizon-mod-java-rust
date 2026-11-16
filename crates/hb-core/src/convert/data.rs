@@ -35,10 +35,6 @@ fn kind_of(value: &Value, key: &str) -> Option<String> {
     value.get(key).and_then(Value::as_str).map(|s| s.to_owned())
 }
 
-fn has_type(value: &Value) -> bool {
-    value.get("type").is_some()
-}
-
 /// `{"<key>": kind, ...}` as `{"type": kind, ...}`, keeping the rest.
 fn rename_kind(value: &mut Value, key: &str) -> bool {
     let Some(object) = value.as_obj_mut() else {
