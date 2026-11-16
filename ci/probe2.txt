@@ -1,0 +1,119 @@
+== fabric-loom versions
+<version>1.20.0-alpha.19
+<version>1.19.4
+<version>1.20.0-alpha.21
+<version>1.20.0-alpha.22
+<version>1.20.0-alpha.23
+<version>1.20.0-alpha.24
+<version>1.20.0-alpha.25
+<version>1.20.0-alpha.27
+<version>1.20.0-alpha.28
+<version>1.20.0-alpha.29
+<version>1.20.0-alpha.30
+<version>1.20.0-alpha.31
+== gradle current
+{
+  "version" : "9.9.1",
+  "buildTime" : "20261110162215+0000",
+  "commitId" : "47a96e4ed1822d6aa7fa32bed4461208e69077a6",
+  "current" : true,
+== fabric loader for 1.21.4/1.21.11/26.3
+1.21.4 loader: [
+  {
+    "loader": {
+      "separator": ".",
+      "build": 1,
+      "maven": "net.fabricmc:fabric-loader:0.20.1",
+      "version": "0.20.1",
+      "stable": true
+    },
+    "intermediary": {
+      "curl: (23) Failure writing output to destination, passed 1369 returned 1315
+
+1.21.4 yarn: [
+  {
+    "gameVersion": "1.21.4",
+    "separator": "+build.",
+    "build": 8,
+    "maven": "net.fabricmc:yarn:1.21.4+build.8",
+    "version": "1.21.4+build.8",
+    "stable": false
+  },
+  {
+    "gameV
+1.21.11 loader: [
+  {
+    "loader": {
+      "separator": ".",
+      "build": 1,
+      "maven": "net.fabricmc:fabric-loader:0.20.1",
+      "version": "0.20.1",
+      "stable": true
+    },
+    "intermediary": {
+      "curl: (23) Failure writing output to destination, passed 1369 returned 449
+
+1.21.11 yarn: [
+  {
+    "gameVersion": "1.21.11",
+    "separator": "+build.",
+    "build": 6,
+    "maven": "net.fabricmc:yarn:1.21.11+build.6",
+    "version": "1.21.11+build.6",
+    "stable": true
+  },
+  {
+    "gam
+26.1 loader: [
+  {
+    "loader": {
+      "separator": ".",
+      "build": 1,
+      "maven": "net.fabricmc:fabric-loader:0.20.1",
+      "version": "0.20.1",
+      "stable": true
+    },
+    "intermediary": {
+      "curl: (23) Failure writing output to destination, passed 1369 returned 434
+
+26.1 yarn: []
+26.2 loader: [
+  {
+    "loader": {
+      "separator": ".",
+      "build": 1,
+      "maven": "net.fabricmc:fabric-loader:0.20.1",
+      "version": "0.20.1",
+      "stable": true
+    },
+    "intermediary": {
+      "curl: (23) Failure writing output to destination, passed 1369 returned 449
+
+26.2 yarn: []
+26.3 loader: [
+  {
+    "loader": {
+      "separator": ".",
+      "build": 1,
+      "maven": "net.fabricmc:fabric-loader:0.20.1",
+      "version": "0.20.1",
+      "stable": true
+    },
+    "intermediary": {
+      "curl: (23) Failure writing output to destination, passed 1369 returned 1328
+
+26.3 yarn: []
+== fabric-api versions (1.21.4, 1.21.11, 26.x)
+[{"game_versions":["1.21.4"],"loaders":["fabric"],"environment":"client_or_server_prefers_both","id":"p96k10UR","project_id":"P7dR8mSH","author_id":"JZA4dW8o","featured":false,"name":"[1.21.4] Fabric API 0.119.4+1.21.4","version_number":"0.119.4+1.21.4","changelog":"- Bump version (modmuss50)\n- Add FabricItem#getCreatorNamespace (#4746) (#4795) (Cassian Godsted, Shnupbups)\n","changelog_url":null
+== neoform/neoforge for 26.x
+<version>26.1.2.125
+<version>26.3.0.100
+<version>26.3.0.101
+<version>26.1.2.126
+<version>26.3.0.102
+<version>26.3.0.103
+== forge 1.8.9 versions
+<version>1.8.9-11.15.0.1659
+<version>1.8.9-11.15.0.1658
+<version>1.8.9-11.15.0.1657
+<version>1.8.9-11.15.0.1656
