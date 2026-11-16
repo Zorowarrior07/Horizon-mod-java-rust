@@ -1,5 +1,7 @@
 name: probe
 on: [push, workflow_dispatch]
+permissions:
+  contents: write
 jobs:
   probe:
     runs-on: ubuntu-latest
