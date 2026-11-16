@@ -69,6 +69,14 @@ impl Object {
         self.entries.iter().map(|(k, _)| k.as_str())
     }
 
+    /// Mutable view, in document order. A conversion that rewrites one value
+    /// at a time needs it without cloning the whole object.
+    pub fn iter_mut(&mut self) -> impl Iterator<Item = (&str, &mut Value)> {
+        self.entries
+            .iter_mut()
+            .map(|(k, v)| (k.as_str(), &mut *v))
+    }
+
     pub fn get(&self, key: &str) -> Option<&Value> {
         self.entries
             .iter()
@@ -216,6 +224,14 @@ impl Value {
     }
 
     /// Convenience for optional-presence checks used all over the converters.
+    /// Mutable lookup into an object value; `None` for anything else.
+    pub fn get_mut(&mut self, key: &str) -> Option<&mut Value> {
+        match self {
+            Value::Obj(object) => object.get_mut(key),
+            _ => None,
+        }
+    }
+
     pub fn has(&self, key: &str) -> bool {
         self.get(key).is_some()
     }

@@ -6,6 +6,7 @@ members = [
     "crates/hb-versions",
     "crates/hb-classfile",
     "crates/hb-mcmeta",
+    "crates/hb-core",
 ]
 
 [workspace.package]
