@@ -228,3 +228,20 @@ Please set the JAVA_HOME variable in your environment to match the
 location of your Java installation.
 
 FAILED with Gradle 2.14.1
+local mcpbot: 200
+===== Gradle 4.10.3
+
+ERROR: JAVA_HOME is set to an invalid directory: /usr/lib/jvm/temurin-8-jdk-amd64
+
+Please set the JAVA_HOME variable in your environment to match the
+location of your Java installation.
+
+FAILED with Gradle 4.10.3
+===== Gradle 2.14.1
+
+ERROR: JAVA_HOME is set to an invalid directory: /usr/lib/jvm/temurin-8-jdk-amd64
+
+Please set the JAVA_HOME variable in your environment to match the
+location of your Java installation.
+
+FAILED with Gradle 2.14.1

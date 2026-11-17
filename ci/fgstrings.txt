@@ -1,0 +1,58 @@
+== maven-hosted versions.json (first 300 bytes)
+{"1.14.2": {"snapshot": [20190624, 20190623, 20190622, 20190621, 20190620, 20190619, 20190618, 20190617, 20190616, 20190615, 20190614, 20190613, 20190612, 20190611, 20190610, 20190609, 20190608, 20190607, 20190606, 20190605, 20190604, 20190603, 20190602, 20190601, 20190531, 20190530], "stable": [53]
+
+== ForgeGradle 2.1.2 strings around mcp
+/tmp/fg21s/net/minecraftforge/gradle/common/Constants.class
+/tmp/fg21s/net/minecraftforge/gradle/common/BasePlugin.class
+--- /tmp/fg21s/net/minecraftforge/gradle/common/Constants.class
+0Lnet/minecraftforge/gradle/util/json/version/OS;
+REPLACE_MCP_CHANNEL
+REPLACE_MCP_VERSION
+REPLACE_MCP_MCVERSION
+URL_MCP_JSON
+CONFIG_MCP_DATA
+DIR_MCP_DATA
+DIR_MCP_MAPPINGS
+JSON_ASSET_INDEX
+	DIR_JSONS
+JSON_VERSION
+MCP_DATA_SRG
+MCP_DATA_EXC
+MCP_DATA_EXC_JSON
+MCP_DATA_STYLE
+MCP_PATCHES_CLIENT
+MCP_PATCHES_SERVER
+MCP_PATCHES_MERGED
+SRG_NOTCH_TO_MCP
+SRG_SRG_TO_MCP
+SRG_MCP_TO_SRG
+SRG_MCP_TO_NOTCH
+EXC_MCP
+TASK_DL_VERSION_JSON
+TASK_EXTRACT_MCP
+--- /tmp/fg21s/net/minecraftforge/gradle/common/BasePlugin.class
+`Ljava/util/Map<Ljava/lang/String;Lnet/minecraftforge/gradle/util/json/version/ManifestVersion;>;
+mcVersionJson
+5Lnet/minecraftforge/gradle/util/json/version/Version;
+getRemoteJsons
+	jsonCache
+@Lnet/minecraftforge/gradle/util/json/fgversion/FGVersionWrapper;
+9Lnet/minecraftforge/gradle/util/json/fgversion/FGVersion;
+|(Lnet/minecraftforge/gradle/util/json/fgversion/FGVersion;Lnet/minecraftforge/gradle/util/json/fgversion/FGVersionWrapper;)V
+getVersionJson
+extractMcpData
+extractMcpMappings
+Ljava/net/HttpURLConnection;
+T(Ljava/io/File;[Ljava/io/File;)Lnet/minecraftforge/gradle/util/json/version/Version;
+5Lnet/minecraftforge/gradle/util/json/version/Library;
+d(Lnet/minecraftforge/gradle/common/BasePlugin;)Lnet/minecraftforge/gradle/util/json/version/Version;
+forgeGradleMcpData
+forgeGradleMcpMappings
+McpMappings.json
+*http://export.mcpbot.bspk.rs/versions.json
+McManifest.json
+=https://launchermeta.mojang.com/mc/game/version_manifest.json
+de.oceanlabs.mcp
+mcp_{MAPPING_CHANNEL}
+dSee https://gist.github.com/TheCurle/fe7ad3ede188cbdd15c235cc75d52d4a for more info on contributing.
+1  https://github.com/MinecraftForge/ForgeGradle  

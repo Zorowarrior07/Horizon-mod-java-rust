@@ -1,0 +1,46 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.9.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :
+Failed to parse MC version from NeoForge version 26.1.2.126. Using capabilities of latest known Minecraft version with Minecraft version 1.21.8.
+
+> Task :createMinecraftArtifacts
+Loaded 125 artifacts from /tmp/neo26/build/tmp/createMinecraftArtifacts/nfrt_artifact_manifest.properties
+Total runtime: 1.70s
+
+java.lang.IllegalArgumentException: Function for step preProcessJar has invalid tool: null
+	at net.neoforged.neoform.runtime.engine.NeoFormEngine.applyFunctionToNode(NeoFormEngine.java:454)
+	at net.neoforged.neoform.runtime.engine.NeoFormEngine.addNodeForStep(NeoFormEngine.java:385)
+	at net.neoforged.neoform.runtime.engine.NeoFormEngine.loadNeoFormProcess(NeoFormEngine.java:183)
+	at net.neoforged.neoform.runtime.engine.NeoFormEngine.loadNeoFormData(NeoFormEngine.java:172)
+	at net.neoforged.neoform.runtime.cli.RunNeoFormCommand.runWithNeoFormEngine(RunNeoFormCommand.java:103)
+	at net.neoforged.neoform.runtime.cli.NeoFormEngineCommand.call(NeoFormEngineCommand.java:105)
+	at net.neoforged.neoform.runtime.cli.NeoFormEngineCommand.call(NeoFormEngineCommand.java:22)
+	at picocli.CommandLine.executeUserObject(CommandLine.java:2045)
+	at picocli.CommandLine.access$1500(CommandLine.java:148)
+	at picocli.CommandLine$RunLast.executeUserObjectOfLastSubcommandWithSameParent(CommandLine.java:2465)
+	at picocli.CommandLine$RunLast.handle(CommandLine.java:2457)
+	at picocli.CommandLine$RunLast.handle(CommandLine.java:2419)
+	at picocli.CommandLine$AbstractParseResultHandler.execute(CommandLine.java:2277)
+	at picocli.CommandLine$RunLast.execute(CommandLine.java:2421)
+	at picocli.CommandLine.execute(CommandLine.java:2174)
+	at net.neoforged.neoform.runtime.cli.Main.main(Main.java:126)
+
+> Task :createMinecraftArtifacts FAILED
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run-1794885069614.json
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':createMinecraftArtifacts' (registered in build file 'build.gradle').
+> Process 'command '/usr/lib/jvm/temurin-21-jdk-amd64/bin/java'' finished with non-zero exit value 1
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 25s
+1 actionable task: 1 executed
+exit=1
