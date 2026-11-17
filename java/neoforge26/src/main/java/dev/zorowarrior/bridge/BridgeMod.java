@@ -1,12 +1,8 @@
 package dev.zorowarrior.bridge;
 
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
@@ -22,14 +18,16 @@ import java.util.function.Supplier;
 /**
  * ZOROWARRIOR HORIZON BRIDGE — Minecraft 26.x, NeoForge.
  *
- * <p>Same content as the 1.21.x NeoForge build, against the 26.x API.
- * NeoForge uses {@link DeferredRegister} rather than direct
- * {@code Registry.register}, and it uses <b>Mojang official names</b>
- * ({@code net.minecraft.world.level.block.Block}, {@code ResourceLocation}) —
- * not the Yarn names the Fabric build compiles against.
- *
- * <p>Registrations are deferred until the mod bus fires, so the content objects
- * exist before the registry is frozen.
+ * <p>Same content as the 1.21.x NeoForge build, against the 26.x API. The two
+ * are separate projects because 26.x differs in ways that matter:
+ * <ul>
+ *   <li>26.1+ requires <b>Java 25</b> (the version manifest says javaVersion 25).</li>
+ *   <li>{@code net.minecraft.resources.ResourceLocation} is <b>gone</b> — 26.x
+ *       identifies things with {@code ResourceKey} alone, so no id helper is used
+ *       here. Registering by path string does the same job.</li>
+ *   <li>{@code registerSimpleBlockItem} now takes a {@code Supplier<Properties>}
+ *       or a {@code UnaryOperator<Properties>}, not a bare {@code Properties}.</li>
+ * </ul>
  */
 @Mod(BridgeMod.MOD_ID)
 public final class BridgeMod {
@@ -37,10 +35,8 @@ public final class BridgeMod {
     public static final String MOD_ID = "zoro_bridge";
     public static final Logger LOGGER = LoggerFactory.getLogger("ZoroHorizonBridge");
 
-    private static final DeferredRegister.Blocks BLOCKS =
-            DeferredRegister.createBlocks(MOD_ID);
-    private static final DeferredRegister.Items ITEMS =
-            DeferredRegister.createItems(MOD_ID);
+    private static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MOD_ID);
+    private static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MOD_ID);
 
     public static final Supplier<Block> BRIDGE_BEACON = BLOCKS.register("bridge_beacon",
             () -> new Block(BlockBehaviour.Properties.of()
@@ -55,23 +51,19 @@ public final class BridgeMod {
     public BridgeMod(IEventBus modBus) {
         BLOCKS.register(modBus);
         ITEMS.register(modBus);
-        // registerSimpleBlockItem makes the block obtainable as an item without
-        // a separate block-item registration and creative-tab plumbing.
+        // 26.x signature: the properties argument is a supplier, not an instance.
         ITEMS.registerSimpleBlockItem("bridge_beacon", BRIDGE_BEACON,
-                new Item.Properties());
-        LOGGER.info("[ZoroHorizonBridge] NeoForge 1.21.x build initialised");
+                () -> new Item.Properties());
+        LOGGER.info("[ZoroHorizonBridge] NeoForge 26.x build initialised");
     }
 
-    /** Present so the class file references the registry API and the game's own keys. */
-    static ResourceKey<Registry<Block>> blockRegistryKey() {
+    /** Kept so the class file references the registry keys it registers into. */
+    static ResourceKey<net.minecraft.core.Registry<Block>> blockRegistryKey() {
         return Registries.BLOCK;
     }
 
-    static ResourceLocation id(String path) {
-        return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
-    }
-
-    static CreativeModeTab.ItemDisplayParameters unusedForClarity() {
-        return null;
+    /** Block item lookup used by the creative tab / recipe book paths. */
+    static BlockItem blockItemFor(Block block) {
+        return new BlockItem(block, new Item.Properties());
     }
 }
