@@ -78,3 +78,5 @@ tasks.register('copyModsToml', Copy) {
 }
 tasks.matching { it.name == 'compileJava' }.configureEach { finalizedBy 'copyModsToml' }
 tasks.matching { it.name == 'processResources' }.configureEach { finalizedBy 'copyModsToml' }
+// runServer reads that directory, so the copy has to be a declared input.
+tasks.matching { it.name == 'runServer' }.configureEach { dependsOn 'copyModsToml' }

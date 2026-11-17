@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "bonus_rolls": 0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "zoro_bridge:bridge_beacon"
+        }
+      ]
+    }
+  ],
+  "random_sequence": "zoro_bridge:blocks/bridge_beacon"
+}
