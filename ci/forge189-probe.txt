@@ -1,0 +1,7 @@
+== MCP artefacts for 1.8.9 stable_22
+  200  https://maven.minecraftforge.net/de/oceanlabs/mcp/mcp_stable/22-1.8.9/mcp_stable-22-1.8.9.zip
+  200  https://maven.minecraftforge.net/de/oceanlabs/mcp/mcp/1.8.9/mcp-1.8.9-srg.zip
+  200  https://maven.minecraftforge.net/de/oceanlabs/mcp/versions.json
+
+== forge universal for 1.8.9
+  200
