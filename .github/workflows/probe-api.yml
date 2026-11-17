@@ -35,6 +35,14 @@ jobs:
           cat ci/fabricapi.txt > /dev/null
           JAVA_HOME=/usr/lib/jvm/temurin-25-jdk-amd64 \
             bash tools/probes/moddevrun.sh "$PWD/ci/moddevrun.txt" || true
+          echo "===== toml in classes dir" >> ci/moddevrun.txt
+          cat java/neoforge26/build/classes/java/main/META-INF/neoforge.mods.toml >> ci/moddevrun.txt 2>&1
+          echo "===== toml in resources dir" >> ci/moddevrun.txt
+          cat java/neoforge26/build/resources/main/META-INF/neoforge.mods.toml >> ci/moddevrun.txt 2>&1
+          echo "===== grep license (both)" >> ci/moddevrun.txt
+          grep -rn 'license' java/neoforge26/build/classes/java/main/META-INF/ java/neoforge26/build/resources/main/META-INF/ >> ci/moddevrun.txt 2>&1
+          echo "===== source toml" >> ci/moddevrun.txt
+          cat java/neoforge26/src/main/resources/META-INF/neoforge.mods.toml >> ci/moddevrun.txt 2>&1
           echo "===== serverRunVmArgs" >> ci/moddevrun.txt
           cat java/neoforge26/build/moddev/serverRunVmArgs.txt >> ci/moddevrun.txt 2>&1
           echo >> ci/moddevrun.txt
