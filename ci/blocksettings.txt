@@ -1,0 +1,19 @@
+===== AbstractBlock$Settings (1.21.4)
+public class net.minecraft.block.AbstractBlock$Settings {
+  public static net.minecraft.block.AbstractBlock$Settings create();
+  public static net.minecraft.block.AbstractBlock$Settings copy(net.minecraft.block.AbstractBlock);
+  public static net.minecraft.block.AbstractBlock$Settings copyShallow(net.minecraft.block.AbstractBlock);
+  public net.minecraft.block.AbstractBlock$Settings mapColor(net.minecraft.util.DyeColor);
+  public net.minecraft.block.AbstractBlock$Settings mapColor(net.minecraft.block.MapColor);
+  public net.minecraft.block.AbstractBlock$Settings mapColor(java.util.function.Function<net.minecraft.block.BlockState, net.minecraft.block.MapColor>);
+  public net.minecraft.block.AbstractBlock$Settings noCollision();
+  public net.minecraft.block.AbstractBlock$Settings nonOpaque();
+  public net.minecraft.block.AbstractBlock$Settings slipperiness(float);
+  public net.minecraft.block.AbstractBlock$Settings velocityMultiplier(float);
+  public net.minecraft.block.AbstractBlock$Settings jumpVelocityMultiplier(float);
+
+===== AbstractBlock$Settings#registryKey call sites in Block
+  public net.minecraft.block.Block(net.minecraft.block.AbstractBlock$Settings);
+  protected net.minecraft.block.Block asBlock();
+
+===== Blocks.java: how does vanilla create one?
