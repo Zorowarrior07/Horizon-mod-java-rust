@@ -1,42 +1,68 @@
-===== net.minecraft.registry.RegistryBuilder
-Compiled from "RegistryBuilder.java"
-public class net.minecraft.registry.RegistryBuilder {
-  public net.minecraft.registry.RegistryBuilder();
-  static <T> net.minecraft.registry.RegistryEntryLookup<T> toLookup(net.minecraft.registry.RegistryWrapper$Impl<T>);
-  static <T> net.minecraft.registry.RegistryWrapper$Impl<T> createWrapper(net.minecraft.registry.RegistryKey<? extends net.minecraft.registry.Registry<? extends T>>, com.mojang.serialization.Lifecycle, net.minecraft.registry.entry.RegistryEntryOwner<T>, java.util.Map<net.minecraft.registry.RegistryKey<T>, net.minecraft.registry.entry.RegistryEntry$Reference<T>>);
-  public <T> net.minecraft.registry.RegistryBuilder addRegistry(net.minecraft.registry.RegistryKey<? extends net.minecraft.registry.Registry<T>>, com.mojang.serialization.Lifecycle, net.minecraft.registry.RegistryBuilder$BootstrapFunction<T>);
-  public <T> net.minecraft.registry.RegistryBuilder addRegistry(net.minecraft.registry.RegistryKey<? extends net.minecraft.registry.Registry<T>>, net.minecraft.registry.RegistryBuilder$BootstrapFunction<T>);
-  public net.minecraft.registry.RegistryWrapper$WrapperLookup createWrapperLookup(net.minecraft.registry.DynamicRegistryManager);
-  public net.minecraft.registry.RegistryBuilder$FullPatchesRegistriesPair createWrapperLookup(net.minecraft.registry.DynamicRegistryManager, net.minecraft.registry.RegistryWrapper$WrapperLookup, net.minecraft.registry.RegistryCloner$CloneableRegistries);
+===== Registries$Initializer
+Compiled from "Registries.java"
+interface net.minecraft.registry.Registries$Initializer<T> {
+  public abstract java.lang.Object run(net.minecraft.registry.Registry<T>);
 }
 
-===== net.minecraft.registry.RegistryBuilder$InitializedRegistryFactory
-Error: class not found: net.minecraft.registry.RegistryBuilder$InitializedRegistryFactory
+===== Registries (static methods + initializer plumbing)
+  public static final net.minecraft.registry.DefaultedRegistry<net.minecraft.world.event.GameEvent> GAME_EVENT;
+  public static final net.minecraft.registry.Registry<net.minecraft.sound.SoundEvent> SOUND_EVENT;
+  public static final net.minecraft.registry.DefaultedRegistry<net.minecraft.fluid.Fluid> FLUID;
+  public static final net.minecraft.registry.Registry<net.minecraft.entity.effect.StatusEffect> STATUS_EFFECT;
+  public static final net.minecraft.registry.DefaultedRegistry<net.minecraft.block.Block> BLOCK;
+  public static final net.minecraft.registry.DefaultedRegistry<net.minecraft.entity.EntityType<?>> ENTITY_TYPE;
+  public static final net.minecraft.registry.DefaultedRegistry<net.minecraft.item.Item> ITEM;
+  public static final net.minecraft.registry.Registry<net.minecraft.potion.Potion> POTION;
+  public static final net.minecraft.registry.Registry<net.minecraft.particle.ParticleType<?>> PARTICLE_TYPE;
+  public static final net.minecraft.registry.Registry<net.minecraft.block.entity.BlockEntityType<?>> BLOCK_ENTITY_TYPE;
+  public static final net.minecraft.registry.Registry<net.minecraft.util.Identifier> CUSTOM_STAT;
+  public static final net.minecraft.registry.DefaultedRegistry<net.minecraft.world.chunk.ChunkStatus> CHUNK_STATUS;
+  public static final net.minecraft.registry.Registry<net.minecraft.structure.rule.RuleTestType<?>> RULE_TEST;
+  public static final net.minecraft.registry.Registry<net.minecraft.structure.rule.blockentity.RuleBlockEntityModifierType<?>> RULE_BLOCK_ENTITY_MODIFIER;
+  public static final net.minecraft.registry.Registry<net.minecraft.structure.rule.PosRuleTestType<?>> POS_RULE_TEST;
+  public static final net.minecraft.registry.Registry<net.minecraft.screen.ScreenHandlerType<?>> SCREEN_HANDLER;
+  public static final net.minecraft.registry.Registry<net.minecraft.recipe.RecipeType<?>> RECIPE_TYPE;
+  public static final net.minecraft.registry.Registry<net.minecraft.recipe.RecipeSerializer<?>> RECIPE_SERIALIZER;
+  public static final net.minecraft.registry.Registry<net.minecraft.entity.attribute.EntityAttribute> ATTRIBUTE;
+  public static final net.minecraft.registry.Registry<net.minecraft.world.event.PositionSourceType<?>> POSITION_SOURCE_TYPE;
+  public static final net.minecraft.registry.Registry<net.minecraft.command.argument.serialize.ArgumentSerializer<?, ?>> COMMAND_ARGUMENT_TYPE;
+  public static final net.minecraft.registry.Registry<net.minecraft.stat.StatType<?>> STAT_TYPE;
+  public static final net.minecraft.registry.DefaultedRegistry<net.minecraft.village.VillagerType> VILLAGER_TYPE;
+  public static final net.minecraft.registry.DefaultedRegistry<net.minecraft.village.VillagerProfession> VILLAGER_PROFESSION;
+  public static final net.minecraft.registry.Registry<net.minecraft.world.poi.PointOfInterestType> POINT_OF_INTEREST_TYPE;
+grep: write error: Broken pipe
 
-===== net.minecraft.registry.RegistryKeys
-Compiled from "RegistryKeys.java"
-public class net.minecraft.registry.RegistryKeys {
-  public static final net.minecraft.util.Identifier ROOT;
-  public static final net.minecraft.registry.RegistryKey<net.minecraft.registry.Registry<net.minecraft.entity.ai.brain.Activity>> ACTIVITY;
-  public static final net.minecraft.registry.RegistryKey<net.minecraft.registry.Registry<net.minecraft.entity.attribute.EntityAttribute>> ATTRIBUTE;
-  public static final net.minecraft.registry.RegistryKey<net.minecraft.registry.Registry<net.minecraft.block.entity.BannerPattern>> BANNER_PATTERN;
-  public static final net.minecraft.registry.RegistryKey<net.minecraft.registry.Registry<com.mojang.serialization.MapCodec<? extends net.minecraft.world.biome.source.BiomeSource>>> BIOME_SOURCE;
-  public static final net.minecraft.registry.RegistryKey<net.minecraft.registry.Registry<net.minecraft.block.Block>> BLOCK;
-  public static final net.minecraft.registry.RegistryKey<net.minecraft.registry.Registry<com.mojang.serialization.MapCodec<? extends net.minecraft.block.Block>>> BLOCK_TYPE;
-  public static final net.minecraft.registry.RegistryKey<net.minecraft.registry.Registry<net.minecraft.block.entity.BlockEntityType<?>>> BLOCK_ENTITY_TYPE;
-  public static final net.minecraft.registry.RegistryKey<net.minecraft.registry.Registry<net.minecraft.world.gen.blockpredicate.BlockPredicateType<?>>> BLOCK_PREDICATE_TYPE;
-  public static final net.minecraft.registry.RegistryKey<net.minecraft.registry.Registry<net.minecraft.world.gen.stateprovider.BlockStateProviderType<?>>> BLOCK_STATE_PROVIDER_TYPE;
-  public static final net.minecraft.registry.RegistryKey<net.minecraft.registry.Registry<net.minecraft.world.gen.carver.Carver<?>>> CARVER;
-  public static final net.minecraft.registry.RegistryKey<net.minecraft.registry.Registry<net.minecraft.entity.passive.CatVariant>> CAT_VARIANT;
-  public static final net.minecraft.registry.RegistryKey<net.minecraft.registry.Registry<net.minecraft.entity.passive.WolfVariant>> WOLF_VARIANT;
-  public static final net.minecraft.registry.RegistryKey<net.minecraft.registry.Registry<com.mojang.serialization.MapCodec<? extends net.minecraft.world.gen.chunk.ChunkGenerator>>> CHUNK_GENERATOR;
-  public static final net.minecraft.registry.RegistryKey<net.minecraft.registry.Registry<net.minecraft.world.chunk.ChunkStatus>> CHUNK_STATUS;
-  public static final net.minecraft.registry.RegistryKey<net.minecraft.registry.Registry<net.minecraft.command.argument.serialize.ArgumentSerializer<?, ?>>> COMMAND_ARGUMENT_TYPE;
-  public static final net.minecraft.registry.RegistryKey<net.minecraft.registry.Registry<net.minecraft.item.ItemGroup>> ITEM_GROUP;
-  public static final net.minecraft.registry.RegistryKey<net.minecraft.registry.Registry<net.minecraft.util.Identifier>> CUSTOM_STAT;
+===== who calls Initializer#initialize (search in the jar)
+-- net.minecraft.registry.Registries
+         4: return
 
-===== anything in the jar named *InitializeRegistries* or *ModifyRegistries*
-      556  2026-11-17 04:26   net/minecraft/registry/Registries$Initializer.class
-      891  2026-11-17 04:26   net/minecraft/client/world/GeneratorOptionsHolder$RegistryAwareModifier.class
-     7124  2026-11-17 04:26   net/minecraft/registry/RegistryBuilder$InitializedRegistry.class
-     4982  2026-11-17 04:26   net/minecraft/network/packet/s2c/play/WorldBorderInitializeS2CPacket.class
+  private static <T> net.minecraft.registry.Registry<T> create(net.minecraft.registry.RegistryKey<? extends net.minecraft.registry.Registry<T>>, net.minecraft.registry.Registries$Initializer<T>);
+    Code:
+         0: aload_0
+--
+        10: invokespecial #237                // Method net/minecraft/registry/SimpleRegistry."<init>":(Lnet/minecraft/registry/RegistryKey;Lcom/mojang/serialization/Lifecycle;Z)V
+        13: aload_1
+        14: invokestatic  #240                // Method create:(Lnet/minecraft/registry/RegistryKey;Lnet/minecraft/registry/MutableRegistry;Lnet/minecraft/registry/Registries$Initializer;)Lnet/minecraft/registry/MutableRegistry;
+        17: areturn
+
+  private static <T> net.minecraft.registry.Registry<T> createIntrusive(net.minecraft.registry.RegistryKey<? extends net.minecraft.registry.Registry<T>>, net.minecraft.registry.Registries$Initializer<T>);
+    Code:
+         0: aload_0
+--
+        10: invokespecial #237                // Method net/minecraft/registry/SimpleRegistry."<init>":(Lnet/minecraft/registry/RegistryKey;Lcom/mojang/serialization/Lifecycle;Z)V
+        13: aload_1
+        14: invokestatic  #240                // Method create:(Lnet/minecraft/registry/RegistryKey;Lnet/minecraft/registry/MutableRegistry;Lnet/minecraft/registry/Registries$Initializer;)Lnet/minecraft/registry/MutableRegistry;
+        17: areturn
+
+  private static <T> net.minecraft.registry.DefaultedRegistry<T> create(net.minecraft.registry.RegistryKey<? extends net.minecraft.registry.Registry<T>>, java.lang.String, net.minecraft.registry.Registries$Initializer<T>);
+    Code:
+         0: aload_0
+--
+        11: invokespecial #253                // Method net/minecraft/registry/SimpleDefaultedRegistry."<init>":(Ljava/lang/String;Lnet/minecraft/registry/RegistryKey;Lcom/mojang/serialization/Lifecycle;Z)V
+        14: aload_2
+        15: invokestatic  #240                // Method create:(Lnet/minecraft/registry/RegistryKey;Lnet/minecraft/registry/MutableRegistry;Lnet/minecraft/registry/Registries$Initializer;)Lnet/minecraft/registry/MutableRegistry;
+        18: checkcast     #255                // class net/minecraft/registry/DefaultedRegistry
+        21: areturn
+
+grep: write error: Broken pipe
+-- net.minecraft.registry.RegistryBuilder
