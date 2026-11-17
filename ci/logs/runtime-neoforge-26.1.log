@@ -12,92 +12,171 @@ checkSources: 1 java file(s)
 Loaded 127 artifacts from /home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/build/tmp/createMinecraftArtifacts/nfrt_artifact_manifest.properties
 [1m*** Started working on [4mdownloadManifest[23;0m[23;0m
   ↓ https://piston-meta.mojang.com/mc/game/version_manifest_v2.json
- [1m[92m✓[23;0m Completed [4mdownloadManifest[23;0m in 0.20s
+ [1m[92m✓[23;0m Completed [4mdownloadManifest[23;0m in 0.29s
 [1m*** Started working on [4mdownloadJson[23;0m[23;0m
   ↓ https://piston-meta.mojang.com/mc/game/version_manifest_v2.json
   ↓ https://piston-meta.mojang.com/v1/packages/0bbfbdb8272531060afbba5c671fe4ed3dd6f72f/26.1.2.json
- [1m[92m✓[23;0m Completed [4mdownloadJson[23;0m in 0.04s
+ [1m[92m✓[23;0m Completed [4mdownloadJson[23;0m in 0.06s
 [1m*** Started working on [4mdownloadServer[23;0m[23;0m
 [1m*** Started working on [4mdownloadClient[23;0m[23;0m
   ↓ https://piston-data.mojang.com/v1/objects/97ccd4c0ed3f81bbb7bfacddd1090b0c56f9bc51/server.jar
   ↓ https://piston-data.mojang.com/v1/objects/4e618f09a0c649dde3fdf829df443ce0b8831e65/client.jar
- [1m[92m✓[23;0m Completed [4mdownloadClient[23;0m in 0.59s
- [1m[92m✓[23;0m Completed [4mdownloadServer[23;0m in 0.62s
+ [1m[92m✓[23;0m Completed [4mdownloadClient[23;0m in 0.79s
+ [1m[92m✓[23;0m Completed [4mdownloadServer[23;0m in 0.92s
 [1m*** Started working on [4mpreProcessJar[23;0m[23;0m
  ↳ Running external tool net.neoforged.installertools:installertools:4.0.16:fatjar
- [1m[92m✓[23;0m Completed [4mpreProcessJar[23;0m in 2.61s
+ [1m[92m✓[23;0m Completed [4mpreProcessJar[23;0m in 3.55s
 [1m*** Started working on [4mbinaryPatch[23;0m[23;0m
   [33mWARNING: [23;0mnet.neoforged.installertools:binarypatcher:4.0.12:fatjar is not present in the artifact manifest
   ↓ https://maven.neoforged.net/releases/net/neoforged/installertools/binarypatcher/4.0.12/binarypatcher-4.0.12-fatjar.jar
  ↳ Running external tool net.neoforged.installertools:binarypatcher:4.0.12:fatjar
- [1m[92m✓[23;0m Completed [4mbinaryPatch[23;0m in 2.93s
+ [1m[92m✓[23;0m Completed [4mbinaryPatch[23;0m in 3.82s
 [1m*** Started working on [4mcopyUnpatchedClasses[23;0m[23;0m
- [1m[92m✓[23;0m Completed [4mcopyUnpatchedClasses[23;0m in 2.26s
+ [1m[92m✓[23;0m Completed [4mcopyUnpatchedClasses[23;0m in 2.83s
 [1m*** Started working on [4mapplyDevTransforms[23;0m[23;0m
  ↳ Running external tool net.neoforged.installertools:installertools:4.0.12:fatjar
- [1m[92m✓[23;0m Completed [4mapplyDevTransforms[23;0m in 2.36s
-Total runtime: 11.58s
+ [1m[92m✓[23;0m Completed [4mapplyDevTransforms[23;0m in 3.24s
+Total runtime: 15.36s
 
 
 > Task :compileJava
-/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/src/main/java/dev/zorowarrior/bridge/BridgeMod.java:64: error: no suitable method found for registerSimpleItem(String,Properties)
-            ITEMS.registerSimpleItem("bridge_chip", new Item.Properties());
-                 ^
-    method Items.registerSimpleItem(String,Supplier<Properties>) is not applicable
-      (argument mismatch; Properties cannot be converted to Supplier<Properties>)
-    method Items.registerSimpleItem(String,UnaryOperator<Properties>) is not applicable
-      (argument mismatch; Properties cannot be converted to UnaryOperator<Properties>)
-/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/src/main/java/dev/zorowarrior/bridge/BridgeMod.java:70: error: no suitable method found for registerSimpleBlockItem(DeferredBlock<Block>,Properties)
-        ITEMS.registerSimpleBlockItem(BRIDGE_BEACON, new Item.Properties());
-             ^
-    method Items.registerSimpleBlockItem(String,Supplier<? extends Block>) is not applicable
-      (argument mismatch; DeferredBlock<Block> cannot be converted to String)
-    method Items.registerSimpleBlockItem(Holder<Block>,Supplier<Properties>) is not applicable
-      (argument mismatch; Properties cannot be converted to Supplier<Properties>)
-    method Items.registerSimpleBlockItem(Holder<Block>,UnaryOperator<Properties>) is not applicable
-      (argument mismatch; Properties cannot be converted to UnaryOperator<Properties>)
-Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
-2 errors
+> Task :processResources
+> Task :classes
+> Task :copyModsToml
 
-> Task :compileJava FAILED
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run-1794896970907.json
+> Task :downloadAssets
+Loaded 127 artifacts from /home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/build/tmp/downloadAssets/nfrt_artifact_manifest.properties
+Downloading asset index 30
+Using Minecraft asset root: /home/runner/.gradle/caches/neoformruntime/assets
+  ↓ https://piston-meta.mojang.com/v1/packages/49107cf4e5f961b086ac4f06f3c2c56142b023dc/30.json
+100/4752 downloads
+200/4752 downloads
+300/4752 downloads
+400/4752 downloads
+500/4752 downloads
+600/4752 downloads
+700/4752 downloads
+800/4752 downloads
+900/4752 downloads
+1000/4752 downloads
+1100/4752 downloads
+1200/4752 downloads
+1300/4752 downloads
+1400/4752 downloads
+1500/4752 downloads
+1600/4752 downloads
+1700/4752 downloads
+1800/4752 downloads
+1900/4752 downloads
+2000/4752 downloads
+2100/4752 downloads
+2200/4752 downloads
+2300/4752 downloads
+2400/4752 downloads
+2500/4752 downloads
+2600/4752 downloads
+2700/4752 downloads
+2800/4752 downloads
+2900/4752 downloads
+3000/4752 downloads
+3100/4752 downloads
+3200/4752 downloads
+3300/4752 downloads
+3400/4752 downloads
+3500/4752 downloads
+3600/4752 downloads
+3700/4752 downloads
+3800/4752 downloads
+3900/4752 downloads
+4000/4752 downloads
+4100/4752 downloads
+4200/4752 downloads
+4300/4752 downloads
+4400/4752 downloads
+4500/4752 downloads
+4600/4752 downloads
+4700/4752 downloads
+Downloaded 4752 files with a total size of 438 MiB
 
-[Incubating] Problems report is available at: file:///home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/build/reports/problems/problems-report.html
+> Task :prepareServerRun
 
-FAILURE: Build failed with an exception.
+> Task :runServer
+2026-11-17T06:48:10.918876681Z main WARN Advanced terminal features are not available in this environment
+[06:48:11] [main/INFO] [ne.ne.fm.st.Entrypoint/]: JVM Uptime at startup: 103ms
+[06:48:11] [main/INFO] [ne.ne.fm.lo.FMLLoader/]: Starting FancyModLoader version 11.0.15 (DEDICATED_SERVER in DEV)
+[06:48:11] [main/INFO] [ne.ne.fm.lo.FMLLoader/]: Game directory: /home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/run
+[06:48:11] [main/INFO] [ne.ne.fm.lo.EarlyServiceDiscovery/]: Found 2 early service jars (out of 93) in 21ms
+[06:48:11] [main/INFO] [ne.ne.fm.lo.FMLLoader/]: Loading FML Early Services:
+[06:48:11] [main/INFO] [ne.ne.fm.lo.FMLLoader/]:  - /home/runner/.gradle/caches/modules-2/files-2.1/net.neoforged.fancymodloader/loader/11.0.15/69ddd98736a6b095783523404d1af8992842722/loader-11.0.15.jar
+[06:48:11] [main/INFO] [ne.ne.fm.lo.FMLLoader/]:  - /home/runner/.gradle/caches/modules-2/files-2.1/net.neoforged.fancymodloader/earlydisplay/11.0.15/b254aa4ec40828f8ce65411dcb7fb9f6ce008064/earlydisplay-11.0.15.jar
+[06:48:11] [main/INFO] [ne.ne.fm.lo.ImmediateWindowHandler/]: Not loading early display in headless mode.
+[06:48:11] [main/INFO] [ne.ne.fm.lo.mo.lo.GameLocator/]: Detected a joined NeoForge and Minecraft configuration. Applying filtering...
+[06:48:11] [main/INFO] [ne.ne.fm.lo.mo.lo.InDevFolderLocator/CORE]: Got mod coordinates zoro_bridge%%/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/build/classes/java/main:zoro_bridge%%/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/build/resources/main from env
+[06:48:11] [main/INFO] [ne.ne.fm.lo.mo.lo.JarInJarDependencyLocator/]: Found 2 dependencies adding them to mods collection
+[06:48:11] [main/INFO] [ne.ne.fm.lo.mo.ModDiscoverer/]: 
+     Mod List:
+		Name Version (Mod Id)
 
-* What went wrong:
-Execution failed for task ':compileJava' (registered by plugin class 'org.gradle.api.plugins.JavaBasePlugin').
-> Compilation failed; see the compiler output below.
-  /home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/src/main/java/dev/zorowarrior/bridge/BridgeMod.java:64: error: no suitable method found for registerSimpleItem(String,Properties)
-              ITEMS.registerSimpleItem("bridge_chip", new Item.Properties());
-                   ^
-      method Items.registerSimpleItem(String,Supplier<Properties>) is not applicable
-        (argument mismatch; Properties cannot be converted to Supplier<Properties>)
-      method Items.registerSimpleItem(String,UnaryOperator<Properties>) is not applicable
-        (argument mismatch; Properties cannot be converted to UnaryOperator<Properties>)
-  /home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/src/main/java/dev/zorowarrior/bridge/BridgeMod.java:70: error: no suitable method found for registerSimpleBlockItem(DeferredBlock<Block>,Properties)
-          ITEMS.registerSimpleBlockItem(BRIDGE_BEACON, new Item.Properties());
-               ^
-      method Items.registerSimpleBlockItem(String,Supplier<? extends Block>) is not applicable
-        (argument mismatch; DeferredBlock<Block> cannot be converted to String)
-      method Items.registerSimpleBlockItem(Holder<Block>,Supplier<Properties>) is not applicable
-        (argument mismatch; Properties cannot be converted to Supplier<Properties>)
-      method Items.registerSimpleBlockItem(Holder<Block>,UnaryOperator<Properties>) is not applicable
-        (argument mismatch; Properties cannot be converted to UnaryOperator<Properties>)
-  Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
-  2 errors
-
-* Try:
-> Check your code and dependencies to fix the compilation error(s)
-> Run with --scan to get full insights from a Build Scan (powered by Develocity).
-
-BUILD FAILED in 41s
-3 actionable tasks: 3 executed
-gradle exit=1 (expected: 124 for the timeout, or non-zero if stopped)
+		Minecraft 26.1.2 (minecraft)
+		NeoForge 26.1.2.126 (neoforge)
+		ZOROWARRIOR HORIZON BRIDGE 1.0.0 (zoro_bridge)
+[06:48:11] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=file:/home/runner/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.17.4+mixin.0.8.7/5f66cc9f59b8efaa942155a3d5a30599bf6640dd/sponge-mixin-0.17.4+mixin.0.8.7.jar Service=FML Env=SERVER
+[06:48:11] [main/INFO] [ne.ne.fm.lo.FMLLoader/]: Loading FML Plugins:
+[06:48:11] [main/INFO] [ne.ne.fm.lo.FMLLoader/]:  - /home/runner/.gradle/caches/modules-2/files-2.1/net.neoforged/neoforge/26.1.2.126/e03e444b0e0793b0fa76b967d944af6fa855516e/neoforge-26.1.2.126-universal.jar > net.neoforged.neoforge-coremods-26.1.2.126.jar
+[06:48:12] [main/INFO] [ne.ne.fm.lo.FMLLoader/]: Building game content classloader:
+ - minecraft (composite(filtered(jar(/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/build/moddev/artifacts/minecraft-patched-26.1.2.126.jar)), filtered(jar(/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/build/moddev/artifacts/minecraft-patched-26.1.2.126.jar))))
+ - mixinextras.neoforge (jar(/home/runner/.gradle/caches/modules-2/files-2.1/net.neoforged/neoforge/26.1.2.126/e03e444b0e0793b0fa76b967d944af6fa855516e/neoforge-26.1.2.126-universal.jar > mixinextras-neoforge-0.5.5.jar))
+ - neoforge (composite(filtered(jar(/home/runner/.gradle/caches/modules-2/files-2.1/net.neoforged/neoforge/26.1.2.126/e03e444b0e0793b0fa76b967d944af6fa855516e/neoforge-26.1.2.126-universal.jar))))
+ - net.neoforged.fml.generated (empty(VirtualJar/net.neoforged.fml.generated))
+ - zoro_bridge (composite(folder(/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/build/classes/java/main), folder(/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/build/resources/main)))
+[06:48:12] [main/INFO] [ne.ne.fm.lo.FMLLoader/]: Built game content classloader in 46ms
+[06:48:13] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.5).
+[06:48:19] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, location] and [teleport, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[06:48:19] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, location] and [teleport, targets] with inputs: [0.1 -0.5 .9, 0 0 0]
+[06:48:19] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, destination] and [teleport, targets] with inputs: [Player, 0123, @e, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[06:48:19] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, targets] and [teleport, destination] with inputs: [Player, 0123, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[06:48:19] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, targets, location] and [teleport, targets, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[06:48:19] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [time, set, time] and [time, set, timemarker] with inputs: [0, 0s, 0d, 0t]
+[06:48:19] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [time, set, timemarker] and [time, set, time] with inputs: [012]
+[06:48:19] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [time, of, clock, set, time] and [time, of, clock, set, timemarker] with inputs: [0, 0s, 0d, 0t]
+[06:48:19] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [time, of, clock, set, timemarker] and [time, of, clock, set, time] with inputs: [012]
+[06:48:19] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [waypoint, modify, waypoint, color, reset] and [waypoint, modify, waypoint, color, color] with inputs: [reset]
+[06:48:19] [modloading-worker-0/INFO] [ZoroHorizonBridge/]: [ZoroHorizonBridge] NeoForge 26.x build initialised: zoro_bridge:bridge_beacon + zoro_bridge:bridge_chip
+[06:48:19] [modloading-worker-0/INFO] [ne.ne.ne.co.NeoForgeMod/NEOFORGE-MOD]: NeoForge mod loading, version 26.1.2.126, for MC 26.1.2
+[06:48:19] [main/INFO] [mojang/YggdrasilAuthenticationService]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
+[06:48:21] [Worker-Main-2/INFO] [minecraft/Main]: No existing world data, creating new world
+[06:48:21] [Worker-Main-2/ERROR] [minecraft/DedicatedServerProperties]: No key layers in MapLike[{}]
+[06:48:21] [main/INFO] [minecraft/RecipeManager]: Loaded 1517 recipes
+[06:48:21] [main/INFO] [minecraft/AdvancementTree]: Loaded 1617 advancements
+[06:48:21] [main/INFO] [ne.ne.ne.co.cr.RecipePriorityManager/]: Loaded 0 recipe priority overrides
+[06:48:21] [Server thread/INFO] [minecraft/DedicatedServer]: Starting minecraft server version 26.1.2
+[06:48:21] [Server thread/INFO] [minecraft/DedicatedServer]: Loading properties
+[06:48:21] [Server thread/INFO] [minecraft/DedicatedServer]: Default game type: SURVIVAL
+[06:48:21] [Server thread/INFO] [minecraft/MinecraftServer]: Generating keypair
+[06:48:22] [Server thread/INFO] [minecraft/DedicatedServer]: Starting Minecraft server on *:25565
+[06:48:22] [Server thread/WARN] [minecraft/DedicatedServer]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[06:48:22] [Server thread/WARN] [minecraft/DedicatedServer]: The server will make no attempt to authenticate usernames. Beware.
+[06:48:22] [Server thread/WARN] [minecraft/DedicatedServer]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[06:48:22] [Server thread/WARN] [minecraft/DedicatedServer]: To change this, set "online-mode" to "true" in the server.properties file.
+[06:48:22] [Server thread/INFO] [minecraft/DedicatedServer]: Preparing level "world"
+[06:48:22] [Server thread/INFO] [minecraft/LoggingLevelLoadListener]: Selecting global world spawn...
+[06:48:23] [Server thread/INFO] [minecraft/LoggingLevelLoadListener]: Loading 0 persistent chunks...
+[06:48:23] [Server thread/INFO] [minecraft/LoggingLevelLoadListener]: Preparing spawn area: 100%
+[06:48:23] [Server thread/INFO] [minecraft/LoggingLevelLoadListener]: Time elapsed: 741 ms
+[06:48:23] [Server thread/INFO] [minecraft/DedicatedServer]: Done (0.928s)! For help, type "help"
+[06:48:23] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[06:48:23] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[06:48:23] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[06:48:23] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[06:48:23] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[06:48:23] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[06:48:23] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage: All dimensions are saved
+[06:48:23] [Server thread/INFO] [ne.ne.ne.se.pe.PermissionAPI/]: Successfully initialized permission handler neoforge:default_handler
+[06:49:23] [Server thread/INFO] [minecraft/MinecraftServer]: Server empty for 60 seconds, pausing
+gradle exit=124 (expected: 124 for the timeout, or non-zero if stopped)
 ----- verdict
-  FAIL  server reached "Done" (the world loaded)
-  FAIL  NeoForge knows the mod id zoro_bridge
-  FAIL  our mod constructor ran to completion
+  OK    server reached "Done" (the world loaded)
+  OK    NeoForge knows the mod id zoro_bridge
+  OK    our mod constructor ran to completion
   OK    no registration errors
------ result: FAIL
+----- result: PASS
