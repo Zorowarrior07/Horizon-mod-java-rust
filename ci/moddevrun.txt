@@ -1,11 +1,11 @@
 > Run with --scan to get full insights from a Build Scan (powered by Develocity).
 
-BUILD FAILED in 55s
+BUILD FAILED in 39s
 ===== generated script
 java/neoforge26/build/moddev/serverRunVmArgs.txt
 java/neoforge26/build/moddev/serverRunProgramArgs.txt
 java/neoforge26/build/moddev/serverLog4j2.xml
-java/neoforge26/build/tmp/neoformruntime/20261117-052002_downloadServer
+java/neoforge26/build/tmp/neoformruntime/20261117-053555_downloadServer
 --- java/neoforge26/build/moddev/serverRunVmArgs.txt
 -Dlog4j2.configurationFile=/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/build/moddev/serverLog4j2.xml
 
@@ -19,6 +19,8 @@ tmp
 ===== toml in classes dir
 modLoader = "javafml"
 loaderVersion = "[4,)"
+# File-level: the loader validates this before it looks at [[mods]].
+license = "MIT"
 
 [[mods]]
 modId = "zoro_bridge"
@@ -28,7 +30,6 @@ description = '''
 Bridge beacon and bridge chip, Minecraft 26.x build.
 Java Edition mod; the Horizon launcher has no JVM and uses the .hmod instead.
 '''
-license = "MIT"
 
 [[dependencies.zoro_bridge]]
     modId = "neoforge"
@@ -46,6 +47,8 @@ license = "MIT"
 ===== toml in resources dir
 modLoader = "javafml"
 loaderVersion = "[4,)"
+# File-level: the loader validates this before it looks at [[mods]].
+license = "MIT"
 
 [[mods]]
 modId = "zoro_bridge"
@@ -55,7 +58,6 @@ description = '''
 Bridge beacon and bridge chip, Minecraft 26.x build.
 Java Edition mod; the Horizon launcher has no JVM and uses the .hmod instead.
 '''
-license = "MIT"
 
 [[dependencies.zoro_bridge]]
     modId = "neoforge"
@@ -71,11 +73,13 @@ license = "MIT"
     ordering = "NONE"
     side = "BOTH"
 ===== grep license (both)
-java/neoforge26/build/classes/java/main/META-INF/neoforge.mods.toml:12:license = "MIT"
-java/neoforge26/build/resources/main/META-INF/neoforge.mods.toml:12:license = "MIT"
+java/neoforge26/build/classes/java/main/META-INF/neoforge.mods.toml:4:license = "MIT"
+java/neoforge26/build/resources/main/META-INF/neoforge.mods.toml:4:license = "MIT"
 ===== source toml
 modLoader = "javafml"
 loaderVersion = "[4,)"
+# File-level: the loader validates this before it looks at [[mods]].
+license = "MIT"
 
 [[mods]]
 modId = "zoro_bridge"
@@ -85,7 +89,6 @@ description = '''
 Bridge beacon and bridge chip, Minecraft 26.x build.
 Java Edition mod; the Horizon launcher has no JVM and uses the .hmod instead.
 '''
-license = "MIT"
 
 [[dependencies.zoro_bridge]]
     modId = "neoforge"

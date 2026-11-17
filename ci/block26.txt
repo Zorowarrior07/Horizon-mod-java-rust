@@ -1,0 +1,27 @@
+jar=/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/build/moddev/artifacts/minecraft-patched-26.1.2.126.jar
+===== Block constructors
+  public net.minecraft.world.level.block.Block(net.minecraft.world.level.block.state.BlockBehaviour$Properties);
+  public static boolean canSupportRigidBlock(net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos);
+  public static boolean isShapeFullBlock(net.minecraft.world.phys.shapes.VoxelShape);
+  protected net.minecraft.world.level.block.Block asBlock();
+===== BlockBehaviour$Properties (key-related)
+  public static net.minecraft.world.level.block.state.BlockBehaviour$Properties of();
+  public net.minecraft.world.level.block.state.BlockBehaviour$Properties overrideLootTable(java.util.Optional<net.minecraft.resources.ResourceKey<net.minecraft.world.level.storage.loot.LootTable>>);
+  protected java.util.Optional<net.minecraft.resources.ResourceKey<net.minecraft.world.level.storage.loot.LootTable>> effectiveDrops();
+  public net.minecraft.world.level.block.state.BlockBehaviour$Properties setId(net.minecraft.resources.ResourceKey<net.minecraft.world.level.block.Block>);
+===== BlockBehaviour ctors
+  public net.minecraft.world.level.block.state.BlockBehaviour(net.minecraft.world.level.block.state.BlockBehaviour$Properties);
+===== how vanilla makes a block (Blocks static init)
+         7: invokestatic  #1302               // Method net/minecraft/world/level/block/state/BlockBehaviour$Properties.of:()Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;
+        16: invokevirtual #1311               // Method net/minecraft/world/level/block/state/BlockBehaviour$Properties.mapColor:(Ljava/util/function/Function;)Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;
+        22: invokevirtual #1321               // Method net/minecraft/world/level/block/state/BlockBehaviour$Properties.sound:(Lnet/minecraft/world/level/block/SoundType;)Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;
+        28: invokevirtual #1326               // Method net/minecraft/world/level/block/state/BlockBehaviour$Properties.strength:(F)Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;
+        31: invokevirtual #1329               // Method net/minecraft/world/level/block/state/BlockBehaviour$Properties.noOcclusion:()Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;
+        34: invokevirtual #1332               // Method net/minecraft/world/level/block/state/BlockBehaviour$Properties.ignitedByLava:()Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;
+        40: invokevirtual #1342               // Method net/minecraft/world/level/block/state/BlockBehaviour$Properties.pushReaction:(Lnet/minecraft/world/level/material/PushReaction;)Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;
+         0: invokestatic  #1302               // Method net/minecraft/world/level/block/state/BlockBehaviour$Properties.of:()Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;
+        10: invokevirtual #1311               // Method net/minecraft/world/level/block/state/BlockBehaviour$Properties.mapColor:(Ljava/util/function/Function;)Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;
+        16: invokevirtual #1370               // Method net/minecraft/world/level/block/state/BlockBehaviour$Properties.instrument:(Lnet/minecraft/world/level/block/state/properties/NoteBlockInstrument;)Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;
+        20: invokevirtual #1326               // Method net/minecraft/world/level/block/state/BlockBehaviour$Properties.strength:(F)Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;
+        24: invokevirtual #1321               // Method net/minecraft/world/level/block/state/BlockBehaviour$Properties.sound:(Lnet/minecraft/world/level/block/SoundType;)Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;
+grep: write error: Broken pipe
