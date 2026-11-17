@@ -49,7 +49,8 @@ jobs:
                   gradle --no-daemon -q -I /tmp/cp.gradle printCp \
                   -Pmc_version=$1 -Pyarn_mappings=$2 -Pjava_target=21 2>&1 ) > /tmp/ctx.txt
               head -3 /tmp/ctx.txt
-              mcjar=$(grep 'CP .*minecraft-.*-yarn' /tmp/ctx.txt | sed 's/^CP //' | head -1)
+              grep -E 'minecraft' /tmp/ctx.txt | head -5
+              mcjar=$(grep -E 'CP .*(minecraft|\.minecraft)' /tmp/ctx.txt | sed 's/^CP //' | grep -v '\-sources' | head -1)
               echo "MCJAR=$mcjar"
               if [ -n "$mcjar" ]; then
                 unzip -l "$mcjar" | grep -c '\.class' || true
