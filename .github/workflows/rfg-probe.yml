@@ -38,6 +38,8 @@ jobs:
             -Pmc_version=26.1 -Pneo_version=26.1.2.126 -Pjava_target=25 > /dev/null 2>&1 || true
           bash tools/probes/id26.sh "$PWD/ci/id26.txt" || true
           cat ci/id26.txt
+          bash tools/probes/items26.sh "$PWD/ci/items26.txt" || true
+          cat ci/items26.txt
           bash tools/probes/fgstrings.sh "$PWD/ci/fgstrings.txt" || true
           bash tools/probes/moddev.sh "$PWD/ci/moddev.txt" || true
           JAVA_HOME=/usr/lib/jvm/temurin-25-jdk-amd64 \
