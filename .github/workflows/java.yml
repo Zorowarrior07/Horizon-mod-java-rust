@@ -122,22 +122,31 @@ jobs:
         with: { fetch-depth: 0 }
       - uses: actions/setup-java@v4
         with: { distribution: temurin, java-version: '8' }
-      - name: Install Gradle 4.10.3
-        # ForgeGradle 2.3 does not run on Gradle 5+, so this job brings its own.
+      - name: Probe Forge versions for 1.8.9
         run: |
-          curl -sSL -o /tmp/gradle.zip https://services.gradle.org/distributions/gradle-4.10.3-bin.zip
-          unzip -q /tmp/gradle.zip -d /opt
-          /opt/gradle-4.10.3/bin/gradle --version
-      - name: Build Forge 1.8.9
-        continue-on-error: true
+          mkdir -p ci
+          {
+            echo "===== ForgeGradle versions"
+            curl -sS https://maven.minecraftforge.net/net/minecraftforge/gradle/ForgeGradle/maven-metadata.xml \
+              | grep -oE '<version>[^<]+</version>' | tail -40
+            echo
+            echo "===== forge artifacts mentioning 1.8.9"
+            curl -sS https://maven.minecraftforge.net/net/minecraftforge/forge/maven-metadata.xml \
+              | grep -oE '<version>1\.8\.9[^<]*</version>' | tail -20
+            echo
+            echo "===== does 1.8.9-11.15.0.1659-1.8.9 exist?"
+            for v in 1.8.9-11.15.0.1659 1.8.9-11.15.0.1659-1.8.9; do
+              code=$(curl -s -o /dev/null -w '%{http_code}' \
+                "https://maven.minecraftforge.net/net/minecraftforge/forge/$v/forge-$v-universal.jar")
+              echo "  $v -> $code"
+            done
+          } > ci/forge-probe.txt 2>&1
+          cat ci/forge-probe.txt
+      - name: Commit probe
+        if: always()
         run: |
-          mkdir -p ci/logs artifacts/java-1.8.9
-          ( cd java/forge189 && /opt/gradle-4.10.3/bin/gradle --no-daemon build --stacktrace ) \
-            > ci/logs/forge-1.8.9.log 2>&1 || true
-          grep -nE "error:|FAILURE|What went wrong|Caused by:|Could not resolve|BUILD" \
-              ci/logs/forge-1.8.9.log | head -30 || true
-          cp java/forge189/build/libs/*.jar artifacts/java-1.8.9/ 2>/dev/null || true
-          ls -la artifacts/java-1.8.9
+          bash tools/ci-commit.sh "ci: forge 1.8.9 version probe $(date -u +%FT%TZ)" ci
+
       - name: Verify
         if: always()
         run: |
