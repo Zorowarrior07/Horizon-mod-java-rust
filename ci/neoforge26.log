@@ -1,0 +1,96 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.9.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :
+Creating Minecraft artifacts without recompilation.
+
+> Task :checkSources
+checkSources: 1 java file(s)
+
+> Task :createMinecraftArtifacts
+Loaded 127 artifacts from /home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/build/tmp/createMinecraftArtifacts/nfrt_artifact_manifest.properties
+[1m*** Started working on [4mdownloadManifest[23;0m[23;0m
+  ↓ https://piston-meta.mojang.com/mc/game/version_manifest_v2.json
+ [1m[92m✓[23;0m Completed [4mdownloadManifest[23;0m in 0.22s
+[1m*** Started working on [4mdownloadJson[23;0m[23;0m
+ [1m[92m✓[23;0m Completed [4mdownloadJson[23;0m in 0.00s
+[1m*** Started working on [4mdownloadClient[23;0m[23;0m
+[1m*** Started working on [4mdownloadServer[23;0m[23;0m
+ [1m[92m✓[23;0m Completed [4mdownloadServer[23;0m in 0.03s
+ [1m[92m✓[23;0m Completed [4mdownloadClient[23;0m in 0.03s
+[1m*** Started working on [4mpreProcessJar[23;0m[23;0m
+ [1m[92m♻[23;0m Used cache of [4mpreProcessJar[23;0m in 0.00s
+[1m*** Started working on [4mbinaryPatch[23;0m[23;0m
+ [1m[92m♻[23;0m Used cache of [4mbinaryPatch[23;0m in 0.00s
+[1m*** Started working on [4mcopyUnpatchedClasses[23;0m[23;0m
+ [1m[92m♻[23;0m Used cache of [4mcopyUnpatchedClasses[23;0m in 0.00s
+[1m*** Started working on [4mapplyDevTransforms[23;0m[23;0m
+ [1m[92m♻[23;0m Used cache of [4mapplyDevTransforms[23;0m in 0.00s
+Total runtime: 0.75s
+
+
+> Task :compileJava FAILED
+/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/src/main/java/dev/zorowarrior/bridge/BridgeMod.java:7: error: cannot find symbol
+import net.minecraft.resources.ResourceLocation;
+                              ^
+  symbol:   class ResourceLocation
+  location: package net.minecraft.resources
+/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/src/main/java/dev/zorowarrior/bridge/BridgeMod.java:70: error: cannot find symbol
+    static ResourceLocation id(String path) {
+           ^
+  symbol:   class ResourceLocation
+  location: class BridgeMod
+/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/src/main/java/dev/zorowarrior/bridge/BridgeMod.java:60: error: no suitable method found for registerSimpleBlockItem(String,Supplier<Block>,Properties)
+        ITEMS.registerSimpleBlockItem("bridge_beacon", BRIDGE_BEACON,
+             ^
+    method Items.registerSimpleBlockItem(String,Supplier<? extends Block>,Supplier<Properties>) is not applicable
+      (argument mismatch; Properties cannot be converted to Supplier<Properties>)
+    method Items.registerSimpleBlockItem(String,Supplier<? extends Block>,UnaryOperator<Properties>) is not applicable
+      (argument mismatch; Properties cannot be converted to UnaryOperator<Properties>)
+/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/src/main/java/dev/zorowarrior/bridge/BridgeMod.java:71: error: cannot find symbol
+        return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
+               ^
+  symbol:   variable ResourceLocation
+  location: class BridgeMod
+Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
+4 errors
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run-1794887464791.json
+
+[Incubating] Problems report is available at: file:///home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileJava' (registered by plugin class 'org.gradle.api.plugins.JavaBasePlugin').
+> Compilation failed; see the compiler output below.
+  /home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/src/main/java/dev/zorowarrior/bridge/BridgeMod.java:7: error: cannot find symbol
+  import net.minecraft.resources.ResourceLocation;
+                                ^
+    symbol:   class ResourceLocation
+    location: package net.minecraft.resources
+  /home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/src/main/java/dev/zorowarrior/bridge/BridgeMod.java:70: error: cannot find symbol
+      static ResourceLocation id(String path) {
+             ^
+    symbol:   class ResourceLocation
+    location: class BridgeMod
+  /home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/src/main/java/dev/zorowarrior/bridge/BridgeMod.java:60: error: no suitable method found for registerSimpleBlockItem(String,Supplier<Block>,Properties)
+          ITEMS.registerSimpleBlockItem("bridge_beacon", BRIDGE_BEACON,
+               ^
+      method Items.registerSimpleBlockItem(String,Supplier<? extends Block>,Supplier<Properties>) is not applicable
+        (argument mismatch; Properties cannot be converted to Supplier<Properties>)
+      method Items.registerSimpleBlockItem(String,Supplier<? extends Block>,UnaryOperator<Properties>) is not applicable
+        (argument mismatch; Properties cannot be converted to UnaryOperator<Properties>)
+  /home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/src/main/java/dev/zorowarrior/bridge/BridgeMod.java:71: error: cannot find symbol
+          return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
+                 ^
+    symbol:   variable ResourceLocation
+    location: class BridgeMod
+  Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
+  4 errors
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+
+BUILD FAILED in 9s
+3 actionable tasks: 3 executed
