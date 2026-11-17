@@ -6,7 +6,7 @@ Failed to parse MC version from NeoForge version 26.1.2.126. Using capabilities 
 
 > Task :createMinecraftArtifacts
 Loaded 125 artifacts from /tmp/neo26/build/tmp/createMinecraftArtifacts/nfrt_artifact_manifest.properties
-Total runtime: 1.70s
+Total runtime: 1.64s
 
 java.lang.IllegalArgumentException: Function for step preProcessJar has invalid tool: null
 	at net.neoforged.neoform.runtime.engine.NeoFormEngine.applyFunctionToNode(NeoFormEngine.java:454)
@@ -27,7 +27,7 @@ java.lang.IllegalArgumentException: Function for step preProcessJar has invalid 
 	at net.neoforged.neoform.runtime.cli.Main.main(Main.java:126)
 
 > Task :createMinecraftArtifacts FAILED
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run-1794885069614.json
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run-1794885328495.json
 
 FAILURE: Build failed with an exception.
 
@@ -41,6 +41,6 @@ Execution failed for task ':createMinecraftArtifacts' (registered in build file 
 > Run with --scan to get full insights from a Build Scan (powered by Develocity).
 > Get more help at https://help.gradle.org.
 
-BUILD FAILED in 25s
+BUILD FAILED in 22s
 1 actionable task: 1 executed
 exit=1
