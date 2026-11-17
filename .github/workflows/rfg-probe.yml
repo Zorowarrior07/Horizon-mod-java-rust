@@ -2,7 +2,7 @@ name: rfg-probe
 on:
   workflow_dispatch:
   push:
-    paths: ['.github/workflows/rfg-probe.yml', 'tools/probes/**']
+    paths: ['.github/workflows/rfg-probe.yml', 'tools/probes/**', 'java/forge189/**', 'java/neoforge/**']
 permissions: { contents: write }
 concurrency:
   group: probes
