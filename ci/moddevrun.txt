@@ -1,11 +1,11 @@
 > Run with --scan to get full insights from a Build Scan (powered by Develocity).
 
-BUILD FAILED in 49s
+BUILD FAILED in 51s
 ===== generated script
 java/neoforge26/build/moddev/serverRunVmArgs.txt
 java/neoforge26/build/moddev/serverRunProgramArgs.txt
 java/neoforge26/build/moddev/serverLog4j2.xml
-java/neoforge26/build/tmp/neoformruntime/20261117-051039_downloadServer
+java/neoforge26/build/tmp/neoformruntime/20261117-051445_downloadServer
 --- java/neoforge26/build/moddev/serverRunVmArgs.txt
 -Dlog4j2.configurationFile=/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/build/moddev/serverLog4j2.xml
 
@@ -16,3 +16,19 @@ moddev
 reports
 resources
 tmp
+===== serverRunVmArgs
+--sun-misc-unsafe-memory-access=allow
+--enable-native-access=ALL-UNNAMED
+--add-opens
+java.base/java.lang.invoke=ALL-UNNAMED
+--add-exports
+jdk.naming.dns/com.sun.jndi.dns=java.naming
+-Dlog4j2.configurationFile=/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/build/moddev/serverLog4j2.xml
+-Djava.net.preferIPv6Addresses=system
+===== serverRunProgramArgs
+# Main Class
+net.neoforged.fml.startup.Server
+
+# NeoForge Run-Type Program Arguments
+
+# User Supplied Program Arguments
