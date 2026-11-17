@@ -1,77 +1,106 @@
-===== gradle --version
++ echo '===== JDK 25 present?'
+===== JDK 25 present?
++ ls -d /usr/lib/jvm/temurin-25-jdk-amd64
+/usr/lib/jvm/temurin-25-jdk-amd64
++ echo
 
-------------------------------------------------------------
-Gradle 9.9.1
-------------------------------------------------------------
++ echo '===== compile with JAVA_HOME=JDK25'
+===== compile with JAVA_HOME=JDK25
++ cd java/fabric
++ tail -45
+++ ls -d /usr/lib/jvm/temurin-25-jdk-amd64
+++ head -1
++ JAVA_HOME=/usr/lib/jvm/temurin-25-jdk-amd64
++ gradle --no-daemon build -Pmc_version=1.21.1 -Pyarn_mappings=1.21.1+build.3 -Ploader_version=0.20.1 -Pjava_target=21
+        BlockItem blockItem = new BlockItem(block, new Item.Properties());
+                                                           ^
+/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/shared/fabric/java/dev/zorowarrior/bridge/BridgeBeaconMod.java:64: error: cannot find symbol
+        register(BuiltInRegistries.ITEM, Registries.ITEM, "bridge_beacon", blockItem);
+                 ^
+  symbol:   variable BuiltInRegistries
+  location: class BridgeBeaconMod
+/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/shared/fabric/java/dev/zorowarrior/bridge/BridgeBeaconMod.java:64: error: cannot find symbol
+        register(BuiltInRegistries.ITEM, Registries.ITEM, "bridge_beacon", blockItem);
+                                         ^
+  symbol:   variable Registries
+  location: class BridgeBeaconMod
+/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/shared/fabric/java/dev/zorowarrior/bridge/BridgeBeaconMod.java:74: error: cannot find symbol
+        return Registry.register(registry, ResourceKey.create(key, id(path)), value);
+               ^
+  symbol:   variable Registry
+  location: class BridgeBeaconMod
+/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/shared/fabric/java/dev/zorowarrior/bridge/BridgeBeaconMod.java:74: error: cannot find symbol
+        return Registry.register(registry, ResourceKey.create(key, id(path)), value);
+                                           ^
+  symbol:   variable ResourceKey
+  location: class BridgeBeaconMod
+37 errors
 
-Build time:    2026-11-10 16:22:15 UTC
-Revision:      47a96e4ed1822d6aa7fa32bed4461208e69077a6
-
-Kotlin:        2.4.21
-Groovy:        4.0.33
-Ant:           Apache Ant(TM) version 1.10.17 compiled on April 6 2026
-Launcher JVM:  21.0.13 (Eclipse Adoptium 21.0.13+9-LTS)
-
-===== settings + build file present?
-total 24
-drwxr-xr-x 3 runner runner 4096 Nov 17 01:31 .
-drwxr-xr-x 5 runner runner 4096 Nov 17 01:31 ..
--rw-r--r-- 1 runner runner 3660 Nov 17 01:31 build.gradle
--rw-r--r-- 1 runner runner  254 Nov 17 01:31 gradle.properties
--rw-r--r-- 1 runner runner  218 Nov 17 01:31 settings.gradle
-drwxr-xr-x 3 runner runner 4096 Nov 17 01:31 src
-
-===== dependencies --configuration compileClasspath
-To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.9.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
-Daemon will be stopped at the end of the build 
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run-1794879088721.json
+> Task :compileJava FAILED
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run-1794879237427.json
 
 [Incubating] Problems report is available at: file:///home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/fabric/build/reports/problems/problems-report.html
 
 FAILURE: Build failed with an exception.
 
 * What went wrong:
-A problem occurred configuring root project 'zoro-horizon-bridge-fabric'.
-> Could not resolve all artifacts for configuration 'classpath'.
-   > Could not resolve net.fabricmc:fabric-loom:1.19.4.
-     Required by:
-         buildscript of root project 'zoro-horizon-bridge-fabric' > fabric-loom:fabric-loom.gradle.plugin:1.19.4
-      > Dependency requires at least JVM runtime version 25. This build uses a Java 21 JVM.
+Execution failed for task ':compileJava' (registered by plugin class 'org.gradle.api.plugins.JavaBasePlugin').
+> Compilation failed; see the compiler output below.
+  /home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/shared/fabric/java/dev/zorowarrior/bridge/BridgeBeaconMod.java:4: error: package net.minecraft.core does not exist
+  import net.minecraft.core.Registry;
+                           ^
+  37 errors
 
 * Try:
-> Run this build using a Java 25 or newer JVM.
-> Run with --stacktrace option to get the stack trace.
-> Run with --info or --debug option to get more log output.
+> Check your code and dependencies to fix the compilation error(s)
 > Run with --scan to get full insights from a Build Scan (powered by Develocity).
-> Get more help at https://help.gradle.org.
 
-BUILD FAILED in 13s
+BUILD FAILED in 43s
+2 actionable tasks: 2 executed
++ echo
 
-===== what loom did (--info, loom lines only)
-Resolved plugin [id: 'fabric-loom', version: '1.19.4']
-   > Could not resolve net.fabricmc:fabric-loom:1.19.4.
-         buildscript of root project 'zoro-horizon-bridge-fabric' > fabric-loom:fabric-loom.gradle.plugin:1.19.4
++ echo '===== compileClasspath contents'
+===== compileClasspath contents
++ cd java/fabric
++ head -30
+++ ls -d /usr/lib/jvm/temurin-25-jdk-amd64
+++ head -1
++ JAVA_HOME=/usr/lib/jvm/temurin-25-jdk-amd64
++ gradle --no-daemon -q -I /tmp/cp.gradle printCp
+BUILD_JDK=25.0.5
+CP /home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/26.0.2/c7ce3cdeda3d18909368dfe5977332dfad326c6d/annotations-26.0.2.jar
+CP /home/runner/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.10.1/ada2141c0cc52ee8f5c48cd5fa4ce0e794f22236/asm-9.10.1.jar
+CP /home/runner/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-analysis/9.10.1/8d49f14d51f632cb1d87c88d1ceaf50db0d8af1b/asm-analysis-9.10.1.jar
+CP /home/runner/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-commons/9.10.1/4229e4c55fd8e01c23f9fe9884075cc628aacc50/asm-commons-9.10.1.jar
+CP /home/runner/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-tree/9.10.1/e244332a17564c1d1572449399a842de35881be2/asm-tree-9.10.1.jar
+CP /home/runner/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-util/9.10.1/7bb9d450e8d4cbf9f9e04096c44bbfe7fba80b15/asm-util-9.10.1.jar
+CP /home/runner/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.17.5+mixin.0.8.7/cef8519a91129d0c21fa03bb9378f0e8ca810e5/sponge-mixin-0.17.5+mixin.0.8.7.jar
+CP /home/runner/.gradle/caches/modules-2/files-2.1/io.github.llamalad7/mixinextras-fabric/0.5.5/d1055b99c0ab08a8403fe2da3d79ca28e6340a76/mixinextras-fabric-0.5.5.jar
+CP /home/runner/.gradle/caches/modules-2/files-2.1/net.fabricmc/yarn/1.21.1+build.3/2ad14aed781c4a73ed4dbb421966d408a0a06686/yarn-1.21.1+build.3-constants.jar
+CP /home/runner/.gradle/caches/modules-2/files-2.1/com.github.oshi/oshi-core/6.4.10/b1d8ab82d11d92fd639b56d639f8f46f739dd5fa/oshi-core-6.4.10.jar
+CP /home/runner/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.10.1/b3add478d4382b78ea20b1671390a858002feb6c/gson-2.10.1.jar
+CP /home/runner/.gradle/caches/modules-2/files-2.1/com.google.guava/failureaccess/1.0.1/1dcf1de382a0bf95a3d8b0849546c88bac1292c9/failureaccess-1.0.1.jar
+CP /home/runner/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/32.1.2-jre/5e64ec7e056456bef3a4bc4c6fdaef71e8ab6318/guava-32.1.2-jre.jar
+CP /home/runner/.gradle/caches/modules-2/files-2.1/com.ibm.icu/icu4j/73.2/61ad4ef7f9131fcf6d25c34b817f90d6da06c9e9/icu4j-73.2.jar
+CP /home/runner/.gradle/caches/modules-2/files-2.1/com.mojang/authlib/6.0.54/de8bc95660e1b2fe8793fd427a7a10dcec5b3ea7/authlib-6.0.54.jar
+CP /home/runner/.gradle/caches/modules-2/files-2.1/com.mojang/blocklist/1.0.10/5c685c5ffa94c4cd39496c7184c1d122e515ecef/blocklist-1.0.10.jar
+CP /home/runner/.gradle/caches/modules-2/files-2.1/com.mojang/brigadier/1.3.10/d15b53a14cf20fdcaa98f731af5dda654452c010/brigadier-1.3.10.jar
+CP /home/runner/.gradle/caches/modules-2/files-2.1/com.mojang/datafixerupper/8.0.16/67d4de6d7f95d89bcf5862995fb854ebaec02a34/datafixerupper-8.0.16.jar
+CP /home/runner/.gradle/caches/modules-2/files-2.1/com.mojang/logging/1.2.7/24cb95ffb0e3433fd6e844c04e68009e504ca1c0/logging-1.2.7.jar
+CP /home/runner/.gradle/caches/modules-2/files-2.1/com.mojang/patchy/2.2.10/da05971b07cbb379d002cf7eaec6a2048211fefc/patchy-2.2.10.jar
+CP /home/runner/.gradle/caches/modules-2/files-2.1/com.mojang/text2speech/1.17.9/3cad216e3a7f0c19b4b394388bc9ffc446f13b14/text2speech-1.17.9.jar
+CP /home/runner/.gradle/caches/modules-2/files-2.1/commons-codec/commons-codec/1.16.0/4e3eb3d79888d76b54e28b350915b5dc3919c9de/commons-codec-1.16.0.jar
+CP /home/runner/.gradle/caches/modules-2/files-2.1/commons-io/commons-io/2.15.1/f11560da189ab563a5c8e351941415430e9304ea/commons-io-2.15.1.jar
+CP /home/runner/.gradle/caches/modules-2/files-2.1/commons-logging/commons-logging/1.2/4bfc12adfe4842bf07b657f0369c4cb522955686/commons-logging-1.2.jar
+CP /home/runner/.gradle/caches/modules-2/files-2.1/io.netty/netty-buffer/4.1.97.Final/f8f3d8644afa5e6e1a40a3a6aeb9d9aa970ecb4f/netty-buffer-4.1.97.Final.jar
+CP /home/runner/.gradle/caches/modules-2/files-2.1/io.netty/netty-codec/4.1.97.Final/384ba4d75670befbedb45c4d3b497a93639c206d/netty-codec-4.1.97.Final.jar
+CP /home/runner/.gradle/caches/modules-2/files-2.1/io.netty/netty-common/4.1.97.Final/7cceacaf11df8dc63f23d0fb58e9d4640fc88404/netty-common-4.1.97.Final.jar
+CP /home/runner/.gradle/caches/modules-2/files-2.1/io.netty/netty-handler/4.1.97.Final/abb86c6906bf512bf2b797a41cd7d2e8d3cd7c36/netty-handler-4.1.97.Final.jar
+CP /home/runner/.gradle/caches/modules-2/files-2.1/io.netty/netty-resolver/4.1.97.Final/cec8348108dc76c47cf87c669d514be52c922144/netty-resolver-4.1.97.Final.jar
++ echo
 
-===== loom caches
-ls: cannot access '/home/runner/.gradle/caches/fabric-loom': No such file or directory
-
-===== jar on classpath?
-
-FAILURE: Build failed with an exception.
-
-* What went wrong:
-A problem occurred configuring root project 'zoro-horizon-bridge-fabric'.
-> Could not resolve all artifacts for configuration 'classpath'.
-   > Could not resolve net.fabricmc:fabric-loom:1.19.4.
-     Required by:
-         buildscript of root project 'zoro-horizon-bridge-fabric' > fabric-loom:fabric-loom.gradle.plugin:1.19.4
-      > Dependency requires at least JVM runtime version 25. This build uses a Java 21 JVM.
-
-* Try:
-> Run this build using a Java 25 or newer JVM.
-> Run with --stacktrace option to get the stack trace.
-> Run with --info or --debug option to get more log output.
-> Run with --scan to get full insights from a Build Scan (powered by Develocity).
-> Get more help at https://help.gradle.org.
-
-BUILD FAILED in 3s
++ echo '===== produced files'
+===== produced files
++ ls -la java/fabric/build/libs java/fabric/build/bridge-build-facts.json
+ls: cannot access 'java/fabric/build/libs': No such file or directory
+ls: cannot access 'java/fabric/build/bridge-build-facts.json': No such file or directory
