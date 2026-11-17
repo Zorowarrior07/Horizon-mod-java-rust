@@ -52,7 +52,8 @@ jobs:
             bash tools/probes/block26.sh "$PWD/ci/block26.txt" || true
           JAVA_HOME=/usr/lib/jvm/temurin-25-jdk-amd64 \
             bash tools/probes/deferred26.sh "$PWD/ci/deferred26.txt" || true
-          cat ci/deferred26.txt
+          bash tools/probes/fabricreg.sh "$PWD/ci/fabricreg.txt" || true
+          cat ci/fabricreg.txt
       - name: Commit
         if: always()
         run: |

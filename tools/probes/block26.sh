@@ -29,3 +29,11 @@ G
   echo "===== how vanilla makes a block (Blocks static init)"
   javap -c -p -cp "$mcj" net.minecraft.world.level.block.Blocks 2>&1 | grep -E 'Properties\.|Block\."<init>"|Block\.<init>' | head -12
 } > "$out" 2>&1
+# appended probe: what does ResourceKey.create take in 26.x, and is there an id type?
+{
+  mcj=$(find java/neoforge26/build/moddev/artifacts -name 'minecraft-patched-*.jar' | head -1)
+  echo "===== ResourceKey.create signatures (26.x)"
+  javap -cp "$mcj" net.minecraft.resources.ResourceKey 2>&1 | grep -E 'create|parse' | head -10
+  echo "===== id-like classes in net.minecraft.resources"
+  unzip -l "$mcj" | grep -E 'net/minecraft/resources/[A-Za-z]+\.class' | head -20
+} >> "$out" 2>&1
