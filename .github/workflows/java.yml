@@ -36,7 +36,14 @@ jobs:
         with: { gradle-version: '9.9.1' }
 
       - name: Build every Fabric target
+        env:
+          # fabric-loom 1.19.4 refuses to configure on anything older than a
+          # Java 25 JVM. Gradle therefore runs on 25; the compiler still targets
+          # the per-version Java level through the Gradle toolchain below.
+          JAVA_HOME: /usr/lib/jvm/temurin-25-jdk-amd64
         run: |
+          set -e
+          java -version
           mkdir -p ci/logs artifacts/java-1.21.x
           status=0
           # mc | yarn | java
