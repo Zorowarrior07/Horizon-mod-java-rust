@@ -1,5 +1,389 @@
 ===== fetching the real versions.json
 {"1.14.2": {"snapshot": [20190624, 20190623, 20190622, 20190621, 20190620, 20190619, 20190618, 20190617, 20190616, 20190615, 20190614, 20190613, 20190612, 20190611, 20190610, 20190609, 20190608, 20190
 local mcpbot now returns: 200
-JDK8=
-FATAL: no JDK 8 found
+jvm dirs: temurin-11-jdk-amd64 temurin-17-jdk-amd64 temurin-21-jdk-amd64 temurin-25-jdk-amd64 
+JAVA_HOME_8_X64=/opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/8.0.512-9/x64
+JDK8=/opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/8.0.512-9/x64
+===== Gradle 4.10.3
+
+Welcome to Gradle 4.10.3!
+
+Here are the highlights of this release:
+ - Incremental Java compilation by default
+ - Periodic Gradle caches cleanup
+ - Gradle Kotlin DSL 1.0-RC6
+ - Nested included builds
+ - SNAPSHOT plugin versions in the `plugins {}` block
+
+For more details see https://docs.gradle.org/4.10.3/release-notes.html
+
+
+> Configure project :
+WARNING: You are using an unsupported version of ForgeGradle.
+Please consider upgrading to ForgeGradle 5 and helping in the efforts to get old versions working on the modern toolchain.
+See https://gist.github.com/TheCurle/fe7ad3ede188cbdd15c235cc75d52d4a for more info on contributing.
+#################################################
+         ForgeGradle 2.1.2-g6aa76ec        
+  https://github.com/MinecraftForge/ForgeGradle  
+#################################################
+               Powered by MCP unknown               
+             http://modcoderpack.com             
+         by: Searge, ProfMobius, Fesh0r,         
+         R4wk, ZeuX, IngisKahn, bspkrs           
+#################################################
+
+> Task :deobfCompileDummyTask
+> Task :getVersionJson
+> Task :extractUserdev
+> Task :downloadClient
+> Task :downloadServer
+> Task :splitServerJar
+> Task :mergeJars
+> Task :applyBinaryPatches
+> Task :deobfProvidedDummyTask
+> Task :extractDependencyATs SKIPPED
+> Task :extractMcpData
+> Task :extractMcpMappings
+> Task :genSrgs
+
+> Task :deobfMcMCP
+Applying SpecialSource...
+Applying Exceptor...
+
+> Task :sourceApiJava
+> Task :compileApiJava NO-SOURCE
+> Task :processApiResources NO-SOURCE
+> Task :apiClasses UP-TO-DATE
+> Task :sourceMainJava
+
+> Task :compileJava
+/tmp/fg189/build/sources/main/java/dev/zorowarrior/bridge/BridgeMod.java:5: error: cannot find symbol
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+                                                ^
+  symbol:   class ModelResourceLocation
+  location: package net.minecraft.client.renderer.block.model
+/tmp/fg189/build/sources/main/java/dev/zorowarrior/bridge/BridgeMod.java:50: error: void cannot be dereferenced
+                .setUnlocalizedName("bridge_beacon")
+                ^
+/tmp/fg189/build/sources/main/java/dev/zorowarrior/bridge/BridgeMod.java:53: error: cannot find symbol
+        GameRegistry.register(bridgeBeacon);
+                    ^
+  symbol:   method register(Block)
+  location: class GameRegistry
+/tmp/fg189/build/sources/main/java/dev/zorowarrior/bridge/BridgeMod.java:60: error: cannot find symbol
+        GameRegistry.register(bridgeChip);
+                    ^
+  symbol:   method register(Item)
+  location: class GameRegistry
+/tmp/fg189/build/sources/main/java/dev/zorowarrior/bridge/BridgeMod.java:62: error: cannot find symbol
+        GameRegistry.register(new ItemBlock(bridgeBeacon)
+                    ^
+  symbol:   method register(Item)
+  location: class GameRegistry
+/tmp/fg189/build/sources/main/java/dev/zorowarrior/bridge/BridgeMod.java:89: error: cannot find symbol
+                new ModelResourceLocation(MODID + ":bridge_beacon", "inventory"));
+                    ^
+  symbol:   class ModelResourceLocation
+  location: class BridgeMod
+/tmp/fg189/build/sources/main/java/dev/zorowarrior/bridge/BridgeMod.java:92: error: cannot find symbol
+                new ModelResourceLocation(MODID + ":bridge_chip", "inventory"));
+                    ^
+  symbol:   class ModelResourceLocation
+  location: class BridgeMod
+7 errors
+
+> Task :compileJava FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileJava'.
+> Compilation failed; see the compiler error output for details.
+
+* Try:
+Run with --info or --debug option to get more log output. Run with --scan to get full insights.
+
+* Exception is:
+org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':compileJava'.
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeActions(ExecuteActionsTaskExecuter.java:110)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:77)
+	at org.gradle.api.internal.tasks.execution.OutputDirectoryCreatingTaskExecuter.execute(OutputDirectoryCreatingTaskExecuter.java:51)
+	at org.gradle.api.internal.tasks.execution.SkipUpToDateTaskExecuter.execute(SkipUpToDateTaskExecuter.java:59)
+	at org.gradle.api.internal.tasks.execution.ResolveTaskOutputCachingStateExecuter.execute(ResolveTaskOutputCachingStateExecuter.java:54)
+	at org.gradle.api.internal.tasks.execution.ValidatingTaskExecuter.execute(ValidatingTaskExecuter.java:59)
+	at org.gradle.api.internal.tasks.execution.SkipEmptySourceFilesTaskExecuter.execute(SkipEmptySourceFilesTaskExecuter.java:101)
+	at org.gradle.api.internal.tasks.execution.FinalizeInputFilePropertiesTaskExecuter.execute(FinalizeInputFilePropertiesTaskExecuter.java:44)
+	at org.gradle.api.internal.tasks.execution.CleanupStaleOutputsExecuter.execute(CleanupStaleOutputsExecuter.java:91)
+	at org.gradle.api.internal.tasks.execution.ResolveTaskArtifactStateTaskExecuter.execute(ResolveTaskArtifactStateTaskExecuter.java:62)
+	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:59)
+	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:54)
+	at org.gradle.api.internal.tasks.execution.ExecuteAtMostOnceTaskExecuter.execute(ExecuteAtMostOnceTaskExecuter.java:43)
+	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:34)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.run(EventFiringTaskExecuter.java:51)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor$RunnableBuildOperationWorker.execute(DefaultBuildOperationExecutor.java:301)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor$RunnableBuildOperationWorker.execute(DefaultBuildOperationExecutor.java:293)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor.execute(DefaultBuildOperationExecutor.java:175)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:91)
+	at org.gradle.internal.operations.DelegatingBuildOperationExecutor.run(DelegatingBuildOperationExecutor.java:31)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:46)
+	at org.gradle.execution.taskgraph.LocalTaskInfoExecutor.execute(LocalTaskInfoExecutor.java:42)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareWorkItemExecutor.execute(DefaultTaskExecutionGraph.java:277)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareWorkItemExecutor.execute(DefaultTaskExecutionGraph.java:262)
+	at org.gradle.execution.taskgraph.DefaultTaskPlanExecutor$ExecutorWorker$1.execute(DefaultTaskPlanExecutor.java:135)
+	at org.gradle.execution.taskgraph.DefaultTaskPlanExecutor$ExecutorWorker$1.execute(DefaultTaskPlanExecutor.java:130)
+	at org.gradle.execution.taskgraph.DefaultTaskPlanExecutor$ExecutorWorker.execute(DefaultTaskPlanExecutor.java:200)
+	at org.gradle.execution.taskgraph.DefaultTaskPlanExecutor$ExecutorWorker.executeWithWork(DefaultTaskPlanExecutor.java:191)
+	at org.gradle.execution.taskgraph.DefaultTaskPlanExecutor$ExecutorWorker.run(DefaultTaskPlanExecutor.java:130)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Compilation failed; see the compiler error output for details.
+	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:52)
+	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:36)
+	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.delegateAndHandleErrors(NormalizingJavaCompiler.java:100)
+	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.execute(NormalizingJavaCompiler.java:52)
+	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.execute(NormalizingJavaCompiler.java:38)
+	at org.gradle.api.internal.tasks.compile.AnnotationProcessorDiscoveringCompiler.execute(AnnotationProcessorDiscoveringCompiler.java:49)
+	at org.gradle.api.internal.tasks.compile.AnnotationProcessorDiscoveringCompiler.execute(AnnotationProcessorDiscoveringCompiler.java:35)
+	at org.gradle.api.internal.tasks.compile.CleaningJavaCompilerSupport.execute(CleaningJavaCompilerSupport.java:39)
+	at org.gradle.api.internal.tasks.compile.incremental.IncrementalCompilerFactory$2.execute(IncrementalCompilerFactory.java:110)
+	at org.gradle.api.internal.tasks.compile.incremental.IncrementalCompilerFactory$2.execute(IncrementalCompilerFactory.java:106)
+	at org.gradle.api.internal.tasks.compile.incremental.IncrementalResultStoringCompiler.execute(IncrementalResultStoringCompiler.java:59)
+	at org.gradle.api.internal.tasks.compile.incremental.IncrementalResultStoringCompiler.execute(IncrementalResultStoringCompiler.java:43)
+	at org.gradle.api.tasks.compile.JavaCompile.performCompilation(JavaCompile.java:153)
+	at org.gradle.api.tasks.compile.JavaCompile.compile(JavaCompile.java:121)
+	at org.gradle.internal.reflect.JavaMethod.invoke(JavaMethod.java:73)
+	at org.gradle.api.internal.project.taskfactory.IncrementalTaskAction.doExecute(IncrementalTaskAction.java:50)
+	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:39)
+	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:26)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter$1.run(ExecuteActionsTaskExecuter.java:131)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor$RunnableBuildOperationWorker.execute(DefaultBuildOperationExecutor.java:301)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor$RunnableBuildOperationWorker.execute(DefaultBuildOperationExecutor.java:293)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor.execute(DefaultBuildOperationExecutor.java:175)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:91)
+	at org.gradle.internal.operations.DelegatingBuildOperationExecutor.run(DelegatingBuildOperationExecutor.java:31)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeAction(ExecuteActionsTaskExecuter.java:120)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeActions(ExecuteActionsTaskExecuter.java:99)
+	... 31 more
+
+
+* Get more help at https://help.gradle.org
+
+BUILD FAILED in 28s
+16 actionable tasks: 16 executed
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run-1794885713578.json
+FAILED with Gradle 4.10.3
+===== Gradle 2.14.1
+WARNING: You are using an unsupported version of ForgeGradle.
+Please consider upgrading to ForgeGradle 5 and helping in the efforts to get old versions working on the modern toolchain.
+See https://gist.github.com/TheCurle/fe7ad3ede188cbdd15c235cc75d52d4a for more info on contributing.
+#################################################
+         ForgeGradle 2.1.2-g6aa76ec        
+  https://github.com/MinecraftForge/ForgeGradle  
+#################################################
+               Powered by MCP unknown               
+             http://modcoderpack.com             
+         by: Searge, ProfMobius, Fesh0r,         
+         R4wk, ZeuX, IngisKahn, bspkrs           
+#################################################
+:deobfCompileDummyTask
+:getVersionJson
+:extractUserdev
+:downloadClient SKIPPED
+:downloadServer SKIPPED
+:splitServerJar SKIPPED
+:mergeJars SKIPPED
+:applyBinaryPatches SKIPPED
+:deobfProvidedDummyTask
+:extractDependencyATs SKIPPED
+:extractMcpData
+Invalid cookie header: "set-cookie: __cf_bm=n3LSg5qKwLtOUHwjzLHWvFDJ7Ih2dFZdTiXREp1d56c-1794885756.959788-1.0.1.1-ATNjirPLh..SeZhuIdzxCRsu8e52kGrgp4I6lAiaBUVP8gSLCeUCN.hBLNfCeCnn7nNdyc47FZuDphlBA6mkmNM5ZidS9R6fC9QSWxbxhZfYcNNx4IzDvFTAebfDpPYu; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:36 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:36 GMT
+Invalid cookie header: "set-cookie: __cf_bm=RKkNSMqSRenLIUwxr4otr_dz_oa0be6K0oP_f4wILBw-1794885756.9933205-1.0.1.1-naja18QSPx2RWttrMzpfWpf89ipYfBFEnCuYMFV3CCZqihwMQmvPlV_0XvCrC6ruqZA42MxpAs0hmOuq1UqQumxWrrEzgIr.Y633kIOb4GePJdM9Mt0ieZS8h.NaMhmb; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:37 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:37 GMT
+:extractMcpData SKIPPED
+:extractMcpMappings
+Invalid cookie header: "set-cookie: __cf_bm=QRJuBd4sDeElfm9Ct0DgMxve31N9O5PA.1629ob7Eag-1794885758.023485-1.0.1.1-ckm9NjrAwHcQ2MmbxEV9JyykdSAaW8dC.0IJUo.eDHO611qe5BLi2r0lo02dAvHa3GUiVpmBaMUfY_aAcYD5GB915e5ED8vKUPNQoWWqFaWshdsfrIfORISmwavEqbn2; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:38 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:38 GMT
+Invalid cookie header: "set-cookie: __cf_bm=A2RESGKbdi61G_MUNatG.QtH3ZiMkoiSuK3T.uqGl3U-1794885758.0533874-1.0.1.1-Obo6MLzzqXy7eL9FCXICRtX3NDSwlNZSoMfFPLog6arpfhZ5EoQhjSFVzjrdq2U5iudp6m84S3i1OKYRT4KK1wVouG.IB9Nuem_sdGbHUemNqWoLJ2akVBhlJ1VUcnPo; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:38 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:38 GMT
+:genSrgs SKIPPED
+:deobfMcMCP SKIPPED
+:sourceApiJava
+:compileApiJava UP-TO-DATE
+:processApiResources UP-TO-DATE
+:apiClasses UP-TO-DATE
+:sourceMainJava
+:compileJava
+Invalid cookie header: "set-cookie: __cf_bm=IIQCdIP337z1pg1DBIHdHe_0UcJQ4hPFeu32zjOLv90-1794885759.6887617-1.0.1.1-DC.belo2ERJ8if.4VbdG1dfzmn8PDn7Cp.XAmouG7qE0NzTB6FmfiU43aPY0UhPSV9ClvNaVphH_2FIyCjAd2qQULQ.Ss8eu0HM470RHCbblI_RIw9FtiTeuA6Byd_y4; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:39 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:39 GMT
+Invalid cookie header: "set-cookie: __cf_bm=cIsblKtu86QwqFx8NC9Tg1v9kj_QZye36MlNZjQt5S0-1794885759.7327118-1.0.1.1-rSUDrmTgLo5Hzu55SJ8yHzGinhMLucZO04hOw3KZG650UX9ybW5eLhaRWNBxr1BbRETbjDsk1ROFBPnObuii.9muVw.hPGEDvg4Nq1QVjiR1fZofcQQk23D9YM8pRtaM; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:39 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:39 GMT
+Invalid cookie header: "set-cookie: __cf_bm=8Qyr9hZlQleC8mIH_inMrAvXYk8Ok6h6BPjiiF.bP_s-1794885760.529131-1.0.1.1-_IpE7.eUCyFBWjpgnLyqY9Ooy8jajZzR3LKmXA43JsafXSN1w2kISRXCxM0Es7g1HDNKfcWpMdIxnFj4WEcBFZImnJVV8OGSgM5POpwcJg7S6Tl76gkGRuHDkcDQwTWf; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:40 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:40 GMT
+Invalid cookie header: "set-cookie: __cf_bm=D6RngBIiz162mFaJk01wM1sVUR186gsf7tRdrS9wlJ0-1794885760.569615-1.0.1.1-EwtTQZuEr_UhwkT_L1nAsecF5524PH7PnojHiJutQgWic5DPAmWmVA9o8OyBsQFBbZokz4pLDABMJIqkAGbDTubVy9mahE2V8vpJVBz5DsBeeMs7s5w_EjHl6pY1F7_R; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:40 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:40 GMT
+Invalid cookie header: "set-cookie: __cf_bm=xS6aTOnQ9jgIp65qfy5oOI1QNL0ZZzSposwkBHvRlhg-1794885761.1541948-1.0.1.1-bn6.aD9tdyECsV_fFNgHdJM8QGmCE_V6X4j8K9zXCQuwwlxFRu5D07OGJiWOrqIzsOsWh_Q_KprQBmPdCKWKVJp9LpVmp_MEplvNQ_.qGUBjJFJOP.7PHduXpg5y3rW0; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:41 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:41 GMT
+Invalid cookie header: "set-cookie: __cf_bm=g1CFR0DCltDmLUWqUdT5uiWgkogeSIpudTbnFMBta_s-1794885761.188987-1.0.1.1-Cl5FjQcUoJAK1.iqlysly5JLU__W_GP6Vr9nwpRPgmDbyP8spmmmy6y.kcnyp6F3x.8Pyqe8bS.ZmxhYDUrouYYj7wrYMYrXeEjyXrORk9aYpIkGOMnrNr0.t236Ai7t; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:41 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:41 GMT
+Invalid cookie header: "set-cookie: __cf_bm=9vsvdZpan_4CDGLy6sCvGdP9DgNqMOAmwl8CvT1h2dA-1794885762.0780044-1.0.1.1-Tw27UWk1SAU1svwRsoZ.XRnET4fmUIbJ54Mp3PwkDqaVlJboemQbA2TdKn0Hgw.778WOqNdTpuD8Q2OBcnd0V2aA82qdd.ogRZEaCJtD3jLE21Hkp3oSINNJ7Y1ruQvm; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:42 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:42 GMT
+Invalid cookie header: "set-cookie: __cf_bm=w343W1ZUMuR79NIrSrXhgeAl9D3ewm5MChQ3K8VoGA0-1794885762.11899-1.0.1.1-ty0Uvv8nglZIdcVHNSgDPpJOgbWdf17TL3L53pRSfmuL48pc10dY8tFnkAWch5JcQvFvO1Un0.jTD_Xp62rRwbF6CbEvlqE2nGujitgCUwcplwRKEt4Ojs2qwiisNQUj; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:42 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:42 GMT
+Invalid cookie header: "set-cookie: __cf_bm=OxUs9ZjENe9jsRfG4Lx0Sms.ouEWiOvF6l9AmDAYir8-1794885765.2932703-1.0.1.1-X2Ebj2p_NydYnPl.svCYpChrjk72kWxf8S1AUFiYy0VXJGvOECmIZGYtgE4J4VoiveGuK7pZgA4WCERaXskyBx7xfULA.cXNV6LD_chUrYwikXHMlRMz._3mmFuohjv_; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:45 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:45 GMT
+Invalid cookie header: "set-cookie: __cf_bm=Q.kFwz1PYT_FZw8uiiEAW0hpJ1eauut5Grba.gGuksc-1794885765.3313859-1.0.1.1-lwr_oTKZzzE3ZA8PnQSB43Hx36LvhMHsRPAEKR9k6Ixkm4JoItmZsuvyOqhH90jhE257m4RoV2hhXYC_ywc6eKRcbYAOAaydRzCBqHRjZpAT6IGwV6EVlOUDCp7Jc39B; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:45 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:45 GMT
+Invalid cookie header: "set-cookie: __cf_bm=cmTeDtV8msyqlRFy_VuT4sGotSgllCDanTOXCj2p5JY-1794885766.0617483-1.0.1.1-mIdjwKq5K9dqk6AkshtFArG4UaD0LLxlZn.1y3XaSFt7UuJKFJsPg4QBwzU.Y1XrOvLS5eNchvPvJ0Xu08ZKSJzPHU84SfDENpHr7Lt0ngEItam5Mr2Jz_FtQTJqYc35; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:46 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:46 GMT
+Invalid cookie header: "set-cookie: __cf_bm=GSBRNquPc.7c90Mozf5gdEbjwe2tWNjnw5E6XyYyPrI-1794885766.1021142-1.0.1.1-m1WP2DMGKKE0gM56jU3MA2JaFxSep8VMdm7.AP6JjQdS5bEAj2eUIUHtd35VRgA66Jdo_G_n1ivnf6Rm7ARTXa3PdzGOKcP28Pxb4RZvOii3VxoIQmTJ4glH9eUSLlFM; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:46 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:46 GMT
+Invalid cookie header: "set-cookie: __cf_bm=vVM0o_kiBSennBaJ0a.tIsdvpt.qiADuj4XDs0T1IlI-1794885767.5501802-1.0.1.1-SMiYrD1yh5OEkai2.mMQguQ6H_.H535zuaIny2BEUJ53jYu6Wus2tiC1cCT5rLd7Iqbz0qF.E9U111R7KwL10loFns19Wnl3qDTlrtCQOyaCH6fSCHOtXys7ClRpkLSl; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:47 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:47 GMT
+Invalid cookie header: "set-cookie: __cf_bm=m5vuEPCwL.EWzdtCr2WeKkfKaI0a8Fox53RMpvEv6v0-1794885767.586928-1.0.1.1-u3AfkVV4_XgSlihNH3a6O8pPTB6b5rk6n6mxef7fleXKFxWUg93yhmO08Ta.FgXPjAEa0aX3lwyK.HoP1BnCPBHOjNL9wpKtTuuowpJYxMe7fgYT3v_eBrAdeBJQnQZq; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:47 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:47 GMT
+Invalid cookie header: "set-cookie: __cf_bm=ddwIGhAPTomaORP4xkK3ayIeXOA5ARb_B87sBUa6bv0-1794885770.4690473-1.0.1.1-.khstt3yTZ3EGjgarBLRCxtLtFneL.BNCyBF.xd0lZyxfTtjvMXyz289To1xascmRzgMDb1uGS.Emvo34zP2LcqR8C6H3rpGSBqakDLN4.TkIp9zTFloDmRpw1djrxwj; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:50 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:50 GMT
+Invalid cookie header: "set-cookie: __cf_bm=a9VQNJqU8PmXFr5v0YVGpPIqpnEzHRFFFyi8kGnjlIY-1794885770.5233722-1.0.1.1-2LSr1kMFwPoY91CQCkvnpBJWkOWwayD.ixasZN3oijt7SzjXotWbwqtsuGiROx0Xnyx4ZYID1uVYPY22hN15YnkX_L9FalIwsPkp8UocmILVKzXQETbOAZ294IJDuE5I; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:50 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:50 GMT
+Invalid cookie header: "set-cookie: __cf_bm=oPtPWlAXSmwA6GOjswiKwIOAIjOixMesnYZHs.POXjM-1794885771.2963662-1.0.1.1-qjVoRXBlKjTdpuNEQGH2e7Wzuh_iFhUn57t2JbfftHAp41aMHvMuj2duUu6N_hbLrqkaUenbMqBUNlLWBB.KGxNyi0t_HdHH7wRSRrqwHeww7vledWjq.k5nZc3qxvaL; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:51 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:51 GMT
+Invalid cookie header: "set-cookie: __cf_bm=PpMWRn7a7bFRYxYQSFK.yYswKDnHAMaDzpZN9iKebH8-1794885771.333415-1.0.1.1-chJjux1Z9113kx.jcABOgdX4i7jZT3NkrYtqeuRo2pgIMf9cdkR9wNTSFYFOu6FxDP4tizsDgmjQutPwLZaJ.V8FY9kMz_Lp16qmScmk7AKs7Jgg8u23PtHtXtPeO_Ed; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:51 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:51 GMT
+Invalid cookie header: "set-cookie: __cf_bm=.T2iEHyx5w4ZVDNs37D7YzTAviMTH6lXNumSrWr0KUE-1794885771.8884668-1.0.1.1-JbyrJBwL1XiE9Ub.a98ZLdRLNxvD_TzMh1L6BzFzFtxJs2OGa57jZGkLem4JSG3X84zt.cLYY6I6eZG7TRg8US1pxklQDCDRyiUHLW1RAm5WlKpcIeQLIgE8v9oQT8sC; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:51 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:51 GMT
+Invalid cookie header: "set-cookie: __cf_bm=xYiYmp63IPRtxWLCaRjIb32Jv2.FgQovSJVDPOjrs.4-1794885771.9263988-1.0.1.1-XdZAMelKrTlYRFhb4N6bgyHCUV1oiwS0r67gVwGfDI0nk.CwL1OHsVZsCLZ_Q4BeYoHIXbQkMdx9yTsTh.ObNsz73GmftHotNAgliGQNmMymMPjWj1qb.KbF7V3F.Q4d; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:51 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:51 GMT
+Invalid cookie header: "set-cookie: __cf_bm=8LCJyk1NVSjMup5LHmAr46XaFFGvjJ_QdGaL_6ORyOc-1794885772.4851203-1.0.1.1-3.gH2tVpQJAfFd4.5Zk9.EzAHQ7P6U47HUc_e6C3Nsj_U8N2LWNnUG1qiNE54Tml13pneqb2p_rHgvXaMAyzylU4bafyhNv1QzTSENpmTtSZRpVSe3uMBhdrCSwjf9kL; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:52 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:52 GMT
+Invalid cookie header: "set-cookie: __cf_bm=qiDnwp8Lub3X0OLMfG62CGp1uxCzZokoWYPcnyUFbyg-1794885772.5250084-1.0.1.1-l_Q0gKzdp5mIrDWDzeTDA4xGo2IHyxf8vnHowFsOtSZbxRkbKScNZxZjC4o3ESdBq8jt3xXnWU_.bUrLTovKKt6hIOFqm_eV1sc7kYVloPXC1E9TA_auImQfzuPkQg_v; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:52 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:52 GMT
+Invalid cookie header: "set-cookie: __cf_bm=1nk28InvahyufCd0oYIGb5g4HEoXGxIQaVW_ey_ydNk-1794885773.1584568-1.0.1.1-GEUUjSjYneFvH10NWuufeWcvfTM4M.cwSaMxLqwbaXShwCPbdgjggiwjrz8e3Kqf1M1MeXL4NwpJobyq.RaWOMv08ug4WqSMKZl5_liuxSBxxSgxYSA8IHml2OIqMe5E; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:53 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:53 GMT
+Invalid cookie header: "set-cookie: __cf_bm=cdQlJzZmAKX3n8TW7aHzc.MU9qmldxeGq7._Bn7k5Ec-1794885773.2021503-1.0.1.1-Nwh4HJLfFVIe5pfq0SfXqVBiFN89V3xlYUxCBru_4iN3dGsPwLPKIiUVfQaoOn6qWbFvTfk96S1BjkD0pp.VVT_YqH6nZMJcwEsPVLz69xwQspaUKmDnRb.dzZGkoOGB; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:53 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:53 GMT
+Invalid cookie header: "set-cookie: __cf_bm=9H.e14RndO0.e21kyprx42w7ZBSAPtJU4x4AMdAbbZc-1794885773.9727883-1.0.1.1-2fWqM_slNePBizCSrofN.6jCT_EmFYpwUNny_VYWiDhbs4TYytmTmkKvMUIEdRD7mrxnKI_gTd8P9APG9ynKBwzK7PdBOjV5SyKdIZU2AA9TNrxoeG4ACWqq3b_8pVs3; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:53 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:53 GMT
+Invalid cookie header: "set-cookie: __cf_bm=jltYfgc0GOfiz_fHkdYkYU5J0hQuuUvxn2YQn7.x_pM-1794885774.0269425-1.0.1.1-5fULoNP5ar8HwQLSOcXkLQJ5XJkRHO.snWVh_OjaAl8kwxpo6qXIURY5hAZx8xcTxxW6dMadu8a7RLpJJtX3MCaLX3L6744.VfIeWKKfLN5ImOwa6HCg.4QE2PgR5NjG; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:54 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:54 GMT
+Invalid cookie header: "set-cookie: __cf_bm=v6.HBA1QxwC82Ng5UdMYo6Xl_LUcvott36XjrWC2nck-1794885774.9639473-1.0.1.1-EdNCw96eJViQyr9gCFjsWDQZr71Q_5TNDaW6WfCvCnF_7WtQdYUs_bjrmrNJCBY11r3ACpGYEn.8P4QFF26TdLkBEnGjg6545Q4nFHKLWs_eJDmkczws3Flxb4VlK9Tb; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:54 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:54 GMT
+Invalid cookie header: "set-cookie: __cf_bm=Q7i0XCi17fnmd8_UabFNLrtHGLc1OqOtzIJjkibzMzM-1794885775.005147-1.0.1.1-6Wyq2uLPDgSfi0dTvrN8.w3jd5JEX6.6ZyKwtq3EROaZhmn8eAHd60anU0DzhZdNIv1m6x5vIsN5Y7tqDr0uNYAFZhyUUYb87ap5FsDTe7jrK4wE5DQwFWtRk_iOB.Ps; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:55 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:55 GMT
+Invalid cookie header: "set-cookie: __cf_bm=gSlKwyJhkwsQb0PXPLuN.o4nKYsnIvA4P_.9MUTuk80-1794885775.7590024-1.0.1.1-MZp92klCddospwMlZ7jJNO28BUvWZrZUUGjao4RzW82pXfAiDwIZhp6TcMBiMfp.vSeOcG7.JE3oxeGyxDONBvLlsR0N0A8gf.UJT.dxv9Q4J6KwwEjvypvsgEB0hp0E; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:55 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:55 GMT
+Invalid cookie header: "set-cookie: __cf_bm=lAmPDlFL6qSf8WeRQDDgDRfKvTegIN3vEUaeNbK2ets-1794885775.7943475-1.0.1.1-0tfZyD8xAk6oJMmMtYwkLcNPbJoAeQFYMS6.uIRF8h6Lw5gRAPFAjyLpVFHHWAOFmt5sW9trZkKnE9HZduH75muXK9GaFOaJX5lXVfIfWkgUooB2r9O_ttxsrSTCg98s; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:55 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:55 GMT
+Invalid cookie header: "set-cookie: __cf_bm=ZsOTQRmZ2ks.Py0Jk7HUfVNQrKCfPP3fwQpCQJuqCK0-1794885776.5958974-1.0.1.1-LClNWMmAjKpi6A2HSChxSdYvHMAZZGw455xmzpl5tS7Q6wLHoZTJz66aP0kVaHHduFvE7pvkzj6f0dNlYC.HOS9yq1AX7LlMNgeNSFpvIFw90777V0jF48a5tog41QhM; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:56 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:56 GMT
+Invalid cookie header: "set-cookie: __cf_bm=hTxaolTGnd_lC3hImDR9w1ICYX6WpYrEYHDfTQQ5LKs-1794885776.6314905-1.0.1.1-5IGSJISJuTEwYfleVzR9Gk7PwoR05rnZ9YYAbxwOYciqS5JEC4iIyqnAwcDHs9o3NqoS6HR9HEGOtMjIYyyWMPPDvdvF74dsOvVQga8zVJqsd1Dh7w7MzGvNzs8HXKMH; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:56 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:56 GMT
+Invalid cookie header: "set-cookie: __cf_bm=zOuZMnTA_9lfoIyH9z5a4k6ktitUpP20FzAhpqTxKvk-1794885777.1967018-1.0.1.1-_jQZ9R.Hna0hVZEgaKGMsvcIWSpNvQQdJOYe1p2KNY0XYlR6j1kKbcIGoZHibRvow65DliSWeTHy0.F8K2kuaWs78WpfT5xjXBehB2HRTs4UcbJlXfgJ2jkMX_Y8ivCM; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:57 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:57 GMT
+Invalid cookie header: "set-cookie: __cf_bm=oBBy2J285DLd73pLqEUFkYp.L.7dHj0veWiqOVxYe4s-1794885777.2459862-1.0.1.1-JeH7BZSG8CBMyeoOXMKix_b2l7QFHOdIwpLv728XFbvfmvUdSMXU6rq3h2uAMcdawt.o2kMFY1aCtZeEcZWyOc00cGc5hKjHr7RzVjsHJ9YwgAE_qJmE80yW3grPvbkV; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:57 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:57 GMT
+Invalid cookie header: "set-cookie: __cf_bm=0YQouUJo4vLh7g6wvpnnP0DyDzDCOt8Lua47f_DMhv4-1794885778.0323417-1.0.1.1-5yPipdiYbb5MYuTnlqlQIAEcTM0H5akXiWFVjFoGJ3ytWHYV6tAv9CoKRD2jX62kMj62CienDgJX.qnKihqXngeWz0rZRG4wHzoVquX8IUbLL7N9XJym2MExTrDSTOGU; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:58 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:58 GMT
+Invalid cookie header: "set-cookie: __cf_bm=UXw1K9ODYusWDG3rkmSizcax2A.w4Phg0HCPi7nVhTM-1794885778.0731618-1.0.1.1-U.yaWCkW01eFKpJQqeIL0GSX9yzWvMW4JL1sj86SWBejDnNMjUss8_YbYpOizxOkx37vee5qM4FAUjf.Wwku3dxq3EZNzb6gDlhNj8fx27XZwkyuWQE73DUB244WFSUl; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:58 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:58 GMT
+Invalid cookie header: "set-cookie: __cf_bm=8kS4JzeS7heL06j_BINKptoboLOjxBIjPywSeiWYN.g-1794885779.6655972-1.0.1.1-X3gcgipYzcJRY5RAQTUSiumNf361rUEJDyAEEfTIzBkzmCXysiNszFan5AcVGH1IM7brIFJwQm4vat6hhEFfD2ssSttZpv3Jc8R4nOntIvaViF_ReJU2M39BlPr.aqCF; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:59 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:59 GMT
+Invalid cookie header: "set-cookie: __cf_bm=lwHmjPCRyn6JtIobvVCxazD_.dXoSISzXKN6pflVSto-1794885779.7074294-1.0.1.1-Y8hGbkXpmDtDXSNdEu7K2t6pT9jTpYpkkXyO.k9iHldTM.IqqiswpP6LWiyCtNtbax2QsGJfDnEJCAns61zWUXFI5l5Pya7Fh00xPfP_PltljjsDBXun2EjRFPIvvSof; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:59 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:59 GMT
+Invalid cookie header: "set-cookie: __cf_bm=hO88Ylr57n0ifQBZDNfEr7nCJLbGgQdajvQz4fjfv1A-1794885780.2939675-1.0.1.1-sppj0rmQav9BMiel1aWXgL_dGdAt4j6QVOUPuXTx_KflQFOyj0NRmho9tcrADtKsUbO.QwuYPBjq2JMeEvQ4hPz5rvYPDM9ivf3r0BE65ZHjZV_UZElCZATIM2ZI0o2F; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:53:00 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:53:00 GMT
+Invalid cookie header: "set-cookie: __cf_bm=WIfzAGQ0L804htljhHOEh2i96Pv__G7FzsT3a6aqo9U-1794885780.3298182-1.0.1.1-7imU1yE6e.atyrGpIJ7T6pY5zTVIaRRZLl4lmq5aXngrg9js..g6SuHuA1VLY72fl4_5ugUTUQc8Ye82DsoaxRV72cYDB9jEHTF2jyx3.nYePlz1Pez90l4VtUG.QsmF; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:53:00 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:53:00 GMT
+Invalid cookie header: "set-cookie: __cf_bm=FYNqVEPpe.tjD.Dn2VN_ll5OU06Sdm4.b23H2q.uYgQ-1794885781.3008432-1.0.1.1-xIuQfhzuXhJf5J5FPPfQ1WjCvZ.QB7lnVHAUspYEvPxhGmnELB6i3c2yiWAfJsy_7TMhIeWGYwxni85JH3uBCX23c1WRqUYzgRoRGIxulWJ74g0iT7Fp2CAX.ozDYweY; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:53:01 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:53:01 GMT
+Invalid cookie header: "set-cookie: __cf_bm=wCwPKtJLMtaUEPFx34LG5pfZ8MIsRvrrMkIEvIA5JpE-1794885781.3515224-1.0.1.1-gpwESwHz4ZyvfRVzaUStTpNSwyH38y7EcrBrxy_NwXiVOam9tRR.6roUf3UD58.mCo2V2zmXjCN76egEF5CI1Jnzm8kcbKJhnb2P64wsxM1vGAFhS3SdLSH.MDy9eqEg; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:53:01 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:53:01 GMT
+/tmp/fg189/build/sources/main/java/dev/zorowarrior/bridge/BridgeMod.java:5: error: cannot find symbol
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+                                                ^
+  symbol:   class ModelResourceLocation
+  location: package net.minecraft.client.renderer.block.model
+/tmp/fg189/build/sources/main/java/dev/zorowarrior/bridge/BridgeMod.java:50: error: void cannot be dereferenced
+                .setUnlocalizedName("bridge_beacon")
+                ^
+/tmp/fg189/build/sources/main/java/dev/zorowarrior/bridge/BridgeMod.java:53: error: cannot find symbol
+        GameRegistry.register(bridgeBeacon);
+                    ^
+  symbol:   method register(Block)
+  location: class GameRegistry
+/tmp/fg189/build/sources/main/java/dev/zorowarrior/bridge/BridgeMod.java:60: error: cannot find symbol
+        GameRegistry.register(bridgeChip);
+                    ^
+  symbol:   method register(Item)
+  location: class GameRegistry
+/tmp/fg189/build/sources/main/java/dev/zorowarrior/bridge/BridgeMod.java:62: error: cannot find symbol
+        GameRegistry.register(new ItemBlock(bridgeBeacon)
+                    ^
+  symbol:   method register(Item)
+  location: class GameRegistry
+/tmp/fg189/build/sources/main/java/dev/zorowarrior/bridge/BridgeMod.java:89: error: cannot find symbol
+                new ModelResourceLocation(MODID + ":bridge_beacon", "inventory"));
+                    ^
+  symbol:   class ModelResourceLocation
+  location: class BridgeMod
+/tmp/fg189/build/sources/main/java/dev/zorowarrior/bridge/BridgeMod.java:92: error: cannot find symbol
+                new ModelResourceLocation(MODID + ":bridge_chip", "inventory"));
+                    ^
+  symbol:   class ModelResourceLocation
+  location: class BridgeMod
+7 errors
+:compileJava FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileJava'.
+> Compilation failed; see the compiler error output for details.
+
+* Try:
+Run with --info or --debug option to get more log output.
+
+* Exception is:
+org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':compileJava'.
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeActions(ExecuteActionsTaskExecuter.java:69)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:46)
+	at org.gradle.api.internal.tasks.execution.PostExecutionAnalysisTaskExecuter.execute(PostExecutionAnalysisTaskExecuter.java:35)
+	at org.gradle.api.internal.tasks.execution.SkipUpToDateTaskExecuter.execute(SkipUpToDateTaskExecuter.java:66)
+	at org.gradle.api.internal.tasks.execution.ValidatingTaskExecuter.execute(ValidatingTaskExecuter.java:58)
+	at org.gradle.api.internal.tasks.execution.SkipEmptySourceFilesTaskExecuter.execute(SkipEmptySourceFilesTaskExecuter.java:52)
+	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:52)
+	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:53)
+	at org.gradle.api.internal.tasks.execution.ExecuteAtMostOnceTaskExecuter.execute(ExecuteAtMostOnceTaskExecuter.java:43)
+	at org.gradle.execution.taskgraph.DefaultTaskGraphExecuter$EventFiringTaskWorker.execute(DefaultTaskGraphExecuter.java:203)
+	at org.gradle.execution.taskgraph.DefaultTaskGraphExecuter$EventFiringTaskWorker.execute(DefaultTaskGraphExecuter.java:185)
+	at org.gradle.execution.taskgraph.AbstractTaskPlanExecutor$TaskExecutorWorker.processTask(AbstractTaskPlanExecutor.java:66)
+	at org.gradle.execution.taskgraph.AbstractTaskPlanExecutor$TaskExecutorWorker.run(AbstractTaskPlanExecutor.java:50)
+	at org.gradle.execution.taskgraph.DefaultTaskPlanExecutor.process(DefaultTaskPlanExecutor.java:25)
+	at org.gradle.execution.taskgraph.DefaultTaskGraphExecuter.execute(DefaultTaskGraphExecuter.java:110)
+	at org.gradle.execution.SelectedTaskExecutionAction.execute(SelectedTaskExecutionAction.java:37)
+	at org.gradle.execution.DefaultBuildExecuter.execute(DefaultBuildExecuter.java:37)
+	at org.gradle.execution.DefaultBuildExecuter.access$000(DefaultBuildExecuter.java:23)
+	at org.gradle.execution.DefaultBuildExecuter$1.proceed(DefaultBuildExecuter.java:43)
+	at org.gradle.execution.DryRunBuildExecutionAction.execute(DryRunBuildExecutionAction.java:32)
+	at org.gradle.execution.DefaultBuildExecuter.execute(DefaultBuildExecuter.java:37)
+	at org.gradle.execution.DefaultBuildExecuter.execute(DefaultBuildExecuter.java:30)
+	at org.gradle.initialization.DefaultGradleLauncher$4.run(DefaultGradleLauncher.java:153)
+	at org.gradle.internal.Factories$1.create(Factories.java:22)
+	at org.gradle.internal.progress.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:91)
+	at org.gradle.internal.progress.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:53)
+	at org.gradle.initialization.DefaultGradleLauncher.doBuildStages(DefaultGradleLauncher.java:150)
+	at org.gradle.initialization.DefaultGradleLauncher.access$200(DefaultGradleLauncher.java:32)
+	at org.gradle.initialization.DefaultGradleLauncher$1.create(DefaultGradleLauncher.java:98)
+	at org.gradle.initialization.DefaultGradleLauncher$1.create(DefaultGradleLauncher.java:92)
+	at org.gradle.internal.progress.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:91)
+	at org.gradle.internal.progress.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:63)
+	at org.gradle.initialization.DefaultGradleLauncher.doBuild(DefaultGradleLauncher.java:92)
+	at org.gradle.initialization.DefaultGradleLauncher.run(DefaultGradleLauncher.java:83)
+	at org.gradle.launcher.exec.InProcessBuildActionExecuter$DefaultBuildController.run(InProcessBuildActionExecuter.java:99)
+	at org.gradle.tooling.internal.provider.ExecuteBuildActionRunner.run(ExecuteBuildActionRunner.java:28)
+	at org.gradle.launcher.exec.ChainingBuildActionRunner.run(ChainingBuildActionRunner.java:35)
+	at org.gradle.launcher.exec.InProcessBuildActionExecuter.execute(InProcessBuildActionExecuter.java:48)
+	at org.gradle.launcher.exec.InProcessBuildActionExecuter.execute(InProcessBuildActionExecuter.java:30)
+	at org.gradle.launcher.exec.ContinuousBuildActionExecuter.execute(ContinuousBuildActionExecuter.java:81)
+	at org.gradle.launcher.exec.ContinuousBuildActionExecuter.execute(ContinuousBuildActionExecuter.java:46)
+	at org.gradle.launcher.exec.DaemonUsageSuggestingBuildActionExecuter.execute(DaemonUsageSuggestingBuildActionExecuter.java:51)
+	at org.gradle.launcher.exec.DaemonUsageSuggestingBuildActionExecuter.execute(DaemonUsageSuggestingBuildActionExecuter.java:28)
+	at org.gradle.launcher.cli.RunBuildAction.run(RunBuildAction.java:43)
+	at org.gradle.internal.Actions$RunnableActionAdapter.execute(Actions.java:173)
+	at org.gradle.launcher.cli.CommandLineActionFactory$ParseAndBuildAction.execute(CommandLineActionFactory.java:239)
+	at org.gradle.launcher.cli.CommandLineActionFactory$ParseAndBuildAction.execute(CommandLineActionFactory.java:212)
+	at org.gradle.launcher.cli.JavaRuntimeValidationAction.execute(JavaRuntimeValidationAction.java:35)
+	at org.gradle.launcher.cli.JavaRuntimeValidationAction.execute(JavaRuntimeValidationAction.java:24)
+	at org.gradle.launcher.cli.ExceptionReportingAction.execute(ExceptionReportingAction.java:33)
+	at org.gradle.launcher.cli.ExceptionReportingAction.execute(ExceptionReportingAction.java:22)
+	at org.gradle.launcher.cli.CommandLineActionFactory$WithLogging.execute(CommandLineActionFactory.java:205)
+	at org.gradle.launcher.cli.CommandLineActionFactory$WithLogging.execute(CommandLineActionFactory.java:169)
+	at org.gradle.launcher.Main.doAction(Main.java:33)
+	at org.gradle.launcher.bootstrap.EntryPoint.run(EntryPoint.java:45)
+	at org.gradle.launcher.bootstrap.ProcessBootstrap.runNoExit(ProcessBootstrap.java:55)
+	at org.gradle.launcher.bootstrap.ProcessBootstrap.run(ProcessBootstrap.java:36)
+	at org.gradle.launcher.GradleMain.main(GradleMain.java:23)
+Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Compilation failed; see the compiler error output for details.
+	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:48)
+	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:33)
+	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.delegateAndHandleErrors(NormalizingJavaCompiler.java:104)
+	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.execute(NormalizingJavaCompiler.java:53)
+	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.execute(NormalizingJavaCompiler.java:38)
+	at org.gradle.api.internal.tasks.compile.CleaningJavaCompilerSupport.execute(CleaningJavaCompilerSupport.java:35)
+	at org.gradle.api.internal.tasks.compile.CleaningJavaCompilerSupport.execute(CleaningJavaCompilerSupport.java:25)
+	at org.gradle.api.tasks.compile.JavaCompile.performCompilation(JavaCompile.java:163)
+	at org.gradle.api.tasks.compile.JavaCompile.compile(JavaCompile.java:145)
+	at org.gradle.api.tasks.compile.JavaCompile.compile(JavaCompile.java:93)
+	at org.gradle.internal.reflect.JavaMethod.invoke(JavaMethod.java:75)
+	at org.gradle.api.internal.project.taskfactory.AnnotationProcessingTaskFactory$IncrementalTaskAction.doExecute(AnnotationProcessingTaskFactory.java:245)
+	at org.gradle.api.internal.project.taskfactory.AnnotationProcessingTaskFactory$StandardTaskAction.execute(AnnotationProcessingTaskFactory.java:221)
+	at org.gradle.api.internal.project.taskfactory.AnnotationProcessingTaskFactory$IncrementalTaskAction.execute(AnnotationProcessingTaskFactory.java:232)
+	at org.gradle.api.internal.project.taskfactory.AnnotationProcessingTaskFactory$StandardTaskAction.execute(AnnotationProcessingTaskFactory.java:210)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeAction(ExecuteActionsTaskExecuter.java:80)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeActions(ExecuteActionsTaskExecuter.java:61)
+	... 57 more
+
+
+BUILD FAILED
+
+Total time: 48.813 secs
+FAILED with Gradle 2.14.1
+total 12
+drwxr-xr-x 2 runner runner 4096 Nov 17 03:20 .
+drwxr-xr-x 4 runner runner 4096 Nov 17 03:20 ..
+-rw-r--r-- 1 runner runner   16 Nov 17 03:20 VERIFY.txt
