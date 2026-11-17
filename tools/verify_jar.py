@@ -133,7 +133,27 @@ def skip_members(data, pos, count):
     return pos
 
 
-def check_metadata(chk, zf, names):
+def _strings(data):
+    """Best-effort: pull printable runs out of a class file.
+
+    Used only to answer narrow questions like "is ModInitializer referenced?",
+    so a heuristic scan is honest and sufficient here.
+    """
+    out = []
+    cur = []
+    for b in data:
+        if 32 <= b < 127 or b in (ord('/'), ord('.'), ord(';')):
+            cur.append(chr(b))
+        else:
+            if len(cur) >= 6:
+                out.append(''.join(cur))
+            cur = []
+    if len(cur) >= 6:
+        out.append(''.join(cur))
+    return out
+
+
+def check_metadata(chk, zf, names, class_strings):
     """Find loader metadata, and check it points at classes we actually ship."""
     classes = {n[:-6].replace('/', '.') for n in names if n.endswith('.class')}
 
@@ -170,10 +190,33 @@ def check_metadata(chk, zf, names):
         found.append('neoforge')
         txt = zf.read('META-INF/neoforge.mods.toml').decode('utf-8', 'replace')
         chk.ok_('neoforge.mods.toml present (%d bytes)' % len(txt))
+    if 'mcmod.info' in names:
+        # Forge 1.5-1.12 read mcmod.info from the jar root; mods.toml came in 1.13.
+        found.append('forge-legacy')
+        try:
+            info = json.loads(zf.read('mcmod.info'))
+        except Exception as exc:
+            chk.fail('mcmod.info does not parse: %s' % exc)
+            info = None
+        if isinstance(info, list) and info:
+            entry = info[0]
+            chk.ok_('mcmod.info: modid=%s mcversion=%s'
+                    % (entry.get('modid'), entry.get('mcversion')))
+            if entry.get('modid') != 'zoro_bridge':
+                chk.fail('unexpected modid %r in mcmod.info' % entry.get('modid'))
+        elif info is not None:
+            chk.fail('mcmod.info is not a non-empty list')
+
     if not found:
         chk.fail('no loader metadata: this would install nowhere')
     else:
         chk.ok_('loader metadata: %s' % ', '.join(found))
+
+    if 'forge-legacy' in found:
+        if any('net/minecraftforge/fml/common/Mod' in s for s in class_strings):
+            chk.ok_('@Mod annotation referenced from a class (Forge will find it)')
+        else:
+            chk.fail('no @Mod annotation in any class: Forge would not load this')
 
     # mixin configs referenced from metadata must exist
     for cfg_name in ('zoro_bridge.mixins.json', 'bridge.mixins.json'):
@@ -217,8 +260,11 @@ def check_jar(path, chk):
         return
 
     total_code = 0
+    class_strings = []
     for cn in class_names:
-        info = parse_class(zf.read(cn), cn, chk)
+        raw = zf.read(cn)
+        class_strings.extend(_strings(raw))
+        info = parse_class(raw, cn, chk)
         if info:
             total_code += info['code_bytes']
             chk.ok_('%s: class v%d.%d, %d methods, %d code bytes'
@@ -244,7 +290,7 @@ def check_jar(path, chk):
                 w, h = struct.unpack('>II', d[16:24])
                 chk.ok_('%s: PNG %dx%d' % (n, w, h))
 
-    check_metadata(chk, zf, names)
+    check_metadata(chk, zf, names, class_strings)
     zf.close()
 
 
