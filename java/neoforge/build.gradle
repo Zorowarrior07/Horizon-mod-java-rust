@@ -1,0 +1,73 @@
+// ZOROWARRIOR HORIZON BRIDGE — NeoForge build for Minecraft 1.21.x.
+//
+// ModDevGradle pulls the NeoForge userdev jar (which carries Minecraft with
+// Mojang official names) and runs the NeoForm pipeline, so the source compiles
+// against real game classes and the output is remapped to what NeoForge loads
+// at runtime.
+plugins {
+    id 'net.neoforged.moddev' version '2.0.107'
+    id 'java'
+}
+
+group = 'dev.zorowarrior'
+version = project.mod_version
+
+base {
+    archivesName = "zoro_bridge-${project.mod_version}-neoforge-${project.mc_version}"
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(project.java_target as int)
+    }
+}
+
+neoForge {
+    version = project.neo_version
+    runs {
+        client { client() }
+    }
+    mods {
+        zoro_bridge { sourceSet sourceSets.main }
+    }
+}
+
+// Same guard as the Fabric build: an empty source set must fail, not ship.
+tasks.register('checkSources') {
+    doLast {
+        def dirs = sourceSets.main.java.srcDirs.findAll { it.isDirectory() }
+        def count = dirs.sum { d -> fileTree(d).matching { include '**/*.java' }.files.size() } as int
+        if (count == 0) {
+            throw new GradleException("no .java files in " + dirs)
+        }
+        logger.lifecycle("checkSources: ${count} java file(s)")
+    }
+}
+compileJava.dependsOn checkSources
+
+processResources {
+    inputs.property 'version', project.mod_version
+    filesMatching('META-INF/neoforge.mods.toml') {
+        expand version: project.mod_version, minecraft: project.mc_version
+    }
+}
+
+tasks.register('buildFacts') {
+    def out = layout.buildDirectory.file('bridge-build-facts.json')
+    outputs.file(out)
+    doLast {
+        def file = out.get().asFile
+        file.parentFile.mkdirs()
+        file.text = groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson([
+            schema: 'zoro-horizon-bridge/java-build@1',
+            loader: 'neoforge',
+            mappings: 'mojang-official (NeoForm)',
+            minecraft: project.mc_version,
+            neoforge: project.neo_version,
+            java_target: project.java_target as int,
+            jar: "zoro_bridge-${project.mod_version}-neoforge-${project.mc_version}.jar",
+            gradle: gradle.gradleVersion
+        ]))
+    }
+}
+build.dependsOn buildFacts

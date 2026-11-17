@@ -1,0 +1,25 @@
+modLoader = "javafml"
+loaderVersion = "[4,)"
+
+[[mods]]
+modId = "zoro_bridge"
+version = "1.0.0"
+displayName = "ZOROWARRIOR HORIZON BRIDGE"
+description = '''
+Bridge beacon and bridge chip. NeoForge 1.21.x build.
+This is a Java Edition mod jar; the Horizon desktop launcher has no JVM and
+ships a separate .hmod instead.
+'''
+license = "MIT"
+[[dependencies.zoro_bridge]]
+    modId = "neoforge"
+    type = "required"
+    versionRange = "[21.1.0,)"
+    ordering = "NONE"
+    side = "BOTH"
+[[dependencies.zoro_bridge]]
+    modId = "minecraft"
+    type = "required"
+    versionRange = "[1.21,1.22)"
+    ordering = "NONE"
+    side = "BOTH"

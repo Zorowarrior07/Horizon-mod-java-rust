@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "zoro_bridge:block/bridge_beacon"
+  }
+}

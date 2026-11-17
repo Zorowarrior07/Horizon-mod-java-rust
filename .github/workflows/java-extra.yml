@@ -1,0 +1,96 @@
+name: java-extra
+
+# Builds the two non-Fabric targets, each with its own loader and JDK.
+# NeoForge 1.21.x needs a JDK 21 toolchain; Forge 1.8.9 needs a real JDK 8 and
+# ForgeGradle 2.3, which only runs on Gradle 4.x.
+on:
+  workflow_dispatch:
+  push:
+    paths: ['java/neoforge/**', 'java/forge189/**', '.github/workflows/java-extra.yml']
+
+permissions:
+  contents: write
+
+jobs:
+  neoforge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: '21' }
+      - uses: gradle/actions/setup-gradle@v4
+        with: { gradle-version: '8.10.2' }
+      - name: Build NeoForge
+        continue-on-error: true
+        run: |
+          mkdir -p ci/logs artifacts/java-1.21.x
+          ( cd java/neoforge && gradle --no-daemon build \
+              -Pmc_version=1.21.1 -Pneo_version=21.1.266 -Pjava_target=21 ) \
+              > ci/logs/neoforge-1.21.1.log 2>&1
+          echo "exit=$?"
+          grep -nE "error:|FAILURE|What went wrong|Caused by:|Task :compileJava" ci/logs/neoforge-1.21.1.log | head -30 || true
+          cp java/neoforge/build/libs/*.jar artifacts/java-1.21.x/ 2>/dev/null || true
+          cp java/neoforge/build/bridge-build-facts.json ci/logs/neoforge-1.21.1.facts.json 2>/dev/null || true
+      - name: Commit
+        if: always()
+        run: |
+          git config user.name ci; git config user.email ci@example.invalid
+          git add -A ci artifacts
+          git commit -m "ci: neoforge $(date -u +%FT%TZ)" || true
+          git push
+
+  forge189:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: '8' }
+      - name: Build Forge 1.8.9 (ForgeGradle 2.3 on Gradle 4.10.3)
+        continue-on-error: true
+        run: |
+          mkdir -p ci/logs artifacts/java-1.8.9
+          cat > java/forge189/build.gradle <<'EOF'
+          buildscript {
+              repositories {
+                  maven { url = 'https://maven.minecraftforge.net' }
+                  maven { url = 'https://repo.maven.apache.org/maven2' }
+                  mavenCentral()
+              }
+              dependencies {
+                  classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+              }
+          }
+          apply plugin: 'net.minecraftforge.gradle.forge'
+
+          version = '1.0.0'
+          group = 'dev.zorowarrior'
+          archivesBaseName = 'zoro_bridge-1.0.0-forge-1.8.9'
+
+          minecraft {
+              version = '1.8.9-11.15.0.1659'
+              runDir = 'run'
+              mappings = 'stable_22'
+          }
+
+          sourceCompatibility = 1.8
+          targetCompatibility = 1.8
+
+          jar {
+              manifest { attributes 'FMLAT': '' }
+          }
+          EOF
+          cd java/forge189 && timeout 1500 gradle --no-daemon --offline=false build --stacktrace > ../../ci/logs/forge-1.8.9.log 2>&1
+          echo "exit=$?" >> ../../ci/logs/forge-1.8.9.log
+          cd ../..
+          grep -nE "error:|FAILURE|What went wrong|Caused by:|Could not|BUILD" ci/logs/forge-1.8.9.log | head -40 || true
+          cp java/forge189/build/libs/*.jar artifacts/java-1.8.9/ 2>/dev/null || true
+          ls -la artifacts/java-1.8.9
+      - name: Commit
+        if: always()
+        run: |
+          git config user.name ci; git config user.email ci@example.invalid
+          git add -A ci artifacts
+          git commit -m "ci: forge189 $(date -u +%FT%TZ)" || true
+          git push

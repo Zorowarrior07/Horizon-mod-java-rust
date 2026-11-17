@@ -1,0 +1,14 @@
+[
+  {
+    "modid": "zoro_bridge",
+    "name": "ZOROWARRIOR HORIZON BRIDGE",
+    "description": "Bridge beacon and bridge chip. Forge 1.8.9 build; Horizon cannot run this jar.",
+    "version": "1.0.0",
+    "mcversion": "1.8.9",
+    "authorList": [ "Zorowarrior" ],
+    "credits": "Zorowarrior",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]
