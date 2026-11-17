@@ -68,3 +68,13 @@ tasks.register('buildFacts') {
     }
 }
 build.dependsOn buildFacts
+
+// ModDevGradle's dev runs scan the compiled classes directory as the mod file,
+// so a resource that only reaches build/resources is not seen and NeoForge
+// rejects the mod with "Missing license". Copy the metadata next to the classes.
+tasks.register('copyModsToml', Copy) {
+    from('src/main/resources/META-INF/neoforge.mods.toml')
+    into(layout.buildDirectory.dir('classes/java/main/META-INF'))
+}
+tasks.matching { it.name == 'compileJava' }.configureEach { finalizedBy 'copyModsToml' }
+tasks.matching { it.name == 'processResources' }.configureEach { finalizedBy 'copyModsToml' }
