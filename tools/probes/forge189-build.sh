@@ -44,7 +44,15 @@ cp "$repo_java"/forge189/build.gradle "$repo_java"/forge189/settings.gradle "$di
 
 # A JDK 8 JVM for Gradle 4.x / 2.x, whatever its directory is called.
 jdk8=$(ls -d /usr/lib/jvm/*8* 2>/dev/null | head -1)
+if [ -z "$jdk8" ] && [ -n "${JAVA_HOME_8_X64:-}" ]; then jdk8="$JAVA_HOME_8_X64"; fi
+if [ -z "$jdk8" ]; then
+  # setup-java leaves the JDK's real path in the environment under this name
+  jdk8=$(env | grep -oE 'JAVA_HOME_[0-9]+_X64=[^ ]*' | grep '_8_' | cut -d= -f2)
+fi
+echo "jvm dirs: $(ls /usr/lib/jvm 2>/dev/null | tr '\n' ' ')" >> "$out"
+echo "JAVA_HOME_8_X64=${JAVA_HOME_8_X64:-unset}" >> "$out"
 echo "JDK8=$jdk8" >> "$out"
+[ -d "$dir" ] || dir=/tmp/fg189
 if [ -z "$jdk8" ]; then
   echo "FATAL: no JDK 8 found" >> "$out"
   exit 1

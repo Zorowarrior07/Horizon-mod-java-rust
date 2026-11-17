@@ -16,7 +16,7 @@ rootProject.name = 'neo26'
 G
 cat > build.gradle <<G
 plugins {
-    id 'net.neoforged.moddev' version '2.0.107'
+    id 'net.neoforged.moddev' version '2.0.148'
     id 'java'
 }
 java { toolchain { languageVersion = JavaLanguageVersion.of(25) } }
