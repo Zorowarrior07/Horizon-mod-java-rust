@@ -2,14 +2,14 @@ package dev.zorowarrior.bridge;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -18,14 +18,22 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 /**
  * ZOROWARRIOR HORIZON BRIDGE — Minecraft 1.8.9, Forge.
  *
- * <p>This is a genuinely different implementation, not a copy: 1.8.9 predates
- * the registry system entirely. Blocks and items are registered through
- * {@code GameRegistry.register} with a {@code setRegistryName}, there are no
- * {@code Block.Settings}, and models are registered per-item at runtime through
- * {@code ModelLoader}. Nothing here compiles on 1.21.x, and the 1.21.x code does
- * not compile here — which is exactly why they are separate jars.
+ * <p>A genuinely different implementation, not a copy. 1.8.9 predates the
+ * registry system: blocks and items are handed to {@code GameRegistry.register}
+ * with a name, there is no {@code Block.Settings}, and models are registered at
+ * runtime through {@code ModelLoader}. Nothing here compiles on 1.21.x and the
+ * 1.21.x source does not compile here — which is why the jars are separate.
  *
- * <p>1.8.9 Forge also requires a Java 8 class-file level, enforced by the build.
+ * <p>Details that differ from modern versions and are easy to get wrong:
+ * <ul>
+ *   <li>{@code ModelResourceLocation} is in {@code net.minecraft.client.resources.model}
+ *       (it moved to {@code ...client.renderer.block.model} in 1.9).</li>
+ *   <li>{@code Block.setHarvestLevel} returns {@code void}, so it cannot be
+ *       chained onto the block builder.</li>
+ *   <li>{@code GameRegistry.register} takes a name, not a {@code setRegistryName}.</li>
+ *   <li>Recipes are code, not JSON — data packs did not exist in 1.8.9.</li>
+ *   <li>Textures live in {@code textures/blocks} and {@code textures/items}.</li>
+ * </ul>
  */
 @Mod(modid = BridgeMod.MODID, version = BridgeMod.VERSION,
      name = "ZOROWARRIOR HORIZON BRIDGE",
@@ -40,29 +48,26 @@ public class BridgeMod {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        // 1.8.9: Material + setHardness/setResistance/setLightLevel, no builder.
-        bridgeBeacon = new Block(Material.rock)
-                .setHardness(3.5F)
-                .setResistance(6.0F)
-                .setLightLevel(12.0F / 15.0F)
-                .setStepSound(Block.soundTypeStone)
-                .setHarvestLevel("pickaxe", 2)
-                .setUnlocalizedName("bridge_beacon")
-                .setCreativeTab(CreativeTabs.tabBlock);
-        bridgeBeacon.setRegistryName(new ResourceLocation(MODID, "bridge_beacon"));
-        GameRegistry.register(bridgeBeacon);
+        bridgeBeacon = new Block(Material.rock);
+        bridgeBeacon.setHardness(3.5F);
+        bridgeBeacon.setResistance(6.0F);
+        bridgeBeacon.setLightLevel(12.0F / 15.0F);
+        bridgeBeacon.setStepSound(Block.soundTypeStone);
+        bridgeBeacon.setUnlocalizedName("bridge_beacon");
+        bridgeBeacon.setCreativeTab(CreativeTabs.tabBlock);
+        // Returns void in 1.8.9 — cannot be part of a fluent chain.
+        bridgeBeacon.setHarvestLevel("pickaxe", 2);
+        GameRegistry.register(bridgeBeacon, "bridge_beacon");
 
-        bridgeChip = new Item()
-                .setUnlocalizedName("bridge_chip")
-                .setCreativeTab(CreativeTabs.tabMaterials)
-                .setMaxStackSize(64);
-        bridgeChip.setRegistryName(new ResourceLocation(MODID, "bridge_chip"));
-        GameRegistry.register(bridgeChip);
+        bridgeChip = new Item();
+        bridgeChip.setUnlocalizedName("bridge_chip");
+        bridgeChip.setCreativeTab(CreativeTabs.tabMaterials);
+        bridgeChip.setMaxStackSize(64);
+        GameRegistry.register(bridgeChip, "bridge_chip");
 
-        GameRegistry.register(new ItemBlock(bridgeBeacon)
-                .setRegistryName(bridgeBeacon.getRegistryName()));
+        GameRegistry.register(new ItemBlock(bridgeBeacon), "bridge_beacon");
 
-        // Recipes in 1.8.9 are code, not JSON: data packs did not exist yet.
+        // 1.8.9 recipes: position strings plus a key, resolved at load time.
         GameRegistry.addRecipe(new ItemStack(bridgeChip),
                 " G ",
                 "GDG",
@@ -78,12 +83,13 @@ public class BridgeMod {
     }
 
     /**
-     * 1.8.9 loads models from the classpath at runtime, so each item needs an
-     * explicit model registration — there is no "items/<name>.json" convention.
+     * 1.8.9 resolves models from {@code blockstates/} and {@code models/} via the
+     * resource pack, but the item-to-model binding for an ItemBlock still has to
+     * be declared in code.
      */
     @SideOnly(Side.CLIENT)
     @Mod.EventHandler
-    public void initModels(net.minecraftforge.fml.common.event.FMLInitializationEvent event) {
+    public void init(FMLInitializationEvent event) {
         ModelLoader.setCustomModelResourceLocation(
                 Item.getItemFromBlock(bridgeBeacon), 0,
                 new ModelResourceLocation(MODID + ":bridge_beacon", "inventory"));
