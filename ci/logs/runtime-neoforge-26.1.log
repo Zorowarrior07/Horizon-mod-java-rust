@@ -12,31 +12,31 @@ checkSources: 1 java file(s)
 Loaded 127 artifacts from /home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/build/tmp/createMinecraftArtifacts/nfrt_artifact_manifest.properties
 [1m*** Started working on [4mdownloadManifest[23;0m[23;0m
   ↓ https://piston-meta.mojang.com/mc/game/version_manifest_v2.json
- [1m[92m✓[23;0m Completed [4mdownloadManifest[23;0m in 0.29s
+ [1m[92m✓[23;0m Completed [4mdownloadManifest[23;0m in 0.35s
 [1m*** Started working on [4mdownloadJson[23;0m[23;0m
   ↓ https://piston-meta.mojang.com/mc/game/version_manifest_v2.json
   ↓ https://piston-meta.mojang.com/v1/packages/0bbfbdb8272531060afbba5c671fe4ed3dd6f72f/26.1.2.json
  [1m[92m✓[23;0m Completed [4mdownloadJson[23;0m in 0.06s
-[1m*** Started working on [4mdownloadClient[23;0m[23;0m
 [1m*** Started working on [4mdownloadServer[23;0m[23;0m
-  ↓ https://piston-data.mojang.com/v1/objects/97ccd4c0ed3f81bbb7bfacddd1090b0c56f9bc51/server.jar
+[1m*** Started working on [4mdownloadClient[23;0m[23;0m
   ↓ https://piston-data.mojang.com/v1/objects/4e618f09a0c649dde3fdf829df443ce0b8831e65/client.jar
- [1m[92m✓[23;0m Completed [4mdownloadClient[23;0m in 0.55s
- [1m[92m✓[23;0m Completed [4mdownloadServer[23;0m in 0.64s
+  ↓ https://piston-data.mojang.com/v1/objects/97ccd4c0ed3f81bbb7bfacddd1090b0c56f9bc51/server.jar
+ [1m[92m✓[23;0m Completed [4mdownloadClient[23;0m in 0.80s
+ [1m[92m✓[23;0m Completed [4mdownloadServer[23;0m in 1.01s
 [1m*** Started working on [4mpreProcessJar[23;0m[23;0m
  ↳ Running external tool net.neoforged.installertools:installertools:4.0.16:fatjar
- [1m[92m✓[23;0m Completed [4mpreProcessJar[23;0m in 2.65s
+ [1m[92m✓[23;0m Completed [4mpreProcessJar[23;0m in 3.71s
 [1m*** Started working on [4mbinaryPatch[23;0m[23;0m
   [33mWARNING: [23;0mnet.neoforged.installertools:binarypatcher:4.0.12:fatjar is not present in the artifact manifest
   ↓ https://maven.neoforged.net/releases/net/neoforged/installertools/binarypatcher/4.0.12/binarypatcher-4.0.12-fatjar.jar
  ↳ Running external tool net.neoforged.installertools:binarypatcher:4.0.12:fatjar
- [1m[92m✓[23;0m Completed [4mbinaryPatch[23;0m in 2.85s
+ [1m[92m✓[23;0m Completed [4mbinaryPatch[23;0m in 3.71s
 [1m*** Started working on [4mcopyUnpatchedClasses[23;0m[23;0m
- [1m[92m✓[23;0m Completed [4mcopyUnpatchedClasses[23;0m in 2.35s
+ [1m[92m✓[23;0m Completed [4mcopyUnpatchedClasses[23;0m in 2.81s
 [1m*** Started working on [4mapplyDevTransforms[23;0m[23;0m
  ↳ Running external tool net.neoforged.installertools:installertools:4.0.12:fatjar
- [1m[92m✓[23;0m Completed [4mapplyDevTransforms[23;0m in 2.40s
-Total runtime: 11.77s
+ [1m[92m✓[23;0m Completed [4mapplyDevTransforms[23;0m in 3.23s
+Total runtime: 15.54s
 
 
 > Task :compileJava
@@ -99,32 +99,123 @@ Using Minecraft asset root: /home/runner/.gradle/caches/neoformruntime/assets
 Downloaded 4752 files with a total size of 438 MiB
 
 > Task :prepareServerRun
-> Task :runServer FAILED
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run-1794891207394.json
 
-[Incubating] Problems report is available at: file:///home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/build/reports/problems/problems-report.html
+> Task :runServer FAILED
+2026-11-17T05:01:24.957638437Z main WARN Advanced terminal features are not available in this environment
+[05:01:25] [main/INFO] [ne.ne.fm.st.Entrypoint/]: JVM Uptime at startup: 103ms
+[05:01:25] [main/INFO] [ne.ne.fm.lo.FMLLoader/]: Starting FancyModLoader version 11.0.15 (DEDICATED_SERVER in DEV)
+[05:01:25] [main/INFO] [ne.ne.fm.lo.FMLLoader/]: Game directory: /home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/run
+[05:01:25] [main/INFO] [ne.ne.fm.lo.EarlyServiceDiscovery/]: Found 2 early service jars (out of 93) in 20ms
+[05:01:25] [main/INFO] [ne.ne.fm.lo.FMLLoader/]: Loading FML Early Services:
+[05:01:25] [main/INFO] [ne.ne.fm.lo.FMLLoader/]:  - /home/runner/.gradle/caches/modules-2/files-2.1/net.neoforged.fancymodloader/loader/11.0.15/69ddd98736a6b095783523404d1af8992842722/loader-11.0.15.jar
+[05:01:25] [main/INFO] [ne.ne.fm.lo.FMLLoader/]:  - /home/runner/.gradle/caches/modules-2/files-2.1/net.neoforged.fancymodloader/earlydisplay/11.0.15/b254aa4ec40828f8ce65411dcb7fb9f6ce008064/earlydisplay-11.0.15.jar
+[05:01:25] [main/INFO] [ne.ne.fm.lo.ImmediateWindowHandler/]: Not loading early display in headless mode.
+[05:01:25] [main/INFO] [ne.ne.fm.lo.mo.lo.GameLocator/]: Detected a joined NeoForge and Minecraft configuration. Applying filtering...
+[05:01:25] [main/INFO] [ne.ne.fm.lo.mo.lo.InDevFolderLocator/CORE]: Got mod coordinates zoro_bridge%%/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/build/classes/java/main:zoro_bridge%%/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/build/resources/main from env
+[05:01:25] [main/INFO] [ne.ne.fm.lo.mo.lo.JarInJarDependencyLocator/]: Found 2 dependencies adding them to mods collection
+[05:01:25] [main/INFO] [ne.ne.fm.lo.mo.ModDiscoverer/]: 
+     Mod List:
+		Name Version (Mod Id)
+
+		Minecraft 26.1.2 (minecraft)
+		NeoForge 26.1.2.126 (neoforge)
+[05:01:25] [main/ERROR] [ne.ne.fm.lo.FMLLoader/]: File /home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/build/classes/java/main is not a valid mod file
+net.neoforged.neoforgespi.locating.InvalidModFileException: Missing license (main)
+	at net.neoforged.fml.loading.moddiscovery.ModFileInfo.<init>(ModFileInfo.java:59) ~[loader-11.0.15.jar:11.0] {}
+	at net.neoforged.fml.loading.moddiscovery.ModFileParser.modsTomlParser(ModFileParser.java:51) ~[loader-11.0.15.jar:11.0] {}
+	at net.neoforged.fml.loading.moddiscovery.ModFileParser.readModList(ModFileParser.java:32) ~[loader-11.0.15.jar:11.0] {}
+	at net.neoforged.fml.loading.moddiscovery.ModFile.<init>(ModFile.java:79) ~[loader-11.0.15.jar:11.0] {}
+	at net.neoforged.fml.loading.moddiscovery.ModFile.<init>(ModFile.java:70) ~[loader-11.0.15.jar:11.0] {}
+	at net.neoforged.fml.loading.moddiscovery.readers.JarModsDotTomlModFileReader.createModFile(JarModsDotTomlModFileReader.java:45) ~[loader-11.0.15.jar:11.0] {}
+	at net.neoforged.fml.loading.moddiscovery.readers.JarModsDotTomlModFileReader.read(JarModsDotTomlModFileReader.java:92) ~[loader-11.0.15.jar:11.0] {}
+	at net.neoforged.fml.loading.moddiscovery.ModDiscoverer$DiscoveryPipeline.addJarContent(ModDiscoverer.java:235) ~[loader-11.0.15.jar:11.0] {}
+	at net.neoforged.fml.loading.moddiscovery.locators.InDevFolderLocator.findCandidates(InDevFolderLocator.java:46) ~[loader-11.0.15.jar:11.0] {}
+	at net.neoforged.fml.loading.moddiscovery.ModDiscoverer.discoverMods(ModDiscoverer.java:79) ~[loader-11.0.15.jar:11.0] {}
+	at net.neoforged.fml.loading.FMLLoader.runDiscovery(FMLLoader.java:673) ~[loader-11.0.15.jar:11.0] {}
+	at net.neoforged.fml.loading.FMLLoader.create(FMLLoader.java:346) [loader-11.0.15.jar:11.0] {}
+	at net.neoforged.fml.startup.Entrypoint.startup(Entrypoint.java:65) [loader-11.0.15.jar:11.0] {}
+	at net.neoforged.fml.startup.Server.main(Server.java:17) [loader-11.0.15.jar:11.0] {}
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?] {}
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[?:?] {}
+	at net.neoforged.devlaunch.Main.main(Main.java:57) [DevLaunch-1.0.2.jar:?] {}
+[05:01:25] [main/INFO] [ne.ne.fm.lo.FMLLoader/]: Closing FML Loader 4febb875
+[05:01:25] [main/ERROR] [ne.ne.fm.lo.mo.BackgroundScanHandler/SCAN]: An error occurred scanning file composite(filtered(jar(/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/build/moddev/artifacts/minecraft-patched-26.1.2.126.jar)), filtered(jar(/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/build/moddev/artifacts/minecraft-patched-26.1.2.126.jar)))
+java.util.concurrent.CancellationException: null
+	at java.base/java.util.concurrent.CompletableFuture.cancel(CompletableFuture.java:2552) [?:?] {}
+	at net.neoforged.fml.loading.moddiscovery.ModFile.close(ModFile.java:246) [loader-11.0.15.jar:11.0] {}
+	at net.neoforged.fml.loading.FMLLoader.close(FMLLoader.java:239) [loader-11.0.15.jar:11.0] {}
+	at net.neoforged.fml.loading.FMLLoader.create(FMLLoader.java:415) [loader-11.0.15.jar:11.0] {}
+	at net.neoforged.fml.startup.Entrypoint.startup(Entrypoint.java:65) [loader-11.0.15.jar:11.0] {}
+	at net.neoforged.fml.startup.Server.main(Server.java:17) [loader-11.0.15.jar:11.0] {}
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?] {}
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[?:?] {}
+	at net.neoforged.devlaunch.Main.main(Main.java:57) [DevLaunch-1.0.2.jar:?] {}
+[05:01:25] [main/ERROR] [ne.ne.fm.lo.mo.BackgroundScanHandler/SCAN]: An error occurred scanning file composite(filtered(jar(/home/runner/.gradle/caches/modules-2/files-2.1/net.neoforged/neoforge/26.1.2.126/e03e444b0e0793b0fa76b967d944af6fa855516e/neoforge-26.1.2.126-universal.jar)))
+java.util.concurrent.CancellationException: null
+	at java.base/java.util.concurrent.CompletableFuture.cancel(CompletableFuture.java:2552) [?:?] {}
+	at net.neoforged.fml.loading.moddiscovery.ModFile.close(ModFile.java:246) [loader-11.0.15.jar:11.0] {}
+	at net.neoforged.fml.loading.FMLLoader.close(FMLLoader.java:239) [loader-11.0.15.jar:11.0] {}
+	at net.neoforged.fml.loading.FMLLoader.create(FMLLoader.java:415) [loader-11.0.15.jar:11.0] {}
+	at net.neoforged.fml.startup.Entrypoint.startup(Entrypoint.java:65) [loader-11.0.15.jar:11.0] {}
+	at net.neoforged.fml.startup.Server.main(Server.java:17) [loader-11.0.15.jar:11.0] {}
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?] {}
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[?:?] {}
+	at net.neoforged.devlaunch.Main.main(Main.java:57) [DevLaunch-1.0.2.jar:?] {}
+[05:01:25] [main/ERROR] [ne.ne.fm.lo.mo.BackgroundScanHandler/SCAN]: An error occurred scanning file composite(filtered(jar(/home/runner/.gradle/caches/modules-2/files-2.1/net.neoforged/neoforge/26.1.2.126/e03e444b0e0793b0fa76b967d944af6fa855516e/neoforge-26.1.2.126-universal.jar))) > jar(/home/runner/.gradle/caches/modules-2/files-2.1/net.neoforged/neoforge/26.1.2.126/e03e444b0e0793b0fa76b967d944af6fa855516e/neoforge-26.1.2.126-universal.jar > mixinextras-neoforge-0.5.5.jar)
+java.util.concurrent.CancellationException: null
+	at java.base/java.util.concurrent.CompletableFuture.cancel(CompletableFuture.java:2552) [?:?] {}
+	at net.neoforged.fml.loading.moddiscovery.ModFile.close(ModFile.java:246) [loader-11.0.15.jar:11.0] {}
+	at net.neoforged.fml.loading.FMLLoader.close(FMLLoader.java:245) [loader-11.0.15.jar:11.0] {}
+	at net.neoforged.fml.loading.FMLLoader.create(FMLLoader.java:415) [loader-11.0.15.jar:11.0] {}
+	at net.neoforged.fml.startup.Entrypoint.startup(Entrypoint.java:65) [loader-11.0.15.jar:11.0] {}
+	at net.neoforged.fml.startup.Server.main(Server.java:17) [loader-11.0.15.jar:11.0] {}
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?] {}
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[?:?] {}
+	at net.neoforged.devlaunch.Main.main(Main.java:57) [DevLaunch-1.0.2.jar:?] {}
+[05:01:25] [main/INFO] [ne.ne.fm.ModLoader/]: Clearing ModLoader
+[05:01:25] [main/ERROR] [ne.ne.fm.st.Entrypoint/]: Failed to start FML: net.neoforged.fml.ModLoadingException: Loading errors encountered:
+	- File /home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/build/classes/java/main is not a valid mod file
+
+	at net.neoforged.fml.loading.FMLLoader.create(FMLLoader.java:356)
+	at net.neoforged.fml.startup.Entrypoint.startup(Entrypoint.java:65)
+	at net.neoforged.fml.startup.Server.main(Server.java:17)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at net.neoforged.devlaunch.Main.main(Main.java:57)
+
+net.neoforged.fml.startup.FatalStartupException: Failed to start FML: net.neoforged.fml.ModLoadingException: Loading errors encountered:
+	- File /home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/build/classes/java/main is not a valid mod file
+
+	at net.neoforged.fml.startup.Entrypoint.startup(Entrypoint.java:71)
+	at net.neoforged.fml.startup.Server.main(Server.java:17)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at net.neoforged.devlaunch.Main.main(Main.java:57)
+Caused by: net.neoforged.fml.ModLoadingException: Loading errors encountered:
+	- File /home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/build/classes/java/main is not a valid mod file
+
+	at net.neoforged.fml.loading.FMLLoader.create(FMLLoader.java:356)
+	at net.neoforged.fml.startup.Entrypoint.startup(Entrypoint.java:65)
+	... 4 more
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run-1794891626511.json
 
 FAILURE: Build failed with an exception.
 
 * What went wrong:
-A problem was found with the configuration of task ':runServer' (type 'RunGameTask').
-Property has implicit dependency
-  Gradle detected a problem with the following location: '/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/build/classes/java/main'
-    Task ':runServer' uses this output of task ':copyModsToml' without declaring an explicit or implicit dependency. This can lead to incorrect results being produced, depending on what order the tasks are executed
-    For more information, please refer to https://docs.gradle.org/9.9.1/userguide/validation_problems.html#implicit_dependency in the Gradle documentation.
-    Possible solutions:
-      1. Declare task ':copyModsToml' as an input of ':runServer'.
-      2. Declare an explicit dependency on ':copyModsToml' from ':runServer' using Task#dependsOn.
-      3. Declare an explicit dependency on ':copyModsToml' from ':runServer' using Task#mustRunAfter.
+Execution failed for task ':runServer' (registered in build file 'build.gradle').
+> Process 'command '/usr/lib/jvm/temurin-25-jdk-amd64/bin/java'' finished with non-zero exit value 1
 
 * Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
 > Run with --scan to get full insights from a Build Scan (powered by Develocity).
+> Get more help at https://help.gradle.org.
 
-BUILD FAILED in 1m 1s
+BUILD FAILED in 1m 11s
 8 actionable tasks: 8 executed
 gradle exit=1 (expected: 124 for the timeout, or non-zero if stopped)
 ----- verdict
   FAIL  server reached "Done" (the world loaded)
-  FAIL  NeoForge knows the mod id zoro_bridge
+  OK    NeoForge knows the mod id zoro_bridge
   FAIL  our mod constructor ran
 ----- result: FAIL
