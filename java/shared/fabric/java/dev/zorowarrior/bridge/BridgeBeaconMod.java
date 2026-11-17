@@ -1,76 +1,67 @@
 package dev.zorowarrior.bridge;
 
 import net.fabricmc.api.ModInitializer;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * ZOROWARRIOR HORIZON BRIDGE — the Java Edition half.
+ * ZOROWARRIOR HORIZON BRIDGE — Java Edition, Fabric build.
  *
- * <p>This mod deliberately uses nothing but vanilla classes. It does not depend
- * on the Fabric API, so it installs with Fabric Loader alone and there is one
- * less moving part between "compiled" and "runs".
+ * <p>This file is written in <b>Yarn</b> names, because that is the mapping set
+ * the Fabric toolchain compiles and remaps against (`net.minecraft.block.Block`,
+ * `net.minecraft.util.Identifier`). The NeoForge and Forge builds of the same
+ * mod use Mojang official names instead — same content, different names, which
+ * is why they are separate sources and separate jars.
  *
- * <p>What it adds: a {@code zoro_bridge:bridge_beacon} block and a
- * {@code zoro_bridge:bridge_chip} item. They are the same names and the same
- * textures the Horizon {@code .hmod} ships, so a world built in one can be
- * recognised in the other — that is the whole "bridge" idea. It is a content
- * bridge, not a runtime bridge: Horizon has no JVM, so this jar cannot and does
- * not load there.
+ * <p>Content added: the {@code zoro_bridge:bridge_beacon} block and the
+ * {@code zoro_bridge:bridge_chip} item. Same ids, same textures as the Horizon
+ * {@code .hmod}, so a build made for the Horizon launcher and a build made for a
+ * Java launcher describe the same objects.
+ *
+ * <p>Deliberately no Fabric API dependency: vanilla classes only, so Fabric
+ * Loader by itself is enough to run this.
  */
 public final class BridgeBeaconMod implements ModInitializer {
 
     public static final String MOD_ID = "zoro_bridge";
     public static final Logger LOGGER = LoggerFactory.getLogger("ZoroHorizonBridge");
 
-    public static final ResourceLocation BEACON_ID = id("bridge_beacon");
-    public static final ResourceLocation CHIP_ID = id("bridge_chip");
-
-    /** The block instance, kept so other code (and the self-test) can reach it. */
     public static Block bridgeBeacon;
+    public static Item bridgeChip;
 
-    private static ResourceLocation id(String path) {
-        return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
+    private static Identifier id(String path) {
+        return Identifier.of(MOD_ID, path);
     }
 
     @Override
     public void onInitialize() {
-        // Note the mapping names: intermediary/official names, resolved by Loom
-        // at build time. On 1.21.x the constructor is (Properties), and the
-        // properties class is BlockBehaviour.Properties.
-        Block block = new Block(BlockBehaviour.Properties.of()
+        AbstractBlock.Settings blockSettings = AbstractBlock.Settings.create()
                 .strength(3.5F, 6.0F)
-                .lightLevel(state -> 12)
-                .sound(SoundType.STONE)
-                .requiresCorrectToolForDrops());
+                .luminance(state -> 12)
+                .sounds(BlockSoundGroup.STONE)
+                .requiresTool();
 
-        bridgeBeacon = register(BuiltInRegistries.BLOCK, Registries.BLOCK, "bridge_beacon", block);
+        bridgeBeacon = Registry.register(Registries.BLOCK, id("bridge_beacon"),
+                new Block(blockSettings));
 
-        Item chip = new Item(new Item.Properties());
-        register(BuiltInRegistries.ITEM, Registries.ITEM, "bridge_chip", chip);
+        bridgeChip = Registry.register(Registries.ITEM, id("bridge_chip"),
+                new Item(new Item.Settings()));
 
-        BlockItem blockItem = new BlockItem(block, new Item.Properties());
-        register(BuiltInRegistries.ITEM, Registries.ITEM, "bridge_beacon", blockItem);
+        Registry.register(Registries.ITEM, id("bridge_beacon"),
+                new BlockItem(bridgeBeacon, new Item.Settings()));
 
-        LOGGER.info("[ZoroHorizonBridge] loaded on {} — bridge_beacon + bridge_chip registered",
-                net.fabricmc.loader.api.FabricLoader.getInstance()
-                        .getModContainer(MOD_ID)
-                        .map(c -> c.getMetadata().getVersion().getFriendlyString())
-                        .orElse("unknown"));
-    }
-
-    private static <T> T register(Registry<T> registry, ResourceKey<Registry<T>> key, String path, T value) {
-        return Registry.register(registry, ResourceKey.create(key, id(path)), value);
+        String version = FabricLoader.getInstance().getModContainer(MOD_ID)
+                .map(c -> c.getMetadata().getVersion().getFriendlyString())
+                .orElse("unknown");
+        LOGGER.info("[ZoroHorizonBridge] mod {} loaded: bridge_beacon + bridge_chip registered", version);
     }
 }

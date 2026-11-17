@@ -1,7 +1,8 @@
 name: java-debug
 
-# Throwaway diagnostic: does Loom resolve Minecraft when Gradle itself runs on
-# JDK 25 (the JVM loom 1.19.4 requires) while the toolchain still targets 21?
+# Throwaway diagnostic: dump the real Yarn names available in each target's
+# Minecraft jar, and the Yarn names used for the ~15 classes this mod needs.
+# The point is to stop guessing at API names and read them off the artifact.
 on:
   workflow_dispatch:
   push:
@@ -29,9 +30,7 @@ jobs:
 
       - name: Collect diagnostics
         run: |
-          set -x
           mkdir -p ci
-          ls /usr/lib/jvm
           cat > /tmp/cp.gradle <<'EOF'
           allprojects {
               tasks.register('printCp') {
@@ -43,22 +42,36 @@ jobs:
           }
           EOF
           {
-            echo "===== JDK 25 present?"
-            ls -d /usr/lib/jvm/*25* || true
+            for t in "1.21.1 1.21.1+build.3" "1.21.4 1.21.4+build.8" "1.21.11 1.21.11+build.6"; do
+              set -- $t
+              echo "########## $1"
+              ( cd java/fabric && JAVA_HOME=/usr/lib/jvm/temurin-25-jdk-amd64 \
+                  gradle --no-daemon -q -I /tmp/cp.gradle printCp \
+                  -Pmc_version=$1 -Pyarn_mappings=$2 -Pjava_target=21 2>&1 ) > /tmp/ctx.txt
+              head -3 /tmp/ctx.txt
+              mcjar=$(grep 'CP .*minecraft-.*-yarn' /tmp/ctx.txt | sed 's/^CP //' | head -1)
+              echo "MCJAR=$mcjar"
+              if [ -n "$mcjar" ]; then
+                unzip -l "$mcjar" | grep -c '\.class' || true
+                for c in block/AbstractBlock block/Block block/Blocks item/Item item/BlockItem \
+                         registry/Registries registry/Registry util/Identifier \
+                         sound/BlockSoundGroup; do
+                  unzip -l "$mcjar" "net/minecraft/$c.class" 2>/dev/null | grep -q "$c.class" \
+                    && echo "  HAS net/minecraft/$c" || echo "  MISSING net/minecraft/$c"
+                done
+                # what BlockSoundGroup constants exist
+                unzip -p "$mcjar" net/minecraft/sound/BlockSoundGroup.class > /tmp/bsg.class 2>/dev/null \
+                  && javap -cp "$mcjar" net.minecraft.sound.BlockSoundGroup 2>&1 | head -30
+              fi
+            done
+
             echo
-            echo "===== compile with JAVA_HOME=JDK25"
-            ( cd java/fabric && JAVA_HOME=$(ls -d /usr/lib/jvm/*25* | head -1) \
-                gradle --no-daemon build -Pmc_version=1.21.1 -Pyarn_mappings=1.21.1+build.3 \
-                -Ploader_version=0.20.1 -Pjava_target=21 2>&1 ) | tail -45
-            echo
-            echo "===== compileClasspath contents"
-            ( cd java/fabric && JAVA_HOME=$(ls -d /usr/lib/jvm/*25* | head -1) \
-                gradle --no-daemon -q -I /tmp/cp.gradle printCp 2>&1 ) | head -30
-            echo
-            echo "===== produced files"
-            ls -la java/fabric/build/libs java/fabric/build/bridge-build-facts.json 2>&1
+            echo "########## yarn mappings: real names for our classes"
+            yarn=$(ls ~/.gradle/caches/modules-2/files-2.1/net.fabricmc/yarn/*/*/*/yarn-*-mergedv2.jar 2>/dev/null | head -1)
+            echo "yarn jar=$yarn"
+            ls ~/.gradle/caches/modules-2/files-2.1/net.fabricmc/yarn/*/*/*/ 2>/dev/null | head
           } > ci/debug.log 2>&1
-          tail -50 ci/debug.log
+          wc -l ci/debug.log
 
       - name: Commit diagnostics
         if: always()
@@ -66,5 +79,5 @@ jobs:
           git config user.name "ci"
           git config user.email "ci@example.invalid"
           git add -f ci/debug.log
-          git commit -m "ci: java debug $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git commit -m "ci: java debug $(date -u +%Y-%m-%dT%H:%M:%SZ)" || true
           git push
