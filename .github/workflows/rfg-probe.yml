@@ -14,39 +14,20 @@ jobs:
         with: { distribution: temurin, java-version: '17' }
       - uses: gradle/actions/setup-gradle@v4
         with: { gradle-version: '8.10.2' }
-      - name: Probe repos
+      - name: RFG 2.0.6 configure test
         continue-on-error: true
         run: |
-          mkdir -p ci
-          {
-            for u in \
-              https://maven.gtnewhorizons.com/releases/com/gtnewhorizons/retrofuturagradle/maven-metadata.xml \
-              https://nexus.gtnewhorizons.com/repository/releases/com/gtnewhorizons/retrofuturagradle/maven-metadata.xml \
-              https://repo1.maven.org/maven2/com/gtnewhorizons/retrofuturagradle/maven-metadata.xml ; do
-              echo "== $u"
-              curl -s -m 25 -w '\nHTTP %{http_code}\n' "$u" | head -30
-            done
-            echo "== try versions on gtnewhorizons releases"
-            for v in 1.4.9 1.4.8 1.4.5 1.3.35 1.3.0; do
-              code=$(curl -s -o /dev/null -m 20 -w '%{http_code}' \
-                "https://maven.gtnewhorizons.com/releases/com/gtnewhorizons/retrofuturagradle/$v/retrofuturagradle-$v.jar")
-              echo "  $v -> $code"
-            done
-          } > ci/rfg-probe.txt 2>&1
-          cat ci/rfg-probe.txt
-      - name: Try classpath (no plugin marker needed)
-        continue-on-error: true
-        run: |
+          set -x
           mkdir -p /tmp/rfg && cd /tmp/rfg
           echo "rootProject.name='rfgtest'" > settings.gradle
           cat > build.gradle <<'EOF'
           buildscript {
               repositories {
-                  maven { url = 'https://maven.gtnewhorizons.com/releases' }
+                  maven { url = 'https://nexus.gtnewhorizons.com/repository/releases' }
                   maven { url = 'https://maven.minecraftforge.net/' }
                   mavenCentral()
               }
-              dependencies { classpath 'com.gtnewhorizons:retrofuturagradle:1.4.9' }
+              dependencies { classpath 'com.gtnewhorizons:retrofuturagradle:2.0.6' }
           }
           apply plugin: 'com.gtnewhorizons.retrofuturagradle'
           apply plugin: 'java'
@@ -57,10 +38,4 @@ jobs:
           }
           tasks.register('showOk') { doLast { println 'RFG CONFIGURED OK' } }
           EOF
-          gradle --no-daemon showOk --stacktrace >> /home/user/Horizon-mod-java-rust/ci/rfg-probe.txt 2>&1 || true
-          grep -E "RFG CONFIGURED|What went wrong|Could not (find|resolve)|not found|BUILD" \
-            /home/user/Horizon-mod-java-rust/ci/rfg-probe.txt | tail -12
-      - name: Commit
-        if: always()
-        run: |
-          bash tools/ci-commit.sh "ci: rfg probe2 $(date -u +%FT%TZ)" ci
+          gradle --no-daemon showOk --stacktrace 2>&1 | tail -40
