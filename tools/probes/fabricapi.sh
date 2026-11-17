@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
-# What does the vanilla-only API for registering in Fabric's mod phase look like?
-# Since 1.21.4 vanilla has its own registry-modification API; check whether the
-# classes exist in 1.21.4 and 1.21.11 and what their method signatures are.
-out="$1"; src="${2:?merged jar}"
+# net.minecraft.registry.Registries$Initializer is vanilla's hook for mods.
+# Print its full interface plus the static add/init methods on Registries.
+out="$1"; src="$2"
 {
-  for c in net.minecraft.registry.RegistryBuilder \
-           net.minecraft.registry.RegistryBuilder\$InitializedRegistryFactory \
-           net.minecraft.registry.RegistryKeys ; do
-    echo "===== $c"
-    javap -cp "$src" "$c" 2>&1 | head -20
-    echo
+  echo "===== Registries\$Initializer"
+  javap -cp "$src" 'net.minecraft.registry.Registries$Initializer' 2>&1
+  echo
+  echo "===== Registries (static methods + initializer plumbing)"
+  javap -cp "$src" net.minecraft.registry.Registries 2>&1 | grep -E 'static|Initializer|add' | head -25
+  echo
+  echo "===== who calls Initializer#initialize (search in the jar)"
+  for c in net.minecraft.registry.Registries net.minecraft.registry.RegistryBuilder; do
+    echo "-- $c"
+    javap -c -p -cp "$src" "$c" 2>&1 | grep -B2 -A2 'Initializer' | head -30
   done
-  echo "===== anything in the jar named *InitializeRegistries* or *ModifyRegistries*"
-  unzip -l "$src" | grep -iE 'Initializ|Modif.*Registr|Registr.*Modif' | head -20
 } > "$out" 2>&1
