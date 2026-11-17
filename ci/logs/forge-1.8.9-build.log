@@ -1,0 +1,13 @@
+== /home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/artifacts/java-1.8.9/zoro_bridge-1.0.0-forge-1.8.9.jar
+   ok    24 entries, no duplicates
+   ok    dev/zorowarrior/bridge/BridgeMod.class: class v52.0, 3 methods, 616 code bytes
+   ok    assets/zoro_bridge/textures/blocks/bridge_beacon.png: PNG 16x16
+   ok    assets/zoro_bridge/textures/items/bridge_chip.png: PNG 16x16
+   ok    mcmod.info: modid=zoro_bridge mcversion=1.8.9
+   ok    loader metadata: forge-legacy
+   ok    @Mod annotation referenced from a class (Forge will find it)
+   -> PASS
+
+1 jar(s), all genuine
+built: /home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/artifacts/java-1.8.9
+Terminated                 sudo python3 -m http.server 80 > /dev/null 2>&1
