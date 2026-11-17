@@ -11,14 +11,17 @@ jobs:
       - uses: actions/checkout@v4
         with: { fetch-depth: 0 }
       - uses: actions/setup-java@v4
-        with: { distribution: temurin, java-version: '17' }
+        with: { distribution: temurin, java-version: '25' }
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: '21' }
       - uses: gradle/actions/setup-gradle@v4
-        with: { gradle-version: '8.10.2' }
-      - name: RFG 2.0.6 configure test
+        with: { gradle-version: '9.9.1' }
+      - name: RFG 2.0.6 with JDK 25, compile real 1.8.9 mod
         continue-on-error: true
         run: |
           set -x
-          mkdir -p /tmp/rfg && cd /tmp/rfg
+          REPO=$PWD
+          mkdir -p /tmp/rfg/src/main/java/example && cd /tmp/rfg
           echo "rootProject.name='rfgtest'" > settings.gradle
           cat > build.gradle <<'EOF'
           buildscript {
@@ -31,16 +34,22 @@ jobs:
           }
           apply plugin: 'com.gtnewhorizons.retrofuturagradle'
           apply plugin: 'java'
-          minecraft {
-              mcVersion = '1.8.9'
-              mcpMappingChannel = 'stable'
-              mcpMappingVersion = '22'
-          }
+          minecraft { mcVersion = '1.8.9' }
+          tasks.withType(JavaCompile).configureEach { options.release = 8 }
           tasks.register('showOk') { doLast { println 'RFG CONFIGURED OK' } }
           EOF
-          # tee, not tail: this file is the only reliable channel back to me
-          gradle --no-daemon showOk --stacktrace 2>&1 | tee /home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/ci/rfg-probe.txt | tail -30
+          cat > src/main/java/example/T.java <<'EOF'
+          package example;
+          import net.minecraft.block.Block;
+          import net.minecraft.init.Blocks;
+          public class T {
+              public static Block b = Blocks.stone;
+              public static void main(String[] a) { System.out.println(b); }
+          }
+          EOF
+          JAVA_HOME=/usr/lib/jvm/temurin-25-jdk-amd64 gradle --no-daemon compileJava \
+            --stacktrace 2>&1 | tee "$REPO/ci/rfg-probe.txt" | tail -25
       - name: Commit
         if: always()
         run: |
-          bash tools/ci-commit.sh "ci: rfg 2.0.6 result $(date -u +%FT%TZ)" ci
+          bash tools/ci-commit.sh "ci: rfg compile test $(date -u +%FT%TZ)" ci
