@@ -56,43 +56,23 @@ Applying Exceptor...
 > Task :apiClasses UP-TO-DATE
 > Task :sourceMainJava
 
-> Task :compileJava
-/tmp/fg189/build/sources/main/java/dev/zorowarrior/bridge/BridgeMod.java:5: error: cannot find symbol
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-                                                ^
-  symbol:   class ModelResourceLocation
-  location: package net.minecraft.client.renderer.block.model
-/tmp/fg189/build/sources/main/java/dev/zorowarrior/bridge/BridgeMod.java:50: error: void cannot be dereferenced
-                .setUnlocalizedName("bridge_beacon")
-                ^
-/tmp/fg189/build/sources/main/java/dev/zorowarrior/bridge/BridgeMod.java:53: error: cannot find symbol
-        GameRegistry.register(bridgeBeacon);
-                    ^
-  symbol:   method register(Block)
-  location: class GameRegistry
-/tmp/fg189/build/sources/main/java/dev/zorowarrior/bridge/BridgeMod.java:60: error: cannot find symbol
-        GameRegistry.register(bridgeChip);
-                    ^
-  symbol:   method register(Item)
-  location: class GameRegistry
-/tmp/fg189/build/sources/main/java/dev/zorowarrior/bridge/BridgeMod.java:62: error: cannot find symbol
-        GameRegistry.register(new ItemBlock(bridgeBeacon)
-                    ^
-  symbol:   method register(Item)
-  location: class GameRegistry
-/tmp/fg189/build/sources/main/java/dev/zorowarrior/bridge/BridgeMod.java:89: error: cannot find symbol
-                new ModelResourceLocation(MODID + ":bridge_beacon", "inventory"));
-                    ^
-  symbol:   class ModelResourceLocation
-  location: class BridgeMod
-/tmp/fg189/build/sources/main/java/dev/zorowarrior/bridge/BridgeMod.java:92: error: cannot find symbol
-                new ModelResourceLocation(MODID + ":bridge_chip", "inventory"));
-                    ^
-  symbol:   class ModelResourceLocation
-  location: class BridgeMod
-7 errors
-
 > Task :compileJava FAILED
+/tmp/fg189/build/sources/main/java/dev/zorowarrior/bridge/BridgeMod.java:60: error: cannot find symbol
+        GameRegistry.register(bridgeBeacon, "bridge_beacon");
+                    ^
+  symbol:   method register(Block,String)
+  location: class GameRegistry
+/tmp/fg189/build/sources/main/java/dev/zorowarrior/bridge/BridgeMod.java:66: error: cannot find symbol
+        GameRegistry.register(bridgeChip, "bridge_chip");
+                    ^
+  symbol:   method register(Item,String)
+  location: class GameRegistry
+/tmp/fg189/build/sources/main/java/dev/zorowarrior/bridge/BridgeMod.java:68: error: cannot find symbol
+        GameRegistry.register(new ItemBlock(bridgeBeacon), "bridge_beacon");
+                    ^
+  symbol:   method register(ItemBlock,String)
+  location: class GameRegistry
+3 errors
 
 FAILURE: Build failed with an exception.
 
@@ -169,9 +149,9 @@ Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Com
 
 * Get more help at https://help.gradle.org
 
-BUILD FAILED in 28s
+BUILD FAILED in 25s
 16 actionable tasks: 16 executed
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run-1794885713578.json
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run-1794886389237.json
 FAILED with Gradle 4.10.3
 ===== Gradle 2.14.1
 WARNING: You are using an unsupported version of ForgeGradle.
@@ -197,12 +177,12 @@ See https://gist.github.com/TheCurle/fe7ad3ede188cbdd15c235cc75d52d4a for more i
 :deobfProvidedDummyTask
 :extractDependencyATs SKIPPED
 :extractMcpData
-Invalid cookie header: "set-cookie: __cf_bm=n3LSg5qKwLtOUHwjzLHWvFDJ7Ih2dFZdTiXREp1d56c-1794885756.959788-1.0.1.1-ATNjirPLh..SeZhuIdzxCRsu8e52kGrgp4I6lAiaBUVP8gSLCeUCN.hBLNfCeCnn7nNdyc47FZuDphlBA6mkmNM5ZidS9R6fC9QSWxbxhZfYcNNx4IzDvFTAebfDpPYu; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:36 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:36 GMT
-Invalid cookie header: "set-cookie: __cf_bm=RKkNSMqSRenLIUwxr4otr_dz_oa0be6K0oP_f4wILBw-1794885756.9933205-1.0.1.1-naja18QSPx2RWttrMzpfWpf89ipYfBFEnCuYMFV3CCZqihwMQmvPlV_0XvCrC6ruqZA42MxpAs0hmOuq1UqQumxWrrEzgIr.Y633kIOb4GePJdM9Mt0ieZS8h.NaMhmb; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:37 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:37 GMT
+Invalid cookie header: "set-cookie: __cf_bm=ExEhNATZLqBoPK2PyHQV6FpNNfAyae8JhCHJg2xf3Hc-1794886423.8498318-1.0.1.1-YsyRaWdZfvEva7JKgi0Dbpp2.wDj1m3oVauNOFizjxEFnKvAK9RLu1joR1GGRg7vKdYb8HaAcSiIaY2Z30m.02SEUl3NuXrwRmhLmSeolDmCPqLWK_XpRAAH2W93gBUB; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:43 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:43 GMT
+Invalid cookie header: "set-cookie: __cf_bm=8E4Tvr8uB.PUjzIs44uqkIPdakZ..Ud2GcKAk4el.PU-1794886423.8672915-1.0.1.1-oI7KXxFK8sldUlAMB4FfnQUc3Psm_h7n2AfILPn_YUffzgkkmoZEehkTgjYgaesp6R82zE1kymGm4Ss8_tf3H6I5EcM15aMUpsxQuNjyZwFcCDnuN7U4tWBqsS7y49Nv; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:43 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:43 GMT
 :extractMcpData SKIPPED
 :extractMcpMappings
-Invalid cookie header: "set-cookie: __cf_bm=QRJuBd4sDeElfm9Ct0DgMxve31N9O5PA.1629ob7Eag-1794885758.023485-1.0.1.1-ckm9NjrAwHcQ2MmbxEV9JyykdSAaW8dC.0IJUo.eDHO611qe5BLi2r0lo02dAvHa3GUiVpmBaMUfY_aAcYD5GB915e5ED8vKUPNQoWWqFaWshdsfrIfORISmwavEqbn2; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:38 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:38 GMT
-Invalid cookie header: "set-cookie: __cf_bm=A2RESGKbdi61G_MUNatG.QtH3ZiMkoiSuK3T.uqGl3U-1794885758.0533874-1.0.1.1-Obo6MLzzqXy7eL9FCXICRtX3NDSwlNZSoMfFPLog6arpfhZ5EoQhjSFVzjrdq2U5iudp6m84S3i1OKYRT4KK1wVouG.IB9Nuem_sdGbHUemNqWoLJ2akVBhlJ1VUcnPo; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:38 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:38 GMT
+Invalid cookie header: "set-cookie: __cf_bm=.2sulIaEmbRl1LJ.Fl4Umq33oGQh8z.REatRkHKSIYI-1794886424.160204-1.0.1.1-409G6w8jdVG4_VLHZ1KEl6_mb2CvKm0iHpEiIiY8kT_qDujNjEw0q.ZpIZjbjpDhsFVDsLOPOnbFE8IcYHjJmKUFc_YaYrcFmv0wqx8lIoO_pTNqCm72s1D8HzvlB3Rw; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:44 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:44 GMT
+Invalid cookie header: "set-cookie: __cf_bm=5vo2fO.4yl8Yp.28ZDPfY3SliiUS8_nTwuS92yNMnkM-1794886424.1820889-1.0.1.1-3pDA613rk.CCRu9iFlNMsymN4LaOH0oLOR.hIqLKBsfNad0MeEf4_sAoDtlD9dH.9JtyPEqKXZUorb9YtjMFLKBNAiUdGu_TWDe56yIDk_yiDN6vbPifDTBy0GWTVXhk; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:44 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:44 GMT
 :genSrgs SKIPPED
 :deobfMcMCP SKIPPED
 :sourceApiJava
@@ -211,82 +191,64 @@ Invalid cookie header: "set-cookie: __cf_bm=A2RESGKbdi61G_MUNatG.QtH3ZiMkoiSuK3T
 :apiClasses UP-TO-DATE
 :sourceMainJava
 :compileJava
-Invalid cookie header: "set-cookie: __cf_bm=IIQCdIP337z1pg1DBIHdHe_0UcJQ4hPFeu32zjOLv90-1794885759.6887617-1.0.1.1-DC.belo2ERJ8if.4VbdG1dfzmn8PDn7Cp.XAmouG7qE0NzTB6FmfiU43aPY0UhPSV9ClvNaVphH_2FIyCjAd2qQULQ.Ss8eu0HM470RHCbblI_RIw9FtiTeuA6Byd_y4; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:39 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:39 GMT
-Invalid cookie header: "set-cookie: __cf_bm=cIsblKtu86QwqFx8NC9Tg1v9kj_QZye36MlNZjQt5S0-1794885759.7327118-1.0.1.1-rSUDrmTgLo5Hzu55SJ8yHzGinhMLucZO04hOw3KZG650UX9ybW5eLhaRWNBxr1BbRETbjDsk1ROFBPnObuii.9muVw.hPGEDvg4Nq1QVjiR1fZofcQQk23D9YM8pRtaM; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:39 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:39 GMT
-Invalid cookie header: "set-cookie: __cf_bm=8Qyr9hZlQleC8mIH_inMrAvXYk8Ok6h6BPjiiF.bP_s-1794885760.529131-1.0.1.1-_IpE7.eUCyFBWjpgnLyqY9Ooy8jajZzR3LKmXA43JsafXSN1w2kISRXCxM0Es7g1HDNKfcWpMdIxnFj4WEcBFZImnJVV8OGSgM5POpwcJg7S6Tl76gkGRuHDkcDQwTWf; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:40 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:40 GMT
-Invalid cookie header: "set-cookie: __cf_bm=D6RngBIiz162mFaJk01wM1sVUR186gsf7tRdrS9wlJ0-1794885760.569615-1.0.1.1-EwtTQZuEr_UhwkT_L1nAsecF5524PH7PnojHiJutQgWic5DPAmWmVA9o8OyBsQFBbZokz4pLDABMJIqkAGbDTubVy9mahE2V8vpJVBz5DsBeeMs7s5w_EjHl6pY1F7_R; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:40 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:40 GMT
-Invalid cookie header: "set-cookie: __cf_bm=xS6aTOnQ9jgIp65qfy5oOI1QNL0ZZzSposwkBHvRlhg-1794885761.1541948-1.0.1.1-bn6.aD9tdyECsV_fFNgHdJM8QGmCE_V6X4j8K9zXCQuwwlxFRu5D07OGJiWOrqIzsOsWh_Q_KprQBmPdCKWKVJp9LpVmp_MEplvNQ_.qGUBjJFJOP.7PHduXpg5y3rW0; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:41 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:41 GMT
-Invalid cookie header: "set-cookie: __cf_bm=g1CFR0DCltDmLUWqUdT5uiWgkogeSIpudTbnFMBta_s-1794885761.188987-1.0.1.1-Cl5FjQcUoJAK1.iqlysly5JLU__W_GP6Vr9nwpRPgmDbyP8spmmmy6y.kcnyp6F3x.8Pyqe8bS.ZmxhYDUrouYYj7wrYMYrXeEjyXrORk9aYpIkGOMnrNr0.t236Ai7t; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:41 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:41 GMT
-Invalid cookie header: "set-cookie: __cf_bm=9vsvdZpan_4CDGLy6sCvGdP9DgNqMOAmwl8CvT1h2dA-1794885762.0780044-1.0.1.1-Tw27UWk1SAU1svwRsoZ.XRnET4fmUIbJ54Mp3PwkDqaVlJboemQbA2TdKn0Hgw.778WOqNdTpuD8Q2OBcnd0V2aA82qdd.ogRZEaCJtD3jLE21Hkp3oSINNJ7Y1ruQvm; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:42 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:42 GMT
-Invalid cookie header: "set-cookie: __cf_bm=w343W1ZUMuR79NIrSrXhgeAl9D3ewm5MChQ3K8VoGA0-1794885762.11899-1.0.1.1-ty0Uvv8nglZIdcVHNSgDPpJOgbWdf17TL3L53pRSfmuL48pc10dY8tFnkAWch5JcQvFvO1Un0.jTD_Xp62rRwbF6CbEvlqE2nGujitgCUwcplwRKEt4Ojs2qwiisNQUj; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:42 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:42 GMT
-Invalid cookie header: "set-cookie: __cf_bm=OxUs9ZjENe9jsRfG4Lx0Sms.ouEWiOvF6l9AmDAYir8-1794885765.2932703-1.0.1.1-X2Ebj2p_NydYnPl.svCYpChrjk72kWxf8S1AUFiYy0VXJGvOECmIZGYtgE4J4VoiveGuK7pZgA4WCERaXskyBx7xfULA.cXNV6LD_chUrYwikXHMlRMz._3mmFuohjv_; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:45 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:45 GMT
-Invalid cookie header: "set-cookie: __cf_bm=Q.kFwz1PYT_FZw8uiiEAW0hpJ1eauut5Grba.gGuksc-1794885765.3313859-1.0.1.1-lwr_oTKZzzE3ZA8PnQSB43Hx36LvhMHsRPAEKR9k6Ixkm4JoItmZsuvyOqhH90jhE257m4RoV2hhXYC_ywc6eKRcbYAOAaydRzCBqHRjZpAT6IGwV6EVlOUDCp7Jc39B; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:45 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:45 GMT
-Invalid cookie header: "set-cookie: __cf_bm=cmTeDtV8msyqlRFy_VuT4sGotSgllCDanTOXCj2p5JY-1794885766.0617483-1.0.1.1-mIdjwKq5K9dqk6AkshtFArG4UaD0LLxlZn.1y3XaSFt7UuJKFJsPg4QBwzU.Y1XrOvLS5eNchvPvJ0Xu08ZKSJzPHU84SfDENpHr7Lt0ngEItam5Mr2Jz_FtQTJqYc35; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:46 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:46 GMT
-Invalid cookie header: "set-cookie: __cf_bm=GSBRNquPc.7c90Mozf5gdEbjwe2tWNjnw5E6XyYyPrI-1794885766.1021142-1.0.1.1-m1WP2DMGKKE0gM56jU3MA2JaFxSep8VMdm7.AP6JjQdS5bEAj2eUIUHtd35VRgA66Jdo_G_n1ivnf6Rm7ARTXa3PdzGOKcP28Pxb4RZvOii3VxoIQmTJ4glH9eUSLlFM; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:46 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:46 GMT
-Invalid cookie header: "set-cookie: __cf_bm=vVM0o_kiBSennBaJ0a.tIsdvpt.qiADuj4XDs0T1IlI-1794885767.5501802-1.0.1.1-SMiYrD1yh5OEkai2.mMQguQ6H_.H535zuaIny2BEUJ53jYu6Wus2tiC1cCT5rLd7Iqbz0qF.E9U111R7KwL10loFns19Wnl3qDTlrtCQOyaCH6fSCHOtXys7ClRpkLSl; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:47 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:47 GMT
-Invalid cookie header: "set-cookie: __cf_bm=m5vuEPCwL.EWzdtCr2WeKkfKaI0a8Fox53RMpvEv6v0-1794885767.586928-1.0.1.1-u3AfkVV4_XgSlihNH3a6O8pPTB6b5rk6n6mxef7fleXKFxWUg93yhmO08Ta.FgXPjAEa0aX3lwyK.HoP1BnCPBHOjNL9wpKtTuuowpJYxMe7fgYT3v_eBrAdeBJQnQZq; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:47 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:47 GMT
-Invalid cookie header: "set-cookie: __cf_bm=ddwIGhAPTomaORP4xkK3ayIeXOA5ARb_B87sBUa6bv0-1794885770.4690473-1.0.1.1-.khstt3yTZ3EGjgarBLRCxtLtFneL.BNCyBF.xd0lZyxfTtjvMXyz289To1xascmRzgMDb1uGS.Emvo34zP2LcqR8C6H3rpGSBqakDLN4.TkIp9zTFloDmRpw1djrxwj; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:50 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:50 GMT
-Invalid cookie header: "set-cookie: __cf_bm=a9VQNJqU8PmXFr5v0YVGpPIqpnEzHRFFFyi8kGnjlIY-1794885770.5233722-1.0.1.1-2LSr1kMFwPoY91CQCkvnpBJWkOWwayD.ixasZN3oijt7SzjXotWbwqtsuGiROx0Xnyx4ZYID1uVYPY22hN15YnkX_L9FalIwsPkp8UocmILVKzXQETbOAZ294IJDuE5I; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:50 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:50 GMT
-Invalid cookie header: "set-cookie: __cf_bm=oPtPWlAXSmwA6GOjswiKwIOAIjOixMesnYZHs.POXjM-1794885771.2963662-1.0.1.1-qjVoRXBlKjTdpuNEQGH2e7Wzuh_iFhUn57t2JbfftHAp41aMHvMuj2duUu6N_hbLrqkaUenbMqBUNlLWBB.KGxNyi0t_HdHH7wRSRrqwHeww7vledWjq.k5nZc3qxvaL; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:51 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:51 GMT
-Invalid cookie header: "set-cookie: __cf_bm=PpMWRn7a7bFRYxYQSFK.yYswKDnHAMaDzpZN9iKebH8-1794885771.333415-1.0.1.1-chJjux1Z9113kx.jcABOgdX4i7jZT3NkrYtqeuRo2pgIMf9cdkR9wNTSFYFOu6FxDP4tizsDgmjQutPwLZaJ.V8FY9kMz_Lp16qmScmk7AKs7Jgg8u23PtHtXtPeO_Ed; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:51 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:51 GMT
-Invalid cookie header: "set-cookie: __cf_bm=.T2iEHyx5w4ZVDNs37D7YzTAviMTH6lXNumSrWr0KUE-1794885771.8884668-1.0.1.1-JbyrJBwL1XiE9Ub.a98ZLdRLNxvD_TzMh1L6BzFzFtxJs2OGa57jZGkLem4JSG3X84zt.cLYY6I6eZG7TRg8US1pxklQDCDRyiUHLW1RAm5WlKpcIeQLIgE8v9oQT8sC; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:51 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:51 GMT
-Invalid cookie header: "set-cookie: __cf_bm=xYiYmp63IPRtxWLCaRjIb32Jv2.FgQovSJVDPOjrs.4-1794885771.9263988-1.0.1.1-XdZAMelKrTlYRFhb4N6bgyHCUV1oiwS0r67gVwGfDI0nk.CwL1OHsVZsCLZ_Q4BeYoHIXbQkMdx9yTsTh.ObNsz73GmftHotNAgliGQNmMymMPjWj1qb.KbF7V3F.Q4d; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:51 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:51 GMT
-Invalid cookie header: "set-cookie: __cf_bm=8LCJyk1NVSjMup5LHmAr46XaFFGvjJ_QdGaL_6ORyOc-1794885772.4851203-1.0.1.1-3.gH2tVpQJAfFd4.5Zk9.EzAHQ7P6U47HUc_e6C3Nsj_U8N2LWNnUG1qiNE54Tml13pneqb2p_rHgvXaMAyzylU4bafyhNv1QzTSENpmTtSZRpVSe3uMBhdrCSwjf9kL; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:52 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:52 GMT
-Invalid cookie header: "set-cookie: __cf_bm=qiDnwp8Lub3X0OLMfG62CGp1uxCzZokoWYPcnyUFbyg-1794885772.5250084-1.0.1.1-l_Q0gKzdp5mIrDWDzeTDA4xGo2IHyxf8vnHowFsOtSZbxRkbKScNZxZjC4o3ESdBq8jt3xXnWU_.bUrLTovKKt6hIOFqm_eV1sc7kYVloPXC1E9TA_auImQfzuPkQg_v; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:52 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:52 GMT
-Invalid cookie header: "set-cookie: __cf_bm=1nk28InvahyufCd0oYIGb5g4HEoXGxIQaVW_ey_ydNk-1794885773.1584568-1.0.1.1-GEUUjSjYneFvH10NWuufeWcvfTM4M.cwSaMxLqwbaXShwCPbdgjggiwjrz8e3Kqf1M1MeXL4NwpJobyq.RaWOMv08ug4WqSMKZl5_liuxSBxxSgxYSA8IHml2OIqMe5E; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:53 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:53 GMT
-Invalid cookie header: "set-cookie: __cf_bm=cdQlJzZmAKX3n8TW7aHzc.MU9qmldxeGq7._Bn7k5Ec-1794885773.2021503-1.0.1.1-Nwh4HJLfFVIe5pfq0SfXqVBiFN89V3xlYUxCBru_4iN3dGsPwLPKIiUVfQaoOn6qWbFvTfk96S1BjkD0pp.VVT_YqH6nZMJcwEsPVLz69xwQspaUKmDnRb.dzZGkoOGB; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:53 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:53 GMT
-Invalid cookie header: "set-cookie: __cf_bm=9H.e14RndO0.e21kyprx42w7ZBSAPtJU4x4AMdAbbZc-1794885773.9727883-1.0.1.1-2fWqM_slNePBizCSrofN.6jCT_EmFYpwUNny_VYWiDhbs4TYytmTmkKvMUIEdRD7mrxnKI_gTd8P9APG9ynKBwzK7PdBOjV5SyKdIZU2AA9TNrxoeG4ACWqq3b_8pVs3; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:53 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:53 GMT
-Invalid cookie header: "set-cookie: __cf_bm=jltYfgc0GOfiz_fHkdYkYU5J0hQuuUvxn2YQn7.x_pM-1794885774.0269425-1.0.1.1-5fULoNP5ar8HwQLSOcXkLQJ5XJkRHO.snWVh_OjaAl8kwxpo6qXIURY5hAZx8xcTxxW6dMadu8a7RLpJJtX3MCaLX3L6744.VfIeWKKfLN5ImOwa6HCg.4QE2PgR5NjG; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:54 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:54 GMT
-Invalid cookie header: "set-cookie: __cf_bm=v6.HBA1QxwC82Ng5UdMYo6Xl_LUcvott36XjrWC2nck-1794885774.9639473-1.0.1.1-EdNCw96eJViQyr9gCFjsWDQZr71Q_5TNDaW6WfCvCnF_7WtQdYUs_bjrmrNJCBY11r3ACpGYEn.8P4QFF26TdLkBEnGjg6545Q4nFHKLWs_eJDmkczws3Flxb4VlK9Tb; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:54 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:54 GMT
-Invalid cookie header: "set-cookie: __cf_bm=Q7i0XCi17fnmd8_UabFNLrtHGLc1OqOtzIJjkibzMzM-1794885775.005147-1.0.1.1-6Wyq2uLPDgSfi0dTvrN8.w3jd5JEX6.6ZyKwtq3EROaZhmn8eAHd60anU0DzhZdNIv1m6x5vIsN5Y7tqDr0uNYAFZhyUUYb87ap5FsDTe7jrK4wE5DQwFWtRk_iOB.Ps; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:55 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:55 GMT
-Invalid cookie header: "set-cookie: __cf_bm=gSlKwyJhkwsQb0PXPLuN.o4nKYsnIvA4P_.9MUTuk80-1794885775.7590024-1.0.1.1-MZp92klCddospwMlZ7jJNO28BUvWZrZUUGjao4RzW82pXfAiDwIZhp6TcMBiMfp.vSeOcG7.JE3oxeGyxDONBvLlsR0N0A8gf.UJT.dxv9Q4J6KwwEjvypvsgEB0hp0E; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:55 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:55 GMT
-Invalid cookie header: "set-cookie: __cf_bm=lAmPDlFL6qSf8WeRQDDgDRfKvTegIN3vEUaeNbK2ets-1794885775.7943475-1.0.1.1-0tfZyD8xAk6oJMmMtYwkLcNPbJoAeQFYMS6.uIRF8h6Lw5gRAPFAjyLpVFHHWAOFmt5sW9trZkKnE9HZduH75muXK9GaFOaJX5lXVfIfWkgUooB2r9O_ttxsrSTCg98s; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:55 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:55 GMT
-Invalid cookie header: "set-cookie: __cf_bm=ZsOTQRmZ2ks.Py0Jk7HUfVNQrKCfPP3fwQpCQJuqCK0-1794885776.5958974-1.0.1.1-LClNWMmAjKpi6A2HSChxSdYvHMAZZGw455xmzpl5tS7Q6wLHoZTJz66aP0kVaHHduFvE7pvkzj6f0dNlYC.HOS9yq1AX7LlMNgeNSFpvIFw90777V0jF48a5tog41QhM; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:56 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:56 GMT
-Invalid cookie header: "set-cookie: __cf_bm=hTxaolTGnd_lC3hImDR9w1ICYX6WpYrEYHDfTQQ5LKs-1794885776.6314905-1.0.1.1-5IGSJISJuTEwYfleVzR9Gk7PwoR05rnZ9YYAbxwOYciqS5JEC4iIyqnAwcDHs9o3NqoS6HR9HEGOtMjIYyyWMPPDvdvF74dsOvVQga8zVJqsd1Dh7w7MzGvNzs8HXKMH; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:56 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:56 GMT
-Invalid cookie header: "set-cookie: __cf_bm=zOuZMnTA_9lfoIyH9z5a4k6ktitUpP20FzAhpqTxKvk-1794885777.1967018-1.0.1.1-_jQZ9R.Hna0hVZEgaKGMsvcIWSpNvQQdJOYe1p2KNY0XYlR6j1kKbcIGoZHibRvow65DliSWeTHy0.F8K2kuaWs78WpfT5xjXBehB2HRTs4UcbJlXfgJ2jkMX_Y8ivCM; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:57 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:57 GMT
-Invalid cookie header: "set-cookie: __cf_bm=oBBy2J285DLd73pLqEUFkYp.L.7dHj0veWiqOVxYe4s-1794885777.2459862-1.0.1.1-JeH7BZSG8CBMyeoOXMKix_b2l7QFHOdIwpLv728XFbvfmvUdSMXU6rq3h2uAMcdawt.o2kMFY1aCtZeEcZWyOc00cGc5hKjHr7RzVjsHJ9YwgAE_qJmE80yW3grPvbkV; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:57 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:57 GMT
-Invalid cookie header: "set-cookie: __cf_bm=0YQouUJo4vLh7g6wvpnnP0DyDzDCOt8Lua47f_DMhv4-1794885778.0323417-1.0.1.1-5yPipdiYbb5MYuTnlqlQIAEcTM0H5akXiWFVjFoGJ3ytWHYV6tAv9CoKRD2jX62kMj62CienDgJX.qnKihqXngeWz0rZRG4wHzoVquX8IUbLL7N9XJym2MExTrDSTOGU; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:58 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:58 GMT
-Invalid cookie header: "set-cookie: __cf_bm=UXw1K9ODYusWDG3rkmSizcax2A.w4Phg0HCPi7nVhTM-1794885778.0731618-1.0.1.1-U.yaWCkW01eFKpJQqeIL0GSX9yzWvMW4JL1sj86SWBejDnNMjUss8_YbYpOizxOkx37vee5qM4FAUjf.Wwku3dxq3EZNzb6gDlhNj8fx27XZwkyuWQE73DUB244WFSUl; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:58 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:58 GMT
-Invalid cookie header: "set-cookie: __cf_bm=8kS4JzeS7heL06j_BINKptoboLOjxBIjPywSeiWYN.g-1794885779.6655972-1.0.1.1-X3gcgipYzcJRY5RAQTUSiumNf361rUEJDyAEEfTIzBkzmCXysiNszFan5AcVGH1IM7brIFJwQm4vat6hhEFfD2ssSttZpv3Jc8R4nOntIvaViF_ReJU2M39BlPr.aqCF; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:59 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:59 GMT
-Invalid cookie header: "set-cookie: __cf_bm=lwHmjPCRyn6JtIobvVCxazD_.dXoSISzXKN6pflVSto-1794885779.7074294-1.0.1.1-Y8hGbkXpmDtDXSNdEu7K2t6pT9jTpYpkkXyO.k9iHldTM.IqqiswpP6LWiyCtNtbax2QsGJfDnEJCAns61zWUXFI5l5Pya7Fh00xPfP_PltljjsDBXun2EjRFPIvvSof; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:52:59 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:52:59 GMT
-Invalid cookie header: "set-cookie: __cf_bm=hO88Ylr57n0ifQBZDNfEr7nCJLbGgQdajvQz4fjfv1A-1794885780.2939675-1.0.1.1-sppj0rmQav9BMiel1aWXgL_dGdAt4j6QVOUPuXTx_KflQFOyj0NRmho9tcrADtKsUbO.QwuYPBjq2JMeEvQ4hPz5rvYPDM9ivf3r0BE65ZHjZV_UZElCZATIM2ZI0o2F; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:53:00 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:53:00 GMT
-Invalid cookie header: "set-cookie: __cf_bm=WIfzAGQ0L804htljhHOEh2i96Pv__G7FzsT3a6aqo9U-1794885780.3298182-1.0.1.1-7imU1yE6e.atyrGpIJ7T6pY5zTVIaRRZLl4lmq5aXngrg9js..g6SuHuA1VLY72fl4_5ugUTUQc8Ye82DsoaxRV72cYDB9jEHTF2jyx3.nYePlz1Pez90l4VtUG.QsmF; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:53:00 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:53:00 GMT
-Invalid cookie header: "set-cookie: __cf_bm=FYNqVEPpe.tjD.Dn2VN_ll5OU06Sdm4.b23H2q.uYgQ-1794885781.3008432-1.0.1.1-xIuQfhzuXhJf5J5FPPfQ1WjCvZ.QB7lnVHAUspYEvPxhGmnELB6i3c2yiWAfJsy_7TMhIeWGYwxni85JH3uBCX23c1WRqUYzgRoRGIxulWJ74g0iT7Fp2CAX.ozDYweY; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:53:01 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:53:01 GMT
-Invalid cookie header: "set-cookie: __cf_bm=wCwPKtJLMtaUEPFx34LG5pfZ8MIsRvrrMkIEvIA5JpE-1794885781.3515224-1.0.1.1-gpwESwHz4ZyvfRVzaUStTpNSwyH38y7EcrBrxy_NwXiVOam9tRR.6roUf3UD58.mCo2V2zmXjCN76egEF5CI1Jnzm8kcbKJhnb2P64wsxM1vGAFhS3SdLSH.MDy9eqEg; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 03:53:01 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 03:53:01 GMT
-/tmp/fg189/build/sources/main/java/dev/zorowarrior/bridge/BridgeMod.java:5: error: cannot find symbol
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-                                                ^
-  symbol:   class ModelResourceLocation
-  location: package net.minecraft.client.renderer.block.model
-/tmp/fg189/build/sources/main/java/dev/zorowarrior/bridge/BridgeMod.java:50: error: void cannot be dereferenced
-                .setUnlocalizedName("bridge_beacon")
-                ^
-/tmp/fg189/build/sources/main/java/dev/zorowarrior/bridge/BridgeMod.java:53: error: cannot find symbol
-        GameRegistry.register(bridgeBeacon);
-                    ^
-  symbol:   method register(Block)
-  location: class GameRegistry
+Invalid cookie header: "set-cookie: __cf_bm=jOHIOnADXKBA_ShAxNJZBpy4NTwcJA7aVHKaGoO2O.Y-1794886425.304435-1.0.1.1-Bvlp7Guh5.0ooVnbckd7skCWYMC.YvOUnEA6XbdXMYAofcQR8lMA0RXbarv4qOQyZqDF4TXWgJ3FCPm2RdsQXHyNTO7x8bldBRthXBCFtBa.lvFyXqBfPOp1l1Jj3fpR; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:45 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:45 GMT
+Invalid cookie header: "set-cookie: __cf_bm=TRGNrz7PYIwyqAnACl2z963mhm4ppulIrPtRjO3kgX0-1794886425.3386729-1.0.1.1-MwPL0b5bruM5MW0CaV4qcAu1HfjD1WkRq0fd2R.Wz5i3noncNbejqoJypqkGM2wLgMnrxb4WDpoUs5Eg1kmGKvST8Y_bEcaD1KuxCF23CrzSYMeLz7Z8CMdvvvrpxWHs; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:45 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:45 GMT
+Invalid cookie header: "set-cookie: __cf_bm=SL9_TyhWqoTP6AwFSaJT4FLFrfPf.vcttt_sY1De0GM-1794886425.4945126-1.0.1.1-O8DMU27DVxs01ky5FYB9xf_PeZH5qR9s64BEN6s3Fb7GARXS3nEleTmsffZYDAKlU1U.Pw6EWucJt3RoR2r4pmirZadgrt2lrr6tRX.fC_9Zd73m4WJt68JP45kX.aSP; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:45 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:45 GMT
+Invalid cookie header: "set-cookie: __cf_bm=btK.3MlU_IZItmqz4HrY.gXvXnMldPJ8FPaEhCbjYsM-1794886425.5215285-1.0.1.1-FYxgXDJ_LPrTnEek4A14BInQUQbeGYs7rI3Um_AsVgW1.PeJTMmgSRCYj13VuIWQMYpqUjO4Xcc_9nAhGhrmp9ylJ5eZujhRBmMe18CpcnbVFv_IeZxUw4L1KkHn2gSh; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:45 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:45 GMT
+Invalid cookie header: "set-cookie: __cf_bm=yhpx.V3V808dzHlb7XlVH53SWYrZztWqdebwdXyL2N4-1794886425.7481916-1.0.1.1-EcgerVZxtuXlMtBrk4n9k_Q4Vi04xNMIH3F9l2zQ6TiEH1RPsvSjF1TEJ22j8Sl5swZhNf7UxOtyilocoH8Owpn9k0_5aTSenlDIx9.XiO1l454eq6CIw2Rw2i5jPb4f; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:45 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:45 GMT
+Invalid cookie header: "set-cookie: __cf_bm=j3WPIpSfPs.BnrHokA1YaOzLbNbtb4Y8LfKtnYaiQ5k-1794886425.7747464-1.0.1.1-5lU48xl4RwbaqWgSqf4h1.V_9KCTaQxrFRpLd0_Wj4PbgapNreDAcPlSNr0Y7EAs6rEQY9pVL2CHfa2ukfRiyKhA0hKVDL4YGTpfZUeEGFsLuiCfB7FFYWVpTx9BcUAG; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:45 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:45 GMT
+Invalid cookie header: "set-cookie: __cf_bm=B_K8K6WWDUBarv_90cflMI4lnJAss8MekgoJLVgTDeA-1794886426.079571-1.0.1.1-lW62gqNVc_cL0PXx2p4SnA.18.5vkn61Ea15Z9wK9kocekWQTD0mAtYR8DbVjy3sxkuON66qh87HYxcYPSOhgkCSRs1r0NJg3z66rrNtRW3czDLD5iAOq25Qbi6JQFEE; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:46 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:46 GMT
+Invalid cookie header: "set-cookie: __cf_bm=r8Ofyyp9mlJz1LIjE6RIoSIT9xTFjCk0m0GQ2oBUmVs-1794886426.103058-1.0.1.1-zChSzIZJlkH1qC6z8WAtk.pIJTXIU1qMOBLJSRXE1QCflk7mpQlPC1qbb_UdKa5RJiwiw2L4hukkXzFUivXascCUDHEqrqxC0I2XSakkcfx0BPZCCcjYEJluWBKhB6d6; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:46 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:46 GMT
+Invalid cookie header: "set-cookie: __cf_bm=lKsOg4ypgMfTxtlh1xj7_p9XsW6bm3VKSxH6hWPhfms-1794886427.431831-1.0.1.1-eubm6ql_DE7TLklR33VADQBaSrAp2WuiwSnotv2zzGL3lTpxZwSIrYOyF9l6JTTPVzDCNMmZNpQ6zsx6Narn0sJtFKbAbV4P4jT22G5V0x38w79FxtAXeLkpru6lsCIk; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:47 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:47 GMT
+Invalid cookie header: "set-cookie: __cf_bm=UMrZxHnOPYOmSy9ckOaEyAxreiRMHhtQYGqpItxj_8Q-1794886427.4704437-1.0.1.1-NxqZ_Ux5JFK7XStgwYsTKBFoatukW_vanxECmR.9YHw2rd6Qn_HziFm6zoZRjamaMzI3GSkHrywyxKQxrmWN78lLIaPgpKwrih8M4KRvXG7kMr22GZ6JdC989_BnJFW9; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:47 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:47 GMT
+Invalid cookie header: "set-cookie: __cf_bm=B0xeuKdOnKszBEEqD5uFVaTZWlObtUv0hgJf3CIsmTM-1794886427.6686964-1.0.1.1-W7SP3FAWsNRP0XJtgTzkhp37tOuHnzjKaLZFWURyjtZwAEcl6Rv_gZeEMAgWDlh1521YJVGw5oLNPvg_iUUKQoROz9mAcaLdzfNcqyn4QusWfP6mueu6LXtb3vasztJ2; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:47 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:47 GMT
+Invalid cookie header: "set-cookie: __cf_bm=WXD61DF_NaryQnMdpdDZl1vdko2CwUDi3fndEvWS9yw-1794886427.693093-1.0.1.1-RnDj1xoSARvuvlWm3g4AEhvOQoQ.1pjPuaALbz3ngsrsU_ldjA.HnSfk87DL2Qy0PWivn1GWvZ_UPHF2NhRqFiuZ.hn1C65RssW61AV.7reH8P3K9vz3W.bLJZvplt3c; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:47 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:47 GMT
+Invalid cookie header: "set-cookie: __cf_bm=uMCa38xSlJrh5EISFs_7qgC7t6_lXRpmNFMqfvsyOp8-1794886428.2803574-1.0.1.1-F_MGbo9RCG6By1u6cUZlFQ0PSDVotBrQf.YSxAIO5b_ZXCDWWlpDYTXWDZM3VaHFwWxA6b6nUCDNDORQvY2kO9ZIj450TUy4.L4eUyjKn5cV9UesBcqvDdi3eG9TDP8T; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:48 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:48 GMT
+Invalid cookie header: "set-cookie: __cf_bm=xZcr0EazvIrq7Acwo7K0OOS0w2OLWx4v7OA5fForrGQ-1794886428.3104968-1.0.1.1-5gpryIbel5WowJ3aImEe8ggCifFtJhujCmWULCLQRaKAUIKmyDvFi4tyfxvVG5RjisObGPA2HDOcAvIJ6hbqqI02MtRcf00Ks4NpisPoDrJCAFOyjR1O0s4RZCfgrXdn; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:48 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:48 GMT
+Invalid cookie header: "set-cookie: __cf_bm=R5w8pt7kmm9G.CNQfCzI9AqKsqREoAwmHo6u1F5ZAWA-1794886429.697154-1.0.1.1-jxhrakV6.7saHy.Fq2KFe7wZATQu1ARAWr3lj7N4vvmb.UZFAKcIOdvL1qR36P8yZtBe0ocuBDuVxowHCZfgJpD7gSBK_1JJa_YiCRINjKfKLFmcAOfgrBDSEYRMrR5j; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:49 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:49 GMT
+Invalid cookie header: "set-cookie: __cf_bm=sDIa9FcSI.sTjh2exCt_am.9iR.jDfGUsKiUi2rcGQc-1794886429.7250366-1.0.1.1-o_.BWpelC0U3KM7LfmJIUWaCx3wJxUeWaDrM5Q.plLCQc1kS5DAGiKLDOzI0Bx9ypeeGLSRoW6DSmhAwJCaq2yuE0irIMCHxQemILxop7pkVY72aecRD3LcObq4wrNzw; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:49 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:49 GMT
+Invalid cookie header: "set-cookie: __cf_bm=19QJkaSiDsMHdH2czXSoCTjamB3KILnRmh0w.M7rKgs-1794886429.9908457-1.0.1.1-AJjsWCrN2K3H8klKwMiGIxZRdV9acrkKMj85H3qMvRe7kUuYT0HRbZ9U74XYxha9atIrvZLXOU1DaOn9s3wGTb0Nq5eGMTLkUB6Jv0dbhukgz5ea2pEQxRBYPvYOmw7j; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:50 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:50 GMT
+Invalid cookie header: "set-cookie: __cf_bm=Q0Mh2LNNfQx0r8uKXf.Wcee4f9z_ITk87E9v5QysIWM-1794886430.0261846-1.0.1.1-vk7fCH_SMpqBA8uhjRMxvDFjl1EDGLYl.wOPDB7dDjZ3Q3RwRQiCEHa41Ruiy7Y7bDnK1duAzsd0ltUeAHQUAer3lrzwmR3H5xRVBRxJnwoKtgiNPoOPerMuSPNmhwXX; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:50 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:50 GMT
+Invalid cookie header: "set-cookie: __cf_bm=EO7mRe.4gE8L_rZ3Wn7APevBpM0e8.l37T1SW_jmUJk-1794886430.2098687-1.0.1.1-dTxSiSm_sbYishf1C51L5ThOGvv7hxcw7Nd5ZA1sBd0JBJG7Itr9C_B7fBJLU.FmL4pt1giHAAc9sOAzExHYOuAsQHoEdM2ngaDwnL8SF.oC5NNrF7jnyHFDsyrVpUDL; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:50 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:50 GMT
+Invalid cookie header: "set-cookie: __cf_bm=qP3UW0iuodVZDBdlNa_tto9DOu7vZ40Y7YMPx1nNjMY-1794886430.260409-1.0.1.1-PoWeE2Vflz_m7Y.ghdlCpPHKT79fTe00Bl7xVGQKA8edgRjunMjWhCsqFirCdpKcxFWzDoqkFE5L_ZrDu8kaKlJWUq3w69snmRaJq8cITkOczt1P8z36041gQjQvsCoR; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:50 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:50 GMT
+Invalid cookie header: "set-cookie: __cf_bm=nMCV0hm2XT1D_Uc0d0AMBDcjsO_Kj9m3I19koyfY2aQ-1794886430.428204-1.0.1.1-.HwlZswhykpDCgp7jpkHY9xLHE0xPysfeP3eNXKK8jyQoBg.dlMHtMriq9GQX_asGJgwXrYXAo99dE8u_CifSY67IV8S_upk7FBrceCm7DHlR55XewhY3BVvPibRbjQJ; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:50 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:50 GMT
+Invalid cookie header: "set-cookie: __cf_bm=1K3TNoTweO67uFVV4VuNe0o8a2DiAkxyDn43EhY88b4-1794886430.4531813-1.0.1.1-Z0eu7nfQBMnS5B_cr.0LJtG2BhNnRDtbzBeY8E1TVjsTf1veQl9F1n0_CGakXS8mNvXFJC.ZEw6_AZL3ChLcpXtTDDVMxfmM9GnoKJYn4gmfY3HAZWzyUi0DNI2GbjDZ; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:50 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:50 GMT
+Invalid cookie header: "set-cookie: __cf_bm=YR9vm.PU98gwHJWXsuf2EazeULiSitlHlRh_yaNxGgM-1794886430.6163874-1.0.1.1-y9W2YZ.w6oQOPEynGGyxfa_OQiFdhJe3FJaKDAjS02WDWXyxsnfzlp.mQnXNQSbNVGSSOt0wv6RbfEFROCR5Ldjtqk5QRsSZXxhsJgCfEHq02IXPdFhymlOB_H0eSvFm; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:50 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:50 GMT
+Invalid cookie header: "set-cookie: __cf_bm=uM_MQYnNsSnlhXykN5PiUsza6xGC6d7OnR7KCtOneBE-1794886430.6786394-1.0.1.1-lIHUrQgn2AIqvZ0pJwKpTlWV1H1g7w2yfSZSO7nMsBiV262uboYdeiZziN57.fasxJUKzmMQ8kjTM23FeBvNnDWG7zmaAzXSPDzPOfF_tZdxBTAswpXzc15uO0gVgM0s; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:50 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:50 GMT
+Invalid cookie header: "set-cookie: __cf_bm=nfSB8Sp0X69bGQcDBRf_kwc3BJ4c_zehxr7o_5FwETM-1794886430.8598478-1.0.1.1-AhXnQjA8RRElTjcihXYwx8eUgPveQjbkSvrmL4BD8RorVx4pzOJDzkVX_TsDIkNjpZa61W_3EWwCZ6OmtPYBYMBiLwsvgJk_vXyNR_VDqCET0rpk6YsY0ckT31IsVUDC; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:50 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:50 GMT
+Invalid cookie header: "set-cookie: __cf_bm=5PABg5XQu2W2LIps9drIQPn.O81nVp6lAa4HCky3rcE-1794886430.8844383-1.0.1.1-Ayw2i1Ff_cb6VwRLZOgoPrSp5EOrVmqr720ybT8yqpI7nrnv.DlcmYSln_LcQ5T.9yDTP9yjZzbdLU7U2M1jjz9lVmuCFkHvwdLelYFkm5M2xHJFl7yzZiD38ulDh7Ai; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:50 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:50 GMT
+Invalid cookie header: "set-cookie: __cf_bm=x5FlDcx1COZJCDLromP_pF5TXBzIgZEwVwQGOtEQkuw-1794886431.1220784-1.0.1.1-39P03J4EtygQ3GgZxjpnw1UcDWW2DjoIVWyLibxx23WFjrw9bBJNXnt0FV.2zf6S1GLgky7gHFTrDGZWjHQlj0Haw7q5JoEnMT1TcS45KyVEJq_Q6EOXlsKStpByU4fb; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:51 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:51 GMT
+Invalid cookie header: "set-cookie: __cf_bm=v1kg5AeCrq1Jx52xe0PktsWMu552h58rreIBpo5fq5o-1794886431.1571493-1.0.1.1-rBbuf.UY2s2JVN_0DZu5mHMzL89buB4LgCJ4VZIFAzVHjWVne..0njNt6UMy6CUvTartO7h4YLen_TmjNnCoAMMZJ_UhAP9nFqlA9qWqMzBCnYV8.6mCGVKOUvDs.NHx; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:51 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:51 GMT
+Invalid cookie header: "set-cookie: __cf_bm=ZsaxN_QtvPbZW9crzeYv8ORCs1CzTDOrw3TiHB7HV7U-1794886431.3114138-1.0.1.1-SCUWjlv3NeTM_Xd0qk360VhwmMUb5eLcfbDjcWvK70yaOVF1dYffQ3IX3Kn4Rfdz4Cuu7ub036kkGgRAJiNIi002hbTSSIPwco_lZur3SJ06v7UwoKdKeQ.vr1Av8LUw; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:51 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:51 GMT
+Invalid cookie header: "set-cookie: __cf_bm=ewb.gpXBmUXI0Ng0byMf6H0taOt8H_NAlrQNWeENB80-1794886431.3370225-1.0.1.1-8yjAaDaAZTDfDc00.bEka3eBxeVdu18ZvM7gwuwY8HJRqOotKkvBpuWiT1NfKZ_Loi7h0XKLo1hIu1KPMqzG5dQx2_IWUn2Z9drnWi9J5txfQ8fFRCBkbvhsfqADVkmx; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:51 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:51 GMT
+Invalid cookie header: "set-cookie: __cf_bm=JFXSOBRLJQ5pnkeEO6j6242bEoBAIIJyw7IMQrKo7EY-1794886431.530145-1.0.1.1-OERHNPElN3rP_b0AJGVkdYTvIbw1CfpBNPbjj4X842hh53oKkawCsGvGphihgiRDgn9XCTXL1lh0ZfJOHKsW6gb.sofb01JajrRjKNFVs_Mrt5DdMt9R.DEYjaI8maDP; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:51 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:51 GMT
+Invalid cookie header: "set-cookie: __cf_bm=lJPTxQqnlKm9vsHoHOG_sENB2clTY..cQHmH85jTvSA-1794886431.5721314-1.0.1.1-IiORf8ssKsasgPhMEYOW9iCE1kcuHFUpcjsjj4_xgXJz4QpwfJaoJzgWGiJda1tpOPhrLFe3fNKDzwKEq_E0nQK6kKMjSJ1nnAwGafwwck.vNbQDD.MzNjMo8zJGzTlM; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:51 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:51 GMT
+Invalid cookie header: "set-cookie: __cf_bm=02QVpZW_vQ1OQe14wvh1hvuSFRxFWiBjEZLTWzSKPHs-1794886431.7567348-1.0.1.1-jqJbGDYUWD3ZSe8SnPUvVzcxBHDVWtKPFZmyrsprYURtVHUWEh_6OHq74i7_4qVeNLF1ChSh5_hyyr_AkIVimB3fwj1VIcDcRLm2wuc21CFTgKyHGS1fvif_6_kvYTin; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:51 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:51 GMT
+Invalid cookie header: "set-cookie: __cf_bm=lm52L5DyaZB5LWWZ.urFohGc_Mf0OgcQFuRnJhJOWYk-1794886431.782228-1.0.1.1-cMkR1oYv2YjTDM7Cop_5pAkIaANcKrDVCazUQ2JTpMJywVCirwP9_NCew50.jSk2Wgvjc6GFxKG6Yyif3sgaE0ZL.seLQPJcqsKatcehRkjUtjWydA8i9VXZzdVQVM7O; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:51 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:51 GMT
+Invalid cookie header: "set-cookie: __cf_bm=UD3WlZrR.apHmvGg8lmyEcPjIKbX8_EIldcgivk2Us8-1794886431.9537418-1.0.1.1-m7BQmL0CyomhTYSlVzfitGXcVzs6ZHr1ylyIZpuW2ZKQOMp8uKdqM7ZuDWeh0onbdn0ndj2WC0GRfy5n_MFrSxHPWcmxv1ivCx4RlUddF0dlMkasqhXTg3qeZhl0J9d2; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:51 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:51 GMT
+Invalid cookie header: "set-cookie: __cf_bm=vllez9gH4.lQ9HwOr5zCyT6XQbK_C5HsI3yPBpy0xo0-1794886431.9784696-1.0.1.1-bPBxPB4CqiP87qBn31VH7e4K5nj81TgrA5GL4NERE1YEj0vFhPmLoe0WiPIpAPxPHPskmLKNvPMrKjGtBOcbH1f3gCAjdLzP7RfmtHboRL6U08DNmYnE.Q7foTYZVfbO; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:51 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:51 GMT
+Invalid cookie header: "set-cookie: __cf_bm=u9q5UIdcFu6PH_PaBT92nLIu4h8YhEJBNTQlEBblt0w-1794886432.5717492-1.0.1.1-HD1fsk3zVjavEJUazo29M5DRPKDSI1ScfL5vGRN7VbsRcdX.gemMqoksP6m73p3vZT50z1fyoIpMi5VMNcfoNC05h9Yj381uNZMg0sKdcd_FchxJWuMKSTgRKveXtg55; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:52 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:52 GMT
+Invalid cookie header: "set-cookie: __cf_bm=YtyrAvQMb1fAOYETrmCec7jcfQDGjU382L1ZW7ntMYw-1794886432.6057215-1.0.1.1-QRY7cpFZtNqqNuqVlZbu7RYgihshfmV.T2eVAPv3hLgW5Hk78L37qCXbwcXUp0DalvMCRD9r9bv3N9RXSC2lZVJyDWA.O1ke0AxKxB6TaiPA_7yDl4RP2.oPt90oTKiy; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:52 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:52 GMT
+Invalid cookie header: "set-cookie: __cf_bm=i48iT7YNmmzOCVnUHcfaiIy89WPsXusbIDnD.ArNNsI-1794886432.8162544-1.0.1.1-.XuW12eSnl2Z099zkuzOX9.jK.6LeqHFI8n_cgUnGTT9d6jU0.J.2fH5qZYr_tj3KOK5HdhfSOCmeuYNCQ.xF3OH0T31UcW7e4UiZxZreUkUejS5hhjXJtKkVPeug4Vg; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:52 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:52 GMT
+Invalid cookie header: "set-cookie: __cf_bm=o0hTEGCUceSSY2bDDVYhaEf3M0AMSCge4NFUR4ozHW4-1794886432.8487363-1.0.1.1-bv9b9N3q4.c0N5_MBXp4RFzQrRFm9TT8gsvQW5E5KmyUduPfwUSmiyYh5DK_hpKjRmYSw.iymV9A.Gx6nCIFzR1Fe34c60BBddtKIv82leQaqe78jiY3LIsGyAB9.ZRE; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:52 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:52 GMT
+Invalid cookie header: "set-cookie: __cf_bm=R_m04wFbUzsewSCTbBeCkAqK2NppCZqlB0QRaMsHlSc-1794886433.1662579-1.0.1.1-Awsn1S7s1Ia2QSIHLLG2t7C_Af5ksaC_dmd3_UfsgIuirlS9JMJ1BX8suxapyI_sGklbaqrB__KTsH.Cq1QpPfDGg6.35sbQKAvmFZcIrICp1jGfN1Z3ZCtps6.kI.bo; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:53 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:53 GMT
+Invalid cookie header: "set-cookie: __cf_bm=7bzaXmcFp3IdqhRycFWD8OiddKgPY2WYp1z8w5eqLhk-1794886433.2475688-1.0.1.1-938n8KJXQpYNlOM1ENcm0DC9S79GPiAPLJ.YhYJWm1w4tEAn2.GOEXyflKF4pGuu7NTHHbI.8UQpMtXvOHtV68IrNjTNm6QOb4v_SUQEGjb2MtCVpCfHsRcRjXy0y1yD; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=maven.org; Expires=Tue, 17 Nov 2026 04:03:53 GMT". Invalid 'expires' attribute: Tue, 17 Nov 2026 04:03:53 GMT
 /tmp/fg189/build/sources/main/java/dev/zorowarrior/bridge/BridgeMod.java:60: error: cannot find symbol
-        GameRegistry.register(bridgeChip);
+        GameRegistry.register(bridgeBeacon, "bridge_beacon");
                     ^
-  symbol:   method register(Item)
+  symbol:   method register(Block,String)
   location: class GameRegistry
-/tmp/fg189/build/sources/main/java/dev/zorowarrior/bridge/BridgeMod.java:62: error: cannot find symbol
-        GameRegistry.register(new ItemBlock(bridgeBeacon)
+/tmp/fg189/build/sources/main/java/dev/zorowarrior/bridge/BridgeMod.java:66: error: cannot find symbol
+        GameRegistry.register(bridgeChip, "bridge_chip");
                     ^
-  symbol:   method register(Item)
+  symbol:   method register(Item,String)
   location: class GameRegistry
-/tmp/fg189/build/sources/main/java/dev/zorowarrior/bridge/BridgeMod.java:89: error: cannot find symbol
-                new ModelResourceLocation(MODID + ":bridge_beacon", "inventory"));
+/tmp/fg189/build/sources/main/java/dev/zorowarrior/bridge/BridgeMod.java:68: error: cannot find symbol
+        GameRegistry.register(new ItemBlock(bridgeBeacon), "bridge_beacon");
                     ^
-  symbol:   class ModelResourceLocation
-  location: class BridgeMod
-/tmp/fg189/build/sources/main/java/dev/zorowarrior/bridge/BridgeMod.java:92: error: cannot find symbol
-                new ModelResourceLocation(MODID + ":bridge_chip", "inventory"));
-                    ^
-  symbol:   class ModelResourceLocation
-  location: class BridgeMod
-7 errors
+  symbol:   method register(ItemBlock,String)
+  location: class GameRegistry
+3 errors
 :compileJava FAILED
 
 FAILURE: Build failed with an exception.
@@ -381,9 +343,9 @@ Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Com
 
 BUILD FAILED
 
-Total time: 48.813 secs
+Total time: 22.362 secs
 FAILED with Gradle 2.14.1
 total 12
-drwxr-xr-x 2 runner runner 4096 Nov 17 03:20 .
-drwxr-xr-x 4 runner runner 4096 Nov 17 03:20 ..
--rw-r--r-- 1 runner runner   16 Nov 17 03:20 VERIFY.txt
+drwxr-xr-x 2 runner runner 4096 Nov 17 03:31 .
+drwxr-xr-x 4 runner runner 4096 Nov 17 03:31 ..
+-rw-r--r-- 1 runner runner   16 Nov 17 03:31 VERIFY.txt
