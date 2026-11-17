@@ -47,12 +47,7 @@ tasks.register('checkSources') {
 }
 compileJava.dependsOn checkSources
 
-processResources {
-    inputs.property 'version', project.mod_version
-    filesMatching('META-INF/neoforge.mods.toml') {
-        expand version: project.mod_version
-    }
-}
+// Literal version in mods.toml - see java/neoforge/build.gradle for why.
 
 tasks.register('buildFacts') {
     def out = layout.buildDirectory.file('bridge-build-facts.json')

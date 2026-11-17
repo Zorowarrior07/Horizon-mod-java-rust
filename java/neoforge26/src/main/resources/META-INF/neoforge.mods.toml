@@ -3,7 +3,7 @@ loaderVersion = "[4,)"
 
 [[mods]]
 modId = "zoro_bridge"
-version = "${version}"
+version = "1.0.0"
 displayName = "ZOROWARRIOR HORIZON BRIDGE"
 description = '''
 Bridge beacon and bridge chip, Minecraft 26.x build.

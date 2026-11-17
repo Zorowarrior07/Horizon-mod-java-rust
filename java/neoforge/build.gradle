@@ -46,12 +46,9 @@ tasks.register('checkSources') {
 }
 compileJava.dependsOn checkSources
 
-processResources {
-    inputs.property 'version', project.mod_version
-    filesMatching('META-INF/neoforge.mods.toml') {
-        expand version: project.mod_version, minecraft: project.mc_version
-    }
-}
+// The mods.toml carries a literal version on purpose: expanding it needs the
+// processed resources, and a dev `runServer` scans build/classes directly. A
+// literal value behaves identically in dev and in the jar.
 
 tasks.register('buildFacts') {
     def out = layout.buildDirectory.file('bridge-build-facts.json')
