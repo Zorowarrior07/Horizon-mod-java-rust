@@ -23,45 +23,45 @@ Loaded 131 artifacts from /home/runner/work/Horizon-mod-java-rust/Horizon-mod-ja
 [1m*** Started working on [4mdownloadJson[23;0m[23;0m
   ↓ https://piston-meta.mojang.com/mc/game/version_manifest_v2.json
   ↓ https://piston-meta.mojang.com/v1/packages/9aa86ea608c3ec777dcdc09e6c5a06c85b53599e/1.21.1.json
- [1m[92m✓[23;0m Completed [4mdownloadJson[23;0m in 0.30s
-[1m*** Started working on [4mdownloadClient[23;0m[23;0m
+ [1m[92m✓[23;0m Completed [4mdownloadJson[23;0m in 0.38s
 [1m*** Started working on [4mdownloadServer[23;0m[23;0m
+[1m*** Started working on [4mdownloadClient[23;0m[23;0m
 [1m*** Started working on [4mdownloadClientMappings[23;0m[23;0m
-  ↓ https://piston-data.mojang.com/v1/objects/2244b6f072256667bcd9a73df124d6c58de77992/client.txt
-  ↓ https://piston-data.mojang.com/v1/objects/59353fb40c36d304f2035d51e7d6e6baa98dc05c/server.jar
   ↓ https://piston-data.mojang.com/v1/objects/30c73b1c5da787909b2f73340419fdf13b9def88/client.jar
- [1m[92m✓[23;0m Completed [4mdownloadClientMappings[23;0m in 0.40s
+  ↓ https://piston-data.mojang.com/v1/objects/59353fb40c36d304f2035d51e7d6e6baa98dc05c/server.jar
+  ↓ https://piston-data.mojang.com/v1/objects/2244b6f072256667bcd9a73df124d6c58de77992/client.txt
+ [1m[92m✓[23;0m Completed [4mdownloadClientMappings[23;0m in 0.53s
 [1m*** Started working on [4mmergeMappings[23;0m[23;0m
  ↳ Running external tool net.neoforged.installertools:installertools:2.1.2:fatjar
- [1m[92m✓[23;0m Completed [4mdownloadClient[23;0m in 0.70s
+ [1m[92m✓[23;0m Completed [4mdownloadClient[23;0m in 1.04s
 [1m*** Started working on [4mstripClient[23;0m[23;0m
- [1m[92m✓[23;0m Completed [4mdownloadServer[23;0m in 1.16s
+ [1m[92m✓[23;0m Completed [4mdownloadServer[23;0m in 1.31s
 [1m*** Started working on [4mextractServer[23;0m[23;0m
  ↳ Running external tool net.neoforged.installertools:installertools:2.1.2:fatjar
- [1m[92m✓[23;0m Completed [4mextractServer[23;0m in 0.59s
+ [1m[92m✓[23;0m Completed [4mextractServer[23;0m in 0.70s
 [1m*** Started working on [4mstripServer[23;0m[23;0m
- [1m[92m✓[23;0m Completed [4mstripServer[23;0m in 1.66s
- [1m[92m✓[23;0m Completed [4mmergeMappings[23;0m in 3.10s
- [1m[92m✓[23;0m Completed [4mstripClient[23;0m in 2.94s
+ [1m[92m✓[23;0m Completed [4mstripClient[23;0m in 3.56s
+ [1m[92m✓[23;0m Completed [4mmergeMappings[23;0m in 4.12s
+ [1m[92m✓[23;0m Completed [4mstripServer[23;0m in 2.72s
 [1m*** Started working on [4mmerge[23;0m[23;0m
  ↳ Running external tool net.neoforged:mergetool:2.0.3:fatjar
- [1m[92m✓[23;0m Completed [4mmerge[23;0m in 2.42s
+ [1m[92m✓[23;0m Completed [4mmerge[23;0m in 3.89s
 [1m*** Started working on [4mrename[23;0m[23;0m
  ↳ Running external tool net.neoforged:AutoRenamingTool:2.0.3:all
- [1m[92m✓[23;0m Completed [4mrename[23;0m in 4.72s
+ [1m[92m✓[23;0m Completed [4mrename[23;0m in 5.86s
 [1m*** Started working on [4mbinaryPatch[23;0m[23;0m
   [33mWARNING: [23;0mnet.neoforged.installertools:binarypatcher:2.1.2:fatjar is not present in the artifact manifest
   ↓ https://maven.neoforged.net/releases/net/neoforged/installertools/binarypatcher/2.1.2/binarypatcher-2.1.2-fatjar.jar
  ↳ Running external tool net.neoforged.installertools:binarypatcher:2.1.2:fatjar
- [1m[92m✓[23;0m Completed [4mbinaryPatch[23;0m in 2.84s
+ [1m[92m✓[23;0m Completed [4mbinaryPatch[23;0m in 5.24s
 [1m*** Started working on [4mcopyUnpatchedClasses[23;0m[23;0m
- [1m[92m✓[23;0m Completed [4mcopyUnpatchedClasses[23;0m in 1.32s
+ [1m[92m✓[23;0m Completed [4mcopyUnpatchedClasses[23;0m in 1.65s
 [1m*** Started working on [4mapplyDevTransforms[23;0m[23;0m
  ↳ Running external tool net.neoforged.installertools:installertools:4.0.12:fatjar
- [1m[92m✓[23;0m Completed [4mapplyDevTransforms[23;0m in 1.59s
+ [1m[92m✓[23;0m Completed [4mapplyDevTransforms[23;0m in 2.13s
 [1m*** Started working on [4mbinaryWithNeoForge[23;0m[23;0m
- [1m[92m✓[23;0m Completed [4mbinaryWithNeoForge[23;0m in 3.96s
-Total runtime: 21.47s
+ [1m[92m✓[23;0m Completed [4mbinaryWithNeoForge[23;0m in 5.28s
+Total runtime: 30.08s
 
 
 > Task :compileJava
@@ -118,26 +118,26 @@ Downloaded 3890 files with a total size of 789 MiB
 
 > Task :runServer
 WARN StatusConsoleListener Advanced terminal features are not available in this environment
-[04:14:25] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeserverdev, --gameDir, ., --fml.fmlVersion, 4.0.45, --fml.mcVersion, 1.21.1, --fml.neoForgeVersion, 21.1.266, --fml.neoFormVersion, 20240808.144430]
-[04:14:25] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: JVM identified as Eclipse Adoptium OpenJDK 64-Bit Server VM 21.0.13+9-LTS
-[04:14:25] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher 11.0.5+main.901c6ea8 starting: java version 21.0.13 by Eclipse Adoptium; OS Linux arch amd64 version 7.0.0-1019-azure
-[04:14:25] [main/INFO] [ne.ne.fm.lo.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgeserverdev
-[04:14:25] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=union:/home/runner/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.16.4+mixin.0.8.7/26d01f0567ab46e9ca0d2ed89d0ecc11aadbd433/sponge-mixin-0.16.4+mixin.0.8.7.jar%2394!/ Service=ModLauncher Env=SERVER
-[04:14:25] [main/INFO] [ne.ne.fm.lo.mo.lo.JarInJarDependencyLocator/]: Found 2 dependencies adding them to mods collection
-[04:14:25] [main/INFO] [ne.ne.fm.lo.mo.ModDiscoverer/]: 
+[04:21:04] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeserverdev, --gameDir, ., --fml.fmlVersion, 4.0.45, --fml.mcVersion, 1.21.1, --fml.neoForgeVersion, 21.1.266, --fml.neoFormVersion, 20240808.144430]
+[04:21:04] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: JVM identified as Eclipse Adoptium OpenJDK 64-Bit Server VM 21.0.13+9-LTS
+[04:21:04] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher 11.0.5+main.901c6ea8 starting: java version 21.0.13 by Eclipse Adoptium; OS Linux arch amd64 version 7.0.0-1019-azure
+[04:21:04] [main/INFO] [ne.ne.fm.lo.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgeserverdev
+[04:21:04] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=union:/home/runner/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.16.4+mixin.0.8.7/26d01f0567ab46e9ca0d2ed89d0ecc11aadbd433/sponge-mixin-0.16.4+mixin.0.8.7.jar%2394!/ Service=ModLauncher Env=SERVER
+[04:21:04] [main/INFO] [ne.ne.fm.lo.mo.lo.JarInJarDependencyLocator/]: Found 2 dependencies adding them to mods collection
+[04:21:04] [main/INFO] [ne.ne.fm.lo.mo.ModDiscoverer/]: 
      Mod List:
 		Name Version (Mod Id)
 
 		Minecraft 1.21.1 (minecraft)
 		NeoForge 21.1.266 (neoforge)
-[04:14:26] [main/INFO] [cp.mo.mo.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeserverdev' with arguments [--gameDir, .]
-[04:14:26] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.5).
-[04:14:31] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, location] and [teleport, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
-[04:14:31] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, location] and [teleport, targets] with inputs: [0.1 -0.5 .9, 0 0 0]
-[04:14:31] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, destination] and [teleport, targets] with inputs: [Player, 0123, @e, dd12be42-52a9-4a91-a8a1-11c01849e498]
-[04:14:31] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, targets] and [teleport, destination] with inputs: [Player, 0123, dd12be42-52a9-4a91-a8a1-11c01849e498]
-[04:14:31] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, targets, location] and [teleport, targets, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
-[04:14:31] [main/FATAL] [ne.ne.fm.ModLoader/CORE]: Error during pre-loading phase: File /home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge/build/classes/java/main is not a valid mod file
+[04:21:05] [main/INFO] [cp.mo.mo.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeserverdev' with arguments [--gameDir, .]
+[04:21:06] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.5).
+[04:21:11] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, location] and [teleport, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[04:21:11] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, location] and [teleport, targets] with inputs: [0.1 -0.5 .9, 0 0 0]
+[04:21:11] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, destination] and [teleport, targets] with inputs: [Player, 0123, @e, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[04:21:11] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, targets] and [teleport, destination] with inputs: [Player, 0123, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[04:21:11] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, targets, location] and [teleport, targets, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[04:21:12] [main/FATAL] [ne.ne.fm.ModLoader/CORE]: Error during pre-loading phase: File /home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge/build/classes/java/main is not a valid mod file
 net.neoforged.neoforgespi.locating.InvalidModFileException: Missing license (main)
 	at MC-BOOTSTRAP/fml_loader@4.0.45/net.neoforged.fml.loading.moddiscovery.ModFileInfo.<init>(ModFileInfo.java:72) ~[loader-4.0.45.jar%23102!/:4.0] {}
 	at MC-BOOTSTRAP/fml_loader@4.0.45/net.neoforged.fml.loading.moddiscovery.ModFileParser.modsTomlParser(ModFileParser.java:56) ~[loader-4.0.45.jar%23102!/:4.0] {}
@@ -174,12 +174,12 @@ net.neoforged.neoforgespi.locating.InvalidModFileException: Missing license (mai
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?] {}
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?] {}
 	at net.neoforged.devlaunch.Main.main(Main.java:57) [DevLaunch-1.0.2.jar:?] {}
-[04:14:31] [main/ERROR] [minecraft/CrashReport]: Negative index in crash report handler (0/21)
-[04:14:31] [main/FATAL] [ne.ne.ne.se.lo.ServerModLoader/]: Crash report saved to ./crash-reports/crash-2026-11-17_04.14.31-fml.txt
+[04:21:12] [main/ERROR] [minecraft/CrashReport]: Negative index in crash report handler (0/21)
+[04:21:12] [main/FATAL] [ne.ne.ne.se.lo.ServerModLoader/]: Crash report saved to ./crash-reports/crash-2026-11-17_04.21.12-fml.txt
 ---- Minecraft Crash Report ----
-// Hey, that tickles! Hehehe!
+// I'm sorry, Dave.
 
-Time: 2026-11-17 04:14:31
+Time: 2026-11-17 04:21:12
 Description: Mod loading failures have occurred; consult the issue messages for more details
 
 net.neoforged.neoforge.logging.CrashReportExtender$ModLoadingCrashException: Mod loading has failed
@@ -244,12 +244,12 @@ Details:
 	Operating System: Linux (amd64) version 7.0.0-1019-azure
 	Java Version: 21.0.13, Eclipse Adoptium
 	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode, sharing), Eclipse Adoptium
-	Memory: 209717160 bytes (200 MiB) / 419430400 bytes (400 MiB) up to 4190109696 bytes (3996 MiB)
+	Memory: 171109632 bytes (163 MiB) / 411041792 bytes (392 MiB) up to 4190109696 bytes (3996 MiB)
 	CPUs: 4
-	Processor Vendor: GenuineIntel
-	Processor Name: Intel(R) Xeon(R) 6973P-C
-	Identifier: Intel64 Family 6 Model 173 Stepping 1
-	Microarchitecture: unknown
+	Processor Vendor: AuthenticAMD
+	Processor Name: AMD EPYC 7763 64-Core Processor
+	Identifier: AuthenticAMD Family 25 Model 1 Stepping 1
+	Microarchitecture: Zen 3
 	Frequency (GHz): -0.00
 	Number of physical packages: 1
 	Number of physical CPUs: 2
@@ -259,8 +259,8 @@ Details:
 	Graphics card #0 VRAM (MiB): 0.00
 	Graphics card #0 deviceId: unknown
 	Graphics card #0 versionInfo: unknown
-	Virtual memory max (MiB): 11063.02
-	Virtual memory used (MiB): 2468.89
+	Virtual memory max (MiB): 11063.52
+	Virtual memory used (MiB): 2345.54
 	Swap memory total (MiB): 3072.00
 	Swap memory used (MiB): 0.00
 	Space in storage for jna.tmpdir (MiB): <path not set>
@@ -286,7 +286,7 @@ Details:
 	Mod List: 
 		neoforge-21.1.266.jar                             |Minecraft                     |minecraft                     |1.21.1              |Manifest: NOSIGNATURE
 		neoforge-21.1.266.jar                             |NeoForge                      |neoforge                      |21.1.266            |Manifest: NOSIGNATURE
-[04:14:31] [main/ERROR] [minecraft/Main]: Failed to start the minecraft server
+[04:21:12] [main/ERROR] [minecraft/Main]: Failed to start the minecraft server
 net.neoforged.fml.ModLoadingException: Loading errors encountered:
 	- File /home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge/build/classes/java/main is not a valid mod file
 
@@ -312,9 +312,9 @@ net.neoforged.fml.ModLoadingException: Loading errors encountered:
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?] {}
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?] {}
 	at net.neoforged.devlaunch.Main.main(Main.java:57) [DevLaunch-1.0.2.jar:?] {}
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run-1794888801661.json
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run-1794889199981.json
 
-BUILD SUCCESSFUL in 1m 14s
+BUILD SUCCESSFUL in 1m 18s
 8 actionable tasks: 8 executed
 gradle exit=0 (expected: 124 for the timeout, or non-zero if stopped)
 ----- verdict
