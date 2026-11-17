@@ -32,10 +32,14 @@ jobs:
           JAVA_HOME=/usr/lib/jvm/temurin-25-jdk-amd64 \
             bash tools/probes/loom26.sh "$PWD/ci/probe26-build.txt" || true
           bash tools/probes/forge189.sh "$PWD/ci/forge189-probe.txt" || true
+          bash tools/probes/fgstrings.sh "$PWD/ci/fgstrings.txt" || true
+          JAVA_HOME=/usr/lib/jvm/temurin-25-jdk-amd64 \
+            bash tools/probes/neo26.sh "$PWD/ci/neo26.txt" || true
           bash tools/probes/forge189-build.sh "$PWD/ci/forge189-build.txt" || true
           tail -4 ci/probe26.txt; tail -6 ci/probe26-build.txt
           echo ---; cat ci/forge189-probe.txt
           echo ---; tail -12 ci/forge189-build.txt
+          echo ---; tail -8 ci/neo26.txt
       - name: Commit
         if: always()
         run: |
