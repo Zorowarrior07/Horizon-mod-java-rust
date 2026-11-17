@@ -1,0 +1,10 @@
+== 26.1 https://piston-meta.mojang.com/v1/packages/389f92510868468e073b7a12f19e70a7bf8684cd/26.1.json
+  javaVersion: {'component': 'java-runtime-epsilon', 'majorVersion': 25}
+  client           https://piston-data.mojang.com/v1/objects/191771837687b766537a8c4607cb6fad79c533a1/client.jar
+  client_mappings  MISSING
+  server_mappings  MISSING
+== 1.21.11 https://piston-meta.mojang.com/v1/packages/812ee7fdfdf648bb872f7a1dca33718de4e786b4/1.21.11.json
+  javaVersion: {'component': 'java-runtime-delta', 'majorVersion': 21}
+  client           https://piston-data.mojang.com/v1/objects/ba2df812c2d12e0219c489c4cd9a5e1f0760f5bd/client.jar
+  client_mappings  https://piston-data.mojang.com/v1/objects/031a68bebf55d824f66d6573d8c752f0e1bf232a/client.txt
+  server_mappings  https://piston-data.mojang.com/v1/objects/5621e9253f05fd57872bbe7f8ddf5f9a7d525955/server.txt
