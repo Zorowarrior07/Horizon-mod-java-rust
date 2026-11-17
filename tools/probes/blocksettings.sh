@@ -1,15 +1,16 @@
 #!/usr/bin/env bash
-# How must a Block be created on 1.21.4? AbstractBlock$Settings.getLootTableKey
-# needs an id, which means Settings must be told what block it belongs to.
+# How must a Block be created on 1.21.4? The NPE came from
+# AbstractBlock$Settings.getLootTableKey, which means Settings must be told which
+# block it describes. Find the method that does that.
 out="$1"; src="${2:?path to a minecraft-merged jar}"
 {
-  echo "===== AbstractBlock\$Settings (1.21.4)"
-  javap -cp "$src" net.minecraft.block.AbstractBlock\$Settings 2>&1 | grep -E 'registryKey|dropsLike|create|Settings ' | head -12
+  echo "===== every Settings method mentioning a key/id"
+  javap -cp "$src" net.minecraft.block.AbstractBlock\$Settings 2>&1 | grep -iE 'key|registr|id\(' | head -15
   echo
-  echo "===== AbstractBlock\$Settings#registryKey call sites in Block"
-  javap -p -cp "$src" net.minecraft.block.Block 2>&1 | grep -E 'Block\(|lootTable' | head -8
+  echo "===== full Settings signature list (names only)"
+  javap -cp "$src" net.minecraft.block.AbstractBlock\$Settings 2>&1 | grep -oE '[a-zA-Z]+\(' | sort -u | tr '\n' ' '
   echo
-  echo "===== Blocks.java: how does vanilla create one?"
-  apt-get -qq install -y >/dev/null 2>&1 || true
-  javap -c -cp "$src" net.minecraft.block.Blocks 2>&1 | grep -A3 -m3 'registryKey' | head -20
+  echo
+  echo "===== how 1.21.4 vanilla registers: javap of Blocks static init (first 40 lines)"
+  javap -c -p -cp "$src" net.minecraft.block.Blocks 2>&1 | grep -E 'registryKey|Settings\.|ldc.*block/' | head -25
 } > "$out" 2>&1
