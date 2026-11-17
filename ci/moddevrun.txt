@@ -1,11 +1,11 @@
 > Run with --scan to get full insights from a Build Scan (powered by Develocity).
 
-BUILD FAILED in 51s
+BUILD FAILED in 55s
 ===== generated script
 java/neoforge26/build/moddev/serverRunVmArgs.txt
 java/neoforge26/build/moddev/serverRunProgramArgs.txt
 java/neoforge26/build/moddev/serverLog4j2.xml
-java/neoforge26/build/tmp/neoformruntime/20261117-051445_downloadServer
+java/neoforge26/build/tmp/neoformruntime/20261117-052002_downloadServer
 --- java/neoforge26/build/moddev/serverRunVmArgs.txt
 -Dlog4j2.configurationFile=/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/build/moddev/serverLog4j2.xml
 
@@ -16,6 +16,90 @@ moddev
 reports
 resources
 tmp
+===== toml in classes dir
+modLoader = "javafml"
+loaderVersion = "[4,)"
+
+[[mods]]
+modId = "zoro_bridge"
+version = "1.0.0"
+displayName = "ZOROWARRIOR HORIZON BRIDGE"
+description = '''
+Bridge beacon and bridge chip, Minecraft 26.x build.
+Java Edition mod; the Horizon launcher has no JVM and uses the .hmod instead.
+'''
+license = "MIT"
+
+[[dependencies.zoro_bridge]]
+    modId = "neoforge"
+    type = "required"
+    versionRange = "[26.1.0,)"
+    ordering = "NONE"
+    side = "BOTH"
+
+[[dependencies.zoro_bridge]]
+    modId = "minecraft"
+    type = "required"
+    versionRange = "[26.1,26.4)"
+    ordering = "NONE"
+    side = "BOTH"
+===== toml in resources dir
+modLoader = "javafml"
+loaderVersion = "[4,)"
+
+[[mods]]
+modId = "zoro_bridge"
+version = "1.0.0"
+displayName = "ZOROWARRIOR HORIZON BRIDGE"
+description = '''
+Bridge beacon and bridge chip, Minecraft 26.x build.
+Java Edition mod; the Horizon launcher has no JVM and uses the .hmod instead.
+'''
+license = "MIT"
+
+[[dependencies.zoro_bridge]]
+    modId = "neoforge"
+    type = "required"
+    versionRange = "[26.1.0,)"
+    ordering = "NONE"
+    side = "BOTH"
+
+[[dependencies.zoro_bridge]]
+    modId = "minecraft"
+    type = "required"
+    versionRange = "[26.1,26.4)"
+    ordering = "NONE"
+    side = "BOTH"
+===== grep license (both)
+java/neoforge26/build/classes/java/main/META-INF/neoforge.mods.toml:12:license = "MIT"
+java/neoforge26/build/resources/main/META-INF/neoforge.mods.toml:12:license = "MIT"
+===== source toml
+modLoader = "javafml"
+loaderVersion = "[4,)"
+
+[[mods]]
+modId = "zoro_bridge"
+version = "1.0.0"
+displayName = "ZOROWARRIOR HORIZON BRIDGE"
+description = '''
+Bridge beacon and bridge chip, Minecraft 26.x build.
+Java Edition mod; the Horizon launcher has no JVM and uses the .hmod instead.
+'''
+license = "MIT"
+
+[[dependencies.zoro_bridge]]
+    modId = "neoforge"
+    type = "required"
+    versionRange = "[26.1.0,)"
+    ordering = "NONE"
+    side = "BOTH"
+
+[[dependencies.zoro_bridge]]
+    modId = "minecraft"
+    type = "required"
+    versionRange = "[26.1,26.4)"
+    ordering = "NONE"
+    side = "BOTH"
 ===== serverRunVmArgs
 --sun-misc-unsafe-memory-access=allow
 --enable-native-access=ALL-UNNAMED
