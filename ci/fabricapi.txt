@@ -1,0 +1,42 @@
+===== net.minecraft.registry.RegistryBuilder
+Compiled from "RegistryBuilder.java"
+public class net.minecraft.registry.RegistryBuilder {
+  public net.minecraft.registry.RegistryBuilder();
+  static <T> net.minecraft.registry.RegistryEntryLookup<T> toLookup(net.minecraft.registry.RegistryWrapper$Impl<T>);
+  static <T> net.minecraft.registry.RegistryWrapper$Impl<T> createWrapper(net.minecraft.registry.RegistryKey<? extends net.minecraft.registry.Registry<? extends T>>, com.mojang.serialization.Lifecycle, net.minecraft.registry.entry.RegistryEntryOwner<T>, java.util.Map<net.minecraft.registry.RegistryKey<T>, net.minecraft.registry.entry.RegistryEntry$Reference<T>>);
+  public <T> net.minecraft.registry.RegistryBuilder addRegistry(net.minecraft.registry.RegistryKey<? extends net.minecraft.registry.Registry<T>>, com.mojang.serialization.Lifecycle, net.minecraft.registry.RegistryBuilder$BootstrapFunction<T>);
+  public <T> net.minecraft.registry.RegistryBuilder addRegistry(net.minecraft.registry.RegistryKey<? extends net.minecraft.registry.Registry<T>>, net.minecraft.registry.RegistryBuilder$BootstrapFunction<T>);
+  public net.minecraft.registry.RegistryWrapper$WrapperLookup createWrapperLookup(net.minecraft.registry.DynamicRegistryManager);
+  public net.minecraft.registry.RegistryBuilder$FullPatchesRegistriesPair createWrapperLookup(net.minecraft.registry.DynamicRegistryManager, net.minecraft.registry.RegistryWrapper$WrapperLookup, net.minecraft.registry.RegistryCloner$CloneableRegistries);
+}
+
+===== net.minecraft.registry.RegistryBuilder$InitializedRegistryFactory
+Error: class not found: net.minecraft.registry.RegistryBuilder$InitializedRegistryFactory
+
+===== net.minecraft.registry.RegistryKeys
+Compiled from "RegistryKeys.java"
+public class net.minecraft.registry.RegistryKeys {
+  public static final net.minecraft.util.Identifier ROOT;
+  public static final net.minecraft.registry.RegistryKey<net.minecraft.registry.Registry<net.minecraft.entity.ai.brain.Activity>> ACTIVITY;
+  public static final net.minecraft.registry.RegistryKey<net.minecraft.registry.Registry<net.minecraft.entity.attribute.EntityAttribute>> ATTRIBUTE;
+  public static final net.minecraft.registry.RegistryKey<net.minecraft.registry.Registry<net.minecraft.block.entity.BannerPattern>> BANNER_PATTERN;
+  public static final net.minecraft.registry.RegistryKey<net.minecraft.registry.Registry<com.mojang.serialization.MapCodec<? extends net.minecraft.world.biome.source.BiomeSource>>> BIOME_SOURCE;
+  public static final net.minecraft.registry.RegistryKey<net.minecraft.registry.Registry<net.minecraft.block.Block>> BLOCK;
+  public static final net.minecraft.registry.RegistryKey<net.minecraft.registry.Registry<com.mojang.serialization.MapCodec<? extends net.minecraft.block.Block>>> BLOCK_TYPE;
+  public static final net.minecraft.registry.RegistryKey<net.minecraft.registry.Registry<net.minecraft.block.entity.BlockEntityType<?>>> BLOCK_ENTITY_TYPE;
+  public static final net.minecraft.registry.RegistryKey<net.minecraft.registry.Registry<net.minecraft.world.gen.blockpredicate.BlockPredicateType<?>>> BLOCK_PREDICATE_TYPE;
+  public static final net.minecraft.registry.RegistryKey<net.minecraft.registry.Registry<net.minecraft.world.gen.stateprovider.BlockStateProviderType<?>>> BLOCK_STATE_PROVIDER_TYPE;
+  public static final net.minecraft.registry.RegistryKey<net.minecraft.registry.Registry<net.minecraft.world.gen.carver.Carver<?>>> CARVER;
+  public static final net.minecraft.registry.RegistryKey<net.minecraft.registry.Registry<net.minecraft.entity.passive.CatVariant>> CAT_VARIANT;
+  public static final net.minecraft.registry.RegistryKey<net.minecraft.registry.Registry<net.minecraft.entity.passive.WolfVariant>> WOLF_VARIANT;
+  public static final net.minecraft.registry.RegistryKey<net.minecraft.registry.Registry<com.mojang.serialization.MapCodec<? extends net.minecraft.world.gen.chunk.ChunkGenerator>>> CHUNK_GENERATOR;
+  public static final net.minecraft.registry.RegistryKey<net.minecraft.registry.Registry<net.minecraft.world.chunk.ChunkStatus>> CHUNK_STATUS;
+  public static final net.minecraft.registry.RegistryKey<net.minecraft.registry.Registry<net.minecraft.command.argument.serialize.ArgumentSerializer<?, ?>>> COMMAND_ARGUMENT_TYPE;
+  public static final net.minecraft.registry.RegistryKey<net.minecraft.registry.Registry<net.minecraft.item.ItemGroup>> ITEM_GROUP;
+  public static final net.minecraft.registry.RegistryKey<net.minecraft.registry.Registry<net.minecraft.util.Identifier>> CUSTOM_STAT;
+
+===== anything in the jar named *InitializeRegistries* or *ModifyRegistries*
+      556  2026-11-17 04:26   net/minecraft/registry/Registries$Initializer.class
+      891  2026-11-17 04:26   net/minecraft/client/world/GeneratorOptionsHolder$RegistryAwareModifier.class
+     7124  2026-11-17 04:26   net/minecraft/registry/RegistryBuilder$InitializedRegistry.class
+     4982  2026-11-17 04:26   net/minecraft/network/packet/s2c/play/WorldBorderInitializeS2CPacket.class
