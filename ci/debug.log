@@ -1,141 +1,74 @@
 ########## 1.21.1
-BUILD_JDK=25.0.5
-CP /home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/26.0.2/c7ce3cdeda3d18909368dfe5977332dfad326c6d/annotations-26.0.2.jar
-CP /home/runner/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.10.1/ada2141c0cc52ee8f5c48cd5fa4ce0e794f22236/asm-9.10.1.jar
-CP /home/runner/.gradle/caches/fabric-loom/minecraftMaven/net/minecraft/minecraft-merged/1.21.1-net.fabricmc.yarn.1_21_1.1.21.1+build.3-v2/minecraft-merged-1.21.1-net.fabricmc.yarn.1_21_1.1.21.1+build.3-v2.jar
 MCJAR=/home/runner/.gradle/caches/fabric-loom/minecraftMaven/net/minecraft/minecraft-merged/1.21.1-net.fabricmc.yarn.1_21_1.1.21.1+build.3-v2/minecraft-merged-1.21.1-net.fabricmc.yarn.1_21_1.1.21.1+build.3-v2.jar
-8269
-  HAS net/minecraft/block/AbstractBlock
-  HAS net/minecraft/block/Block
-  HAS net/minecraft/block/Blocks
-  HAS net/minecraft/item/Item
-  HAS net/minecraft/item/BlockItem
-  HAS net/minecraft/registry/Registries
-  HAS net/minecraft/registry/Registry
-  HAS net/minecraft/util/Identifier
-  HAS net/minecraft/sound/BlockSoundGroup
-Compiled from "BlockSoundGroup.java"
-public class net.minecraft.sound.BlockSoundGroup {
-  public static final net.minecraft.sound.BlockSoundGroup INTENTIONALLY_EMPTY;
-  public static final net.minecraft.sound.BlockSoundGroup WOOD;
-  public static final net.minecraft.sound.BlockSoundGroup GRAVEL;
-  public static final net.minecraft.sound.BlockSoundGroup GRASS;
-  public static final net.minecraft.sound.BlockSoundGroup LILY_PAD;
-  public static final net.minecraft.sound.BlockSoundGroup STONE;
-  public static final net.minecraft.sound.BlockSoundGroup METAL;
-  public static final net.minecraft.sound.BlockSoundGroup GLASS;
-  public static final net.minecraft.sound.BlockSoundGroup WOOL;
-  public static final net.minecraft.sound.BlockSoundGroup SAND;
-  public static final net.minecraft.sound.BlockSoundGroup SNOW;
-  public static final net.minecraft.sound.BlockSoundGroup POWDER_SNOW;
-  public static final net.minecraft.sound.BlockSoundGroup LADDER;
-  public static final net.minecraft.sound.BlockSoundGroup ANVIL;
-  public static final net.minecraft.sound.BlockSoundGroup SLIME;
-  public static final net.minecraft.sound.BlockSoundGroup HONEY;
-  public static final net.minecraft.sound.BlockSoundGroup WET_GRASS;
-  public static final net.minecraft.sound.BlockSoundGroup CORAL;
-  public static final net.minecraft.sound.BlockSoundGroup BAMBOO;
-  public static final net.minecraft.sound.BlockSoundGroup BAMBOO_SAPLING;
-  public static final net.minecraft.sound.BlockSoundGroup SCAFFOLDING;
-  public static final net.minecraft.sound.BlockSoundGroup SWEET_BERRY_BUSH;
-  public static final net.minecraft.sound.BlockSoundGroup CROP;
-  public static final net.minecraft.sound.BlockSoundGroup STEM;
-  public static final net.minecraft.sound.BlockSoundGroup VINE;
-  public static final net.minecraft.sound.BlockSoundGroup NETHER_WART;
-  public static final net.minecraft.sound.BlockSoundGroup LANTERN;
-  public static final net.minecraft.sound.BlockSoundGroup NETHER_STEM;
-########## 1.21.4
-BUILD_JDK=25.0.5
-CP /home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/26.0.2/c7ce3cdeda3d18909368dfe5977332dfad326c6d/annotations-26.0.2.jar
-CP /home/runner/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.10.1/ada2141c0cc52ee8f5c48cd5fa4ce0e794f22236/asm-9.10.1.jar
-CP /home/runner/.gradle/caches/fabric-loom/minecraftMaven/net/minecraft/minecraft-merged/1.21.4-net.fabricmc.yarn.1_21_4.1.21.4+build.8-v2/minecraft-merged-1.21.4-net.fabricmc.yarn.1_21_4.1.21.4+build.8-v2.jar
-MCJAR=/home/runner/.gradle/caches/fabric-loom/minecraftMaven/net/minecraft/minecraft-merged/1.21.4-net.fabricmc.yarn.1_21_4.1.21.4+build.8-v2/minecraft-merged-1.21.4-net.fabricmc.yarn.1_21_4.1.21.4+build.8-v2.jar
-8857
-  HAS net/minecraft/block/AbstractBlock
-  HAS net/minecraft/block/Block
-  HAS net/minecraft/block/Blocks
-  HAS net/minecraft/item/Item
-  HAS net/minecraft/item/BlockItem
-  HAS net/minecraft/registry/Registries
-  HAS net/minecraft/registry/Registry
-  HAS net/minecraft/util/Identifier
-  HAS net/minecraft/sound/BlockSoundGroup
-Compiled from "BlockSoundGroup.java"
-public class net.minecraft.sound.BlockSoundGroup {
-  public static final net.minecraft.sound.BlockSoundGroup INTENTIONALLY_EMPTY;
-  public static final net.minecraft.sound.BlockSoundGroup WOOD;
-  public static final net.minecraft.sound.BlockSoundGroup GRAVEL;
-  public static final net.minecraft.sound.BlockSoundGroup GRASS;
-  public static final net.minecraft.sound.BlockSoundGroup LILY_PAD;
-  public static final net.minecraft.sound.BlockSoundGroup STONE;
-  public static final net.minecraft.sound.BlockSoundGroup METAL;
-  public static final net.minecraft.sound.BlockSoundGroup GLASS;
-  public static final net.minecraft.sound.BlockSoundGroup WOOL;
-  public static final net.minecraft.sound.BlockSoundGroup SAND;
-  public static final net.minecraft.sound.BlockSoundGroup SNOW;
-  public static final net.minecraft.sound.BlockSoundGroup POWDER_SNOW;
-  public static final net.minecraft.sound.BlockSoundGroup LADDER;
-  public static final net.minecraft.sound.BlockSoundGroup ANVIL;
-  public static final net.minecraft.sound.BlockSoundGroup SLIME;
-  public static final net.minecraft.sound.BlockSoundGroup HONEY;
-  public static final net.minecraft.sound.BlockSoundGroup WET_GRASS;
-  public static final net.minecraft.sound.BlockSoundGroup CORAL;
-  public static final net.minecraft.sound.BlockSoundGroup BAMBOO;
-  public static final net.minecraft.sound.BlockSoundGroup BAMBOO_SAPLING;
-  public static final net.minecraft.sound.BlockSoundGroup SCAFFOLDING;
-  public static final net.minecraft.sound.BlockSoundGroup SWEET_BERRY_BUSH;
-  public static final net.minecraft.sound.BlockSoundGroup CROP;
-  public static final net.minecraft.sound.BlockSoundGroup STEM;
-  public static final net.minecraft.sound.BlockSoundGroup VINE;
-  public static final net.minecraft.sound.BlockSoundGroup NETHER_WART;
-  public static final net.minecraft.sound.BlockSoundGroup LANTERN;
-  public static final net.minecraft.sound.BlockSoundGroup NETHER_STEM;
+--- AbstractBlock.Settings (static create / builder methods)
+  public static final com.mojang.serialization.Codec<net.minecraft.block.AbstractBlock$Settings> CODEC;
+  java.util.function.ToIntFunction<net.minecraft.block.BlockState> luminance;
+  public static net.minecraft.block.AbstractBlock$Settings create();
+  public static net.minecraft.block.AbstractBlock$Settings copy(net.minecraft.block.AbstractBlock);
+  public static net.minecraft.block.AbstractBlock$Settings copyShallow(net.minecraft.block.AbstractBlock);
+  public net.minecraft.block.AbstractBlock$Settings sounds(net.minecraft.sound.BlockSoundGroup);
+  public net.minecraft.block.AbstractBlock$Settings luminance(java.util.function.ToIntFunction<net.minecraft.block.BlockState>);
+  public net.minecraft.block.AbstractBlock$Settings strength(float, float);
+  public net.minecraft.block.AbstractBlock$Settings strength(float);
+  public net.minecraft.block.AbstractBlock$Settings requiresTool();
+  static {};
+--- Registry.register
+  public static <T> T register(net.minecraft.registry.Registry<? super T>, java.lang.String, T);
+  public static <V, T extends V> T register(net.minecraft.registry.Registry<V>, net.minecraft.util.Identifier, T);
+  public static <V, T extends V> T register(net.minecraft.registry.Registry<V>, net.minecraft.registry.RegistryKey<V>, T);
+  public static <T> net.minecraft.registry.entry.RegistryEntry$Reference<T> registerReference(net.minecraft.registry.Registry<T>, net.minecraft.registry.RegistryKey<T>, T);
+  public static <T> net.minecraft.registry.entry.RegistryEntry$Reference<T> registerReference(net.minecraft.registry.Registry<T>, net.minecraft.util.Identifier, T);
+--- Identifier.of
+  public static net.minecraft.util.Identifier of(java.lang.String, java.lang.String);
+  public static net.minecraft.util.Identifier of(java.lang.String);
+  public static net.minecraft.util.Identifier ofVanilla(java.lang.String);
+--- Item.Settings constructor
+Compiled from "Item.java"
+public class net.minecraft.item.Item$Settings {
+  net.minecraft.item.Item recipeRemainder;
+  net.minecraft.resource.featuretoggle.FeatureSet requiredFeatures;
+  public net.minecraft.item.Item$Settings();
+  public net.minecraft.item.Item$Settings food(net.minecraft.component.type.FoodComponent);
+--- BlockItem ctor
+  public net.minecraft.item.BlockItem(net.minecraft.block.Block, net.minecraft.item.Item$Settings);
+--- Block ctor
+  public net.minecraft.block.Block(net.minecraft.block.AbstractBlock$Settings);
+  protected net.minecraft.block.Block asBlock();
+--- FabricLoader.getModContainer
 ########## 1.21.11
-BUILD_JDK=25.0.5
-CP /home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/26.0.2/c7ce3cdeda3d18909368dfe5977332dfad326c6d/annotations-26.0.2.jar
-CP /home/runner/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.10.1/ada2141c0cc52ee8f5c48cd5fa4ce0e794f22236/asm-9.10.1.jar
-CP /home/runner/.gradle/caches/fabric-loom/minecraftMaven/net/minecraft/minecraft-merged/1.21.11-net.fabricmc.yarn.1_21_11.1.21.11+build.6-v2/minecraft-merged-1.21.11-net.fabricmc.yarn.1_21_11.1.21.11+build.6-v2.jar
 MCJAR=/home/runner/.gradle/caches/fabric-loom/minecraftMaven/net/minecraft/minecraft-merged/1.21.11-net.fabricmc.yarn.1_21_11.1.21.11+build.6-v2/minecraft-merged-1.21.11-net.fabricmc.yarn.1_21_11.1.21.11+build.6-v2.jar
-10291
-  HAS net/minecraft/block/AbstractBlock
-  HAS net/minecraft/block/Block
-  HAS net/minecraft/block/Blocks
-  HAS net/minecraft/item/Item
-  HAS net/minecraft/item/BlockItem
-  HAS net/minecraft/registry/Registries
-  HAS net/minecraft/registry/Registry
-  HAS net/minecraft/util/Identifier
-  HAS net/minecraft/sound/BlockSoundGroup
-Compiled from "BlockSoundGroup.java"
-public class net.minecraft.sound.BlockSoundGroup {
-  public static final net.minecraft.sound.BlockSoundGroup INTENTIONALLY_EMPTY;
-  public static final net.minecraft.sound.BlockSoundGroup WOOD;
-  public static final net.minecraft.sound.BlockSoundGroup GRAVEL;
-  public static final net.minecraft.sound.BlockSoundGroup GRASS;
-  public static final net.minecraft.sound.BlockSoundGroup LILY_PAD;
-  public static final net.minecraft.sound.BlockSoundGroup STONE;
-  public static final net.minecraft.sound.BlockSoundGroup METAL;
-  public static final net.minecraft.sound.BlockSoundGroup GLASS;
-  public static final net.minecraft.sound.BlockSoundGroup WOOL;
-  public static final net.minecraft.sound.BlockSoundGroup SAND;
-  public static final net.minecraft.sound.BlockSoundGroup SNOW;
-  public static final net.minecraft.sound.BlockSoundGroup POWDER_SNOW;
-  public static final net.minecraft.sound.BlockSoundGroup LADDER;
-  public static final net.minecraft.sound.BlockSoundGroup ANVIL;
-  public static final net.minecraft.sound.BlockSoundGroup SLIME;
-  public static final net.minecraft.sound.BlockSoundGroup HONEY;
-  public static final net.minecraft.sound.BlockSoundGroup WET_GRASS;
-  public static final net.minecraft.sound.BlockSoundGroup CORAL;
-  public static final net.minecraft.sound.BlockSoundGroup BAMBOO;
-  public static final net.minecraft.sound.BlockSoundGroup BAMBOO_SAPLING;
-  public static final net.minecraft.sound.BlockSoundGroup SCAFFOLDING;
-  public static final net.minecraft.sound.BlockSoundGroup SWEET_BERRY_BUSH;
-  public static final net.minecraft.sound.BlockSoundGroup CROP;
-  public static final net.minecraft.sound.BlockSoundGroup STEM;
-  public static final net.minecraft.sound.BlockSoundGroup VINE;
-  public static final net.minecraft.sound.BlockSoundGroup NETHER_WART;
-  public static final net.minecraft.sound.BlockSoundGroup LANTERN;
-  public static final net.minecraft.sound.BlockSoundGroup NETHER_STEM;
-
-########## yarn mappings: real names for our classes
-yarn jar=
+--- AbstractBlock.Settings (static create / builder methods)
+  public static final com.mojang.serialization.Codec<net.minecraft.block.AbstractBlock$Settings> CODEC;
+  java.util.function.ToIntFunction<net.minecraft.block.BlockState> luminance;
+  public static net.minecraft.block.AbstractBlock$Settings create();
+  public static net.minecraft.block.AbstractBlock$Settings copy(net.minecraft.block.AbstractBlock);
+  public static net.minecraft.block.AbstractBlock$Settings copyShallow(net.minecraft.block.AbstractBlock);
+  public net.minecraft.block.AbstractBlock$Settings sounds(net.minecraft.sound.BlockSoundGroup);
+  public net.minecraft.block.AbstractBlock$Settings luminance(java.util.function.ToIntFunction<net.minecraft.block.BlockState>);
+  public net.minecraft.block.AbstractBlock$Settings strength(float, float);
+  public net.minecraft.block.AbstractBlock$Settings strength(float);
+  public net.minecraft.block.AbstractBlock$Settings requiresTool();
+  static {};
+--- Registry.register
+  public static <T> T register(net.minecraft.registry.Registry<? super T>, java.lang.String, T);
+  public static <V, T extends V> T register(net.minecraft.registry.Registry<V>, net.minecraft.util.Identifier, T);
+  public static <V, T extends V> T register(net.minecraft.registry.Registry<V>, net.minecraft.registry.RegistryKey<V>, T);
+  public static <R, T extends R> net.minecraft.registry.entry.RegistryEntry$Reference<T> registerReference(net.minecraft.registry.Registry<R>, net.minecraft.registry.RegistryKey<R>, T);
+  public static <R, T extends R> net.minecraft.registry.entry.RegistryEntry$Reference<T> registerReference(net.minecraft.registry.Registry<R>, net.minecraft.util.Identifier, T);
+--- Identifier.of
+  public static net.minecraft.util.Identifier of(java.lang.String, java.lang.String);
+  public static net.minecraft.util.Identifier of(java.lang.String);
+  public static net.minecraft.util.Identifier ofVanilla(java.lang.String);
+--- Item.Settings constructor
+Compiled from "Item.java"
+public class net.minecraft.item.Item$Settings {
+  net.minecraft.item.Item recipeRemainder;
+  net.minecraft.resource.featuretoggle.FeatureSet requiredFeatures;
+  public net.minecraft.item.Item$Settings();
+  public net.minecraft.item.Item$Settings food(net.minecraft.component.type.FoodComponent);
+--- BlockItem ctor
+  public net.minecraft.item.BlockItem(net.minecraft.block.Block, net.minecraft.item.Item$Settings);
+--- Block ctor
+  public net.minecraft.block.Block(net.minecraft.block.AbstractBlock$Settings);
+  protected net.minecraft.block.Block asBlock();
+--- FabricLoader.getModContainer
