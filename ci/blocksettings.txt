@@ -1,19 +1,40 @@
-===== AbstractBlock$Settings (1.21.4)
-public class net.minecraft.block.AbstractBlock$Settings {
-  public static net.minecraft.block.AbstractBlock$Settings create();
-  public static net.minecraft.block.AbstractBlock$Settings copy(net.minecraft.block.AbstractBlock);
-  public static net.minecraft.block.AbstractBlock$Settings copyShallow(net.minecraft.block.AbstractBlock);
-  public net.minecraft.block.AbstractBlock$Settings mapColor(net.minecraft.util.DyeColor);
-  public net.minecraft.block.AbstractBlock$Settings mapColor(net.minecraft.block.MapColor);
-  public net.minecraft.block.AbstractBlock$Settings mapColor(java.util.function.Function<net.minecraft.block.BlockState, net.minecraft.block.MapColor>);
-  public net.minecraft.block.AbstractBlock$Settings noCollision();
-  public net.minecraft.block.AbstractBlock$Settings nonOpaque();
-  public net.minecraft.block.AbstractBlock$Settings slipperiness(float);
-  public net.minecraft.block.AbstractBlock$Settings velocityMultiplier(float);
-  public net.minecraft.block.AbstractBlock$Settings jumpVelocityMultiplier(float);
+===== every Settings method mentioning a key/id
+  public net.minecraft.block.AbstractBlock$Settings lootTable(java.util.Optional<net.minecraft.registry.RegistryKey<net.minecraft.loot.LootTable>>);
+  protected java.util.Optional<net.minecraft.registry.RegistryKey<net.minecraft.loot.LootTable>> getLootTableKey();
+  public net.minecraft.block.AbstractBlock$Settings liquid();
+  public net.minecraft.block.AbstractBlock$Settings solid();
+  public net.minecraft.block.AbstractBlock$Settings notSolid();
+  public net.minecraft.block.AbstractBlock$Settings registryKey(net.minecraft.registry.RegistryKey<net.minecraft.block.Block>);
+  public net.minecraft.block.AbstractBlock$Settings overrideTranslationKey(java.lang.String);
+  protected java.lang.String getTranslationKey();
 
-===== AbstractBlock$Settings#registryKey call sites in Block
-  public net.minecraft.block.Block(net.minecraft.block.AbstractBlock$Settings);
-  protected net.minecraft.block.Block asBlock();
+===== full Settings signature list (names only)
+air( allowsSpawning( blockVision( breakInstantly( burnable( copy( copyShallow( create( dropsNothing( dynamicBounds( emissiveLighting( getLootTableKey( getTranslationKey( hardness( instrument( jumpVelocityMultiplier( liquid( lootTable( luminance( mapColor( noBlockBreakParticles( noCollision( nonOpaque( notSolid( offset( overrideTranslationKey( pistonBehavior( postProcess( registryKey( replaceable( requires( requiresTool( resistance( slipperiness( solid( solidBlock( sounds( strength( suffocates( ticksRandomly( velocityMultiplier( 
 
-===== Blocks.java: how does vanilla create one?
+===== how 1.21.4 vanilla registers: javap of Blocks static init (first 40 lines)
+         7: invokestatic  #1249               // Method net/minecraft/block/AbstractBlock$Settings.create:()Lnet/minecraft/block/AbstractBlock$Settings;
+        16: invokevirtual #1258               // Method net/minecraft/block/AbstractBlock$Settings.mapColor:(Ljava/util/function/Function;)Lnet/minecraft/block/AbstractBlock$Settings;
+        22: invokevirtual #1268               // Method net/minecraft/block/AbstractBlock$Settings.sounds:(Lnet/minecraft/sound/BlockSoundGroup;)Lnet/minecraft/block/AbstractBlock$Settings;
+        28: invokevirtual #1273               // Method net/minecraft/block/AbstractBlock$Settings.strength:(F)Lnet/minecraft/block/AbstractBlock$Settings;
+        31: invokevirtual #1276               // Method net/minecraft/block/AbstractBlock$Settings.nonOpaque:()Lnet/minecraft/block/AbstractBlock$Settings;
+        34: invokevirtual #1279               // Method net/minecraft/block/AbstractBlock$Settings.burnable:()Lnet/minecraft/block/AbstractBlock$Settings;
+        40: invokevirtual #1289               // Method net/minecraft/block/AbstractBlock$Settings.pistonBehavior:(Lnet/minecraft/block/piston/PistonBehavior;)Lnet/minecraft/block/AbstractBlock$Settings;
+         0: invokestatic  #1249               // Method net/minecraft/block/AbstractBlock$Settings.create:()Lnet/minecraft/block/AbstractBlock$Settings;
+        10: invokevirtual #1258               // Method net/minecraft/block/AbstractBlock$Settings.mapColor:(Ljava/util/function/Function;)Lnet/minecraft/block/AbstractBlock$Settings;
+        16: invokevirtual #1317               // Method net/minecraft/block/AbstractBlock$Settings.instrument:(Lnet/minecraft/block/enums/NoteBlockInstrument;)Lnet/minecraft/block/AbstractBlock$Settings;
+        20: invokevirtual #1273               // Method net/minecraft/block/AbstractBlock$Settings.strength:(F)Lnet/minecraft/block/AbstractBlock$Settings;
+        24: invokevirtual #1268               // Method net/minecraft/block/AbstractBlock$Settings.sounds:(Lnet/minecraft/sound/BlockSoundGroup;)Lnet/minecraft/block/AbstractBlock$Settings;
+        27: invokevirtual #1279               // Method net/minecraft/block/AbstractBlock$Settings.burnable:()Lnet/minecraft/block/AbstractBlock$Settings;
+         0: invokestatic  #1249               // Method net/minecraft/block/AbstractBlock$Settings.create:()Lnet/minecraft/block/AbstractBlock$Settings;
+         9: invokevirtual #1258               // Method net/minecraft/block/AbstractBlock$Settings.mapColor:(Ljava/util/function/Function;)Lnet/minecraft/block/AbstractBlock$Settings;
+        15: invokevirtual #1317               // Method net/minecraft/block/AbstractBlock$Settings.instrument:(Lnet/minecraft/block/enums/NoteBlockInstrument;)Lnet/minecraft/block/AbstractBlock$Settings;
+        19: invokevirtual #1273               // Method net/minecraft/block/AbstractBlock$Settings.strength:(F)Lnet/minecraft/block/AbstractBlock$Settings;
+        25: invokevirtual #1268               // Method net/minecraft/block/AbstractBlock$Settings.sounds:(Lnet/minecraft/sound/BlockSoundGroup;)Lnet/minecraft/block/AbstractBlock$Settings;
+         7: invokestatic  #1249               // Method net/minecraft/block/AbstractBlock$Settings.create:()Lnet/minecraft/block/AbstractBlock$Settings;
+        11: invokevirtual #1337               // Method net/minecraft/block/AbstractBlock$Settings.mapColor:(Lnet/minecraft/util/DyeColor;)Lnet/minecraft/block/AbstractBlock$Settings;
+        17: invokevirtual #1317               // Method net/minecraft/block/AbstractBlock$Settings.instrument:(Lnet/minecraft/block/enums/NoteBlockInstrument;)Lnet/minecraft/block/AbstractBlock$Settings;
+        23: invokevirtual #1273               // Method net/minecraft/block/AbstractBlock$Settings.strength:(F)Lnet/minecraft/block/AbstractBlock$Settings;
+        29: invokevirtual #1268               // Method net/minecraft/block/AbstractBlock$Settings.sounds:(Lnet/minecraft/sound/BlockSoundGroup;)Lnet/minecraft/block/AbstractBlock$Settings;
+        32: invokevirtual #1276               // Method net/minecraft/block/AbstractBlock$Settings.nonOpaque:()Lnet/minecraft/block/AbstractBlock$Settings;
+        40: invokevirtual #1358               // Method net/minecraft/block/AbstractBlock$Settings.allowsSpawning:(Lnet/minecraft/block/AbstractBlock$TypedContextPredicate;)Lnet/minecraft/block/AbstractBlock$Settings;
+grep: write error: Broken pipe
