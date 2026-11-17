@@ -2,17 +2,140 @@
 BUILD_JDK=25.0.5
 CP /home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/26.0.2/c7ce3cdeda3d18909368dfe5977332dfad326c6d/annotations-26.0.2.jar
 CP /home/runner/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.10.1/ada2141c0cc52ee8f5c48cd5fa4ce0e794f22236/asm-9.10.1.jar
-MCJAR=
+CP /home/runner/.gradle/caches/fabric-loom/minecraftMaven/net/minecraft/minecraft-merged/1.21.1-net.fabricmc.yarn.1_21_1.1.21.1+build.3-v2/minecraft-merged-1.21.1-net.fabricmc.yarn.1_21_1.1.21.1+build.3-v2.jar
+MCJAR=/home/runner/.gradle/caches/fabric-loom/minecraftMaven/net/minecraft/minecraft-merged/1.21.1-net.fabricmc.yarn.1_21_1.1.21.1+build.3-v2/minecraft-merged-1.21.1-net.fabricmc.yarn.1_21_1.1.21.1+build.3-v2.jar
+8269
+  HAS net/minecraft/block/AbstractBlock
+  HAS net/minecraft/block/Block
+  HAS net/minecraft/block/Blocks
+  HAS net/minecraft/item/Item
+  HAS net/minecraft/item/BlockItem
+  HAS net/minecraft/registry/Registries
+  HAS net/minecraft/registry/Registry
+  HAS net/minecraft/util/Identifier
+  HAS net/minecraft/sound/BlockSoundGroup
+Compiled from "BlockSoundGroup.java"
+public class net.minecraft.sound.BlockSoundGroup {
+  public static final net.minecraft.sound.BlockSoundGroup INTENTIONALLY_EMPTY;
+  public static final net.minecraft.sound.BlockSoundGroup WOOD;
+  public static final net.minecraft.sound.BlockSoundGroup GRAVEL;
+  public static final net.minecraft.sound.BlockSoundGroup GRASS;
+  public static final net.minecraft.sound.BlockSoundGroup LILY_PAD;
+  public static final net.minecraft.sound.BlockSoundGroup STONE;
+  public static final net.minecraft.sound.BlockSoundGroup METAL;
+  public static final net.minecraft.sound.BlockSoundGroup GLASS;
+  public static final net.minecraft.sound.BlockSoundGroup WOOL;
+  public static final net.minecraft.sound.BlockSoundGroup SAND;
+  public static final net.minecraft.sound.BlockSoundGroup SNOW;
+  public static final net.minecraft.sound.BlockSoundGroup POWDER_SNOW;
+  public static final net.minecraft.sound.BlockSoundGroup LADDER;
+  public static final net.minecraft.sound.BlockSoundGroup ANVIL;
+  public static final net.minecraft.sound.BlockSoundGroup SLIME;
+  public static final net.minecraft.sound.BlockSoundGroup HONEY;
+  public static final net.minecraft.sound.BlockSoundGroup WET_GRASS;
+  public static final net.minecraft.sound.BlockSoundGroup CORAL;
+  public static final net.minecraft.sound.BlockSoundGroup BAMBOO;
+  public static final net.minecraft.sound.BlockSoundGroup BAMBOO_SAPLING;
+  public static final net.minecraft.sound.BlockSoundGroup SCAFFOLDING;
+  public static final net.minecraft.sound.BlockSoundGroup SWEET_BERRY_BUSH;
+  public static final net.minecraft.sound.BlockSoundGroup CROP;
+  public static final net.minecraft.sound.BlockSoundGroup STEM;
+  public static final net.minecraft.sound.BlockSoundGroup VINE;
+  public static final net.minecraft.sound.BlockSoundGroup NETHER_WART;
+  public static final net.minecraft.sound.BlockSoundGroup LANTERN;
+  public static final net.minecraft.sound.BlockSoundGroup NETHER_STEM;
 ########## 1.21.4
 BUILD_JDK=25.0.5
 CP /home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/26.0.2/c7ce3cdeda3d18909368dfe5977332dfad326c6d/annotations-26.0.2.jar
 CP /home/runner/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.10.1/ada2141c0cc52ee8f5c48cd5fa4ce0e794f22236/asm-9.10.1.jar
-MCJAR=
+CP /home/runner/.gradle/caches/fabric-loom/minecraftMaven/net/minecraft/minecraft-merged/1.21.4-net.fabricmc.yarn.1_21_4.1.21.4+build.8-v2/minecraft-merged-1.21.4-net.fabricmc.yarn.1_21_4.1.21.4+build.8-v2.jar
+MCJAR=/home/runner/.gradle/caches/fabric-loom/minecraftMaven/net/minecraft/minecraft-merged/1.21.4-net.fabricmc.yarn.1_21_4.1.21.4+build.8-v2/minecraft-merged-1.21.4-net.fabricmc.yarn.1_21_4.1.21.4+build.8-v2.jar
+8857
+  HAS net/minecraft/block/AbstractBlock
+  HAS net/minecraft/block/Block
+  HAS net/minecraft/block/Blocks
+  HAS net/minecraft/item/Item
+  HAS net/minecraft/item/BlockItem
+  HAS net/minecraft/registry/Registries
+  HAS net/minecraft/registry/Registry
+  HAS net/minecraft/util/Identifier
+  HAS net/minecraft/sound/BlockSoundGroup
+Compiled from "BlockSoundGroup.java"
+public class net.minecraft.sound.BlockSoundGroup {
+  public static final net.minecraft.sound.BlockSoundGroup INTENTIONALLY_EMPTY;
+  public static final net.minecraft.sound.BlockSoundGroup WOOD;
+  public static final net.minecraft.sound.BlockSoundGroup GRAVEL;
+  public static final net.minecraft.sound.BlockSoundGroup GRASS;
+  public static final net.minecraft.sound.BlockSoundGroup LILY_PAD;
+  public static final net.minecraft.sound.BlockSoundGroup STONE;
+  public static final net.minecraft.sound.BlockSoundGroup METAL;
+  public static final net.minecraft.sound.BlockSoundGroup GLASS;
+  public static final net.minecraft.sound.BlockSoundGroup WOOL;
+  public static final net.minecraft.sound.BlockSoundGroup SAND;
+  public static final net.minecraft.sound.BlockSoundGroup SNOW;
+  public static final net.minecraft.sound.BlockSoundGroup POWDER_SNOW;
+  public static final net.minecraft.sound.BlockSoundGroup LADDER;
+  public static final net.minecraft.sound.BlockSoundGroup ANVIL;
+  public static final net.minecraft.sound.BlockSoundGroup SLIME;
+  public static final net.minecraft.sound.BlockSoundGroup HONEY;
+  public static final net.minecraft.sound.BlockSoundGroup WET_GRASS;
+  public static final net.minecraft.sound.BlockSoundGroup CORAL;
+  public static final net.minecraft.sound.BlockSoundGroup BAMBOO;
+  public static final net.minecraft.sound.BlockSoundGroup BAMBOO_SAPLING;
+  public static final net.minecraft.sound.BlockSoundGroup SCAFFOLDING;
+  public static final net.minecraft.sound.BlockSoundGroup SWEET_BERRY_BUSH;
+  public static final net.minecraft.sound.BlockSoundGroup CROP;
+  public static final net.minecraft.sound.BlockSoundGroup STEM;
+  public static final net.minecraft.sound.BlockSoundGroup VINE;
+  public static final net.minecraft.sound.BlockSoundGroup NETHER_WART;
+  public static final net.minecraft.sound.BlockSoundGroup LANTERN;
+  public static final net.minecraft.sound.BlockSoundGroup NETHER_STEM;
 ########## 1.21.11
 BUILD_JDK=25.0.5
 CP /home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/26.0.2/c7ce3cdeda3d18909368dfe5977332dfad326c6d/annotations-26.0.2.jar
 CP /home/runner/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.10.1/ada2141c0cc52ee8f5c48cd5fa4ce0e794f22236/asm-9.10.1.jar
-MCJAR=
+CP /home/runner/.gradle/caches/fabric-loom/minecraftMaven/net/minecraft/minecraft-merged/1.21.11-net.fabricmc.yarn.1_21_11.1.21.11+build.6-v2/minecraft-merged-1.21.11-net.fabricmc.yarn.1_21_11.1.21.11+build.6-v2.jar
+MCJAR=/home/runner/.gradle/caches/fabric-loom/minecraftMaven/net/minecraft/minecraft-merged/1.21.11-net.fabricmc.yarn.1_21_11.1.21.11+build.6-v2/minecraft-merged-1.21.11-net.fabricmc.yarn.1_21_11.1.21.11+build.6-v2.jar
+10291
+  HAS net/minecraft/block/AbstractBlock
+  HAS net/minecraft/block/Block
+  HAS net/minecraft/block/Blocks
+  HAS net/minecraft/item/Item
+  HAS net/minecraft/item/BlockItem
+  HAS net/minecraft/registry/Registries
+  HAS net/minecraft/registry/Registry
+  HAS net/minecraft/util/Identifier
+  HAS net/minecraft/sound/BlockSoundGroup
+Compiled from "BlockSoundGroup.java"
+public class net.minecraft.sound.BlockSoundGroup {
+  public static final net.minecraft.sound.BlockSoundGroup INTENTIONALLY_EMPTY;
+  public static final net.minecraft.sound.BlockSoundGroup WOOD;
+  public static final net.minecraft.sound.BlockSoundGroup GRAVEL;
+  public static final net.minecraft.sound.BlockSoundGroup GRASS;
+  public static final net.minecraft.sound.BlockSoundGroup LILY_PAD;
+  public static final net.minecraft.sound.BlockSoundGroup STONE;
+  public static final net.minecraft.sound.BlockSoundGroup METAL;
+  public static final net.minecraft.sound.BlockSoundGroup GLASS;
+  public static final net.minecraft.sound.BlockSoundGroup WOOL;
+  public static final net.minecraft.sound.BlockSoundGroup SAND;
+  public static final net.minecraft.sound.BlockSoundGroup SNOW;
+  public static final net.minecraft.sound.BlockSoundGroup POWDER_SNOW;
+  public static final net.minecraft.sound.BlockSoundGroup LADDER;
+  public static final net.minecraft.sound.BlockSoundGroup ANVIL;
+  public static final net.minecraft.sound.BlockSoundGroup SLIME;
+  public static final net.minecraft.sound.BlockSoundGroup HONEY;
+  public static final net.minecraft.sound.BlockSoundGroup WET_GRASS;
+  public static final net.minecraft.sound.BlockSoundGroup CORAL;
+  public static final net.minecraft.sound.BlockSoundGroup BAMBOO;
+  public static final net.minecraft.sound.BlockSoundGroup BAMBOO_SAPLING;
+  public static final net.minecraft.sound.BlockSoundGroup SCAFFOLDING;
+  public static final net.minecraft.sound.BlockSoundGroup SWEET_BERRY_BUSH;
+  public static final net.minecraft.sound.BlockSoundGroup CROP;
+  public static final net.minecraft.sound.BlockSoundGroup STEM;
+  public static final net.minecraft.sound.BlockSoundGroup VINE;
+  public static final net.minecraft.sound.BlockSoundGroup NETHER_WART;
+  public static final net.minecraft.sound.BlockSoundGroup LANTERN;
+  public static final net.minecraft.sound.BlockSoundGroup NETHER_STEM;
 
 ########## yarn mappings: real names for our classes
 yarn jar=
