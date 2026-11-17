@@ -122,31 +122,25 @@ jobs:
         with: { fetch-depth: 0 }
       - uses: actions/setup-java@v4
         with: { distribution: temurin, java-version: '8' }
-      - name: Probe Forge versions for 1.8.9
+      - name: Build Forge 1.8.9
+        continue-on-error: true
         run: |
-          mkdir -p ci
-          {
-            echo "===== ForgeGradle versions"
-            curl -sS https://maven.minecraftforge.net/net/minecraftforge/gradle/ForgeGradle/maven-metadata.xml \
-              | grep -oE '<version>[^<]+</version>' | tail -40
-            echo
-            echo "===== forge artifacts mentioning 1.8.9"
-            curl -sS https://maven.minecraftforge.net/net/minecraftforge/forge/maven-metadata.xml \
-              | grep -oE '<version>1\.8\.9[^<]*</version>' | tail -20
-            echo
-            echo "===== does 1.8.9-11.15.0.1659-1.8.9 exist?"
-            for v in 1.8.9-11.15.0.1659 1.8.9-11.15.0.1659-1.8.9; do
-              code=$(curl -s -o /dev/null -w '%{http_code}' \
-                "https://maven.minecraftforge.net/net/minecraftforge/forge/$v/forge-$v-universal.jar")
-              echo "  $v -> $code"
-            done
-          } > ci/forge-probe.txt 2>&1
-          cat ci/forge-probe.txt
-      - name: Commit probe
-        if: always()
-        run: |
-          bash tools/ci-commit.sh "ci: forge 1.8.9 version probe $(date -u +%FT%TZ)" ci
-
+          mkdir -p ci/logs artifacts/java-1.8.9
+          # ForgeGradle 2.1 wants a Gradle 2.x/4.x vintage. Try 4.10.3 first
+          # (it resolves deps more reliably today), then 2.14.1 as the fallback.
+          for ver in 4.10.3 2.14.1; do
+            echo "===== trying Gradle $ver" | tee -a ci/logs/forge-1.8.9.log
+            curl -sSL -o "/tmp/gradle-$ver.zip" \
+              "https://services.gradle.org/distributions/gradle-$ver-bin.zip" || continue
+            unzip -qo "/tmp/gradle-$ver.zip" -d /opt
+            ( cd java/forge189 && "/opt/gradle-$ver/bin/gradle" --no-daemon build --stacktrace ) \
+              >> ci/logs/forge-1.8.9.log 2>&1 && { echo "SUCCESS with Gradle $ver" | tee -a ci/logs/forge-1.8.9.log; break; }
+            echo "FAILED with Gradle $ver" | tee -a ci/logs/forge-1.8.9.log
+          done
+          grep -nE "error:|FAILURE|What went wrong|Caused by:|Does not support|BUILD" \
+              ci/logs/forge-1.8.9.log | head -30 || true
+          cp java/forge189/build/libs/*.jar artifacts/java-1.8.9/ 2>/dev/null || true
+          ls -la artifacts/java-1.8.9
       - name: Verify
         if: always()
         run: |
