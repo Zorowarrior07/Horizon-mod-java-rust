@@ -1,0 +1,45 @@
+// ZOROWARRIOR HORIZON BRIDGE — Minecraft 1.8.9, Forge.
+//
+// This build is deliberately old-fashioned because the target is old: 1.8.9
+// needs ForgeGradle 2.3, which only runs on Gradle 4.x, on a real JDK 8, and it
+// downloads and deobfuscates ("MCP") Minecraft before anything can compile.
+// That is why this project has its own build file instead of sharing the modern
+// one — the toolchains are not interchangeable.
+buildscript {
+    repositories {
+        maven { url = 'https://maven.minecraftforge.net/' }
+        maven { url = 'https://repo.maven.apache.org/maven2/' }
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+    }
+}
+
+apply plugin: 'net.minecraftforge.gradle.forge'
+
+version = project.hasProperty('mod_version') ? project.mod_version : '1.0.0'
+group = 'dev.zorowarrior'
+archivesBaseName = "zoro_bridge-${version}-forge-1.8.9"
+
+minecraft {
+    version = '1.8.9-11.15.0.1659'
+    runDir = 'run'
+    // stable_22 is the last 1.8.9 MCP mapping set.
+    mappings = 'stable_22'
+}
+
+sourceCompatibility = targetCompatibility = '1.8'
+
+processResources {
+    inputs.property 'version', project.version
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+        expand 'version': project.version
+    }
+}
+
+// Keep the artifacts flat and predictable for the packaging step.
+jar {
+    archiveName = "${archivesBaseName}.jar"
+}
