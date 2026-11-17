@@ -4,41 +4,37 @@ on:
   push:
     paths: ['.github/workflows/rfg-probe.yml', 'tools/probes/**']
 permissions: { contents: write }
+concurrency:
+  group: probes
+  cancel-in-progress: false
 jobs:
-  twenty-six:
+  probes:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with: { fetch-depth: 0 }
       - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: '8' }
+      - uses: actions/setup-java@v4
         with: { distribution: temurin, java-version: '25' }
       - uses: gradle/actions/setup-gradle@v4
         with: { gradle-version: '9.9.1' }
-      - name: Probe 26.x
+      - name: Probe everything
         continue-on-error: true
+        env:
+          REPO_JAVA: ${{ github.workspace }}/java
+          ARTIFACT_DIR: ${{ github.workspace }}/artifacts/java-1.8.9
         run: |
-          mkdir -p ci
+          mkdir -p ci artifacts/java-1.8.9
           python3 tools/probes/versions.py > ci/probe26.txt 2>&1 || true
           JAVA_HOME=/usr/lib/jvm/temurin-25-jdk-amd64 \
             bash tools/probes/loom26.sh "$PWD/ci/probe26-build.txt" || true
-          tail -25 ci/probe26-build.txt
+          bash tools/probes/forge189.sh "$PWD/ci/forge189-probe.txt" || true
+          bash tools/probes/forge189-build.sh "$PWD/ci/forge189-build.txt" || true
+          tail -4 ci/probe26.txt; tail -6 ci/probe26-build.txt
+          echo ---; cat ci/forge189-probe.txt
+          echo ---; tail -12 ci/forge189-build.txt
       - name: Commit
         if: always()
         run: |
-          run: bash tools/ci-commit.sh "ci: probe 26.x $(date -u +%FT%TZ)" ci
-  fg21:
-    needs: twenty-six
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with: { fetch-depth: 0 }
-      - name: Probe ForgeGradle 2.1.2 data sources
-        continue-on-error: true
-        run: |
-          mkdir -p ci
-          bash tools/probes/fg21.sh "$PWD/ci/fg21.txt" || true
-          cat ci/fg21.txt
-      - name: Commit
-        if: always()
-        run: |
-          run: bash tools/ci-commit.sh "ci: probe fg21 $(date -u +%FT%TZ)" ci
+          bash tools/ci-commit.sh "ci: consolidated probe $(date -u +%FT%TZ)" ci artifacts

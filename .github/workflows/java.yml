@@ -13,8 +13,6 @@ name: java-mod-jars
 # with a rebase, so one job cannot clobber another's commit.
 
 on:
-  push:
-    paths: ['java/**', 'tools/**', '.github/workflows/java.yml']
   workflow_dispatch:
 
 permissions:
