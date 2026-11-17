@@ -54,15 +54,21 @@ public final class BridgeMod {
                     .sound(SoundType.STONE)
                     .requiresCorrectToolForDrops()));
 
+    private static final ResourceKey<Item> CHIP_KEY =
+            ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MOD_ID, "bridge_chip"));
+
     public static final Supplier<Item> BRIDGE_CHIP = ITEMS.register("bridge_chip",
-            () -> new Item(new Item.Properties()));
+            // Items need their key too, for the same reason blocks do.
+            () -> new Item(new Item.Properties().setId(CHIP_KEY)));
 
     public BridgeMod(IEventBus modBus) {
         BLOCKS.register(modBus);
         ITEMS.register(modBus);
         // 26.x signature: the properties argument is a supplier, not an instance.
         ITEMS.registerSimpleBlockItem("bridge_beacon", BRIDGE_BEACON,
-                () -> new Item.Properties());
+                () -> new Item.Properties()
+                        .setId(ResourceKey.create(Registries.ITEM,
+                                ResourceLocation.fromNamespaceAndPath(MOD_ID, "bridge_beacon"))));
         LOGGER.info("[ZoroHorizonBridge] NeoForge 26.x build initialised");
     }
 

@@ -88,6 +88,18 @@ def runtime_verdict(log_name):
         m = re.search(r'(?:What went wrong:|Caused by:)([^\n]+)', text)
         return 'could not test', 'the build failed before a server started%s' % (
             ': ' + m.group(1).strip() if m else '')
+    # A log older than the sources it claims to test is not evidence.
+    srcs = []
+    for base, _dirs, files in os.walk(os.path.join(ROOT, 'java')):
+        if 'build' in base.split(os.sep):
+            continue
+        for f in files:
+            if f.endswith(('.java', '.toml', '.json')):
+                srcs.append(os.path.join(base, f))
+    if srcs:
+        newest = max(os.path.getmtime(s) for s in srcs)
+        if os.path.getmtime(path) < newest:
+            return 'stale', 'the log is older than the sources; re-run to trust it'
     done = 'Done (' in text
     loaded = bool(re.search(r'zoro_bridge', text))
     crashed = None
