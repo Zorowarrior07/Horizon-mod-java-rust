@@ -1,0 +1,10 @@
+{
+    "schema": "zoro-horizon-bridge/java-build@1",
+    "loader": "neoforge",
+    "mappings": "mojang-official (NeoForm)",
+    "minecraft": "1.21.1",
+    "neoforge": "21.1.266",
+    "java_target": 21,
+    "jar": "zoro_bridge-1.0.0-neoforge-1.21.1.jar",
+    "gradle": "8.10.2"
+}

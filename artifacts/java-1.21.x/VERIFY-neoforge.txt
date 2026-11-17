@@ -1,0 +1,10 @@
+== artifacts/java-1.21.x/zoro_bridge-1.0.0-neoforge-1.21.1-1.0.0.jar
+   ok    38 entries, no duplicates
+   ok    dev/zorowarrior/bridge/BridgeMod.class: class v65.0, 8 methods, 491 code bytes
+   ok    assets/zoro_bridge/textures/block/bridge_beacon.png: PNG 16x16
+   ok    assets/zoro_bridge/textures/item/bridge_chip.png: PNG 16x16
+   ok    neoforge.mods.toml present (631 bytes)
+   ok    loader metadata: neoforge
+   -> PASS
+
+1 jar(s), all genuine
