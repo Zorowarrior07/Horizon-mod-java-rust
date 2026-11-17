@@ -3,7 +3,7 @@ Daemon will be stopped at the end of the build
 
 > Configure project :
 Fabric Loom: 1.19.4
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run-1794895851900.json
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run-1794896227358.json
 
 FAILURE: Build failed with an exception.
 
@@ -17,5 +17,5 @@ A problem occurred configuring root project 'loom26'.
 > Run with --scan to get full insights from a Build Scan (powered by Develocity).
 > Get more help at https://help.gradle.org.
 
-BUILD FAILED in 27s
+BUILD FAILED in 29s
 exit=1

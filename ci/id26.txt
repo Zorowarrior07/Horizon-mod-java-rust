@@ -1,0 +1,63 @@
+mcjar=java/neoforge26/build/moddev/artifacts/minecraft-patched-26.1.2.126.jar
+===== ResourceKey
+Compiled from "ResourceKey.java"
+public class net.minecraft.resources.ResourceKey<T> implements java.lang.Comparable<net.minecraft.resources.ResourceKey<?>> {
+  public static <T> com.mojang.serialization.Codec<net.minecraft.resources.ResourceKey<T>> codec(net.minecraft.resources.ResourceKey<? extends net.minecraft.core.Registry<T>>);
+  public static <T> net.minecraft.network.codec.StreamCodec<io.netty.buffer.ByteBuf, net.minecraft.resources.ResourceKey<T>> streamCodec(net.minecraft.resources.ResourceKey<? extends net.minecraft.core.Registry<T>>);
+  public static <T> net.minecraft.resources.ResourceKey<T> create(net.minecraft.resources.ResourceKey<? extends net.minecraft.core.Registry<T>>, net.minecraft.resources.Identifier);
+  public static <T> net.minecraft.resources.ResourceKey<net.minecraft.core.Registry<T>> createRegistryKey(net.minecraft.resources.Identifier);
+  public java.lang.String toString();
+  public boolean isFor(net.minecraft.resources.ResourceKey<? extends net.minecraft.core.Registry<?>>);
+  public <E> java.util.Optional<net.minecraft.resources.ResourceKey<E>> cast(net.minecraft.resources.ResourceKey<? extends net.minecraft.core.Registry<E>>);
+  public net.minecraft.resources.Identifier identifier();
+  public net.minecraft.resources.Identifier registry();
+  public net.minecraft.resources.ResourceKey<net.minecraft.core.Registry<T>> registryKey();
+  public int compareTo(net.minecraft.resources.ResourceKey<?>);
+  public int compareTo(java.lang.Object);
+  static {};
+===== classes in net.minecraft.resources
+net/minecraft/resources/DelegatingOps.class
+net/minecraft/resources/DependantName.class
+net/minecraft/resources/FileToIdConverter.class
+net/minecraft/resources/HolderSetCodec.class
+net/minecraft/resources/Identifier.class
+net/minecraft/resources/NetworkRegistryLoadTask.class
+net/minecraft/resources/RegistryDataLoader.class
+net/minecraft/resources/RegistryFileCodec.class
+net/minecraft/resources/RegistryFixedCodec.class
+net/minecraft/resources/RegistryLoadTask.class
+net/minecraft/resources/RegistryOps.class
+net/minecraft/resources/RegistryValidator.class
+net/minecraft/resources/ResourceKey.class
+net/minecraft/resources/ResourceManagerRegistryLoadTask.class
+===== DeferredRegister.Blocks.register signatures
+Compiled from "DeferredRegister.java"
+public class net.neoforged.neoforge.registries.DeferredRegister$Blocks extends net.neoforged.neoforge.registries.DeferredRegister<net.minecraft.world.level.block.Block> {
+  protected net.neoforged.neoforge.registries.DeferredRegister$Blocks(java.lang.String);
+  public <B extends net.minecraft.world.level.block.Block> net.neoforged.neoforge.registries.DeferredBlock<B> register(java.lang.String, java.util.function.Function<net.minecraft.resources.Identifier, ? extends B>);
+  public <B extends net.minecraft.world.level.block.Block> net.neoforged.neoforge.registries.DeferredBlock<B> register(java.lang.String, java.util.function.Supplier<? extends B>);
+  public <B extends net.minecraft.world.level.block.Block> net.neoforged.neoforge.registries.DeferredBlock<B> registerBlock(java.lang.String, java.util.function.Function<net.minecraft.world.level.block.state.BlockBehaviour$Properties, ? extends B>, java.util.function.Supplier<net.minecraft.world.level.block.state.BlockBehaviour$Properties>);
+  public <B extends net.minecraft.world.level.block.Block> net.neoforged.neoforge.registries.DeferredBlock<B> registerBlock(java.lang.String, java.util.function.Function<net.minecraft.world.level.block.state.BlockBehaviour$Properties, ? extends B>, java.util.function.UnaryOperator<net.minecraft.world.level.block.state.BlockBehaviour$Properties>);
+  public <B extends net.minecraft.world.level.block.Block> net.neoforged.neoforge.registries.DeferredBlock<B> registerBlock(java.lang.String, java.util.function.Function<net.minecraft.world.level.block.state.BlockBehaviour$Properties, ? extends B>);
+  public net.neoforged.neoforge.registries.DeferredBlock<net.minecraft.world.level.block.Block> registerSimpleBlock(java.lang.String, java.util.function.Supplier<net.minecraft.world.level.block.state.BlockBehaviour$Properties>);
+  public net.neoforged.neoforge.registries.DeferredBlock<net.minecraft.world.level.block.Block> registerSimpleBlock(java.lang.String, java.util.function.UnaryOperator<net.minecraft.world.level.block.state.BlockBehaviour$Properties>);
+  public net.neoforged.neoforge.registries.DeferredBlock<net.minecraft.world.level.block.Block> registerSimpleBlock(java.lang.String);
+  protected <I extends net.minecraft.world.level.block.Block> net.neoforged.neoforge.registries.DeferredBlock<I> createHolder(net.minecraft.resources.ResourceKey<? extends net.minecraft.core.Registry<net.minecraft.world.level.block.Block>>, net.minecraft.resources.Identifier);
+  protected net.neoforged.neoforge.registries.DeferredHolder createHolder(net.minecraft.resources.ResourceKey, net.minecraft.resources.Identifier);
+  public net.neoforged.neoforge.registries.DeferredHolder register(java.lang.String, java.util.function.Function);
+Compiled from "DeferredRegister.java"
+public class net.neoforged.neoforge.registries.DeferredRegister$Items extends net.neoforged.neoforge.registries.DeferredRegister<net.minecraft.world.item.Item> {
+  protected net.neoforged.neoforge.registries.DeferredRegister$Items(java.lang.String);
+  public <I extends net.minecraft.world.item.Item> net.neoforged.neoforge.registries.DeferredItem<I> register(java.lang.String, java.util.function.Function<net.minecraft.resources.Identifier, ? extends I>);
+  public <I extends net.minecraft.world.item.Item> net.neoforged.neoforge.registries.DeferredItem<I> register(java.lang.String, java.util.function.Supplier<? extends I>);
+  public net.neoforged.neoforge.registries.DeferredItem<net.minecraft.world.item.BlockItem> registerSimpleBlockItem(java.lang.String, java.util.function.Supplier<? extends net.minecraft.world.level.block.Block>, java.util.function.Supplier<net.minecraft.world.item.Item$Properties>);
+  public net.neoforged.neoforge.registries.DeferredItem<net.minecraft.world.item.BlockItem> registerSimpleBlockItem(java.lang.String, java.util.function.Supplier<? extends net.minecraft.world.level.block.Block>, java.util.function.UnaryOperator<net.minecraft.world.item.Item$Properties>);
+  public net.neoforged.neoforge.registries.DeferredItem<net.minecraft.world.item.BlockItem> registerSimpleBlockItem(java.lang.String, java.util.function.Supplier<? extends net.minecraft.world.level.block.Block>);
+  public net.neoforged.neoforge.registries.DeferredItem<net.minecraft.world.item.BlockItem> registerSimpleBlockItem(net.minecraft.core.Holder<net.minecraft.world.level.block.Block>, java.util.function.Supplier<net.minecraft.world.item.Item$Properties>);
+  public net.neoforged.neoforge.registries.DeferredItem<net.minecraft.world.item.BlockItem> registerSimpleBlockItem(net.minecraft.core.Holder<net.minecraft.world.level.block.Block>, java.util.function.UnaryOperator<net.minecraft.world.item.Item$Properties>);
+  public net.neoforged.neoforge.registries.DeferredItem<net.minecraft.world.item.BlockItem> registerSimpleBlockItem(net.minecraft.core.Holder<net.minecraft.world.level.block.Block>);
+  public <I extends net.minecraft.world.item.Item> net.neoforged.neoforge.registries.DeferredItem<I> registerItem(java.lang.String, java.util.function.Function<net.minecraft.world.item.Item$Properties, ? extends I>, java.util.function.Supplier<net.minecraft.world.item.Item$Properties>);
+  public <I extends net.minecraft.world.item.Item> net.neoforged.neoforge.registries.DeferredItem<I> registerItem(java.lang.String, java.util.function.Function<net.minecraft.world.item.Item$Properties, ? extends I>, java.util.function.UnaryOperator<net.minecraft.world.item.Item$Properties>);
+  public <I extends net.minecraft.world.item.Item> net.neoforged.neoforge.registries.DeferredItem<I> registerItem(java.lang.String, java.util.function.Function<net.minecraft.world.item.Item$Properties, ? extends I>);
+  public net.neoforged.neoforge.registries.DeferredItem<net.minecraft.world.item.Item> registerSimpleItem(java.lang.String, java.util.function.Supplier<net.minecraft.world.item.Item$Properties>);
+  public net.neoforged.neoforge.registries.DeferredItem<net.minecraft.world.item.Item> registerSimpleItem(java.lang.String, java.util.function.UnaryOperator<net.minecraft.world.item.Item$Properties>);
