@@ -2,6 +2,7 @@ package dev.zorowarrior.bridge;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -38,8 +39,16 @@ public final class BridgeMod {
     private static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MOD_ID);
     private static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MOD_ID);
 
+    private static final ResourceKey<Block> BEACON_KEY =
+            ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MOD_ID, "bridge_beacon"));
+
     public static final Supplier<Block> BRIDGE_BEACON = BLOCKS.register("bridge_beacon",
             () -> new Block(BlockBehaviour.Properties.of()
+                    // 26.x: the block has to know its own key before it is
+                    // constructed, or the constructor throws "Block id not set"
+                    // when it resolves the default loot table. 26.x renamed this
+                    // from 1.21.x's registryKey(...) to setId(...).
+                    .setId(BEACON_KEY)
                     .strength(3.5F, 6.0F)
                     .lightLevel(state -> 12)
                     .sound(SoundType.STONE)

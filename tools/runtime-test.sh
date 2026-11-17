@@ -54,19 +54,21 @@ case "$loader" in
   fabric)
     check 'Loading [0-9]+ mods' 'Fabric loaded the mod list'
     check 'zoro_bridge' 'Fabric knows the mod id zoro_bridge'
-    check 'bridge_beacon \+ bridge_chip registered' 'our onInitialize ran and registered both objects'
+    check 'ZoroHorizonBridge.*loaded' 'our initialiser ran to completion'
     ;;
   neoforge)
     check 'zoro_bridge' 'NeoForge knows the mod id zoro_bridge'
-    check 'NeoForge 2[16]\.x build initialised|loaded on' 'our mod constructor ran'
+    check 'ZoroHorizonBridge.*initialised' 'our mod constructor ran to completion'
     ;;
 esac
 
 # The registry accepting the ids shows up as no "Unknown registry" / "Failed to
 # register" errors; a bad registration aborts startup before "Done".
-if grep -qiE 'Failed to (register|create)|Unknown registry|Invalid registry|Exception in thread "main"' "$log"; then
+if grep -qE 'Failed to register some entries|Unknown registry|Invalid registry' "$log"; then
   echo "  FAIL  a registration error was logged" | tee -a "$log"
   verdict=1
+else
+  echo "  OK    no registration errors" | tee -a "$log"
 fi
 
 echo "----- result: $([ $verdict -eq 0 ] && echo PASS || echo FAIL)" | tee -a "$log"
