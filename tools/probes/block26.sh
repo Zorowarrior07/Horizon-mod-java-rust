@@ -18,6 +18,14 @@ G
   javap -cp "$mcj" 'net.minecraft.world.level.block.state.BlockBehaviour$Properties' 2>&1 | grep -iE 'key|setId|of\(' | head -12
   echo "===== BlockBehaviour ctors"
   javap -cp "$mcj" net.minecraft.world.level.block.state.BlockBehaviour 2>&1 | grep -E 'BlockBehaviour\(' | head -6
+  echo "===== ResourceKey (26.x: how is an id built?)"
+  javap -cp "$mcj" net.minecraft.resources.ResourceKey 2>&1 | grep -E 'create|public' | head -12
+  echo "===== anything named *Identifier* or *Location* in net.minecraft.resources"
+  unzip -l "$mcj" | grep -E 'net/minecraft/resources/[A-Za-z]*(Identifier|Location)[A-Za-z]*\.class' | head -8
+  echo "===== DeferredRegister\$Blocks / \$Items (key-passing)"
+  nf=$(find ~/.gradle/caches/modules-2 -name 'neoforge-26.1*-universal.jar' | head -1)
+  javap -cp "$nf" 'net.neoforged.neoforge.registries.DeferredRegister$Blocks' 2>&1 | head -12
+  javap -cp "$nf" 'net.neoforged.neoforge.registries.DeferredRegister$Items' 2>&1 | head -14
   echo "===== how vanilla makes a block (Blocks static init)"
   javap -c -p -cp "$mcj" net.minecraft.world.level.block.Blocks 2>&1 | grep -E 'Properties\.|Block\."<init>"|Block\.<init>' | head -12
 } > "$out" 2>&1
