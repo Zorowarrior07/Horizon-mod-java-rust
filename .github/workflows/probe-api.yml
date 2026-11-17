@@ -50,7 +50,9 @@ jobs:
           cat java/neoforge26/build/moddev/serverRunProgramArgs.txt >> ci/moddevrun.txt 2>&1
           JAVA_HOME=/usr/lib/jvm/temurin-25-jdk-amd64 \
             bash tools/probes/block26.sh "$PWD/ci/block26.txt" || true
-          sed -n '1,40p' ci/block26.txt
+          JAVA_HOME=/usr/lib/jvm/temurin-25-jdk-amd64 \
+            bash tools/probes/deferred26.sh "$PWD/ci/deferred26.txt" || true
+          cat ci/deferred26.txt
       - name: Commit
         if: always()
         run: |
