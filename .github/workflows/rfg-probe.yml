@@ -38,4 +38,9 @@ jobs:
           }
           tasks.register('showOk') { doLast { println 'RFG CONFIGURED OK' } }
           EOF
-          gradle --no-daemon showOk --stacktrace 2>&1 | tail -40
+          # tee, not tail: this file is the only reliable channel back to me
+          gradle --no-daemon showOk --stacktrace 2>&1 | tee /home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/ci/rfg-probe.txt | tail -30
+      - name: Commit
+        if: always()
+        run: |
+          bash tools/ci-commit.sh "ci: rfg 2.0.6 result $(date -u +%FT%TZ)" ci
