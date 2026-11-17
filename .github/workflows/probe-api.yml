@@ -31,7 +31,8 @@ jobs:
           mcj=$(grep -oE 'CP .*minecraft-merged-1.21.4[^ ]*\.jar' /tmp/cp.txt | sed 's/^CP //' | head -1)
           echo "merged jar: $mcj" > ci/blocksettings.txt
           bash tools/probes/blocksettings.sh "$PWD/ci/blocksettings.txt" "$mcj" || true
-          cat ci/blocksettings.txt
+          bash tools/probes/fabricapi.sh "$PWD/ci/fabricapi.txt" "$mcj" || true
+          cat ci/fabricapi.txt
       - name: Commit
         if: always()
         run: |
