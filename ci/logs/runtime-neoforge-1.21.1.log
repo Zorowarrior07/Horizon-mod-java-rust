@@ -23,45 +23,45 @@ Loaded 131 artifacts from /home/runner/work/Horizon-mod-java-rust/Horizon-mod-ja
 [1m*** Started working on [4mdownloadJson[23;0m[23;0m
   ↓ https://piston-meta.mojang.com/mc/game/version_manifest_v2.json
   ↓ https://piston-meta.mojang.com/v1/packages/9aa86ea608c3ec777dcdc09e6c5a06c85b53599e/1.21.1.json
- [1m[92m✓[23;0m Completed [4mdownloadJson[23;0m in 0.44s
+ [1m[92m✓[23;0m Completed [4mdownloadJson[23;0m in 0.65s
 [1m*** Started working on [4mdownloadServer[23;0m[23;0m
 [1m*** Started working on [4mdownloadClientMappings[23;0m[23;0m
 [1m*** Started working on [4mdownloadClient[23;0m[23;0m
   ↓ https://piston-data.mojang.com/v1/objects/2244b6f072256667bcd9a73df124d6c58de77992/client.txt
-  ↓ https://piston-data.mojang.com/v1/objects/59353fb40c36d304f2035d51e7d6e6baa98dc05c/server.jar
   ↓ https://piston-data.mojang.com/v1/objects/30c73b1c5da787909b2f73340419fdf13b9def88/client.jar
- [1m[92m✓[23;0m Completed [4mdownloadClientMappings[23;0m in 0.50s
+  ↓ https://piston-data.mojang.com/v1/objects/59353fb40c36d304f2035d51e7d6e6baa98dc05c/server.jar
+ [1m[92m✓[23;0m Completed [4mdownloadClientMappings[23;0m in 0.46s
 [1m*** Started working on [4mmergeMappings[23;0m[23;0m
  ↳ Running external tool net.neoforged.installertools:installertools:2.1.2:fatjar
- [1m[92m✓[23;0m Completed [4mdownloadClient[23;0m in 0.90s
+ [1m[92m✓[23;0m Completed [4mdownloadClient[23;0m in 0.72s
 [1m*** Started working on [4mstripClient[23;0m[23;0m
- [1m[92m✓[23;0m Completed [4mdownloadServer[23;0m in 1.20s
+ [1m[92m✓[23;0m Completed [4mdownloadServer[23;0m in 0.94s
 [1m*** Started working on [4mextractServer[23;0m[23;0m
  ↳ Running external tool net.neoforged.installertools:installertools:2.1.2:fatjar
- [1m[92m✓[23;0m Completed [4mextractServer[23;0m in 0.76s
+ [1m[92m✓[23;0m Completed [4mextractServer[23;0m in 0.58s
 [1m*** Started working on [4mstripServer[23;0m[23;0m
- [1m[92m✓[23;0m Completed [4mstripServer[23;0m in 2.03s
- [1m[92m✓[23;0m Completed [4mmergeMappings[23;0m in 4.03s
- [1m[92m✓[23;0m Completed [4mstripClient[23;0m in 3.78s
+ [1m[92m✓[23;0m Completed [4mstripClient[23;0m in 2.50s
+ [1m[92m✓[23;0m Completed [4mstripServer[23;0m in 1.71s
 [1m*** Started working on [4mmerge[23;0m[23;0m
  ↳ Running external tool net.neoforged:mergetool:2.0.3:fatjar
- [1m[92m✓[23;0m Completed [4mmerge[23;0m in 3.49s
+ [1m[92m✓[23;0m Completed [4mmergeMappings[23;0m in 3.05s
+ [1m[92m✓[23;0m Completed [4mmerge[23;0m in 2.57s
 [1m*** Started working on [4mrename[23;0m[23;0m
  ↳ Running external tool net.neoforged:AutoRenamingTool:2.0.3:all
- [1m[92m✓[23;0m Completed [4mrename[23;0m in 6.17s
+ [1m[92m✓[23;0m Completed [4mrename[23;0m in 4.57s
 [1m*** Started working on [4mbinaryPatch[23;0m[23;0m
   [33mWARNING: [23;0mnet.neoforged.installertools:binarypatcher:2.1.2:fatjar is not present in the artifact manifest
   ↓ https://maven.neoforged.net/releases/net/neoforged/installertools/binarypatcher/2.1.2/binarypatcher-2.1.2-fatjar.jar
  ↳ Running external tool net.neoforged.installertools:binarypatcher:2.1.2:fatjar
- [1m[92m✓[23;0m Completed [4mbinaryPatch[23;0m in 5.29s
+ [1m[92m✓[23;0m Completed [4mbinaryPatch[23;0m in 2.62s
 [1m*** Started working on [4mcopyUnpatchedClasses[23;0m[23;0m
- [1m[92m✓[23;0m Completed [4mcopyUnpatchedClasses[23;0m in 1.66s
+ [1m[92m✓[23;0m Completed [4mcopyUnpatchedClasses[23;0m in 1.34s
 [1m*** Started working on [4mapplyDevTransforms[23;0m[23;0m
  ↳ Running external tool net.neoforged.installertools:installertools:4.0.12:fatjar
- [1m[92m✓[23;0m Completed [4mapplyDevTransforms[23;0m in 2.12s
+ [1m[92m✓[23;0m Completed [4mapplyDevTransforms[23;0m in 1.67s
 [1m*** Started working on [4mbinaryWithNeoForge[23;0m[23;0m
- [1m[92m✓[23;0m Completed [4mbinaryWithNeoForge[23;0m in 7.41s
-Total runtime: 32.19s
+ [1m[92m✓[23;0m Completed [4mbinaryWithNeoForge[23;0m in 2.43s
+Total runtime: 19.83s
 
 
 > Task :compileJava
@@ -119,34 +119,34 @@ Downloaded 3890 files with a total size of 789 MiB
 
 > Task :runServer
 WARN StatusConsoleListener Advanced terminal features are not available in this environment
-[05:42:29] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeserverdev, --gameDir, ., --fml.fmlVersion, 4.0.45, --fml.mcVersion, 1.21.1, --fml.neoForgeVersion, 21.1.266, --fml.neoFormVersion, 20240808.144430]
-[05:42:29] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: JVM identified as Eclipse Adoptium OpenJDK 64-Bit Server VM 21.0.13+9-LTS
-[05:42:29] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher 11.0.5+main.901c6ea8 starting: java version 21.0.13 by Eclipse Adoptium; OS Linux arch amd64 version 7.0.0-1019-azure
-[05:42:29] [main/INFO] [ne.ne.fm.lo.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgeserverdev
-[05:42:29] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=union:/home/runner/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.16.4+mixin.0.8.7/26d01f0567ab46e9ca0d2ed89d0ecc11aadbd433/sponge-mixin-0.16.4+mixin.0.8.7.jar%2394!/ Service=ModLauncher Env=SERVER
-[05:42:30] [main/INFO] [ne.ne.fm.lo.mo.lo.JarInJarDependencyLocator/]: Found 2 dependencies adding them to mods collection
-[05:42:30] [main/INFO] [ne.ne.fm.lo.mo.ModDiscoverer/]: 
+[05:51:23] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeserverdev, --gameDir, ., --fml.fmlVersion, 4.0.45, --fml.mcVersion, 1.21.1, --fml.neoForgeVersion, 21.1.266, --fml.neoFormVersion, 20240808.144430]
+[05:51:23] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: JVM identified as Eclipse Adoptium OpenJDK 64-Bit Server VM 21.0.13+9-LTS
+[05:51:23] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher 11.0.5+main.901c6ea8 starting: java version 21.0.13 by Eclipse Adoptium; OS Linux arch amd64 version 7.0.0-1016-aws
+[05:51:23] [main/INFO] [ne.ne.fm.lo.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgeserverdev
+[05:51:23] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=union:/home/runner/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.16.4+mixin.0.8.7/26d01f0567ab46e9ca0d2ed89d0ecc11aadbd433/sponge-mixin-0.16.4+mixin.0.8.7.jar%2394!/ Service=ModLauncher Env=SERVER
+[05:51:23] [main/INFO] [ne.ne.fm.lo.mo.lo.JarInJarDependencyLocator/]: Found 2 dependencies adding them to mods collection
+[05:51:23] [main/INFO] [ne.ne.fm.lo.mo.ModDiscoverer/]: 
      Mod List:
 		Name Version (Mod Id)
 
 		Minecraft 1.21.1 (minecraft)
 		NeoForge 21.1.266 (neoforge)
 		ZOROWARRIOR HORIZON BRIDGE 1.0.0 (zoro_bridge)
-[05:42:30] [main/INFO] [cp.mo.mo.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeserverdev' with arguments [--gameDir, .]
-[05:42:32] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.5).
-[05:42:37] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, location] and [teleport, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
-[05:42:37] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, location] and [teleport, targets] with inputs: [0.1 -0.5 .9, 0 0 0]
-[05:42:37] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, destination] and [teleport, targets] with inputs: [Player, 0123, @e, dd12be42-52a9-4a91-a8a1-11c01849e498]
-[05:42:37] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, targets] and [teleport, destination] with inputs: [Player, 0123, dd12be42-52a9-4a91-a8a1-11c01849e498]
-[05:42:37] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, targets, location] and [teleport, targets, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
-[05:42:37] [modloading-worker-0/INFO] [ZoroHorizonBridge/]: [ZoroHorizonBridge] NeoForge 1.21.x build initialised
-[05:42:37] [modloading-worker-0/INFO] [ne.ne.ne.co.NeoForgeMod/NEOFORGE-MOD]: NeoForge mod loading, version 21.1.266, for MC 1.21.1
-[05:42:38] [main/INFO] [mojang/YggdrasilAuthenticationService]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
-[05:42:38] [main/WARN] [minecraft/VanillaPackResourcesBuilder]: Assets URL 'union:/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge/build/moddev/artifacts/neoforge-21.1.266.jar%23125!/assets/.mcassetsroot' uses unexpected schema
-[05:42:38] [main/WARN] [minecraft/VanillaPackResourcesBuilder]: Assets URL 'union:/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge/build/moddev/artifacts/neoforge-21.1.266.jar%23125!/data/.mcassetsroot' uses unexpected schema
-[05:42:38] [main/INFO] [minecraft/Main]: No existing world data, creating new world
-[05:42:38] [main/ERROR] [minecraft/DedicatedServerProperties]: No key layers in MapLike[{}]
-[05:42:39] [main/ERROR] [minecraft/RecipeManager]: Parsing error loading recipe zoro_bridge:bridge_beacon
+[05:51:24] [main/INFO] [cp.mo.mo.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeserverdev' with arguments [--gameDir, .]
+[05:51:25] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.5).
+[05:51:29] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, location] and [teleport, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[05:51:29] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, location] and [teleport, targets] with inputs: [0.1 -0.5 .9, 0 0 0]
+[05:51:29] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, destination] and [teleport, targets] with inputs: [Player, 0123, @e, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[05:51:29] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, targets] and [teleport, destination] with inputs: [Player, 0123, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[05:51:29] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, targets, location] and [teleport, targets, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[05:51:29] [modloading-worker-0/INFO] [ne.ne.ne.co.NeoForgeMod/NEOFORGE-MOD]: NeoForge mod loading, version 21.1.266, for MC 1.21.1
+[05:51:29] [modloading-worker-0/INFO] [ZoroHorizonBridge/]: [ZoroHorizonBridge] NeoForge 1.21.x build initialised
+[05:51:29] [main/INFO] [mojang/YggdrasilAuthenticationService]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[05:51:29] [main/WARN] [minecraft/VanillaPackResourcesBuilder]: Assets URL 'union:/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge/build/moddev/artifacts/neoforge-21.1.266.jar%23125!/assets/.mcassetsroot' uses unexpected schema
+[05:51:29] [main/WARN] [minecraft/VanillaPackResourcesBuilder]: Assets URL 'union:/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge/build/moddev/artifacts/neoforge-21.1.266.jar%23125!/data/.mcassetsroot' uses unexpected schema
+[05:51:30] [main/INFO] [minecraft/Main]: No existing world data, creating new world
+[05:51:30] [main/ERROR] [minecraft/DedicatedServerProperties]: No key layers in MapLike[{}]
+[05:51:30] [main/ERROR] [minecraft/RecipeManager]: Parsing error loading recipe zoro_bridge:bridge_beacon
 com.google.gson.JsonParseException: Map entry 'S' : Failed to parse either. First: Not a json array: "minecraft:stone"; Second: Not a JSON object: "minecraft:stone"
 	at MC-BOOTSTRAP/datafixerupper@8.0.16/com.mojang.serialization.DataResult$Error.getOrThrow(DataResult.java:287) ~[datafixerupper-8.0.16.jar%2379!/:?] {}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.item.crafting.RecipeManager.apply(RecipeManager.java:60) ~[neoforge-21.1.266.jar%23125!/:?] {re:classloading}
@@ -176,7 +176,7 @@ com.google.gson.JsonParseException: Map entry 'S' : Failed to parse either. Firs
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?] {}
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?] {}
 	at net.neoforged.devlaunch.Main.main(Main.java:57) [DevLaunch-1.0.2.jar:?] {}
-[05:42:39] [main/ERROR] [minecraft/RecipeManager]: Parsing error loading recipe zoro_bridge:bridge_chip
+[05:51:30] [main/ERROR] [minecraft/RecipeManager]: Parsing error loading recipe zoro_bridge:bridge_chip
 com.google.gson.JsonParseException: Map entry 'G' : Failed to parse either. First: Not a json array: "minecraft:gold_ingot"; Second: Not a JSON object: "minecraft:gold_ingot"
 	at MC-BOOTSTRAP/datafixerupper@8.0.16/com.mojang.serialization.DataResult$Error.getOrThrow(DataResult.java:287) ~[datafixerupper-8.0.16.jar%2379!/:?] {}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.item.crafting.RecipeManager.apply(RecipeManager.java:60) ~[neoforge-21.1.266.jar%23125!/:?] {re:classloading}
@@ -206,25 +206,25 @@ com.google.gson.JsonParseException: Map entry 'G' : Failed to parse either. Firs
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?] {}
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?] {}
 	at net.neoforged.devlaunch.Main.main(Main.java:57) [DevLaunch-1.0.2.jar:?] {}
-[05:42:39] [main/INFO] [minecraft/RecipeManager]: Loaded 1290 recipes
-[05:42:39] [main/INFO] [minecraft/AdvancementTree]: Loaded 1399 advancements
-[05:42:40] [Server thread/INFO] [minecraft/DedicatedServer]: Starting minecraft server version 1.21.1
-[05:42:40] [Server thread/INFO] [minecraft/DedicatedServer]: Loading properties
-[05:42:40] [Server thread/INFO] [minecraft/DedicatedServer]: Default game type: SURVIVAL
-[05:42:40] [Server thread/INFO] [minecraft/MinecraftServer]: Generating keypair
-[05:42:40] [Server thread/INFO] [minecraft/DedicatedServer]: Starting Minecraft server on *:25565
-[05:42:40] [Server thread/INFO] [minecraft/ServerConnectionListener]: Using epoll channel type
-[05:42:40] [Server thread/WARN] [minecraft/DedicatedServer]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
-[05:42:40] [Server thread/WARN] [minecraft/DedicatedServer]: The server will make no attempt to authenticate usernames. Beware.
-[05:42:40] [Server thread/WARN] [minecraft/DedicatedServer]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
-[05:42:40] [Server thread/WARN] [minecraft/DedicatedServer]: To change this, set "online-mode" to "true" in the server.properties file.
-[05:42:40] [Server thread/INFO] [minecraft/DedicatedServer]: Preparing level "world"
-[05:42:41] [Server thread/INFO] [minecraft/MinecraftServer]: Preparing start region for dimension minecraft:overworld
-[05:42:41] [worldgen/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 2%
-[05:42:42] [Server thread/INFO] [minecraft/LoggerChunkProgressListener]: Time elapsed: 448 ms
-[05:42:42] [Server thread/INFO] [minecraft/DedicatedServer]: Done (1.858s)! For help, type "help"
-[05:42:42] [Server thread/INFO] [ne.ne.ne.ga.GameTestHooks/]: Enabled Gametest Namespaces: []
-[05:42:42] [Server thread/INFO] [ne.ne.ne.se.pe.PermissionAPI/]: Successfully initialized permission handler neoforge:default_handler
+[05:51:30] [main/INFO] [minecraft/RecipeManager]: Loaded 1290 recipes
+[05:51:30] [main/INFO] [minecraft/AdvancementTree]: Loaded 1399 advancements
+[05:51:31] [Server thread/INFO] [minecraft/DedicatedServer]: Starting minecraft server version 1.21.1
+[05:51:31] [Server thread/INFO] [minecraft/DedicatedServer]: Loading properties
+[05:51:31] [Server thread/INFO] [minecraft/DedicatedServer]: Default game type: SURVIVAL
+[05:51:31] [Server thread/INFO] [minecraft/MinecraftServer]: Generating keypair
+[05:51:31] [Server thread/INFO] [minecraft/DedicatedServer]: Starting Minecraft server on *:25565
+[05:51:31] [Server thread/INFO] [minecraft/ServerConnectionListener]: Using epoll channel type
+[05:51:31] [Server thread/WARN] [minecraft/DedicatedServer]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[05:51:31] [Server thread/WARN] [minecraft/DedicatedServer]: The server will make no attempt to authenticate usernames. Beware.
+[05:51:31] [Server thread/WARN] [minecraft/DedicatedServer]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[05:51:31] [Server thread/WARN] [minecraft/DedicatedServer]: To change this, set "online-mode" to "true" in the server.properties file.
+[05:51:31] [Server thread/INFO] [minecraft/DedicatedServer]: Preparing level "world"
+[05:51:31] [Server thread/INFO] [minecraft/MinecraftServer]: Preparing start region for dimension minecraft:overworld
+[05:51:31] [worldgen/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 2%
+[05:51:31] [Server thread/INFO] [minecraft/LoggerChunkProgressListener]: Time elapsed: 164 ms
+[05:51:31] [Server thread/INFO] [minecraft/DedicatedServer]: Done (0.539s)! For help, type "help"
+[05:51:31] [Server thread/INFO] [ne.ne.ne.ga.GameTestHooks/]: Enabled Gametest Namespaces: []
+[05:51:31] [Server thread/INFO] [ne.ne.ne.se.pe.PermissionAPI/]: Successfully initialized permission handler neoforge:default_handler
 gradle exit=124 (expected: 124 for the timeout, or non-zero if stopped)
 ----- verdict
   OK    server reached "Done" (the world loaded)
