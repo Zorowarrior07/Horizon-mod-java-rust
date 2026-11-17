@@ -77,13 +77,13 @@ remapping source...
 > Task :check UP-TO-DATE
 > Task :build
 
-BUILD SUCCESSFUL in 26s
+BUILD SUCCESSFUL in 37s
 23 actionable tasks: 23 executed
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run-1794891976297.json
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run-1794892258849.json
 SUCCESS with Gradle 4.10.3
 total 28
-drwxr-xr-x 2 runner runner 4096 Nov 17 05:05 .
-drwxr-xr-x 5 runner runner 4096 Nov 17 05:05 ..
--rw-r--r-- 1 runner runner   16 Nov 17 05:05 VERIFY.txt
--rw-r--r-- 1 runner runner 5893 Nov 17 05:06 zoro_bridge-1.0.0-forge-1.8.9-1.0.0-sources.jar
--rw-r--r-- 1 runner runner 7044 Nov 17 05:06 zoro_bridge-1.0.0-forge-1.8.9.jar
+drwxr-xr-x 2 runner runner 4096 Nov 17 05:09 .
+drwxr-xr-x 5 runner runner 4096 Nov 17 05:09 ..
+-rw-r--r-- 1 runner runner   16 Nov 17 05:09 VERIFY.txt
+-rw-r--r-- 1 runner runner 5893 Nov 17 05:11 zoro_bridge-1.0.0-forge-1.8.9-1.0.0-sources.jar
+-rw-r--r-- 1 runner runner 7044 Nov 17 05:11 zoro_bridge-1.0.0-forge-1.8.9.jar
