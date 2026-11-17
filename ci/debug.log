@@ -1,0 +1,77 @@
+===== gradle --version
+
+------------------------------------------------------------
+Gradle 9.9.1
+------------------------------------------------------------
+
+Build time:    2026-11-10 16:22:15 UTC
+Revision:      47a96e4ed1822d6aa7fa32bed4461208e69077a6
+
+Kotlin:        2.4.21
+Groovy:        4.0.33
+Ant:           Apache Ant(TM) version 1.10.17 compiled on April 6 2026
+Launcher JVM:  21.0.13 (Eclipse Adoptium 21.0.13+9-LTS)
+
+===== settings + build file present?
+total 24
+drwxr-xr-x 3 runner runner 4096 Nov 17 01:31 .
+drwxr-xr-x 5 runner runner 4096 Nov 17 01:31 ..
+-rw-r--r-- 1 runner runner 3660 Nov 17 01:31 build.gradle
+-rw-r--r-- 1 runner runner  254 Nov 17 01:31 gradle.properties
+-rw-r--r-- 1 runner runner  218 Nov 17 01:31 settings.gradle
+drwxr-xr-x 3 runner runner 4096 Nov 17 01:31 src
+
+===== dependencies --configuration compileClasspath
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.9.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run-1794879088721.json
+
+[Incubating] Problems report is available at: file:///home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/fabric/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+A problem occurred configuring root project 'zoro-horizon-bridge-fabric'.
+> Could not resolve all artifacts for configuration 'classpath'.
+   > Could not resolve net.fabricmc:fabric-loom:1.19.4.
+     Required by:
+         buildscript of root project 'zoro-horizon-bridge-fabric' > fabric-loom:fabric-loom.gradle.plugin:1.19.4
+      > Dependency requires at least JVM runtime version 25. This build uses a Java 21 JVM.
+
+* Try:
+> Run this build using a Java 25 or newer JVM.
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 13s
+
+===== what loom did (--info, loom lines only)
+Resolved plugin [id: 'fabric-loom', version: '1.19.4']
+   > Could not resolve net.fabricmc:fabric-loom:1.19.4.
+         buildscript of root project 'zoro-horizon-bridge-fabric' > fabric-loom:fabric-loom.gradle.plugin:1.19.4
+
+===== loom caches
+ls: cannot access '/home/runner/.gradle/caches/fabric-loom': No such file or directory
+
+===== jar on classpath?
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+A problem occurred configuring root project 'zoro-horizon-bridge-fabric'.
+> Could not resolve all artifacts for configuration 'classpath'.
+   > Could not resolve net.fabricmc:fabric-loom:1.19.4.
+     Required by:
+         buildscript of root project 'zoro-horizon-bridge-fabric' > fabric-loom:fabric-loom.gradle.plugin:1.19.4
+      > Dependency requires at least JVM runtime version 25. This build uses a Java 21 JVM.
+
+* Try:
+> Run this build using a Java 25 or newer JVM.
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 3s
