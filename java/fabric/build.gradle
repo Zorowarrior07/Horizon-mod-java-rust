@@ -34,6 +34,15 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 }
 
+// A headless dedicated-server run: it is the only way to prove the mod actually
+// loads and that the registries accept the block and item, without a GPU.
+loom {
+    runs {
+        server { server() }
+        client { client() }
+    }
+}
+
 sourceSets {
     main {
         // The mod's Java and its assets/data are shared with every other build,

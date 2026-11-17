@@ -28,7 +28,10 @@ java {
 
 neoForge {
     version = project.neo_version
-    runs { client { client() } }
+    runs {
+        client { client() }
+        server { server() }
+    }
     mods { zoro_bridge { sourceSet sourceSets.main } }
 }
 

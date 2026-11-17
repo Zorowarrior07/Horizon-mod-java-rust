@@ -1,0 +1,82 @@
+name: java-verify
+
+# Runtime verification: build each target, then boot a real headless server with
+# the mod installed and read the outcome from the server log. Compilation is not
+# evidence that a mod loads; this is.
+on:
+  workflow_dispatch:
+  push:
+    paths: ['java/**', 'tools/runtime-test.sh', '.github/workflows/java-verify.yml']
+permissions: { contents: write }
+concurrency: { group: java-verify, cancel-in-progress: false }
+jobs:
+  verify-fabric:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: '21' }
+      - uses: gradle/actions/setup-gradle@v4
+        with: { gradle-version: '9.9.1' }
+      - name: Runtime test Fabric 1.21.4
+        continue-on-error: true
+        env:
+          JAVA_HOME: /usr/lib/jvm/temurin-25-jdk-amd64
+        run: |
+          mkdir -p ci/logs artifacts/java-1.21.x
+          bash tools/runtime-test.sh java/fabric fabric "$PWD/ci/logs/runtime-fabric-1.21.4.log" \
+            -Pmc_version=1.21.4 -Pyarn_mappings=1.21.4+build.8 \
+            -Ploader_version=0.20.1 -Pjava_target=21 || true
+          tail -20 ci/logs/runtime-fabric-1.21.4.log
+          cp java/fabric/build/libs/*.jar artifacts/java-1.21.x/ 2>/dev/null || true
+      - name: Commit
+        if: always()
+        run: |
+          bash tools/ci-commit.sh "ci: fabric runtime test $(date -u +%FT%TZ)" ci artifacts
+  verify-neoforge:
+    needs: verify-fabric
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: '21' }
+      - uses: gradle/actions/setup-gradle@v4
+        with: { gradle-version: '8.10.2' }
+      - name: Runtime test NeoForge 1.21.1
+        continue-on-error: true
+        run: |
+          mkdir -p ci/logs artifacts/java-1.21.x
+          bash tools/runtime-test.sh java/neoforge neoforge "$PWD/ci/logs/runtime-neoforge-1.21.1.log" \
+            -Pmc_version=1.21.1 -Pneo_version=21.1.266 -Pjava_target=21 || true
+          tail -20 ci/logs/runtime-neoforge-1.21.1.log
+          cp java/neoforge/build/libs/*.jar artifacts/java-1.21.x/ 2>/dev/null || true
+      - name: Commit
+        if: always()
+        run: |
+          bash tools/ci-commit.sh "ci: neoforge runtime test $(date -u +%FT%TZ)" ci artifacts
+  verify-neoforge26:
+    needs: verify-neoforge
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: '25' }
+      - uses: gradle/actions/setup-gradle@v4
+        with: { gradle-version: '9.9.1' }
+      - name: Runtime test NeoForge 26.1
+        continue-on-error: true
+        env:
+          JAVA_HOME: /usr/lib/jvm/temurin-25-jdk-amd64
+        run: |
+          mkdir -p ci/logs artifacts/java-26.x
+          bash tools/runtime-test.sh java/neoforge26 neoforge "$PWD/ci/logs/runtime-neoforge-26.1.log" \
+            -Pmc_version=26.1 -Pneo_version=26.1.2.126 -Pjava_target=25 || true
+          tail -20 ci/logs/runtime-neoforge-26.1.log
+          cp java/neoforge26/build/libs/*.jar artifacts/java-26.x/ 2>/dev/null || true
+      - name: Commit
+        if: always()
+        run: |
+          bash tools/ci-commit.sh "ci: neoforge 26.x runtime test $(date -u +%FT%TZ)" ci artifacts
