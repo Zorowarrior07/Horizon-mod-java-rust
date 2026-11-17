@@ -8,9 +8,9 @@ name: java-mod-jars
 # its own toolchain, because the toolchains genuinely cannot be shared.
 #
 # Results are committed back into the repo: `artifacts/` holds the jars,
-# `ci/logs/` holds the build logs and verifier verdicts. Jobs run serially
-# (`max-parallel: 1`) and push through tools/ci-commit.sh, which retries with a
-# rebase, so one job cannot clobber another's commit.
+# `ci/logs/` holds the build logs and verifier verdicts. Jobs run serially (each
+# `needs` the previous one) and push through tools/ci-commit.sh, which retries
+# with a rebase, so one job cannot clobber another's commit.
 
 on:
   push:
@@ -77,7 +77,8 @@ jobs:
             | tee artifacts/java-1.21.x/VERIFY.txt
       - name: Commit
         if: always()
-        run: bash tools/ci-commit.sh "ci: fabric jars $(date -u +%FT%TZ)" ci artifacts
+        run: |
+          bash tools/ci-commit.sh "ci: fabric jar $(date -u +%FT%TZ)" ci artifacts
 
   neoforge:
     needs: fabric
@@ -110,7 +111,8 @@ jobs:
           cat artifacts/java-1.21.x/VERIFY-neoforge.txt
       - name: Commit
         if: always()
-        run: bash tools/ci-commit.sh "ci: neoforge jar $(date -u +%FT%TZ)" ci artifacts
+        run: |
+          bash tools/ci-commit.sh "ci: neoforge jar $(date -u +%FT%TZ)" ci artifacts
 
   forge189:
     needs: neoforge
@@ -148,4 +150,5 @@ jobs:
             --json artifacts/java-1.8.9/verify.json | tee artifacts/java-1.8.9/VERIFY.txt
       - name: Commit
         if: always()
-        run: bash tools/ci-commit.sh "ci: forge 1.8.9 jar $(date -u +%FT%TZ)" ci artifacts
+        run: |
+          bash tools/ci-commit.sh "ci: forge 1.8.9 jar $(date -u +%FT%TZ)" ci artifacts
