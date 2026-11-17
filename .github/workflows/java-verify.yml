@@ -27,8 +27,7 @@ jobs:
           mkdir -p ci/logs artifacts/java-1.21.x
           bash tools/runtime-test.sh java/fabric fabric "$PWD/ci/logs/runtime-fabric-1.21.4.log" \
             -Pmc_version=1.21.4 -Pyarn_mappings=1.21.4+build.8 \
-            -Ploader_version=0.20.1 -Pjava_target=21 \
-            -Pfabric_api_version=0.119.4+1.21.4 || true
+            -Ploader_version=0.20.1 -Pjava_target=21 || true
           tail -20 ci/logs/runtime-fabric-1.21.4.log
           cp java/fabric/build/libs/*.jar artifacts/java-1.21.x/ 2>/dev/null || true
       - name: Commit

@@ -1,5 +1,7 @@
 package dev.zorowarrior.bridge;
 
+import java.util.Optional;
+
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.AbstractBlock;
@@ -8,8 +10,6 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
@@ -18,26 +18,27 @@ import org.slf4j.LoggerFactory;
 /**
  * ZOROWARRIOR HORIZON BRIDGE — Fabric, Minecraft 1.21.3 and newer 1.21.x.
  *
- * <p>Two things changed in 1.21.3 and both of them bite at runtime, not at
- * compile time — this file exists because a server boot found them:
+ * <p>Vanilla classes only, no Fabric API, and that is a deliberate design
+ * constraint rather than a limitation. Two things changed in 1.21.3, both of
+ * which only show up when a server actually boots:
  *
  * <ol>
- *   <li>{@code AbstractBlock.Settings} must now be told the block's own registry
- *       key before the {@code Block} is constructed, or the constructor throws
- *       {@code NullPointerException: Block id not set} while working out the
- *       default loot table.</li>
- *   <li>Once a key is set, constructing the block creates an <i>intrusive</i>
- *       registry holder, and the frozen block registry refuses those after
- *       startup: {@code IllegalStateException: This registry can't create
- *       intrusive holders}. So unlike 1.21.1, the block has to be created while
- *       the registry is still open.</li>
+ *   <li>{@code AbstractBlock.Settings} must be given the block's registry key
+ *       ({@code registryKey(...)}) before the {@code Block} is constructed, or
+ *       the constructor throws {@code NullPointerException: Block id not set}
+ *       while resolving a default loot table.</li>
+ *   <li>But setting that key makes the registry create an <i>intrusive</i>
+ *       holder, which a frozen registry refuses outside the boot phase:
+ *       {@code IllegalStateException: This registry can't create intrusive
+ *       holders}. Fabric API's old {@code RegistryEvent} was the escape hatch;
+ *       it has since been removed, because vanilla now covers it.</li>
  * </ol>
  *
- * <p>Consequence: on 1.21.3+ this mod needs the one hook that lets a mod add
- * blocks before the registry freezes. That is exactly what Fabric API provides,
- * so this variant depends on it (see build.gradle {@code fabric_api_version})
- * and registers inside {@code RegistryEvent}. The 1.21.1 variant still uses
- * nothing but vanilla classes.
+ * <p>The way out that needs no library at all: don't let the block compute a
+ * loot table from its id in the first place. Supplying the loot table
+ * explicitly satisfies the constructor, so no key is needed, so no intrusive
+ * holder is created, so registering from {@code onInitialize} is legal again.
+ * The drop is defined by {@code data/zoro_bridge/loot_table/blocks/...}.
  */
 public final class BridgeBeaconMod implements ModInitializer {
 
@@ -51,43 +52,27 @@ public final class BridgeBeaconMod implements ModInitializer {
         return Identifier.of(MOD_ID, path);
     }
 
-    private static RegistryKey<Block> blockKey(String path) {
-        return RegistryKey.of(RegistryKeys.BLOCK, id(path));
-    }
-
-    private static RegistryKey<Item> itemKey(String path) {
-        return RegistryKey.of(RegistryKeys.ITEM, id(path));
-    }
-
     @Override
     public void onInitialize() {
-        // Registration is deferred to the registry-open phase; see the class doc.
-        net.fabricmc.fabric.api.event.registry.RegistryEvent.register(Registries.BLOCK)
-                .register(id("bridge_beacon"), (key, registry) -> {
-                    Block block = new Block(AbstractBlock.Settings.create()
-                            .registryKey(blockKey("bridge_beacon"))
-                            .strength(3.5F, 6.0F)
-                            .luminance(state -> 12)
-                            .sounds(BlockSoundGroup.STONE)
-                            .requiresTool());
-                    registry.register(key, block);
-                    bridgeBeacon = block;
-                });
+        Block block = new Block(AbstractBlock.Settings.create()
+                // Explicit (empty) loot table: removes the constructor's need to
+                // derive one from a registry key it does not have yet.
+                .lootTable(Optional.empty())
+                .strength(3.5F, 6.0F)
+                .luminance(state -> 12)
+                .sounds(BlockSoundGroup.STONE)
+                .requiresTool());
 
-        net.fabricmc.fabric.api.event.registry.RegistryEvent.register(Registries.ITEM)
-                .register(id("bridge_chip"), (key, registry) -> {
-                    bridgeChip = registry.register(key, (Item) new Item(new Item.Settings()));
-                });
-
-        net.fabricmc.fabric.api.event.registry.RegistryEvent.register(Registries.ITEM)
-                .register(id("bridge_beacon"), (key, registry) -> {
-                    registry.register(key, new BlockItem(bridgeBeacon, new Item.Settings()));
-                });
+        bridgeBeacon = Registry.register(Registries.BLOCK, id("bridge_beacon"), block);
+        bridgeChip = Registry.register(Registries.ITEM, id("bridge_chip"),
+                new Item(new Item.Settings()));
+        Registry.register(Registries.ITEM, id("bridge_beacon"),
+                new BlockItem(block, new Item.Settings()));
 
         String version = FabricLoader.getInstance().getModContainer(MOD_ID)
                 .map(c -> c.getMetadata().getVersion().getFriendlyString())
                 .orElse("unknown");
-        LOGGER.info("[ZoroHorizonBridge] mod {} loaded: bridge_beacon + bridge_chip registered",
-                version);
+        LOGGER.info("[ZoroHorizonBridge] mod {} loaded on {}: bridge_beacon + bridge_chip registered",
+                version, net.fabricmc.loader.api.FabricLoader.getInstance().getEnvironmentType());
     }
 }
