@@ -1,0 +1,36 @@
+{
+  "schema": "zoro-horizon-bridge/jar-verify@1",
+  "all_ok": true,
+  "jars": [
+    {
+      "jar": "artifacts/java-26.x/zoro_bridge-1.0.0-neoforge-26.1-1.0.0.jar",
+      "ok": true,
+      "notes": [
+        [
+          "ok",
+          "38 entries, no duplicates"
+        ],
+        [
+          "ok",
+          "dev/zorowarrior/bridge/BridgeMod.class: class v69.0, 8 methods, 496 code bytes"
+        ],
+        [
+          "ok",
+          "assets/zoro_bridge/textures/block/bridge_beacon.png: PNG 16x16"
+        ],
+        [
+          "ok",
+          "assets/zoro_bridge/textures/item/bridge_chip.png: PNG 16x16"
+        ],
+        [
+          "ok",
+          "neoforge.mods.toml present (602 bytes)"
+        ],
+        [
+          "ok",
+          "loader metadata: neoforge"
+        ]
+      ]
+    }
+  ]
+}
