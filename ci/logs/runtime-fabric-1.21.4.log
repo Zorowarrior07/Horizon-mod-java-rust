@@ -9,50 +9,58 @@ Fabric Loom: 1.19.4
 checkSources: 1 java file(s) in [/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/shared/fabric/java]
 
 > Task :compileJava
-/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/shared/fabric/java/dev/zorowarrior/bridge/BridgeBeaconMod.java:65: error: cannot find symbol
-        net.fabricmc.fabric.api.event.registry.RegistryEvent.register(Registries.BLOCK)
-                                              ^
-  symbol:   class RegistryEvent
-  location: package net.fabricmc.fabric.api.event.registry
-/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/shared/fabric/java/dev/zorowarrior/bridge/BridgeBeaconMod.java:77: error: cannot find symbol
-        net.fabricmc.fabric.api.event.registry.RegistryEvent.register(Registries.ITEM)
-                                              ^
-  symbol:   class RegistryEvent
-  location: package net.fabricmc.fabric.api.event.registry
-/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/shared/fabric/java/dev/zorowarrior/bridge/BridgeBeaconMod.java:82: error: cannot find symbol
-        net.fabricmc.fabric.api.event.registry.RegistryEvent.register(Registries.ITEM)
-                                              ^
-  symbol:   class RegistryEvent
-  location: package net.fabricmc.fabric.api.event.registry
-3 errors
+> Task :processResources
+> Task :classes
+> Task :generateLog4jConfig
+> Task :generateRemapClasspath
+> Task :generateDLIConfig
+> Task :configureLaunch
 
-> Task :compileJava FAILED
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run-1794890008436.json
+> Task :runServer
+[04:44:05] [main/INFO] (FabricLoader/GameProvider) Loading Minecraft 1.21.4 with Fabric Loader 0.20.1
+[04:44:05] [main/INFO] (FabricLoader) Loading 5 mods:
+	- fabricloader 0.20.1
+	- java 21
+	- minecraft 1.21.4
+	- mixinextras 0.5.5
+	- zoro_bridge 1.0.0
+[04:44:05] [main/INFO] (FabricLoader/Mixin) SpongePowered MIXIN Subsystem Version=0.8.7 Source=file:/home/runner/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.17.5+mixin.0.8.7/cef8519a91129d0c21fa03bb9378f0e8ca810e5/sponge-mixin-0.17.5+mixin.0.8.7.jar Service=Knot/Fabric Env=SERVER
+[04:44:05] [main/INFO] (FabricLoader/Mixin) Loaded Fabric development mappings for mixin remapper!
+[04:44:11] [main/ERROR] (Minecraft) Failed to start the minecraft server
+java.lang.RuntimeException: Could not execute entrypoint stage 'main' due to errors, provided by 'zoro_bridge' at 'dev.zorowarrior.bridge.BridgeBeaconMod'!
+	at net.fabricmc.loader.impl.FabricLoaderImpl.lambda$invokeEntrypoints$0(FabricLoaderImpl.java:418) ~[fabric-loader-0.20.1.jar:?]
+	at net.fabricmc.loader.impl.util.ExceptionUtil.gatherExceptions(ExceptionUtil.java:33) ~[fabric-loader-0.20.1.jar:?]
+	at net.fabricmc.loader.impl.FabricLoaderImpl.invokeEntrypoints(FabricLoaderImpl.java:416) ~[fabric-loader-0.20.1.jar:?]
+	at net.fabricmc.loader.impl.game.minecraft.Hooks.startServer(Hooks.java:63) ~[fabric-loader-0.20.1.jar:?]
+	at knot/net.minecraft.server.Main.main(Main.java:113) [minecraft-merged-1.21.4-net.fabricmc.yarn.1_21_4.1.21.4+build.8-v2.jar:?]
+	at net.fabricmc.loader.impl.game.minecraft.MinecraftGameProvider.launch(MinecraftGameProvider.java:517) [fabric-loader-0.20.1.jar:?]
+	at net.fabricmc.loader.impl.launch.knot.Knot.launch(Knot.java:72) [fabric-loader-0.20.1.jar:?]
+	at net.fabricmc.loader.impl.launch.knot.KnotServer.main(KnotServer.java:23) [fabric-loader-0.20.1.jar:?]
+	at net.fabricmc.devlaunchinjector.Main.main(Main.java:86) [dev-launch-injector-0.2.1+build.8.jar:?]
+Caused by: java.lang.NullPointerException: Block id not set
+	at java.base/java.util.Objects.requireNonNull(Objects.java:259) ~[?:?]
+	at knot/net.minecraft.block.AbstractBlock$Settings.getLootTableKey(AbstractBlock.java:669) ~[minecraft-merged-1.21.4-net.fabricmc.yarn.1_21_4.1.21.4+build.8-v2.jar:?]
+	at knot/net.minecraft.block.AbstractBlock.<init>(AbstractBlock.java:110) ~[minecraft-merged-1.21.4-net.fabricmc.yarn.1_21_4.1.21.4+build.8-v2.jar:?]
+	at knot/net.minecraft.block.Block.<init>(Block.java:191) ~[minecraft-merged-1.21.4-net.fabricmc.yarn.1_21_4.1.21.4+build.8-v2.jar:?]
+	at knot/dev.zorowarrior.bridge.BridgeBeaconMod.onInitialize(BridgeBeaconMod.java:64) ~[main/:?]
+	at net.fabricmc.loader.impl.FabricLoaderImpl.invokeEntrypoints(FabricLoaderImpl.java:414) ~[fabric-loader-0.20.1.jar:?]
+	... 6 more
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run-1794890590475.json
 
 [Incubating] Problems report is available at: file:///home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/fabric/build/reports/problems/problems-report.html
 
-FAILURE: Build failed with an exception.
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
 
-* What went wrong:
-Execution failed for task ':compileJava' (registered by plugin class 'org.gradle.api.plugins.JavaBasePlugin').
-> Compilation failed; see the compiler output below.
-  /home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/shared/fabric/java/dev/zorowarrior/bridge/BridgeBeaconMod.java:65: error: cannot find symbol
-          net.fabricmc.fabric.api.event.registry.RegistryEvent.register(Registries.BLOCK)
-                                                ^
-    symbol:   class RegistryEvent
-    location: package net.fabricmc.fabric.api.event.registry
-  3 errors
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
 
-* Try:
-> Check your code and dependencies to fix the compilation error(s)
-> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+For more on this, please refer to https://docs.gradle.org/9.9.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 
-BUILD FAILED in 1m 2s
-2 actionable tasks: 2 executed
-gradle exit=1 (expected: 124 for the timeout, or non-zero if stopped)
+BUILD SUCCESSFUL in 1m 13s
+7 actionable tasks: 7 executed
+gradle exit=0 (expected: 124 for the timeout, or non-zero if stopped)
 ----- verdict
   FAIL  server reached "Done" (the world loaded)
-  FAIL  Fabric loaded the mod list
-  FAIL  Fabric knows the mod id zoro_bridge
+  OK    Fabric loaded the mod list
+  OK    Fabric knows the mod id zoro_bridge
   FAIL  our onInitialize ran and registered both objects
 ----- result: FAIL
