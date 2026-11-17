@@ -61,13 +61,13 @@ public final class BridgeMod {
             BLOCKS.registerSimpleBlock("bridge_beacon", BEACON_PROPERTIES);
 
     public static final DeferredItem<Item> BRIDGE_CHIP =
-            ITEMS.registerSimpleItem("bridge_chip", new Item.Properties());
+            ITEMS.registerSimpleItem("bridge_chip", props -> props);
 
     public BridgeMod(IEventBus modBus) {
         BLOCKS.register(modBus);
         ITEMS.register(modBus);
-        // The block item gets the same id-then-construct treatment.
-        ITEMS.registerSimpleBlockItem(BRIDGE_BEACON, new Item.Properties());
+        // One-argument overload: NeoForge derives the item id from the block's.
+        ITEMS.registerSimpleBlockItem(BRIDGE_BEACON);
         LOGGER.info("[ZoroHorizonBridge] NeoForge 26.x build initialised: {} + {}",
                 id("bridge_beacon"), id("bridge_chip"));
     }
