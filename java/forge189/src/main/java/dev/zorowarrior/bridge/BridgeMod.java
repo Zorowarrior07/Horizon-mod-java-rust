@@ -19,9 +19,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  * ZOROWARRIOR HORIZON BRIDGE — Minecraft 1.8.9, Forge.
  *
  * <p>A genuinely different implementation, not a copy. 1.8.9 predates the
- * registry system: blocks and items are handed to {@code GameRegistry.register}
- * with a name, there is no {@code Block.Settings}, and models are registered at
- * runtime through {@code ModelLoader}. Nothing here compiles on 1.21.x and the
+ * registry system: blocks and items are handed to {@code GameRegistry.registerBlock}
+ * / {@code registerItem} with a name, there is no {@code Block.Settings}, and
+ * models are registered at runtime through {@code ModelLoader}. Nothing here
+ * compiles on 1.21.x and the
  * 1.21.x source does not compile here — which is why the jars are separate.
  *
  * <p>Details that differ from modern versions and are easy to get wrong:
@@ -30,9 +31,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  *       (it moved to {@code ...client.renderer.block.model} in 1.9).</li>
  *   <li>{@code Block.setHarvestLevel} returns {@code void}, so it cannot be
  *       chained onto the block builder.</li>
- *   <li>{@code GameRegistry.register} in this Forge build takes only the object:
- *       the name comes from {@code setRegistryName} first (an older overload took
- *       a name, which is what most tutorials still show).</li>
+ *   <li>Registration is {@code GameRegistry.registerBlock} / {@code registerItem}
+ *       with an explicit name — {@code register(IForgeRegistryEntry)} did not
+ *       exist until 1.9.</li>
  *   <li>Recipes are code, not JSON — data packs did not exist in 1.8.9.</li>
  *   <li>Textures live in {@code textures/blocks} and {@code textures/items}.</li>
  * </ul>
@@ -59,19 +60,18 @@ public class BridgeMod {
         bridgeBeacon.setCreativeTab(CreativeTabs.tabBlock);
         // Returns void in 1.8.9 — cannot be part of a fluent chain.
         bridgeBeacon.setHarvestLevel("pickaxe", 2);
-        bridgeBeacon.setRegistryName(MODID, "bridge_beacon");
-        GameRegistry.register(bridgeBeacon);
+        // 1.8.9 Forge: GameRegistry.registerBlock / registerItem with an explicit
+        // name. The modern register(IForgeRegistryEntry) arrived in 1.9.
+        GameRegistry.registerBlock(bridgeBeacon, "bridge_beacon");
 
         bridgeChip = new Item();
         bridgeChip.setUnlocalizedName("bridge_chip");
         bridgeChip.setCreativeTab(CreativeTabs.tabMaterials);
         bridgeChip.setMaxStackSize(64);
-        bridgeChip.setRegistryName(MODID, "bridge_chip");
-        GameRegistry.register(bridgeChip);
+        GameRegistry.registerItem(bridgeChip, "bridge_chip");
 
         ItemBlock beaconItem = new ItemBlock(bridgeBeacon);
-        beaconItem.setRegistryName(MODID, "bridge_beacon");
-        GameRegistry.register(beaconItem);
+        GameRegistry.registerItem(beaconItem, "bridge_beacon");
 
         // 1.8.9 recipes: position strings plus a key, resolved at load time.
         GameRegistry.addRecipe(new ItemStack(bridgeChip),
