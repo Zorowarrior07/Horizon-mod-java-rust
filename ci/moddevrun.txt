@@ -1,0 +1,33 @@
+===== moddev tasks mentioning run or mods
+Tasks runnable from root project 'zoro-horizon-bridge-neoforge26'
+tasks - Displays the tasks runnable from root project 'zoro-horizon-bridge-neoforge26'.
+downloadAssets - Downloads the Minecraft assets and asset index needed to run a Minecraft client or generate client-side resources.
+runClient - Runs the client Minecraft run configuration.
+runServer - Runs the server Minecraft run configuration.
+createClientLaunchScript - Creates a bash/shell-script to launch the client Minecraft run from outside Gradle or your IDE.
+createServerLaunchScript - Creates a bash/shell-script to launch the server Minecraft run from outside Gradle or your IDE.
+prepareClientRun - Prepares all files needed to launch the client Minecraft run.
+prepareServerRun - Prepares all files needed to launch the server Minecraft run.
+check - Runs all checks.
+test - Runs the test suite.
+
+===== RunGameTask / ModDevGradle extension properties
+Root project 'zoro-horizon-bridge-neoforge26'
+__internal_modDevArtifactsWorkflow: ModDevArtifactsWorkflow[project=root project 'zoro-horizon-bridge-neoforge26', dependencies=ModdingDependencies[neoForgeDependency=net.neoforged:neoforge:26.1.2.126, neoForgeDependencyNotation=net.neoforged:neoforge:26.1.2.126:userdev, neoFormDependency=null, neoFormDependencyNotation=null, gameLibrariesDependency=net.neoforged:neoforge:26.1.2.126, modulePathDependency=net.neoforged:neoforge:26.1.2.126, runTypesConfigDependency=net.neoforged:neoforge:26.1.2.126, testFixturesDependency=net.neoforged:neoforge:26.1.2.126], versionCapabilities=VersionCapabilitiesInternal[minecraftVersion=26.1.2, javaVersion=25, splitDataRuns=true, testFixtures=true, modLocatorRework=true, legacyClasspath=false, needsNeoForgeInMinecraftJar=false], createArtifacts=provider(task 'createMinecraftArtifacts', class net.neoforged.nfrtgradle.CreateMinecraftArtifacts), minecraftClassesDependency=map(map(provider(task 'createMinecraftArtifacts', class net.neoforged.nfrtgradle.CreateMinecraftArtifacts))), downloadAssets=provider(task 'downloadAssets', class net.neoforged.nfrtgradle.DownloadAssets), runtimeDependencies=configuration ':modDevRuntimeDependencies', compileDependencies=configuration ':modDevCompileDependencies', modDevBuildDir=map(org.gradle.api.file.Directory property(org.gradle.api.file.Directory, fixed(class org.gradle.api.internal.file.DefaultFilePropertyFactory$FixedDirectory, /home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/build)) org.gradle.api.internal.file.DefaultFilePropertyFactory$PathToDirectoryTransformer@129155ce), artifactsBuildDir=map(org.gradle.api.file.Directory property(org.gradle.api.file.Directory, fixed(class org.gradle.api.internal.file.DefaultFilePropertyFactory$FixedDirectory, /home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/build)) org.gradle.api.internal.file.DefaultFilePropertyFactory$PathToDirectoryTransformer@142274e4)]
+__internal_modDevRunWorkflow: net.neoforged.moddevgradle.internal.ModDevRunWorkflow@f8e8c77
+allprojects: [root project 'zoro-horizon-bridge-neoforge26']
+asDynamicObject: DynamicObject for root project 'zoro-horizon-bridge-neoforge26'
+buildDir: /home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/build
+buildFile: /home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/build.gradle
+configurations: configuration container for root project 'zoro-horizon-bridge-neoforge26'
+displayName: root project 'zoro-horizon-bridge-neoforge26'
+isolated: DefaultIsolatedProject{root project 'zoro-horizon-bridge-neoforge26'}
+mdgInternalIdeIntegration: net.neoforged.moddevgradle.internal.NoIdeIntegration@67477e3f
+name: zoro-horizon-bridge-neoforge26
+neoForge: extension 'neoForge'
+owner: root project 'zoro-horizon-bridge-neoforge26'
+project: root project 'zoro-horizon-bridge-neoforge26'
+projectDir: /home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26
+projectIdentity: root project 'zoro-horizon-bridge-neoforge26'
+rootDir: /home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26
+rootProject: root project 'zoro-horizon-bridge-neoforge26'
