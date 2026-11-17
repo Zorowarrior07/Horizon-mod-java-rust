@@ -29,8 +29,8 @@ echo "===== $loader runtime test: $project" > "$log"
 server_dir="$root/$project/run"
 mkdir -p "$server_dir"
 printf 'eula=true\n' > "$server_dir/eula.txt"
-printf 'level-type=flat\nonline-mode=false\nmax-players=1\nview-distance=4\n'
-printf 'level-type=flat\nonline-mode=false\nmax-players=1\nview-distance=4\n' > "$server_dir/server.properties"
+printf 'level-type=minecraft:flat\nonline-mode=false\nmax-players=1\nview-distance=4\nsync-chunk-writes=false\n' \
+  > "$server_dir/server.properties"
 
 # Run the server task with a timeout: it never exits on its own.
 timeout 300 gradle --no-daemon -p "$root/$project" runServer "${args[@]}" >> "$log" 2>&1

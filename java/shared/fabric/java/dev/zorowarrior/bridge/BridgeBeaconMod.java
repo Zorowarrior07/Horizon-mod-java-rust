@@ -8,6 +8,8 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
@@ -16,16 +18,18 @@ import org.slf4j.LoggerFactory;
 /**
  * ZOROWARRIOR HORIZON BRIDGE — Java Edition, Fabric build.
  *
- * <p>This file is written in <b>Yarn</b> names, because that is the mapping set
- * the Fabric toolchain compiles and remaps against (`net.minecraft.block.Block`,
- * `net.minecraft.util.Identifier`). The NeoForge and Forge builds of the same
- * mod use Mojang official names instead — same content, different names, which
- * is why they are separate sources and separate jars.
+ * <p>Written in <b>Yarn</b> names, because that is the mapping set the Fabric
+ * toolchain compiles and remaps against ({@code net.minecraft.block.Block},
+ * {@code net.minecraft.util.Identifier}). The NeoForge builds of the same mod use
+ * Mojang official names — same content, different names, which is why they are
+ * separate sources and separate jars.
  *
- * <p>Content added: the {@code zoro_bridge:bridge_beacon} block and the
- * {@code zoro_bridge:bridge_chip} item. Same ids, same textures as the Horizon
- * {@code .hmod}, so a build made for the Horizon launcher and a build made for a
- * Java launcher describe the same objects.
+ * <p>One detail that cost a server start and is worth writing down: since 1.21.3,
+ * {@code AbstractBlock.Settings} must be handed the block's own registry key
+ * ({@code registryKey(...)}) <i>before</i> the Block is constructed. Without it,
+ * {@code Block}'s constructor throws {@code NullPointerException: Block id not set}
+ * while computing the default loot table. Compiling does not catch this; booting
+ * a server does.
  *
  * <p>Deliberately no Fabric API dependency: vanilla classes only, so Fabric
  * Loader by itself is enough to run this.
@@ -42,26 +46,35 @@ public final class BridgeBeaconMod implements ModInitializer {
         return Identifier.of(MOD_ID, path);
     }
 
+    private static RegistryKey<Block> blockKey(String path) {
+        return RegistryKey.of(RegistryKeys.BLOCK, id(path));
+    }
+
+    private static RegistryKey<Item> itemKey(String path) {
+        return RegistryKey.of(RegistryKeys.ITEM, id(path));
+    }
+
     @Override
     public void onInitialize() {
-        AbstractBlock.Settings blockSettings = AbstractBlock.Settings.create()
+        Block block = new Block(AbstractBlock.Settings.create()
+                .registryKey(blockKey("bridge_beacon"))
                 .strength(3.5F, 6.0F)
                 .luminance(state -> 12)
                 .sounds(BlockSoundGroup.STONE)
-                .requiresTool();
+                .requiresTool());
 
-        bridgeBeacon = Registry.register(Registries.BLOCK, id("bridge_beacon"),
-                new Block(blockSettings));
+        bridgeBeacon = Registry.register(Registries.BLOCK, blockKey("bridge_beacon"), block);
 
-        bridgeChip = Registry.register(Registries.ITEM, id("bridge_chip"),
+        bridgeChip = Registry.register(Registries.ITEM, itemKey("bridge_chip"),
                 new Item(new Item.Settings()));
 
-        Registry.register(Registries.ITEM, id("bridge_beacon"),
-                new BlockItem(bridgeBeacon, new Item.Settings()));
+        Registry.register(Registries.ITEM, itemKey("bridge_beacon"),
+                new BlockItem(block, new Item.Settings()));
 
         String version = FabricLoader.getInstance().getModContainer(MOD_ID)
                 .map(c -> c.getMetadata().getVersion().getFriendlyString())
                 .orElse("unknown");
-        LOGGER.info("[ZoroHorizonBridge] mod {} loaded: bridge_beacon + bridge_chip registered", version);
+        LOGGER.info("[ZoroHorizonBridge] mod {} loaded: bridge_beacon + bridge_chip registered",
+                version);
     }
 }
