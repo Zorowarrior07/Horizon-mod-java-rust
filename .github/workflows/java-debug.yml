@@ -1,0 +1,55 @@
+name: java-debug
+
+# Throwaway diagnostic: why is Loom not putting Minecraft on the compile
+# classpath? Writes one file, ci/debug.log, and nothing else.
+on:
+  workflow_dispatch:
+  push:
+    paths: ['.github/workflows/java-debug.yml']
+
+permissions:
+  contents: write
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: '21' }
+      - uses: gradle/actions/setup-gradle@v4
+        with: { gradle-version: '9.9.1' }
+
+      - name: Collect diagnostics
+        run: |
+          mkdir -p ci
+          {
+            echo "===== gradle --version"
+            gradle --version 2>&1 | sed -n '1,12p'
+            echo
+            echo "===== settings + build file present?"
+            ls -la java/fabric
+            echo
+            echo "===== dependencies --configuration compileClasspath"
+            ( cd java/fabric && gradle --no-daemon dependencies --configuration compileClasspath 2>&1 ) | tail -40
+            echo
+            echo "===== what loom did (--info, loom lines only)"
+            ( cd java/fabric && gradle --no-daemon --info compileJava 2>&1 ) | grep -iE 'loom|minecraft|mappings|yarn' | head -120
+            echo
+            echo "===== loom caches"
+            ls -la ~/.gradle/caches/fabric-loom 2>&1 | head -20
+            echo
+            echo "===== jar on classpath?"
+            ( cd java/fabric && gradle --no-daemon -q printCp 2>&1 ) | head -20
+          } > ci/debug.log 2>&1
+          tail -40 ci/debug.log
+
+      - name: Commit diagnostics
+        if: always()
+        run: |
+          git config user.name "ci"
+          git config user.email "ci@example.invalid"
+          git add -f ci/debug.log
+          git commit -m "ci: java debug $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git push
