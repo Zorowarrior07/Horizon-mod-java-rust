@@ -48,8 +48,11 @@ jobs:
         continue-on-error: true
         run: |
           mkdir -p ci/logs artifacts/java-1.21.x
+          # runtime-test.sh exits non-zero when the server had to be stopped
+          # (gradle 124) even on success, so the verdict comes from the log.
           bash tools/runtime-test.sh java/neoforge neoforge "$PWD/ci/logs/runtime-neoforge-1.21.1.log" \
             -Pmc_version=1.21.1 -Pneo_version=21.1.266 -Pjava_target=21 || true
+          grep -q 'result: PASS' ci/logs/runtime-neoforge-1.21.1.log
           tail -20 ci/logs/runtime-neoforge-1.21.1.log
           cp java/neoforge/build/libs/*.jar artifacts/java-1.21.x/ 2>/dev/null || true
       - name: Commit
@@ -74,6 +77,7 @@ jobs:
           mkdir -p ci/logs artifacts/java-26.x
           bash tools/runtime-test.sh java/neoforge26 neoforge "$PWD/ci/logs/runtime-neoforge-26.1.log" \
             -Pmc_version=26.1 -Pneo_version=26.1.2.126 -Pjava_target=25 || true
+          grep -q 'result: PASS' ci/logs/runtime-neoforge-26.1.log
           tail -20 ci/logs/runtime-neoforge-26.1.log
           cp java/neoforge26/build/libs/*.jar artifacts/java-26.x/ 2>/dev/null || true
       - name: Commit
