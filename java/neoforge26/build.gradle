@@ -1,0 +1,72 @@
+// ZOROWARRIOR HORIZON BRIDGE — NeoForge build for Minecraft 26.x.
+//
+// 26.x is its own project, not a repaint of the 1.21.x one, for two concrete
+// reasons found by probing the real artifacts:
+//   * 26.1+ requires Java 25 (the version manifest says javaVersion 25).
+//   * Mojang publishes no client_mappings for 26.x, so there is no mapping set
+//     to compile against — the NeoForm pipeline for 26.x is the only supported
+//     route, and it needs a ModDevGradle new enough to understand it.
+// Fabric/Yarn has no 26.x mappings at all, which is why there is no Fabric 26.x
+// jar: claiming one would be a lie.
+plugins {
+    id 'net.neoforged.moddev' version '2.0.148'
+    id 'java'
+}
+
+group = 'dev.zorowarrior'
+version = project.mod_version
+
+base {
+    archivesName = "zoro_bridge-${project.mod_version}-neoforge-${project.mc_version}"
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(project.java_target as int)
+    }
+}
+
+neoForge {
+    version = project.neo_version
+    runs { client { client() } }
+    mods { zoro_bridge { sourceSet sourceSets.main } }
+}
+
+tasks.register('checkSources') {
+    doLast {
+        def dirs = sourceSets.main.java.srcDirs.findAll { it.isDirectory() }
+        def count = dirs.sum { d -> fileTree(d).matching { include '**/*.java' }.files.size() } as int
+        if (count == 0) {
+            throw new GradleException("no .java files in " + dirs)
+        }
+        logger.lifecycle("checkSources: ${count} java file(s)")
+    }
+}
+compileJava.dependsOn checkSources
+
+processResources {
+    inputs.property 'version', project.mod_version
+    filesMatching('META-INF/neoforge.mods.toml') {
+        expand version: project.mod_version
+    }
+}
+
+tasks.register('buildFacts') {
+    def out = layout.buildDirectory.file('bridge-build-facts.json')
+    outputs.file(out)
+    doLast {
+        def file = out.get().asFile
+        file.parentFile.mkdirs()
+        file.text = groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson([
+            schema: 'zoro-horizon-bridge/java-build@1',
+            loader: 'neoforge',
+            mappings: 'NeoForm (26.x has no published Mojang mappings)',
+            minecraft: project.mc_version,
+            neoforge: project.neo_version,
+            java_target: project.java_target as int,
+            jar: "zoro_bridge-${project.mod_version}-neoforge-${project.mc_version}.jar",
+            gradle: gradle.gradleVersion
+        ]))
+    }
+}
+build.dependsOn buildFacts

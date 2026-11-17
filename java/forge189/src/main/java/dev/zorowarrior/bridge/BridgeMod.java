@@ -30,7 +30,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  *       (it moved to {@code ...client.renderer.block.model} in 1.9).</li>
  *   <li>{@code Block.setHarvestLevel} returns {@code void}, so it cannot be
  *       chained onto the block builder.</li>
- *   <li>{@code GameRegistry.register} takes a name, not a {@code setRegistryName}.</li>
+ *   <li>{@code GameRegistry.register} in this Forge build takes only the object:
+ *       the name comes from {@code setRegistryName} first (an older overload took
+ *       a name, which is what most tutorials still show).</li>
  *   <li>Recipes are code, not JSON — data packs did not exist in 1.8.9.</li>
  *   <li>Textures live in {@code textures/blocks} and {@code textures/items}.</li>
  * </ul>
@@ -57,15 +59,19 @@ public class BridgeMod {
         bridgeBeacon.setCreativeTab(CreativeTabs.tabBlock);
         // Returns void in 1.8.9 — cannot be part of a fluent chain.
         bridgeBeacon.setHarvestLevel("pickaxe", 2);
-        GameRegistry.register(bridgeBeacon, "bridge_beacon");
+        bridgeBeacon.setRegistryName(MODID, "bridge_beacon");
+        GameRegistry.register(bridgeBeacon);
 
         bridgeChip = new Item();
         bridgeChip.setUnlocalizedName("bridge_chip");
         bridgeChip.setCreativeTab(CreativeTabs.tabMaterials);
         bridgeChip.setMaxStackSize(64);
-        GameRegistry.register(bridgeChip, "bridge_chip");
+        bridgeChip.setRegistryName(MODID, "bridge_chip");
+        GameRegistry.register(bridgeChip);
 
-        GameRegistry.register(new ItemBlock(bridgeBeacon), "bridge_beacon");
+        ItemBlock beaconItem = new ItemBlock(bridgeBeacon);
+        beaconItem.setRegistryName(MODID, "bridge_beacon");
+        GameRegistry.register(beaconItem);
 
         // 1.8.9 recipes: position strings plus a key, resolved at load time.
         GameRegistry.addRecipe(new ItemStack(bridgeChip),

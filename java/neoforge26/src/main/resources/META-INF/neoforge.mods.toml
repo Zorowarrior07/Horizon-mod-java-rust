@@ -1,0 +1,26 @@
+modLoader = "javafml"
+loaderVersion = "[4,)"
+
+[[mods]]
+modId = "zoro_bridge"
+version = "${version}"
+displayName = "ZOROWARRIOR HORIZON BRIDGE"
+description = '''
+Bridge beacon and bridge chip, Minecraft 26.x build.
+Java Edition mod; the Horizon launcher has no JVM and uses the .hmod instead.
+'''
+license = "MIT"
+
+[[dependencies.zoro_bridge]]
+    modId = "neoforge"
+    type = "required"
+    versionRange = "[26.1.0,)"
+    ordering = "NONE"
+    side = "BOTH"
+
+[[dependencies.zoro_bridge]]
+    modId = "minecraft"
+    type = "required"
+    versionRange = "[26.1,26.4)"
+    ordering = "NONE"
+    side = "BOTH"
