@@ -2,7 +2,7 @@ name: rfg-probe
 on:
   workflow_dispatch:
   push:
-    paths: ['.github/workflows/rfg-probe.yml', 'tools/probes/**', 'java/forge189/**', 'java/neoforge/**']
+    paths: ['.github/workflows/rfg-probe.yml', 'tools/probes/**']
 permissions: { contents: write }
 concurrency:
   group: probes
@@ -37,16 +37,7 @@ jobs:
           bash tools/probes/moddev.sh "$PWD/ci/moddev.txt" || true
           JAVA_HOME=/usr/lib/jvm/temurin-25-jdk-amd64 \
             bash tools/probes/neo26.sh "$PWD/ci/neo26.txt" || true
-          # the real 26.x project
-          JAVA_HOME=/usr/lib/jvm/temurin-25-jdk-amd64 \
-            gradle --no-daemon -p java/neoforge26 build \
-              -Pmc_version=26.1 -Pneo_version=26.1.2.126 -Pjava_target=25 \
-              > "$PWD/ci/neoforge26.log" 2>&1 || true
-          grep -nE "checkSources|Task :compileJava|error:|FAILURE|What went wrong|Caused by:" \
-            "$PWD/ci/neoforge26.log" | head -30 || true
-          mkdir -p "$PWD/artifacts/java-26.x"
-          cp java/neoforge26/build/libs/*.jar "$PWD/artifacts/java-26.x/" 2>/dev/null || true
-          ls -la "$PWD/artifacts/java-26.x" 
+
           bash tools/probes/forge189-build.sh "$PWD/ci/forge189-build.txt" || true
           tail -4 ci/probe26.txt; tail -6 ci/probe26-build.txt
           echo ---; cat ci/forge189-probe.txt

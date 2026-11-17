@@ -1,0 +1,47 @@
+name: java26
+# Fast loop for the 26.x target only: it is the slowest to iterate on, so it
+# gets its own workflow rather than waiting behind the 1.8.9 build.
+on:
+  workflow_dispatch:
+  push:
+    paths: ['java/neoforge26/**', 'java/shared/**', '.github/workflows/java26.yml']
+permissions: { contents: write }
+concurrency: { group: java26, cancel-in-progress: false }
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: '25' }
+      - uses: gradle/actions/setup-gradle@v4
+        with: { gradle-version: '9.9.1' }
+      - name: Build NeoForge 26.1
+        continue-on-error: true
+        env:
+          JAVA_HOME: /usr/lib/jvm/temurin-25-jdk-amd64
+        run: |
+          mkdir -p ci/logs artifacts/java-26.x
+          gradle --no-daemon -p java/neoforge26 build \
+            -Pmc_version=26.1 -Pneo_version=26.1.2.126 -Pjava_target=25 \
+            > ci/logs/neoforge-26.1.log 2>&1 || true
+          grep -nE "checkSources|Task :compileJava|error:|FAILURE|What went wrong|Caused by:" \
+            ci/logs/neoforge-26.1.log | head -25 || true
+          cp java/neoforge26/build/libs/*.jar artifacts/java-26.x/ 2>/dev/null || true
+          cp java/neoforge26/build/bridge-build-facts.json ci/logs/neoforge-26.1.facts.json 2>/dev/null || true
+          ls -la artifacts/java-26.x
+      - name: Verify
+        if: always()
+        run: |
+          shopt -s nullglob
+          jars=(artifacts/java-26.x/*.jar)
+          if [ ${#jars[@]} -eq 0 ]; then
+            echo "no jar produced" | tee artifacts/java-26.x/VERIFY.txt; exit 0
+          fi
+          python3 tools/verify_jar.py "${jars[@]}" \
+            --json artifacts/java-26.x/verify.json | tee artifacts/java-26.x/VERIFY.txt
+      - name: Commit
+        if: always()
+        run: |
+          bash tools/ci-commit.sh "ci: neoforge 26.x $(date -u +%FT%TZ)" ci artifacts
