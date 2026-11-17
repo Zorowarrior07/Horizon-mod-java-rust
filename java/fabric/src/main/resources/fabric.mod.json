@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "zoro_bridge",
+  "version": "${version}",
+  "name": "ZOROWARRIOR HORIZON BRIDGE (Java)",
+  "description": "Bridge beacon and bridge chip for ZOROWARRIOR HORIZON. Java Edition build; the Horizon desktop launcher cannot run this jar — it ships a separate .hmod.",
+  "authors": [
+    "Zorowarrior"
+  ],
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "dev.zorowarrior.bridge.BridgeBeaconMod"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "minecraft": "${minecraft}",
+    "java": ">=${java}"
+  }
+}

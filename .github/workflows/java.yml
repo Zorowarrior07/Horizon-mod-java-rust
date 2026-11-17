@@ -1,0 +1,87 @@
+name: java-mod-jars
+
+# Builds one real, installable Java Edition mod jar per target version.
+#
+# Each target is a separate Gradle invocation with its own loader, mappings and
+# class-file version, because one jar cannot serve two Minecraft versions.
+# The built jars and the full logs are committed back into the repository, so
+# the result is inspectable without downloading anything: `artifacts/` holds the
+# jars, `ci/logs/` holds the build logs and the verifier's verdict.
+
+on:
+  push:
+    paths: ['java/**', 'tools/**', '.github/workflows/java.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: |
+            8
+            17
+            21
+            25
+
+      - uses: gradle/actions/setup-gradle@v4
+        with: { gradle-version: '9.9.1' }
+
+      - name: Build every Fabric target
+        run: |
+          mkdir -p ci/logs artifacts/java-1.21.x
+          status=0
+          # mc | yarn | java
+          while read -r mc yarn java; do
+            [ -z "$mc" ] && continue
+            echo "::group::Fabric $mc"
+            ( cd java/fabric && gradle --no-daemon build \
+                -Pmc_version="$mc" -Pyarn_mappings="$yarn" \
+                -Ploader_version=0.20.1 -Pjava_target="$java" ) \
+                > "ci/logs/fabric-$mc.log" 2>&1 || status=1
+            grep -nE "checkSources|Task :compileJava|error:|FAILURE|What went wrong|Caused by:" \
+                "ci/logs/fabric-$mc.log" | head -25 || true
+            for jar in java/fabric/build/libs/*.jar; do
+              [ -e "$jar" ] || continue
+              cp "$jar" artifacts/java-1.21.x/
+            done
+            cp java/fabric/build/bridge-build-facts.json "ci/logs/fabric-$mc.facts.json" 2>/dev/null || true
+            echo "::endgroup::"
+          done <<'TARGETS'
+          1.21.1  1.21.1+build.3   21
+          1.21.4  1.21.4+build.8   21
+          1.21.11 1.21.11+build.6  21
+          TARGETS
+          ls -la artifacts/java-1.21.x
+          exit $status
+
+      - name: Verify the jars
+        if: always()
+        run: |
+          shopt -s nullglob
+          jars=(artifacts/java-1.21.x/*.jar)
+          if [ ${#jars[@]} -eq 0 ]; then
+            echo "no jars were produced" | tee artifacts/java-1.21.x/VERIFY.txt
+            exit 0
+          fi
+          python3 tools/verify_jar.py "${jars[@]}" --json artifacts/java-1.21.x/verify.json \
+            | tee artifacts/java-1.21.x/VERIFY.txt
+
+      - name: Commit logs and jars
+        if: always()
+        run: |
+          set -x
+          git config user.name "ci"
+          git config user.email "ci@example.invalid"
+          git add -A ci artifacts
+          git status --short | head -20
+          git commit -m "ci: java build $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git push

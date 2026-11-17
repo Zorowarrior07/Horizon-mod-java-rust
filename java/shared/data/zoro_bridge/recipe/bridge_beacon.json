@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SSS",
+    "SCS",
+    "SSS"
+  ],
+  "key": {
+    "S": "minecraft:stone",
+    "C": "zoro_bridge:bridge_chip"
+  },
+  "result": {
+    "id": "zoro_bridge:bridge_beacon",
+    "count": 1
+  }
+}
