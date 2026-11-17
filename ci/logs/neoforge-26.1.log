@@ -11,55 +11,58 @@ checkSources: 1 java file(s)
 Loaded 127 artifacts from /home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/build/tmp/createMinecraftArtifacts/nfrt_artifact_manifest.properties
 [1m*** Started working on [4mdownloadManifest[23;0m[23;0m
   ↓ https://piston-meta.mojang.com/mc/game/version_manifest_v2.json
- [1m[92m✓[23;0m Completed [4mdownloadManifest[23;0m in 0.27s
+ [1m[92m✓[23;0m Completed [4mdownloadManifest[23;0m in 0.21s
 [1m*** Started working on [4mdownloadJson[23;0m[23;0m
   ↓ https://piston-meta.mojang.com/mc/game/version_manifest_v2.json
   ↓ https://piston-meta.mojang.com/v1/packages/0bbfbdb8272531060afbba5c671fe4ed3dd6f72f/26.1.2.json
- [1m[92m✓[23;0m Completed [4mdownloadJson[23;0m in 0.04s
+ [1m[92m✓[23;0m Completed [4mdownloadJson[23;0m in 0.03s
 [1m*** Started working on [4mdownloadServer[23;0m[23;0m
 [1m*** Started working on [4mdownloadClient[23;0m[23;0m
   ↓ https://piston-data.mojang.com/v1/objects/97ccd4c0ed3f81bbb7bfacddd1090b0c56f9bc51/server.jar
   ↓ https://piston-data.mojang.com/v1/objects/4e618f09a0c649dde3fdf829df443ce0b8831e65/client.jar
- [1m[92m✓[23;0m Completed [4mdownloadClient[23;0m in 0.68s
- [1m[92m✓[23;0m Completed [4mdownloadServer[23;0m in 0.76s
+ [1m[92m✓[23;0m Completed [4mdownloadServer[23;0m in 0.62s
+ [1m[92m✓[23;0m Completed [4mdownloadClient[23;0m in 0.65s
 [1m*** Started working on [4mpreProcessJar[23;0m[23;0m
  ↳ Running external tool net.neoforged.installertools:installertools:4.0.16:fatjar
- [1m[92m✓[23;0m Completed [4mpreProcessJar[23;0m in 3.21s
+ [1m[92m✓[23;0m Completed [4mpreProcessJar[23;0m in 2.30s
 [1m*** Started working on [4mbinaryPatch[23;0m[23;0m
   [33mWARNING: [23;0mnet.neoforged.installertools:binarypatcher:4.0.12:fatjar is not present in the artifact manifest
   ↓ https://maven.neoforged.net/releases/net/neoforged/installertools/binarypatcher/4.0.12/binarypatcher-4.0.12-fatjar.jar
  ↳ Running external tool net.neoforged.installertools:binarypatcher:4.0.12:fatjar
- [1m[92m✓[23;0m Completed [4mbinaryPatch[23;0m in 3.38s
+ [1m[92m✓[23;0m Completed [4mbinaryPatch[23;0m in 2.69s
 [1m*** Started working on [4mcopyUnpatchedClasses[23;0m[23;0m
- [1m[92m✓[23;0m Completed [4mcopyUnpatchedClasses[23;0m in 2.61s
+ [1m[92m✓[23;0m Completed [4mcopyUnpatchedClasses[23;0m in 1.83s
 [1m*** Started working on [4mapplyDevTransforms[23;0m[23;0m
  ↳ Running external tool net.neoforged.installertools:installertools:4.0.12:fatjar
- [1m[92m✓[23;0m Completed [4mapplyDevTransforms[23;0m in 2.79s
-Total runtime: 13.55s
+ [1m[92m✓[23;0m Completed [4mapplyDevTransforms[23;0m in 2.10s
+Total runtime: 10.28s
 
 
 > Task :compileJava
 > Task :processResources
 > Task :classes
+> Task :copyModsToml
 > Task :jarJar NO-SOURCE
-> Task :jar
-> Task :assemble
-> Task :buildFacts
-> Task :compileTestJava NO-SOURCE
-> Task :processTestResources NO-SOURCE
-> Task :testClasses UP-TO-DATE
-> Task :test NO-SOURCE
-> Task :check UP-TO-DATE
-> Task :build
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run-1794890583237.json
+> Task :jar FAILED
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run-1794891019648.json
 
 [Incubating] Problems report is available at: file:///home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/build/reports/problems/problems-report.html
 
-Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+FAILURE: Build failed with an exception.
 
-You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+* What went wrong:
+A problem was found with the configuration of task ':jar' (type 'Jar').
+Property has implicit dependency
+  Gradle detected a problem with the following location: '/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/build/classes/java/main'
+    Task ':jar' uses this output of task ':copyModsToml' without declaring an explicit or implicit dependency. This can lead to incorrect results being produced, depending on what order the tasks are executed
+    For more information, please refer to https://docs.gradle.org/9.9.1/userguide/validation_problems.html#implicit_dependency in the Gradle documentation.
+    Possible solutions:
+      1. Declare task ':copyModsToml' as an input of ':jar'.
+      2. Declare an explicit dependency on ':copyModsToml' from ':jar' using Task#dependsOn.
+      3. Declare an explicit dependency on ':copyModsToml' from ':jar' using Task#mustRunAfter.
 
-For more on this, please refer to https://docs.gradle.org/9.9.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+* Try:
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
 
-BUILD SUCCESSFUL in 55s
+BUILD FAILED in 50s
 6 actionable tasks: 6 executed
