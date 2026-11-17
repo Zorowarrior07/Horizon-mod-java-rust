@@ -11,7 +11,7 @@ checkSources: 1 java file(s)
 Loaded 127 artifacts from /home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/build/tmp/createMinecraftArtifacts/nfrt_artifact_manifest.properties
 [1m*** Started working on [4mdownloadManifest[23;0m[23;0m
   ↓ https://piston-meta.mojang.com/mc/game/version_manifest_v2.json
- [1m[92m✓[23;0m Completed [4mdownloadManifest[23;0m in 0.33s
+ [1m[92m✓[23;0m Completed [4mdownloadManifest[23;0m in 0.37s
 [1m*** Started working on [4mdownloadJson[23;0m[23;0m
   ↓ https://piston-meta.mojang.com/mc/game/version_manifest_v2.json
   ↓ https://piston-meta.mojang.com/v1/packages/0bbfbdb8272531060afbba5c671fe4ed3dd6f72f/26.1.2.json
@@ -20,77 +20,49 @@ Loaded 127 artifacts from /home/runner/work/Horizon-mod-java-rust/Horizon-mod-ja
 [1m*** Started working on [4mdownloadClient[23;0m[23;0m
   ↓ https://piston-data.mojang.com/v1/objects/97ccd4c0ed3f81bbb7bfacddd1090b0c56f9bc51/server.jar
   ↓ https://piston-data.mojang.com/v1/objects/4e618f09a0c649dde3fdf829df443ce0b8831e65/client.jar
- [1m[92m✓[23;0m Completed [4mdownloadClient[23;0m in 0.81s
- [1m[92m✓[23;0m Completed [4mdownloadServer[23;0m in 0.93s
+ [1m[92m✓[23;0m Completed [4mdownloadClient[23;0m in 0.72s
+ [1m[92m✓[23;0m Completed [4mdownloadServer[23;0m in 0.82s
 [1m*** Started working on [4mpreProcessJar[23;0m[23;0m
  ↳ Running external tool net.neoforged.installertools:installertools:4.0.16:fatjar
- [1m[92m✓[23;0m Completed [4mpreProcessJar[23;0m in 3.77s
+ [1m[92m✓[23;0m Completed [4mpreProcessJar[23;0m in 3.54s
 [1m*** Started working on [4mbinaryPatch[23;0m[23;0m
   [33mWARNING: [23;0mnet.neoforged.installertools:binarypatcher:4.0.12:fatjar is not present in the artifact manifest
   ↓ https://maven.neoforged.net/releases/net/neoforged/installertools/binarypatcher/4.0.12/binarypatcher-4.0.12-fatjar.jar
  ↳ Running external tool net.neoforged.installertools:binarypatcher:4.0.12:fatjar
- [1m[92m✓[23;0m Completed [4mbinaryPatch[23;0m in 3.82s
+ [1m[92m✓[23;0m Completed [4mbinaryPatch[23;0m in 3.94s
 [1m*** Started working on [4mcopyUnpatchedClasses[23;0m[23;0m
- [1m[92m✓[23;0m Completed [4mcopyUnpatchedClasses[23;0m in 2.85s
+ [1m[92m✓[23;0m Completed [4mcopyUnpatchedClasses[23;0m in 2.94s
 [1m*** Started working on [4mapplyDevTransforms[23;0m[23;0m
  ↳ Running external tool net.neoforged.installertools:installertools:4.0.12:fatjar
  [1m[92m✓[23;0m Completed [4mapplyDevTransforms[23;0m in 3.16s
-Total runtime: 15.58s
+Total runtime: 15.48s
 
 
 > Task :compileJava
-/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/src/main/java/dev/zorowarrior/bridge/BridgeMod.java:64: error: no suitable method found for registerSimpleItem(String,Properties)
-            ITEMS.registerSimpleItem("bridge_chip", new Item.Properties());
-                 ^
-    method Items.registerSimpleItem(String,Supplier<Properties>) is not applicable
-      (argument mismatch; Properties cannot be converted to Supplier<Properties>)
-    method Items.registerSimpleItem(String,UnaryOperator<Properties>) is not applicable
-      (argument mismatch; Properties cannot be converted to UnaryOperator<Properties>)
-/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/src/main/java/dev/zorowarrior/bridge/BridgeMod.java:70: error: no suitable method found for registerSimpleBlockItem(DeferredBlock<Block>,Properties)
-        ITEMS.registerSimpleBlockItem(BRIDGE_BEACON, new Item.Properties());
-             ^
-    method Items.registerSimpleBlockItem(String,Supplier<? extends Block>) is not applicable
-      (argument mismatch; DeferredBlock<Block> cannot be converted to String)
-    method Items.registerSimpleBlockItem(Holder<Block>,Supplier<Properties>) is not applicable
-      (argument mismatch; Properties cannot be converted to Supplier<Properties>)
-    method Items.registerSimpleBlockItem(Holder<Block>,UnaryOperator<Properties>) is not applicable
-      (argument mismatch; Properties cannot be converted to UnaryOperator<Properties>)
-Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
-2 errors
-
-> Task :compileJava FAILED
+> Task :processResources
+> Task :classes
 > Task :copyModsToml
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run-1794896554973.json
+> Task :jarJar NO-SOURCE
+> Task :jar FAILED
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run-1794896885612.json
 
 [Incubating] Problems report is available at: file:///home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/build/reports/problems/problems-report.html
 
 FAILURE: Build failed with an exception.
 
 * What went wrong:
-Execution failed for task ':compileJava' (registered by plugin class 'org.gradle.api.plugins.JavaBasePlugin').
-> Compilation failed; see the compiler output below.
-  /home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/src/main/java/dev/zorowarrior/bridge/BridgeMod.java:64: error: no suitable method found for registerSimpleItem(String,Properties)
-              ITEMS.registerSimpleItem("bridge_chip", new Item.Properties());
-                   ^
-      method Items.registerSimpleItem(String,Supplier<Properties>) is not applicable
-        (argument mismatch; Properties cannot be converted to Supplier<Properties>)
-      method Items.registerSimpleItem(String,UnaryOperator<Properties>) is not applicable
-        (argument mismatch; Properties cannot be converted to UnaryOperator<Properties>)
-  /home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/src/main/java/dev/zorowarrior/bridge/BridgeMod.java:70: error: no suitable method found for registerSimpleBlockItem(DeferredBlock<Block>,Properties)
-          ITEMS.registerSimpleBlockItem(BRIDGE_BEACON, new Item.Properties());
-               ^
-      method Items.registerSimpleBlockItem(String,Supplier<? extends Block>) is not applicable
-        (argument mismatch; DeferredBlock<Block> cannot be converted to String)
-      method Items.registerSimpleBlockItem(Holder<Block>,Supplier<Properties>) is not applicable
-        (argument mismatch; Properties cannot be converted to Supplier<Properties>)
-      method Items.registerSimpleBlockItem(Holder<Block>,UnaryOperator<Properties>) is not applicable
-        (argument mismatch; Properties cannot be converted to UnaryOperator<Properties>)
-  Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
-  2 errors
+A problem was found with the configuration of task ':jar' (type 'Jar').
+Property has implicit dependency
+  Gradle detected a problem with the following location: '/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/neoforge26/build/classes/java/main'
+    Task ':jar' uses this output of task ':copyModsToml' without declaring an explicit or implicit dependency. This can lead to incorrect results being produced, depending on what order the tasks are executed
+    For more information, please refer to https://docs.gradle.org/9.9.1/userguide/validation_problems.html#implicit_dependency in the Gradle documentation.
+    Possible solutions:
+      1. Declare task ':copyModsToml' as an input of ':jar'.
+      2. Declare an explicit dependency on ':copyModsToml' from ':jar' using Task#dependsOn.
+      3. Declare an explicit dependency on ':copyModsToml' from ':jar' using Task#mustRunAfter.
 
 * Try:
-> Check your code and dependencies to fix the compilation error(s)
 > Run with --scan to get full insights from a Build Scan (powered by Develocity).
 
-BUILD FAILED in 51s
-4 actionable tasks: 4 executed
+BUILD FAILED in 57s
+6 actionable tasks: 6 executed
