@@ -16,23 +16,28 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * ZOROWARRIOR HORIZON BRIDGE — Java Edition, Fabric build.
+ * ZOROWARRIOR HORIZON BRIDGE — Fabric, Minecraft 1.21.3 and newer 1.21.x.
  *
- * <p>Written in <b>Yarn</b> names, because that is the mapping set the Fabric
- * toolchain compiles and remaps against ({@code net.minecraft.block.Block},
- * {@code net.minecraft.util.Identifier}). The NeoForge builds of the same mod use
- * Mojang official names — same content, different names, which is why they are
- * separate sources and separate jars.
+ * <p>Two things changed in 1.21.3 and both of them bite at runtime, not at
+ * compile time — this file exists because a server boot found them:
  *
- * <p>One detail that cost a server start and is worth writing down: since 1.21.3,
- * {@code AbstractBlock.Settings} must be handed the block's own registry key
- * ({@code registryKey(...)}) <i>before</i> the Block is constructed. Without it,
- * {@code Block}'s constructor throws {@code NullPointerException: Block id not set}
- * while computing the default loot table. Compiling does not catch this; booting
- * a server does.
+ * <ol>
+ *   <li>{@code AbstractBlock.Settings} must now be told the block's own registry
+ *       key before the {@code Block} is constructed, or the constructor throws
+ *       {@code NullPointerException: Block id not set} while working out the
+ *       default loot table.</li>
+ *   <li>Once a key is set, constructing the block creates an <i>intrusive</i>
+ *       registry holder, and the frozen block registry refuses those after
+ *       startup: {@code IllegalStateException: This registry can't create
+ *       intrusive holders}. So unlike 1.21.1, the block has to be created while
+ *       the registry is still open.</li>
+ * </ol>
  *
- * <p>Deliberately no Fabric API dependency: vanilla classes only, so Fabric
- * Loader by itself is enough to run this.
+ * <p>Consequence: on 1.21.3+ this mod needs the one hook that lets a mod add
+ * blocks before the registry freezes. That is exactly what Fabric API provides,
+ * so this variant depends on it (see build.gradle {@code fabric_api_version})
+ * and registers inside {@code RegistryEvent}. The 1.21.1 variant still uses
+ * nothing but vanilla classes.
  */
 public final class BridgeBeaconMod implements ModInitializer {
 
@@ -56,20 +61,28 @@ public final class BridgeBeaconMod implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        Block block = new Block(AbstractBlock.Settings.create()
-                .registryKey(blockKey("bridge_beacon"))
-                .strength(3.5F, 6.0F)
-                .luminance(state -> 12)
-                .sounds(BlockSoundGroup.STONE)
-                .requiresTool());
+        // Registration is deferred to the registry-open phase; see the class doc.
+        net.fabricmc.fabric.api.event.registry.RegistryEvent.register(Registries.BLOCK)
+                .register(id("bridge_beacon"), (key, registry) -> {
+                    Block block = new Block(AbstractBlock.Settings.create()
+                            .registryKey(blockKey("bridge_beacon"))
+                            .strength(3.5F, 6.0F)
+                            .luminance(state -> 12)
+                            .sounds(BlockSoundGroup.STONE)
+                            .requiresTool());
+                    registry.register(key, block);
+                    bridgeBeacon = block;
+                });
 
-        bridgeBeacon = Registry.register(Registries.BLOCK, blockKey("bridge_beacon"), block);
+        net.fabricmc.fabric.api.event.registry.RegistryEvent.register(Registries.ITEM)
+                .register(id("bridge_chip"), (key, registry) -> {
+                    bridgeChip = registry.register(key, (Item) new Item(new Item.Settings()));
+                });
 
-        bridgeChip = Registry.register(Registries.ITEM, itemKey("bridge_chip"),
-                new Item(new Item.Settings()));
-
-        Registry.register(Registries.ITEM, itemKey("bridge_beacon"),
-                new BlockItem(block, new Item.Settings()));
+        net.fabricmc.fabric.api.event.registry.RegistryEvent.register(Registries.ITEM)
+                .register(id("bridge_beacon"), (key, registry) -> {
+                    registry.register(key, new BlockItem(bridgeBeacon, new Item.Settings()));
+                });
 
         String version = FabricLoader.getInstance().getModContainer(MOD_ID)
                 .map(c -> c.getMetadata().getVersion().getFriendlyString())

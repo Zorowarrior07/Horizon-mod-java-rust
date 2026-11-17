@@ -28,10 +28,22 @@ repositories {
     maven { name = 'Fabric'; url = 'https://maven.fabricmc.net/' }
 }
 
+// Which source variant to compile. 1.21.3 changed the block API in a way that
+// makes one source impossible for all of 1.21.x, so the build picks a tree.
+//   legacy = 1.21.1 and older: registry key optional, vanilla-only
+//   modern = 1.21.3+: registry key required, registration must happen while the
+//            registry is open, which needs Fabric API's RegistryEvent
+def legacyVariant = (project.mc_version == '1.21.1')
+def variantJava = legacyVariant ? '../shared/fabric-legacy/java' : '../shared/fabric/java'
+
 dependencies {
     minecraft "com.mojang:minecraft:${project.mc_version}"
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    if (!legacyVariant) {
+        // Only the modern variant needs it, and only for the registry hook.
+        modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+    }
 }
 
 // A headless dedicated-server run: it is the only way to prove the mod actually
@@ -48,7 +60,7 @@ sourceSets {
         // The mod's Java and its assets/data are shared with every other build,
         // so a fix applies everywhere — and the same files are what the Horizon
         // package is made from, which keeps the two outputs in step.
-        java.srcDirs = ['src/main/java', '../shared/fabric/java']
+        java.srcDirs = ['src/main/java', variantJava]
         resources.srcDirs = ['src/main/resources', '../shared/assets', '../shared/data']
     }
 }
@@ -92,6 +104,8 @@ tasks.register('buildFacts') {
     def facts = [
         schema     : 'zoro-horizon-bridge/java-build@1',
         loader     : 'fabric',
+        source_variant: legacyVariant ? 'legacy (1.21.1 API)' : 'modern (1.21.3+ API)',
+        fabric_api : legacyVariant ? null : project.fabric_api_version,
         mappings   : 'yarn',
         minecraft  : project.mc_version,
         yarn       : project.yarn_mappings,
