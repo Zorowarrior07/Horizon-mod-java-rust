@@ -35,7 +35,12 @@ jobs:
           cat ci/fabricapi.txt > /dev/null
           JAVA_HOME=/usr/lib/jvm/temurin-25-jdk-amd64 \
             bash tools/probes/moddevrun.sh "$PWD/ci/moddevrun.txt" || true
-          sed -n '1,60p' ci/moddevrun.txt
+          echo "===== serverRunVmArgs" >> ci/moddevrun.txt
+          cat java/neoforge26/build/moddev/serverRunVmArgs.txt >> ci/moddevrun.txt 2>&1
+          echo >> ci/moddevrun.txt
+          echo "===== serverRunProgramArgs" >> ci/moddevrun.txt
+          cat java/neoforge26/build/moddev/serverRunProgramArgs.txt >> ci/moddevrun.txt 2>&1
+          sed -n '1,70p' ci/moddevrun.txt
       - name: Commit
         if: always()
         run: |
