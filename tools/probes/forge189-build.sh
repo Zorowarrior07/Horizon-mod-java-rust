@@ -10,8 +10,9 @@ sudo tee /etc/hosts.d/mcpblock >/dev/null 2>&1 || true
 echo "127.0.0.1 export.mcpbot.bspk.rs" | sudo tee -a /etc/hosts >/dev/null
 
 mkdir -p /tmp/mcpsrv
+# MCPBot's format is arrays of pairs: {"stable":[["22","1.8.9"], ...]}
 cat > /tmp/mcpsrv/versions.json <<'J'
-{"stable":[{"version":"22","mcversion":"1.8.9"}],"snapshot":[{"version":"20160219","mcversion":"1.8.9"}]}
+{"stable":[["22","1.8.9"],["21","1.8.9"]],"snapshot":[["20160219","1.8.9"]]}
 J
 ( cd /tmp/mcpsrv && sudo python3 -m http.server 80 > /tmp/mcpsrv.log 2>&1 & ) 
 sleep 2
@@ -29,7 +30,9 @@ for ver in 4.10.3 2.14.1; do
       && unzip -qo "/tmp/gradle-$ver.zip" -d /opt
   }
   echo "===== Gradle $ver" >> "$out"
-  if "/opt/gradle-$ver/bin/gradle" --no-daemon build --stacktrace >> "$out" 2>&1; then
+  # ForgeGradle 2.1 and Gradle 4.x need a JDK 8 JVM, whatever else is installed.
+  if JAVA_HOME=/usr/lib/jvm/temurin-8-jdk-amd64 "/opt/gradle-$ver/bin/gradle" \
+       --no-daemon build --stacktrace >> "$out" 2>&1; then
     echo "SUCCESS with Gradle $ver" >> "$out"
     cp build/libs/*.jar "$ARTIFACT_DIR"/ 2>/dev/null || true
     break
