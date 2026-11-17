@@ -12,27 +12,27 @@ Loaded 127 artifacts from /tmp/neo26/build/tmp/createMinecraftArtifacts/nfrt_art
 [1m*** Started working on [4mdownloadJson[23;0m[23;0m
   ↓ https://piston-meta.mojang.com/mc/game/version_manifest_v2.json
   ↓ https://piston-meta.mojang.com/v1/packages/0bbfbdb8272531060afbba5c671fe4ed3dd6f72f/26.1.2.json
- [1m[92m✓[23;0m Completed [4mdownloadJson[23;0m in 0.05s
+ [1m[92m✓[23;0m Completed [4mdownloadJson[23;0m in 0.07s
 [1m*** Started working on [4mdownloadServer[23;0m[23;0m
 [1m*** Started working on [4mdownloadClient[23;0m[23;0m
-  ↓ https://piston-data.mojang.com/v1/objects/97ccd4c0ed3f81bbb7bfacddd1090b0c56f9bc51/server.jar
   ↓ https://piston-data.mojang.com/v1/objects/4e618f09a0c649dde3fdf829df443ce0b8831e65/client.jar
- [1m[92m✓[23;0m Completed [4mdownloadClient[23;0m in 0.60s
- [1m[92m✓[23;0m Completed [4mdownloadServer[23;0m in 0.69s
+  ↓ https://piston-data.mojang.com/v1/objects/97ccd4c0ed3f81bbb7bfacddd1090b0c56f9bc51/server.jar
+ [1m[92m✓[23;0m Completed [4mdownloadClient[23;0m in 0.61s
+ [1m[92m✓[23;0m Completed [4mdownloadServer[23;0m in 0.68s
 [1m*** Started working on [4mpreProcessJar[23;0m[23;0m
  ↳ Running external tool net.neoforged.installertools:installertools:4.0.16:fatjar
- [1m[92m✓[23;0m Completed [4mpreProcessJar[23;0m in 3.05s
+ [1m[92m✓[23;0m Completed [4mpreProcessJar[23;0m in 2.82s
 [1m*** Started working on [4mbinaryPatch[23;0m[23;0m
   [33mWARNING: [23;0mnet.neoforged.installertools:binarypatcher:4.0.12:fatjar is not present in the artifact manifest
   ↓ https://maven.neoforged.net/releases/net/neoforged/installertools/binarypatcher/4.0.12/binarypatcher-4.0.12-fatjar.jar
  ↳ Running external tool net.neoforged.installertools:binarypatcher:4.0.12:fatjar
- [1m[92m✓[23;0m Completed [4mbinaryPatch[23;0m in 3.01s
+ [1m[92m✓[23;0m Completed [4mbinaryPatch[23;0m in 2.92s
 [1m*** Started working on [4mcopyUnpatchedClasses[23;0m[23;0m
- [1m[92m✓[23;0m Completed [4mcopyUnpatchedClasses[23;0m in 2.30s
+ [1m[92m✓[23;0m Completed [4mcopyUnpatchedClasses[23;0m in 2.39s
 [1m*** Started working on [4mapplyDevTransforms[23;0m[23;0m
  ↳ Running external tool net.neoforged.installertools:installertools:4.0.12:fatjar
- [1m[92m✓[23;0m Completed [4mapplyDevTransforms[23;0m in 2.58s
-Total runtime: 12.41s
+ [1m[92m✓[23;0m Completed [4mapplyDevTransforms[23;0m in 2.46s
+Total runtime: 12.03s
 
 
 > Task :compileJava
@@ -47,9 +47,9 @@ Total runtime: 12.41s
 > Task :test NO-SOURCE
 > Task :check UP-TO-DATE
 > Task :build
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run-1794889590040.json
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run-1794889797983.json
 
-BUILD SUCCESSFUL in 42s
+BUILD SUCCESSFUL in 39s
 4 actionable tasks: 4 executed
 Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.9.1/userguide/configuration_cache_enabling.html
 exit=0
