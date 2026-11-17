@@ -32,7 +32,10 @@ jobs:
           echo "merged jar: $mcj" > ci/blocksettings.txt
           bash tools/probes/blocksettings.sh "$PWD/ci/blocksettings.txt" "$mcj" || true
           bash tools/probes/fabricapi.sh "$PWD/ci/fabricapi.txt" "$mcj" || true
-          cat ci/fabricapi.txt
+          cat ci/fabricapi.txt > /dev/null
+          JAVA_HOME=/usr/lib/jvm/temurin-25-jdk-amd64 \
+            bash tools/probes/moddevrun.sh "$PWD/ci/moddevrun.txt" || true
+          sed -n '1,60p' ci/moddevrun.txt
       - name: Commit
         if: always()
         run: |
