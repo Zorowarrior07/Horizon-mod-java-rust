@@ -1,109 +1,135 @@
 
-Welcome to Gradle 9.9.1!
+FAILURE: Build failed with an exception.
 
-Here are the highlights of this release:
- - Performance improvements for Kotlin DSL compilation
- - Test filtering for non-method JUnit Platform tests
- - Wrapper settings preserved on upgrade
- - Predefined groups in the Problems API
+* Where:
+Build file '/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/forge189/build.gradle' line: 26
 
-For more details see https://docs.gradle.org/9.9.1/release-notes.html
+* What went wrong:
+A problem occurred evaluating root project 'zoro-horizon-bridge-forge189'.
+> ForgeGradle 2.3.4 does not support Minecraft 1.8.9. MIN: 1.12, MAX: none
+
+* Try:
+Run with --info or --debug option to get more log output. Run with --scan to get full insights.
+
+* Exception is:
+org.gradle.api.GradleScriptException: A problem occurred evaluating root project 'zoro-horizon-bridge-forge189'.
+	at org.gradle.groovy.scripts.internal.DefaultScriptRunnerFactory$ScriptRunnerImpl.run(DefaultScriptRunnerFactory.java:92)
+	at org.gradle.configuration.DefaultScriptPluginFactory$ScriptPluginImpl$2.run(DefaultScriptPluginFactory.java:206)
+	at org.gradle.configuration.ProjectScriptTarget.addConfiguration(ProjectScriptTarget.java:77)
+	at org.gradle.configuration.DefaultScriptPluginFactory$ScriptPluginImpl.apply(DefaultScriptPluginFactory.java:211)
+	at org.gradle.configuration.BuildOperationScriptPlugin$1$1.run(BuildOperationScriptPlugin.java:69)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor$RunnableBuildOperationWorker.execute(DefaultBuildOperationExecutor.java:301)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor$RunnableBuildOperationWorker.execute(DefaultBuildOperationExecutor.java:293)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor.execute(DefaultBuildOperationExecutor.java:175)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:91)
+	at org.gradle.internal.operations.DelegatingBuildOperationExecutor.run(DelegatingBuildOperationExecutor.java:31)
+	at org.gradle.configuration.BuildOperationScriptPlugin$1.execute(BuildOperationScriptPlugin.java:66)
+	at org.gradle.configuration.BuildOperationScriptPlugin$1.execute(BuildOperationScriptPlugin.java:63)
+	at org.gradle.configuration.internal.DefaultUserCodeApplicationContext.apply(DefaultUserCodeApplicationContext.java:48)
+	at org.gradle.configuration.BuildOperationScriptPlugin.apply(BuildOperationScriptPlugin.java:63)
+	at org.gradle.configuration.project.BuildScriptProcessor.execute(BuildScriptProcessor.java:41)
+	at org.gradle.configuration.project.BuildScriptProcessor.execute(BuildScriptProcessor.java:26)
+	at org.gradle.configuration.project.ConfigureActionsProjectEvaluator.evaluate(ConfigureActionsProjectEvaluator.java:34)
+	at org.gradle.configuration.project.LifecycleProjectEvaluator$EvaluateProject.run(LifecycleProjectEvaluator.java:105)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor$RunnableBuildOperationWorker.execute(DefaultBuildOperationExecutor.java:301)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor$RunnableBuildOperationWorker.execute(DefaultBuildOperationExecutor.java:293)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor.execute(DefaultBuildOperationExecutor.java:175)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:91)
+	at org.gradle.internal.operations.DelegatingBuildOperationExecutor.run(DelegatingBuildOperationExecutor.java:31)
+	at org.gradle.configuration.project.LifecycleProjectEvaluator.evaluate(LifecycleProjectEvaluator.java:68)
+	at org.gradle.api.internal.project.DefaultProject.evaluate(DefaultProject.java:687)
+	at org.gradle.api.internal.project.DefaultProject.evaluate(DefaultProject.java:140)
+	at org.gradle.execution.TaskPathProjectEvaluator.configure(TaskPathProjectEvaluator.java:35)
+	at org.gradle.execution.TaskPathProjectEvaluator.configureHierarchy(TaskPathProjectEvaluator.java:60)
+	at org.gradle.configuration.DefaultBuildConfigurer.configure(DefaultBuildConfigurer.java:41)
+	at org.gradle.initialization.DefaultGradleLauncher$ConfigureBuild.run(DefaultGradleLauncher.java:274)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor$RunnableBuildOperationWorker.execute(DefaultBuildOperationExecutor.java:301)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor$RunnableBuildOperationWorker.execute(DefaultBuildOperationExecutor.java:293)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor.execute(DefaultBuildOperationExecutor.java:175)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:91)
+	at org.gradle.internal.operations.DelegatingBuildOperationExecutor.run(DelegatingBuildOperationExecutor.java:31)
+	at org.gradle.initialization.DefaultGradleLauncher.configureBuild(DefaultGradleLauncher.java:182)
+	at org.gradle.initialization.DefaultGradleLauncher.doBuildStages(DefaultGradleLauncher.java:141)
+	at org.gradle.initialization.DefaultGradleLauncher.executeTasks(DefaultGradleLauncher.java:124)
+	at org.gradle.internal.invocation.GradleBuildController$1.call(GradleBuildController.java:77)
+	at org.gradle.internal.invocation.GradleBuildController$1.call(GradleBuildController.java:74)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:154)
+	at org.gradle.internal.work.StopShieldingWorkerLeaseService.withLocks(StopShieldingWorkerLeaseService.java:38)
+	at org.gradle.internal.invocation.GradleBuildController.doBuild(GradleBuildController.java:96)
+	at org.gradle.internal.invocation.GradleBuildController.run(GradleBuildController.java:74)
+	at org.gradle.tooling.internal.provider.ExecuteBuildActionRunner.run(ExecuteBuildActionRunner.java:28)
+	at org.gradle.launcher.exec.ChainingBuildActionRunner.run(ChainingBuildActionRunner.java:35)
+	at org.gradle.tooling.internal.provider.ValidatingBuildActionRunner.run(ValidatingBuildActionRunner.java:32)
+	at org.gradle.launcher.exec.RunAsBuildOperationBuildActionRunner$3.run(RunAsBuildOperationBuildActionRunner.java:50)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor$RunnableBuildOperationWorker.execute(DefaultBuildOperationExecutor.java:301)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor$RunnableBuildOperationWorker.execute(DefaultBuildOperationExecutor.java:293)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor.execute(DefaultBuildOperationExecutor.java:175)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:91)
+	at org.gradle.internal.operations.DelegatingBuildOperationExecutor.run(DelegatingBuildOperationExecutor.java:31)
+	at org.gradle.launcher.exec.RunAsBuildOperationBuildActionRunner.run(RunAsBuildOperationBuildActionRunner.java:45)
+	at org.gradle.tooling.internal.provider.SubscribableBuildActionRunner.run(SubscribableBuildActionRunner.java:51)
+	at org.gradle.launcher.exec.InProcessBuildActionExecuter$1.transform(InProcessBuildActionExecuter.java:47)
+	at org.gradle.launcher.exec.InProcessBuildActionExecuter$1.transform(InProcessBuildActionExecuter.java:44)
+	at org.gradle.composite.internal.DefaultRootBuildState.run(DefaultRootBuildState.java:79)
+	at org.gradle.launcher.exec.InProcessBuildActionExecuter.execute(InProcessBuildActionExecuter.java:44)
+	at org.gradle.launcher.exec.InProcessBuildActionExecuter.execute(InProcessBuildActionExecuter.java:30)
+	at org.gradle.launcher.exec.BuildTreeScopeBuildActionExecuter.execute(BuildTreeScopeBuildActionExecuter.java:39)
+	at org.gradle.launcher.exec.BuildTreeScopeBuildActionExecuter.execute(BuildTreeScopeBuildActionExecuter.java:25)
+	at org.gradle.tooling.internal.provider.ContinuousBuildActionExecuter.execute(ContinuousBuildActionExecuter.java:80)
+	at org.gradle.tooling.internal.provider.ContinuousBuildActionExecuter.execute(ContinuousBuildActionExecuter.java:53)
+	at org.gradle.tooling.internal.provider.ServicesSetupBuildActionExecuter.execute(ServicesSetupBuildActionExecuter.java:62)
+	at org.gradle.tooling.internal.provider.ServicesSetupBuildActionExecuter.execute(ServicesSetupBuildActionExecuter.java:34)
+	at org.gradle.tooling.internal.provider.GradleThreadBuildActionExecuter.execute(GradleThreadBuildActionExecuter.java:36)
+	at org.gradle.tooling.internal.provider.GradleThreadBuildActionExecuter.execute(GradleThreadBuildActionExecuter.java:25)
+	at org.gradle.tooling.internal.provider.ParallelismConfigurationBuildActionExecuter.execute(ParallelismConfigurationBuildActionExecuter.java:43)
+	at org.gradle.tooling.internal.provider.ParallelismConfigurationBuildActionExecuter.execute(ParallelismConfigurationBuildActionExecuter.java:29)
+	at org.gradle.tooling.internal.provider.StartParamsValidatingActionExecuter.execute(StartParamsValidatingActionExecuter.java:59)
+	at org.gradle.tooling.internal.provider.StartParamsValidatingActionExecuter.execute(StartParamsValidatingActionExecuter.java:31)
+	at org.gradle.tooling.internal.provider.SessionFailureReportingActionExecuter.execute(SessionFailureReportingActionExecuter.java:59)
+	at org.gradle.tooling.internal.provider.SessionFailureReportingActionExecuter.execute(SessionFailureReportingActionExecuter.java:44)
+	at org.gradle.tooling.internal.provider.SetupLoggingActionExecuter.execute(SetupLoggingActionExecuter.java:46)
+	at org.gradle.tooling.internal.provider.SetupLoggingActionExecuter.execute(SetupLoggingActionExecuter.java:30)
+	at org.gradle.launcher.cli.RunBuildAction.run(RunBuildAction.java:52)
+	at org.gradle.internal.Actions$RunnableActionAdapter.execute(Actions.java:207)
+	at org.gradle.launcher.cli.CommandLineActionFactory$ParseAndBuildAction.execute(CommandLineActionFactory.java:402)
+	at org.gradle.launcher.cli.CommandLineActionFactory$ParseAndBuildAction.execute(CommandLineActionFactory.java:375)
+	at org.gradle.launcher.cli.ExceptionReportingAction.execute(ExceptionReportingAction.java:37)
+	at org.gradle.launcher.cli.ExceptionReportingAction.execute(ExceptionReportingAction.java:23)
+	at org.gradle.launcher.cli.CommandLineActionFactory$WithLogging.execute(CommandLineActionFactory.java:368)
+	at org.gradle.launcher.cli.CommandLineActionFactory$WithLogging.execute(CommandLineActionFactory.java:298)
+	at org.gradle.launcher.Main.doAction(Main.java:36)
+	at org.gradle.launcher.bootstrap.EntryPoint.run(EntryPoint.java:45)
+	at org.gradle.launcher.bootstrap.ProcessBootstrap.runNoExit(ProcessBootstrap.java:60)
+	at org.gradle.launcher.bootstrap.ProcessBootstrap.run(ProcessBootstrap.java:37)
+	at org.gradle.launcher.GradleMain.main(GradleMain.java:23)
+Caused by: net.minecraftforge.gradle.util.GradleConfigurationException: ForgeGradle 2.3.4 does not support Minecraft 1.8.9. MIN: 1.12, MAX: none
+	at net.minecraftforge.gradle.common.BaseExtension.checkMappings(BaseExtension.java:263)
+	at net.minecraftforge.gradle.user.patcherUser.forge.ForgeExtension.setVersion(ForgeExtension.java:84)
+	at net.minecraftforge.gradle.user.patcherUser.forge.ForgeExtension_Decorated.setVersion(Unknown Source)
+	at org.gradle.internal.metaobject.BeanDynamicObject$MetaClassAdapter.setProperty(BeanDynamicObject.java:376)
+	at org.gradle.internal.metaobject.BeanDynamicObject.trySetProperty(BeanDynamicObject.java:176)
+	at org.gradle.internal.metaobject.CompositeDynamicObject.trySetProperty(CompositeDynamicObject.java:66)
+	at org.gradle.internal.metaobject.ConfigureDelegate.setProperty(ConfigureDelegate.java:95)
+	at build_2bu91a7sjjmefa884ewb1e4vp$_run_closure1.doCall(/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/forge189/build.gradle:26)
+	at org.gradle.api.internal.ClosureBackedAction.execute(ClosureBackedAction.java:71)
+	at org.gradle.util.ConfigureUtil.configureTarget(ConfigureUtil.java:155)
+	at org.gradle.util.ConfigureUtil.configure(ConfigureUtil.java:106)
+	at org.gradle.util.ConfigureUtil$WrappedConfigureAction.execute(ConfigureUtil.java:167)
+	at org.gradle.api.internal.plugins.ExtensionsStorage$ExtensionHolder.configure(ExtensionsStorage.java:197)
+	at org.gradle.api.internal.plugins.ExtensionsStorage.configureExtension(ExtensionsStorage.java:69)
+	at org.gradle.api.internal.plugins.DefaultConvention.configureExtension(DefaultConvention.java:412)
+	at org.gradle.api.internal.plugins.DefaultConvention.access$500(DefaultConvention.java:45)
+	at org.gradle.api.internal.plugins.DefaultConvention$ExtensionsDynamicObject.tryInvokeMethod(DefaultConvention.java:349)
+	at org.gradle.internal.metaobject.CompositeDynamicObject.tryInvokeMethod(CompositeDynamicObject.java:98)
+	at org.gradle.internal.metaobject.MixInClosurePropertiesAsMethodsDynamicObject.tryInvokeMethod(MixInClosurePropertiesAsMethodsDynamicObject.java:30)
+	at org.gradle.groovy.scripts.BasicScript$ScriptDynamicObject.tryInvokeMethod(BasicScript.java:133)
+	at org.gradle.internal.metaobject.AbstractDynamicObject.invokeMethod(AbstractDynamicObject.java:160)
+	at org.gradle.groovy.scripts.BasicScript.invokeMethod(BasicScript.java:82)
+	at build_2bu91a7sjjmefa884ewb1e4vp.run(/home/runner/work/Horizon-mod-java-rust/Horizon-mod-java-rust/java/forge189/build.gradle:25)
+	at org.gradle.groovy.scripts.internal.DefaultScriptRunnerFactory$ScriptRunnerImpl.run(DefaultScriptRunnerFactory.java:90)
+	... 88 more
 
 
-Command-line option '--offline' does not take an argument.
+* Get more help at https://help.gradle.org
 
-To see more detail about a task, run gradle help --task <task>
-For example, gradle help --task build
-
-To see a list of available tasks, run gradle tasks
-
-USAGE: gradle [option...] [task...]
-
---                                   Signals the end of built-in options. Parses subsequent parameters as tasks or task options only.
-
-Help:
-  --help, -?, -h                     Shows this help message.
-  --show-version, -V                 Prints version information and continues.
-  --version, -v                      Prints version information and exits.
-
-Logging:
-  --debug, -d                        Sets log level to debug. Includes the normal stacktrace.
-  --full-stacktrace, -S              Prints the full (very verbose) stacktrace for all exceptions.
-  --info, -i                         Sets the log level to info.
-  --quiet, -q                        Logs errors only.
-  --stacktrace, -s                   Prints the stacktrace for all exceptions.
-  --warn, -w                         Sets the log level to warn.
-
-Console:
-  --console                          Specifies which type of console output to generate. Supported values are 'plain', 'colored', 'auto' (default), 'rich', or 'verbose'.
-  --console-unicode                  Specifies which character types are allowed in the console output. Supported values are 'auto' (default), 'disable', or 'enable'.
-  --non-interactive                  Do not do interactive prompting. [incubating]
-
-Configuration:
-  --gradle-user-home, -g             Specifies the Gradle user home directory. Default is ~/.gradle.
-  --include-build                    Includes the specified build in the composite.
-  --init-script, -I                  Specifies an initialization script.
-  --offline                          Runs the build without accessing network resources.
-  --project-cache-dir                Specifies the project-specific cache directory. Default is .gradle in the root project directory.
-  --project-dir, -p                  Specifies the start directory for Gradle. Default is the current directory.
-  --project-prop, -P                 Sets a project property for the build script (for example, -Pmyprop=myvalue).
-  --refresh-dependencies, -U         Refreshes the state of dependencies.
-  --system-prop, -D                  Sets a JVM system property (for example, -Dmyprop=myvalue).
-
-Execution:
-  --continue                         Continues task execution after a task failure.
-  --no-continue                      Stops task execution after a task failure.
-  --continuous, -t                   Enables continuous build. Gradle does not exit and will re-execute tasks when task file inputs change.
-  --dry-run, -m                      Runs the build with all task actions disabled.
-  --exclude-task, -x                 Specifies a task to exclude from execution.
-  --no-rebuild, -a                   Disables rebuilding of project dependencies.
-  --rerun-tasks                      Ignores previously cached task results.
-
-Performance:
-  --build-cache                      Enables the Gradle build cache. Gradle will try to reuse outputs from previous builds.
-  --no-build-cache                   Disables the Gradle build cache.
-  --configuration-cache              Enables the configuration cache. Gradle will try to reuse the build configuration from previous builds.
-  --no-configuration-cache           Disables the configuration cache.
-  --configure-on-demand              Configures necessary projects only. Gradle will attempt to reduce configuration time for large multi-project builds. [incubating]
-  --no-configure-on-demand           Disables the use of configuration on demand. [incubating]
-  --isolated-projects                Enables Isolated Projects. Projects are configured in parallel. Implies `--configuration-cache`. [incubating]
-  --no-isolated-projects             Disables Isolated Projects. [incubating]
-  --max-workers                      Configures the maximum number of concurrent workers Gradle is allowed to use.
-  --parallel                         Builds projects in parallel. Gradle will attempt to determine the optimal number of executor threads to use.
-  --no-parallel                      Disables parallel project execution.
-  --priority                         Specifies the scheduling priority for the Gradle daemon and all processes launched by it. Supported values are 'normal' (default) or 'low'.
-  --watch-fs                         Enables file system watching. Reuses file system data for subsequent builds.
-  --no-watch-fs                      Disables file system watching.
-
-Security:
-  --dependency-verification, -F      Configures the dependency verification mode. Supported values are 'strict', 'lenient', or 'off'.
-  --export-keys                      Exports the public keys used for dependency verification.
-  --refresh-keys                     Refreshes the public keys used for dependency verification.
-  --update-locks                     Performs a partial update of the dependency lock. Allows passed-in module notations to change version. [incubating]
-  --write-locks                      Persists dependency resolution for locked configurations. Ignores existing locking information if it exists.
-  --write-verification-metadata, -M  Generates checksums for dependencies used in the project. Accepts a comma-separated list.
-
-Diagnostics:
-  --configuration-cache-problems     Configures how the configuration cache handles problems (fail or warn). Supported values are 'warn', or 'fail' (default).
-  --problems-report                  Enables the HTML problems report. [incubating]
-  --no-problems-report               Disables the HTML problems report. [incubating]
-  --profile                          Profiles build execution time. Generates a report in the <build_dir>/reports/profile directory.
-  --property-upgrade-report          Runs the build with the experimental property upgrade report. [incubating]
-  --task-graph                       Prints the task graph instead of executing tasks.
-  --warning-mode                     Specifies which mode of warnings to generate. Supported values are 'all', 'fail', 'summary' (default), or 'none'.
-
-Daemon:
-  --daemon                           Uses the Gradle daemon to run the build. Starts the daemon if it is not running.
-  --no-daemon                        Runs the build without the Gradle daemon. Useful occasionally if you have configured Gradle to always run with the daemon by default.
-  --foreground                       Starts the Gradle daemon in the foreground.
-  --status                           Shows the status of running and recently stopped Gradle daemons.
-  --stop                             Stops the Gradle daemon if it is running.
-
-Develocity:
-  --develocity-plugin-version        Version of the Develocity plugin to auto-apply, must be 4.4.0 or higher if Develocity URL is specified as well.
-                                     Used only if --develocity-url or --scan triggers auto-application of the Develocity plugin.
-  --develocity-url                   Default URL of the Develocity server to publish Build Scan to. Triggers auto-application of the Develocity plugin if not already applied.
-                                     Has no effect if the Develocity plugin is already applied and a server URL is configured.
-  --scan                             Generates a Build Scan (powered by Develocity).
-  --no-scan                          Disables the creation of a Build Scan.
-
+BUILD FAILED in 5s
