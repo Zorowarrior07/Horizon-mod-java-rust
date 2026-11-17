@@ -1,5 +1,5 @@
 == artifacts/java-1.21.x/zoro_bridge-1.0.0-fabric-1.21.1-1.0.0.jar
-   ok    31 entries, no duplicates
+   ok    35 entries, no duplicates
    ok    dev/zorowarrior/bridge/BridgeBeaconMod.class: class v65.0, 6 methods, 495 code bytes
    ok    zoro_bridge/textures/block/bridge_beacon.png: PNG 16x16
    ok    zoro_bridge/textures/item/bridge_chip.png: PNG 16x16
@@ -7,7 +7,7 @@
    ok    loader metadata: fabric
    -> PASS
 == artifacts/java-1.21.x/zoro_bridge-1.0.0-fabric-1.21.11-1.0.0.jar
-   ok    31 entries, no duplicates
+   ok    35 entries, no duplicates
    ok    dev/zorowarrior/bridge/BridgeBeaconMod.class: class v65.0, 6 methods, 495 code bytes
    ok    zoro_bridge/textures/block/bridge_beacon.png: PNG 16x16
    ok    zoro_bridge/textures/item/bridge_chip.png: PNG 16x16
@@ -15,7 +15,7 @@
    ok    loader metadata: fabric
    -> PASS
 == artifacts/java-1.21.x/zoro_bridge-1.0.0-fabric-1.21.4-1.0.0.jar
-   ok    31 entries, no duplicates
+   ok    35 entries, no duplicates
    ok    dev/zorowarrior/bridge/BridgeBeaconMod.class: class v65.0, 6 methods, 495 code bytes
    ok    zoro_bridge/textures/block/bridge_beacon.png: PNG 16x16
    ok    zoro_bridge/textures/item/bridge_chip.png: PNG 16x16
