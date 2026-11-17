@@ -80,3 +80,25 @@ jobs:
         if: always()
         run: |
           bash tools/ci-commit.sh "ci: neoforge 26.x runtime test $(date -u +%FT%TZ)" ci artifacts
+  verify-forge189:
+    needs: verify-neoforge26
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: '8' }
+      - name: Build Forge 1.8.9 and boot a server with it
+        continue-on-error: true
+        env:
+          REPO_JAVA: ${{ github.workspace }}/java
+          ARTIFACT_DIR: ${{ github.workspace }}/artifacts/java-1.8.9
+        run: |
+          mkdir -p ci/logs artifacts/java-1.8.9
+          bash tools/build-forge189.sh > ci/logs/forge-1.8.9-build.log 2>&1 || true
+          tail -12 ci/logs/forge-1.8.9-build.log
+          ls -la artifacts/java-1.8.9
+      - name: Commit
+        if: always()
+        run: |
+          bash tools/ci-commit.sh "ci: forge 1.8.9 build $(date -u +%FT%TZ)" ci artifacts

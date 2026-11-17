@@ -1,5 +1,7 @@
 modLoader = "javafml"
 loaderVersion = "[4,)"
+# File-level: the loader validates this before it looks at [[mods]].
+license = "MIT"
 
 [[mods]]
 modId = "zoro_bridge"
@@ -9,7 +11,6 @@ description = '''
 Bridge beacon and bridge chip, Minecraft 26.x build.
 Java Edition mod; the Horizon launcher has no JVM and uses the .hmod instead.
 '''
-license = "MIT"
 
 [[dependencies.zoro_bridge]]
     modId = "neoforge"

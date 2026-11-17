@@ -1,5 +1,7 @@
 modLoader = "javafml"
 loaderVersion = "[4,)"
+# File-level: the loader validates this before it looks at [[mods]].
+license = "MIT"
 
 [[mods]]
 modId = "zoro_bridge"
@@ -10,7 +12,6 @@ Bridge beacon and bridge chip. NeoForge 1.21.x build.
 This is a Java Edition mod jar; the Horizon desktop launcher has no JVM and
 ships a separate .hmod instead.
 '''
-license = "MIT"
 [[dependencies.zoro_bridge]]
     modId = "neoforge"
     type = "required"
