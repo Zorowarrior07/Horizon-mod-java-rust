@@ -1,8 +1,8 @@
 > Run with --scan to get full insights from a Build Scan (powered by Develocity).
 
-BUILD FAILED in 30s
+BUILD FAILED in 26s
 ===== generated script
-java/neoforge26/build/tmp/neoformruntime/20261117-055631_downloadServer
+java/neoforge26/build/tmp/neoformruntime/20261117-060452_downloadServer
 --- 
 
 ===== run config in created files
